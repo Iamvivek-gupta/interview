@@ -1154,17 +1154,48 @@ const calc = {
 
 
 
+// Removing consecutive duplicate characters from a string can be achieved with a recursive function. 
+// Here's a corrected JavaScript function to accomplish this:
 
+```javascript
+function removeConsecutiveDuplicates(input) {
+  let modified = false;
 
+  for (let i = 0; i < input.length - 1; i++) {
+    if (input[i] === input[i + 1]) {
+      input = input.slice(0, i) + input.slice(i + 2);
+      modified = true;
+      break;
+    }
+  }
 
+  if (modified) {
+    return removeConsecutiveDuplicates(input);
+  } else {
+    return input;
+  }
+}
 
+// Test cases
+console.log(removeConsecutiveDuplicates("abbbac")); // Output: "abac"
+console.log(removeConsecutiveDuplicates("abbac"));  // Output: "c"
+console.log(removeConsecutiveDuplicates("aabb"));   // Output: ""
+console.log(removeConsecutiveDuplicates("aabbcc")); // Output: ""
+```
 
+// In this corrected solution:
 
+// - We use a `for` loop to iterate through the string and check for consecutive duplicate characters.
 
+// - When consecutive duplicates are found, we remove them by splicing the string.
 
+// - We set the `modified` flag to `true` to indicate that changes were made.
 
+// - After one pass through the string, if `modified` is `true`, we recursively call the function again to continue checking for additional consecutive duplicates.
 
+// - The recursion continues until no more consecutive duplicates are found.
 
+// This should correctly remove consecutive duplicate characters from the input string.
 
 
 
@@ -1189,16 +1220,39 @@ const calc = {
 
 
 
+// To generate a Fibonacci sequence in JavaScript where each number is the sum of the previous three numbers (instead of the usual two), you can modify the algorithm accordingly. Here's an example of how you can do this:
 
+```javascript
+function generateFibonacciThreeSum(n) {
+  if (n <= 0) return [];
+  if (n === 1) return [0];
+  if (n === 2) return [0, 1];
 
+  const fibonacci = [0, 1, 1]; // Initialize with the first three Fibonacci numbers
 
+  for (let i = 3; i < n; i++) {
+    const nextFibonacci = fibonacci[i - 1] + fibonacci[i - 2] + fibonacci[i - 3];
+    fibonacci.push(nextFibonacci);
+  }
 
+  return fibonacci;
+}
 
+// Example: Generate the first 10 Fibonacci numbers using a three-sum approach
+const n = 10;
+const fibonacciSequence = generateFibonacciThreeSum(n);
+console.log(fibonacciSequence); // Output: [0, 1, 1, 2, 4, 7, 13, 24, 44, 81]
+```
 
+// In this code:
 
+// - We initialize an array `fibonacci` with the first three Fibonacci numbers: `[0, 1, 1]`.
 
+// - We then use a `for` loop to generate the next Fibonacci numbers by summing the last three numbers in the `fibonacci` array.
 
+// - The loop continues until we have generated `n` Fibonacci numbers.
 
+// This modified Fibonacci sequence generation algorithm calculates each number as the sum of the previous three numbers instead of the usual two. You can change the value of `n` to generate as many numbers in the sequence as you need.
 
 
 
@@ -1227,22 +1281,62 @@ const calc = {
 
 
 
+// Flattening an object in JavaScript means converting a nested object into a flat structure where all the properties are at the top level. You can achieve this using a recursive function. Here's a JavaScript function to flatten an object:
 
+// javascript
+function flattenObject(obj, parentKey = '') {
+  let result = {};
 
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const newKey = parentKey ? `${parentKey}.${key}` : key;
 
+      if (typeof obj[key] === 'object' && obj[key] !== null) {
+        // Recursively flatten nested objects
+        const flattened = flattenObject(obj[key], newKey);
+        result = { ...result, ...flattened };
+      } else {
+        // Add non-object properties to the result
+        result[newKey] = obj[key];
+      }
+    }
+  }
 
+  return result;
+}
 
+// Example usage:
+const nestedObject = {
+  user: {
+    name: 'John',
+    address: {
+      street: '123 Main St',
+      city: 'New York',
+    },
+  },
+  age: 30,
+};
 
+const flattenedObject = flattenObject(nestedObject);
 
+console.log(flattenedObject);
 
 
+// In this code:
 
+// 1. The `flattenObject` function takes two parameters: `obj` (the object to flatten) and `parentKey` (used for recursive calls to keep track of nested keys).
 
+// 2. It initializes an empty `result` object to store the flattened properties.
 
+// 3. It iterates through the keys of the input object (`obj`) using a `for...in` loop.
 
+// 4. For each key, it checks if the value is an object. If it's an object, it recursively calls `flattenObject` with the nested object and the updated key (including the parent keys).
 
+// 5. If the value is not an object, it adds the property to the `result` object with the updated key (including parent keys).
 
+// 6. Finally, it returns the `result` object, which contains the flattened structure.
 
+// When you run this code, the `nestedObject` will be flattened, and the result will be a flat object with all properties at the top level.
 
 
 
@@ -1259,5 +1353,53 @@ const calc = {
 
 
 
+// To find the kth missing positive integer from a given array in JavaScript using a hashmap, you can follow these steps:
 
+// 1. Create a hashmap (JavaScript object) to store the integers from the given array. 
+// This hashmap will help us quickly check if an integer is present or missing.
 
+// 2. Loop through the given array and populate the hashmap with the integers as keys.
+
+// 3. Initialize a variable `missingCount` to keep track of the missing integers, and `currentInteger` to 1, which represents the current integer we are checking.
+
+// 4. Enter a loop that continues until `missingCount` reaches `k`.
+
+// 5. Inside the loop, check if `currentInteger` exists in the hashmap. If it doesn't, increment `missingCount`.
+
+// 6. If `missingCount` reaches `k`, return `currentInteger` as the kth missing positive integer.
+
+// Here's the JavaScript code to achieve this:
+
+// javascript
+// function findKthMissing(nums, k) {
+//     const numSet = {}; // HashMap to store integers from the array
+
+//     // Populate the hashmap
+//     for (const num of nums) {
+//         numSet[num] = true;
+//     }
+
+//     let missingCount = 0;
+//     let currentInteger = 1;
+
+//     // Find the kth missing positive integer
+//     while (missingCount < k) {
+//         if (!numSet[currentInteger]) {
+//             missingCount++;
+//         }
+//         if (missingCount < k) {
+//             currentInteger++;
+//         }
+//     }
+
+//     return currentInteger;
+// }
+
+// Example usage:
+// const nums = [2, 3, 4, 7, 11];
+// const k = 5;
+// const result = findKthMissing(nums, k);
+// console.log(`The ${k}th missing positive integer is: ${result}`);
+
+
+// In this example, the `findKthMissing` function takes an array of integers (`nums`) and the value of `k` as input and returns the kth missing positive integer. The code uses a hashmap (`numSet`) to efficiently check for missing integers while iterating through the positive integers.

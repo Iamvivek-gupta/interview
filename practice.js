@@ -5,6 +5,7 @@
 // })
 
 const { log } = require("console");
+const { copyFileSync } = require("fs");
 
 // promise.then(data => {
 //     console.log(data);
@@ -978,27 +979,123 @@ console.log(computeAmount().lacs(15).lacs(20).lacs(7).value()) //42,00,000
 // let result = sumDigit(12345);
 // console.log(result);
 
-const portfolio = [
-  { name: "Mark", stock: "FB" },
-  { name: "Steve", stock: "AAPL" },
-  { name: "Tim", stock: "AAPL" },
-  { name: "Steve", stock: "MSFT" },
-  { name: "Bill", stock: "MSFT" },
-  { name: "Bill", stock: "AAPL" },
-];
+// const portfolio = [
+//   { name: "Mark", stock: "FB" },
+//   { name: "Steve", stock: "AAPL" },
+//   { name: "Tim", stock: "AAPL" },
+//   { name: "Steve", stock: "MSFT" },
+//   { name: "Bill", stock: "MSFT" },
+//   { name: "Bill", stock: "AAPL" },
+// ];
 
 
-const farmatOutput = portfolio.reduce((result, curr) => {
-let key = `${curr.stock}`;
-if(!result[key]){
-  result[key] = {
-    stock: curr.stock,
-    name : [],
-    count: 0
+// const farmatOutput = portfolio.reduce((result, curr) => {
+// let key = `${curr.stock}`;
+// if(!result[key]){
+//   result[key] = {
+//     stock: curr.stock,
+//     name : [],
+//     count: 0
+//   }
+// }
+// result[key].name.push(curr.name);
+// result[key].count = result[key].name.length;
+// return result;
+// }, {})
+// console.log(Object.values(farmatOutput));
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let number = [4, 3, 2, 7, 8, 2, 3, 3, 1];
+// function duplicate(arr) {
+//     let result = [];
+//     for(let i = 0; i < number.length; i++){
+//       if()
+//     }
+// }
+
+// console.log(duplicate(number));
+
+
+
+
+
+// const user = {
+//   name: "Vivek",
+//   logMessage(){
+//     console.log(this.name);
+//   }
+// }
+
+// setTimeout(function(){
+//   user.logMessage()
+// }, 1000)
+
+
+
+
+// function findKthPositive(arr, k){
+//   let hashMap = {};
+//   for(let item of arr){
+//     hashMap[item] = true;
+//   }
+
+//   let missingCount = 0, currentInteger = 1;
+//   while(missingCount < k){
+//     if(!hashMap[currentInteger]) {
+//       missingCount++;
+//     }
+//     if(missingCount < k){
+//       currentInteger++;
+//     }
+//   }
+
+//   return currentInteger;
+
+// }
+
+// console.log(findKthPositive([2,3,4,7,11], 7))
+
+
+function secondlargerNumber(arr){
+  let fistMax = Number.NEGATIVE_INFINITY;
+  let secondMax = Number.NEGATIVE_INFINITY;
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i]> fistMax){
+      console.log("current element from if", arr[i])
+      secondMax = fistMax;
+      fistMax = arr[i];
+    } else if(arr[i] > secondMax && arr[i] != fistMax){
+      console.log("current element from else if", arr[i])
+      secondMax = arr[i]
+    }
   }
+  return secondMax;
 }
-result[key].name.push(curr.name);
-result[key].count = result[key].name.length;
-return result;
-}, {})
-console.log(Object.values(farmatOutput));
+
+
+console.log(secondlargerNumber([10,5,10]))
+// 10
+// -&
+arr.sort()
+
+
+
+
+
+
+
+
+
+
+
