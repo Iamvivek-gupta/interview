@@ -901,7 +901,11 @@ let array = [
 
 Design a function computeAmount which take number of lacs and return the amount after using value function along with it.
 const computeAmount = function() {
-    
+  let result = 0
+    value(){
+      retun this.result;
+    }
+
 };
 
 
@@ -1067,27 +1071,79 @@ console.log(computeAmount().lacs(15).lacs(20).lacs(7).value()) //42,00,000
 // console.log(findKthPositive([2,3,4,7,11], 7))
 
 
-function secondlargerNumber(arr){
-  let fistMax = Number.NEGATIVE_INFINITY;
-  let secondMax = Number.NEGATIVE_INFINITY;
-  for(let i = 0; i < arr.length; i++){
-    if(arr[i]> fistMax){
-      console.log("current element from if", arr[i])
-      secondMax = fistMax;
-      fistMax = arr[i];
-    } else if(arr[i] > secondMax && arr[i] != fistMax){
-      console.log("current element from else if", arr[i])
-      secondMax = arr[i]
+// function secondlargerNumber(arr){
+//   let fistMax = Number.NEGATIVE_INFINITY;
+//   let secondMax = Number.NEGATIVE_INFINITY;
+//   for(let i = 0; i < arr.length; i++){
+//     if(arr[i]> fistMax){
+//       console.log("current element from if", arr[i])
+//       secondMax = fistMax;
+//       fistMax = arr[i];
+//     } else if(arr[i] > secondMax && arr[i] != fistMax){
+//       console.log("current element from else if", arr[i])
+//       secondMax = arr[i]
+//     }
+//   }
+//   return secondMax;
+// }
+
+
+// console.log(secondlargerNumber([10,5,10]))
+
+
+
+
+
+
+
+// let calculator = {
+//   read(){
+//     this.a = + prompt("a is", 0);
+//     this.b = + prompt("b is", 0);
+//   },
+
+//   sum(){
+//     return this.a + this.b;
+//   },
+
+//   mul(){
+//     return this.a * this.b;
+//   }
+// }
+
+// calculator.read();
+// console.log(calculator.sum());
+
+
+
+
+// let computeAmount = {
+//   result: 0,
+//   lacs(value){
+//     this.result = this.result + value * 100000;
+//     return this;
+//   },
+//   value(){
+//     return this.result;
+//   }
+// }
+
+// console.log(computeAmount.lacs(2).lacs(5).lacs(50).value());
+
+function getMostFrequentChar(str){
+  let maxChar = "";
+  let maxFrequency = 0;
+  let hashMap = {};
+  for(let char of str) {
+    hashMap[char] = (hashMap[char] || 0) + 1;
+    if(hashMap[char] > maxFrequency) {
+      maxFrequency = hashMap[char];
+      maxChar = char;
     }
   }
-  return secondMax;
+  return maxChar;
 }
-
-
-console.log(secondlargerNumber([10,5,10]))
-// 10
-// -&
-arr.sort()
+console.log(getMostFrequentChar("hello world&&&&&&&&&&&&"));
 
 
 
@@ -1099,3 +1155,25 @@ arr.sort()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+const arr = [1,2,3,4,5,6]
+console.log(arr.forEach(e => e > 3))
+console.log(arr.filter(e => e > 3))
+console.log(arr.map(e => e > 3))
+
+// controlled componant and uncontrolled componant, useCallback and UseMemo Hook, debounce and throtlling, promise and async await, compoent mount and componant did mount
+
+
+{     console.time("loop");     
+for (var i = 0; i < 1000000; i += 1){ 
+}     console.timeEnd("loop"); }

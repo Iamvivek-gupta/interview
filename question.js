@@ -557,7 +557,7 @@ function longestConsecutiveSequence(arr){
 }
 
 
-// console.log(longestConsecutiveSequence([4,6,1,7,2,8,3,9,10]));
+// console.log(longestConsecutiveSequence([4,6,1,7,2,8,3,9,10])); 1,2,3,4,6,7,8,9,10
 
 
 
@@ -587,6 +587,44 @@ function maxProfit(Price){
 
 
 // Q24 check if given numver is HappyNumber
+
+
+// A happy number is a number that, when you repeatedly replace the number by the sum of the squares of its digits and repeat this process, eventually reaches the number 
+// 1. If it never reaches 1, it is not a happy number. Here's a JavaScript program to check if a number is a happy number:
+
+```javascript
+function isHappy(n) {
+  const seen = new Set(); // To detect cycles in the sequence
+
+  while (n !== 1 && !seen.has(n)) {
+    seen.add(n);
+    console.log(seen);
+    n = sumOfSquares(n);
+  }
+
+  return n === 1;
+}
+
+function sumOfSquares(n) {
+  let sum = 0;
+  while (n > 0) {
+    const digit = n % 10;
+    sum += digit * digit;
+    n = Math.floor(n / 10);
+  }
+  return sum;
+}
+
+// Test cases
+console.log(isHappy(19)); // true (19 is a happy number: 1^2 + 9^2 = 82, 8^2 + 2^2 = 68, 6^2 + 8^2 = 100, 1^2 + 0^2 + 0^2 = 1)
+console.log(isHappy(4));  // false (4 is not a happy number: 4^2 = 16, 1^2 + 6^2 = 37, 3^2 + 7^2 = 58, 5^2 + 8^2 = 89, 8^2 + 9^2 = 145, 1^2 + 4^2 + 5^2 = 42, 4^2 + 2^2 = 20, 2^2 + 0^2 = 4, cycle starts)
+```
+
+// In this program:
+
+// - The `isHappy` function checks if a number is a happy number by using a `while` loop. It keeps replacing the number with the sum of the squares of its digits until it either reaches 1 (making it a happy number) or enters a cycle (making it not a happy number).
+
+// - The `sumOfSquares` function calculates the sum of the squares of the digits in a number. It extracts each digit using the modulo operator and updates the number by removing the last digit (integer division).
 
 function isHappyNumber(num){
     let set = new Set();
@@ -769,7 +807,8 @@ const calc = {
 //   Initialize a new empty stack.
 //   Loop through the input string and for each character:
 //   a. If the character is an opening parenthesis, push it onto the stack.
-//   b. If the character is a closing parenthesis, check if the stack is empty. If it is, return false since there is no matching opening parenthesis. Otherwise, pop the top element from the stack and check if it matches the closing parenthesis. If it doesn't, return false since the parentheses are not valid.
+//   b. If the character is a closing parenthesis, check if the stack is empty. 
+//   If it is, return false since there is no matching opening parenthesis. Otherwise, pop the top element from the stack and check if it matches the closing parenthesis. If it doesn't, return false since the parentheses are not valid.
 //   After the loop, check if the stack is empty. If it is, return true since all opening parentheses have a matching closing parenthesis. Otherwise, return false since there are unmatched opening parentheses.
 //   Here's the JavaScript code that implements the above approach:
 
@@ -1281,7 +1320,8 @@ console.log(fibonacciSequence); // Output: [0, 1, 1, 2, 4, 7, 13, 24, 44, 81]
 
 
 
-// Flattening an object in JavaScript means converting a nested object into a flat structure where all the properties are at the top level. You can achieve this using a recursive function. Here's a JavaScript function to flatten an object:
+// Flattening an object in JavaScript means converting a nested object into a flat structure where all the properties are at the top level.
+// You can achieve this using a recursive function. Here's a JavaScript function to flatten an object:
 
 // javascript
 function flattenObject(obj, parentKey = '') {
@@ -1403,3 +1443,130 @@ console.log(flattenedObject);
 
 
 // In this example, the `findKthMissing` function takes an array of integers (`nums`) and the value of `k` as input and returns the kth missing positive integer. The code uses a hashmap (`numSet`) to efficiently check for missing integers while iterating through the positive integers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// You can implement the requested function using a JavaScript object and method chaining. 
+// Here's an implementation of the `computeAmount` function along with the `lacs` method:
+
+```javascript
+function computeAmount() {
+  // Initialize the amount to 0.
+  let amount = 0;
+
+  // The 'lacs' method adds the specified number of lacs to the amount.
+  function lacs(value) {
+    // Multiply the value by 100,000 to convert lacs to the actual amount.
+    amount += value * 100000;
+    
+    // Return the same object to allow for method chaining.
+    return this;
+  }
+
+  // The 'value' method returns the computed amount.
+  function value() {
+    return amount.toLocaleString(); // Convert the amount to a formatted string.
+  }
+
+  // Return an object with 'lacs' and 'value' methods.
+  return {
+    lacs,
+    value,
+  };
+}
+
+// Test cases
+console.log(computeAmount().value()); // "0"
+
+console.log(computeAmount().lacs(2).value()); // "2,00,000"
+
+console.log(computeAmount().lacs(2).lacs(20).value()); // "22,00,000"
+
+console.log(computeAmount().lacs(15).lacs(20).lacs(7).value()); // "42,00,000"
+```
+
+// In this implementation:
+
+// - `computeAmount` returns an object with two methods: `lacs` and `value`.
+
+// - The `lacs` method takes a number of lacs, converts it to the actual amount by multiplying by 100,000, and adds it to the `amount` variable. It returns the same object, allowing for method chaining.
+
+// - The `value` method returns the computed amount as a formatted string using `toLocaleString()`.
+
+// You can use the `computeAmount` function and its methods as shown in your test cases to perform calculations and obtain formatted results.
+
+
+
+
+
+
+
+
+
+// Q3. asked in Neo Solutions
+
+// Removing consecutive duplicate characters from a string can be achieved with a recursive function. Here's a corrected JavaScript function to accomplish this:
+
+```javascript
+function removeConsecutiveDuplicates(input) {
+  let modified = false;
+
+  for (let i = 0; i < input.length - 1; i++) {
+    if (input[i] === input[i + 1]) {
+      input = input.slice(0, i) + input.slice(i + 2);
+      modified = true;
+      break;
+    }
+  }
+
+  if (modified) {
+    return removeConsecutiveDuplicates(input);
+  } else {
+    return input;
+  }
+}
+
+// Test cases
+console.log(removeConsecutiveDuplicates("abbbac")); // Output: "abac"
+console.log(removeConsecutiveDuplicates("abbac"));  // Output: "c"
+console.log(removeConsecutiveDuplicates("aabb"));   // Output: ""
+console.log(removeConsecutiveDuplicates("aabbcc")); // Output: ""
+```
+
+// In this corrected solution:
+
+// - We use a `for` loop to iterate through the string and check for consecutive duplicate characters.
+
+// - When consecutive duplicates are found, we remove them by splicing the string.
+
+// - We set the `modified` flag to `true` to indicate that changes were made.
+
+// - After one pass through the string, if `modified` is `true`, we recursively call the function again to continue checking for additional consecutive duplicates.
+
+// - The recursion continues until no more consecutive duplicates are found.
+
+// This should correctly remove consecutive duplicate characters from the input string.

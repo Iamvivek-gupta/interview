@@ -82,3 +82,45 @@ console.log(removeConsecutiveDuplicates("aabbcc")); // Output: ""
 // - The recursion continues until no more consecutive duplicates are found.
 
 // This should correctly remove consecutive duplicate characters from the input string.
+
+
+
+
+
+// To determine how many people can see the sun from a tower with varying heights and the number of people on it, you can write a JavaScript program as follows:
+
+```javascript
+function countPeopleSeeingSun(towerData) {
+  let maxHeight = 0;
+  let count = 0;
+
+  // Iterate through the tower data to find people who can see the sun.
+  for (const [height, people] of towerData) {
+    if (height > maxHeight) {
+      maxHeight = height;
+      count += people;
+    } else if (height === maxHeight) {
+      count += people;
+    }
+  }
+
+  return count;
+}
+
+// Test case
+const towerData = [[5, 3], [3, 4], [6, 2]];
+const result = countPeopleSeeingSun(towerData);
+console.log(result); // Output: 5
+```
+
+// In this code:
+
+// - `countPeopleSeeingSun` takes an array `towerData` as input, where each subarray contains two elements: the height of the tower and the number of people on it.
+
+// - The function iterates through the `towerData` array and keeps track of the `maxHeight` and the `count` of people who can see the sun.
+
+// - If a tower is taller than the previous tallest tower (i.e., its height is greater than `maxHeight`), it updates both `maxHeight` and `count`. If the height is the same as the previous tallest tower, it adds the number of people to the `count`.
+
+// - The function returns the `count`, which represents the total number of people who can see the sun.
+
+// The provided test case, `[[5, 3], [3, 4], [6, 2]]`, correctly returns `5` as the output because the tallest tower is of height `6`, and it has `2` people on it.
