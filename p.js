@@ -33,7 +33,8 @@ function getMaxSumByDigit(u, n) {
 
 
 
-// RabbitMQ is a popular open-source message broker software that implements the Advanced Message Queuing Protocol (AMQP). It is used to communicate between different applications and services, enabling the exchange of messages between them in a reliable and scalable manner.
+// RabbitMQ is a popular open-source message broker software that implements the Advanced Message Queuing Protocol (AMQP).
+// It is used to communicate between different applications and services, enabling the exchange of messages between them in a reliable and scalable manner.
 
 // RabbitMQ is widely popular due to its features and performance. Some of the key features are:
 

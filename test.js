@@ -227,6 +227,36 @@ function expandfromcenter(str, left, right){
 }
 
 console.log(palin('banana'));
+
+
+2nd solution to findout longgest palindrome from given string
+
+
+function isPalindrome(str) {
+  const reversed = str.split('').reverse().join('');
+  return str === reversed;
+}
+
+function longestPalindrome(str) {
+  let longest = '';
+
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i + 1; j <= str.length; j++) {
+      const substring = str.slice(i, j);
+      if (isPalindrome(substring) && substring.length > longest.length) {
+        longest = substring;
+      }
+    }
+  }
+
+  return longest;
+}
+
+const inputString = "babad"; // Replace with your input string
+const result = longestPalindrome(inputString);
+
+console.log(`Longest Palindrome: ${result}`);
+
 */
 
 /*
@@ -382,6 +412,18 @@ let array = [
   {"id": 4, "type":"withdrawl","date": "16-08-2021","price": 150}
 ]
   
+let b = a.reduce((result, current) => {
+  let { type, price } = current;
+  if(result[type]){
+    result[type] += price
+  } else {
+    console.log(type, price)
+    result[type] = price
+  }
+  return result;
+}, {})
+
+
   var result = [];
   array.reduce(function(res, value) {
     if (!res[value.type]) {
@@ -396,7 +438,7 @@ let array = [
 
   */
 // let z = [1,2,3,9,3,5,4,6,7,8];
-// function getMax(arr, n){
+// function getMaxSumConsecutiveDigit(arr, n){
 //   let max = 0;
 //   let l = z.length - n + 1;
 //   for (let i = 0; i < l; i++){
@@ -411,7 +453,7 @@ let array = [
 //   }
 //   console.log(max)
 // }
-// getMax(z,4)
+// getMaxSumConsecutiveDigit(z,4)
 
 
 // var arr = [-5,-4,-3,-2,0,2,4,6,8];
@@ -457,9 +499,9 @@ let array = [
 
 console.log("hallo world");
 function p1(){
-    return new Promise( (resolve, reject) => {
-      //console.log("hallo vivek");
-      resolve("hallo Wish");
+  return new Promise( (resolve, reject) => {
+    console.log("hallo vivek");
+    resolve("hallo Wish");
   })
 }
 async function p2(){
