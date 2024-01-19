@@ -1177,3 +1177,63 @@ console.log(arr.map(e => e > 3))
 {     console.time("loop");     
 for (var i = 0; i < 1000000; i += 1){ 
 }     console.timeEnd("loop"); }
+
+
+
+
+
+
+// console.log(1);
+// setTimeout( () =>{
+//     console.log(2);
+// })
+// Promise.resolve(3).then(console.log);
+
+// console.log(4);
+
+// The output of the given code will be:
+
+// 1
+// 4
+// 3
+// 2
+
+
+// The output of the given code will be:
+
+// ```
+// 1
+// 4
+// 3
+// 2
+// ```
+
+// Here's the explanation:
+
+// 1. `console.log(1)` is executed first and prints `1` to the console.
+// 2. `setTimeout` is scheduled to execute after a minimum of 0 milliseconds (but can be delayed), and it will print `2` to the console.
+// 3. `Promise.resolve(3).then(console.log)` is a resolved promise with a value of `3`. The `then` callback is scheduled to execute in the next microtask, and it prints `3` to the console.
+// 4. `console.log(4)` is executed and prints `4` to the console.
+
+// So, the order of the outputs is `1`, `4`, `3`, `2`.
+
+
+// In JavaScript, `setTimeout` and promises operate on different mechanisms, and their execution order depends on the event loop and the microtask queue.
+
+// - **`setTimeout`**:
+//   - `setTimeout` schedules a callback function to be executed after a specified delay.
+//   - The callback function is placed in the callback queue after the specified delay.
+//   - If the call stack is empty, the callback is picked up from the callback queue and executed.
+
+// - **Promise**:
+//   - Promises use the microtask queue to schedule their callbacks.
+//   - When a promise is resolved or rejected, its `then` or `catch` callbacks are placed in the microtask queue.
+//   - Microtasks have higher priority than macrotasks (such as `setTimeout` callbacks) and are executed before the next macrotask begins.
+
+// Here's a general order of execution:
+
+// 1. Execute any synchronous code currently on the call stack.
+// 2. Execute any microtasks in the microtask queue (e.g., promise callbacks).
+// 3. Execute any macrotasks in the macrotask queue (e.g., `setTimeout` callbacks).
+
+// Therefore, promises (microtasks) generally have higher priority than `setTimeout` (macrotasks). If there are both promises and `setTimeout` callbacks scheduled, the promises will be executed first.

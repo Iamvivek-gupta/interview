@@ -227,7 +227,15 @@ function fibonnocci(n) {
 
 // Q7 find the nth Number in fibonnacci sequence
 
+function fib(n){
+  if(n<=1) return n;
+  return fib(n-1) + fib(n-2);
+}
 
+console.log(fib(0));
+console.log(fib(1));
+console.log(fib(2));
+console.log(fib(3));
 
 
 
@@ -357,6 +365,14 @@ function secondMax(arr) {
 
 
 
+
+// // polyfill for forEach 
+// Array.prototype.ourForEach = function (callBack) {
+//   for (let i = 0; i < this.length; i++) {
+//     callBack(this[i]);
+//   }
+// };
+// names.ourForEach(consoleFunc);
 
 
 
@@ -1570,3 +1586,376 @@ console.log(removeConsecutiveDuplicates("aabbcc")); // Output: ""
 // - The recursion continues until no more consecutive duplicates are found.
 
 // This should correctly remove consecutive duplicate characters from the input string.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// inverivew ques on clouser
+// below code will print 2 and 2 after delay of 1 seconds. but fixed this code should print 0, 1 using clouser instead of let.
+for (var i = 0; i < 2; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
+}
+
+for (var i = 0; i < 2; i++) {
+  (function (i) {
+    setTimeout(() => {
+      console.log(i);
+    }, 1000);
+  })(i);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// moves all zeros to the end of array
+
+
+function moveZero(nums){
+  let left = 0;
+  let right = 0;
+  while(right < nums.length){
+    if(nums[right] != 0) {
+      [nums[left], nums[right]] = [nums[right], nums[left]];
+      left++;
+    }
+    right++;
+  }
+  return nums;
+}
+
+console.log(moveZero([0,1,0,3,12]));
+console.log(moveZero([0]))
+
+
+
+
+
+
+
+
+
+
+// console.log(1);
+// setTimeout( () =>{
+//     console.log(2);
+// })
+// Promise.resolve(3).then(console.log);
+
+// console.log(4);
+
+// The output of the given code will be:
+
+// 1
+// 4
+// 3
+// 2
+
+
+// The output of the given code will be:
+
+// ```
+// 1
+// 4
+// 3
+// 2
+// ```
+
+// Here's the explanation:
+
+// 1. `console.log(1)` is executed first and prints `1` to the console.
+// 2. `setTimeout` is scheduled to execute after a minimum of 0 milliseconds (but can be delayed), and it will print `2` to the console.
+// 3. `Promise.resolve(3).then(console.log)` is a resolved promise with a value of `3`. The `then` callback is scheduled to execute in the next microtask, and it prints `3` to the console.
+// 4. `console.log(4)` is executed and prints `4` to the console.
+
+// So, the order of the outputs is `1`, `4`, `3`, `2`.
+
+
+// In JavaScript, `setTimeout` and promises operate on different mechanisms, and their execution order depends on the event loop and the microtask queue.
+
+// - **`setTimeout`**:
+//   - `setTimeout` schedules a callback function to be executed after a specified delay.
+//   - The callback function is placed in the callback queue after the specified delay.
+//   - If the call stack is empty, the callback is picked up from the callback queue and executed.
+
+// - **Promise**:
+//   - Promises use the microtask queue to schedule their callbacks.
+//   - When a promise is resolved or rejected, its `then` or `catch` callbacks are placed in the microtask queue.
+//   - Microtasks have higher priority than macrotasks (such as `setTimeout` callbacks) and are executed before the next macrotask begins.
+
+// Here's a general order of execution:
+
+// 1. Execute any synchronous code currently on the call stack.
+// 2. Execute any microtasks in the microtask queue (e.g., promise callbacks).
+// 3. Execute any macrotasks in the macrotask queue (e.g., `setTimeout` callbacks).
+
+// Therefore, promises (microtasks) generally have higher priority than `setTimeout` (macrotasks). If there are both promises and `setTimeout` callbacks scheduled, the promises will be executed first.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// what is the difference between setTimeout and process.nextTick with the simple example?
+
+
+// `setTimeout` and `process.nextTick` are both used to schedule functions to be executed in the future, but there are key differences in how and when they are executed.
+
+// 1. **`setTimeout`**:
+//    - `setTimeout` is a part of the Web APIs in a browser environment or the timers module in Node.js.
+//    - It schedules a callback function to be executed after a specified delay in milliseconds.
+//    - The callback is added to the callback queue after the specified delay.
+//    - It is subject to the minimum delay, so the actual delay may be longer, especially if the event loop is busy with other tasks.
+
+   // Example:
+   ```javascript
+   setTimeout(() => {
+     console.log("Timeout callback");
+   }, 1000);
+   ```
+
+// 2. **`process.nextTick`**:
+//    - `process.nextTick` is specific to Node.js and is used to execute a callback in the next iteration of the event loop.
+//    - It runs before I/O events and timers.
+//    - It is typically used to defer the execution of a callback until the current operation completes, avoiding I/O latency.
+
+   // Example:
+   ```javascript
+   process.nextTick(() => {
+     console.log("Next tick callback");
+   });
+   ```
+
+// **Example illustrating the difference:**
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout callback");
+}, 0);
+
+process.nextTick(() => {
+  console.log("Next tick callback");
+});
+
+console.log("End");
+```
+
+Output:
+```
+Start
+End
+Next tick callback
+Timeout callback
+```
+
+// In this example, `process.nextTick` callbacks are executed before the next iteration of the event loop, while `setTimeout` callbacks are scheduled to be executed in a later iteration, even with a delay of 0 milliseconds.
+
+
+
+
+
+
+
+
+
+
+
+// Q. which one execute first and why?
+// setTimeout(() => {
+//   console.log("first");
+// }, 0);
+
+// setImmediate(() => {
+//   console.log("second");
+// });
+
+// process.nextTick(() => {
+//   console.log("third");
+// });
+
+
+
+
+// In the given code snippet, the execution order is as follows:
+
+// 1. `process.nextTick(() => { console.log("third"); });`
+// 2. `setTimeout(() => { console.log("first"); }, 0);`
+// 3. `setImmediate(() => { console.log("second"); });`
+
+// Here's the explanation:
+
+// - `process.nextTick` executes its callback in the current event loop cycle, right after the current operation completes but before the event loop continues. Therefore, "third" will be logged first.
+
+// - `setTimeout` with a delay of 0 milliseconds schedules its callback to be executed in the next iteration of the event loop. It will be logged after "third" because `process.nextTick` has a higher priority.
+
+// - `setImmediate` schedules its callback to be executed in the next iteration of the event loop, but after I/O events. It has a lower priority than `setTimeout`, so "second" will be logged last.
+
+// Keep in mind that the behavior might vary between different environments, and the actual order might be influenced by the event loop implementation of the platform you are using.
+
+
+
+// what if I have given 2000 ms delay to setTimeout function the what will be the order?
+
+
+
+// If you set a delay of 2000 milliseconds for `setTimeout`, the order of execution will be as follows:
+
+// 1. `process.nextTick(() => { console.log("third"); });`
+// 2. `setImmediate(() => { console.log("second"); });`
+// 3. `setTimeout(() => { console.log("first"); }, 2000);`
+
+// Here's the explanation:
+
+// - `process.nextTick` executes its callback in the current event loop cycle, right after the current operation completes but before the event loop continues. Therefore, "third" will be logged first.
+
+// - `setImmediate` schedules its callback to be executed in the next iteration of the event loop, but after I/O events. It has a higher priority than `setTimeout` with a delay of 2000 milliseconds, so "second" will be logged before "first."
+
+// - `setTimeout` with a delay of 2000 milliseconds schedules its callback to be executed after the specified delay. Therefore, "first" will be logged last, after "third" and "second."
+
+// Keep in mind that the actual order might be influenced by the event loop implementation of the platform you are using.
+
+
+
+
+
+
+
+
+
+
+
+// help me to understand sliding window technique in javascript with easy example?
+
+// Certainly! The sliding window technique is a common algorithmic pattern used for efficiently processing arrays or lists.
+// It involves maintaining a subset or "window" of elements within the array as it iterates through the entire collection.
+// The window slides over the array, allowing for efficient computations and optimizations.
+
+// Let's take a simple example to illustrate the sliding window technique: finding the maximum sum of a subarray of a fixed size `k`.
+
+```javascript
+function maxSumSubarray(arr, k) {
+  let maxSum = 0;
+  let windowSum = 0;
+
+  // Calculate the initial sum of the first window
+  for (let i = 0; i < k; i++) {
+    windowSum += arr[i];
+  }
+
+  // Iterate through the array, maintaining a sliding window
+  for (let i = k; i < arr.length; i++) {
+    // Update the window sum by adding the current element and subtracting the first element of the window
+    windowSum = windowSum + arr[i] - arr[i - k];
+    // Update the max sum if the current window sum is greater
+    maxSum = Math.max(maxSum, windowSum);
+  }
+
+  return maxSum;
+}
+
+// Example usage
+const array = [2, 1, 3, 4, 1, 2, 6, 1, 2];
+const k = 3;
+const result = maxSumSubarray(array, k);
+console.log(result); // Output: 12 (sum of subarray [4, 1, 2])
+```
+
+// Explanation:
+
+// 1. Initialize two variables `maxSum` and `windowSum` to keep track of the maximum sum and the current sum within the window.
+// 2. Calculate the initial sum of the first window (first `k` elements) and set it to `windowSum`.
+// 3. Iterate through the array, maintaining a sliding window by updating `windowSum` as it slides over the array.
+// 4. At each step, update `maxSum` if the current `windowSum` is greater.
+// 5. The result is the maximum sum of any subarray of size `k`.
+
+// The sliding window technique allows us to achieve a time complexity of O(N) for this problem, making it more efficient than naive approaches.
+// This technique is widely used in various array-based problems for optimization.
+
+
+
+
+
+
+// find longest substring from given string without repeating character in javascript? using sliding window technique.
+
+
+// You can find the longest substring without repeating characters in a given string using the sliding window technique.
+// Here's a JavaScript function that achieves this:
+
+```javascript
+function longestSubstringWithoutRepeating(s) {
+    let maxLength = 0;
+    let start = 0;
+    let charIndexMap = {};
+
+    for (let end = 0; end < s.length; end++) {
+        if (charIndexMap[s[end]] !== undefined) {
+            // If the character is repeated, update the start pointer
+            start = Math.max(charIndexMap[s[end]] + 1, start);
+        }
+
+        // Update the character index
+        charIndexMap[s[end]] = end;
+
+        // Update the maximum length if needed
+        maxLength = Math.max(maxLength, end - start + 1);
+    }
+
+    return maxLength;
+}
+
+// Example usage:
+const inputString = "abcabcbb";
+const result = longestSubstringWithoutRepeating(inputString);
+console.log(result); // Output: 3 (for "abc")
+```
+
+// This function uses two pointers (`start` and `end`) to create a sliding window.
+// It maintains a map (`charIndexMap`) to store the last index where each character appeared.
+// If a repeating character is found, the `start` pointer is updated to the next index after the previous occurrence of the character.
+// The maximum length of the substring without repeating characters is continuously updated during the traversal of the string.

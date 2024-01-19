@@ -1,29 +1,29 @@
 
-console.log("Welcome to Programiz!");
+// console.log("Welcome to Programiz!");
 
-const arr = [{a:1, b:2}, {a:2, c:3}];
-// [1,2]//
+// const arr = [{a:1, b:2}, {a:2, c:3}];
+// // [1,2]//
 
-let b = arr.map(e => e.a);
-// [2, undefined]
-console.log(b)
+// let b = arr.map(e => e.a);
+// // [2, undefined]
+// console.log(b)
 
 
-//{a: 3, b:2, c:3}
-const arrc = [{a: 1, b: 2}, {a: 2, c: 3}];
+// //{a: 3, b:2, c:3}
+// const arrc = [{a: 1, b: 2}, {a: 2, c: 3}];
 
-const merged = arrc.reduce((result, current) => {
-  for (let key in current) {
-    if (result.hasOwnProperty(key)) {
-      result[key] += current[key];
-    } else {
-      result[key] = current[key];
-    }
-  }
-  return result;
-}, {});
+// const merged = arrc.reduce((result, current) => {
+//   for (let key in current) {
+//     if (result.hasOwnProperty(key)) {
+//       result[key] += current[key];
+//     } else {
+//       result[key] = current[key];
+//     }
+//   }
+//   return result;
+// }, {});
 
-console.log(merged);
+// console.log(merged);
 
 
 
@@ -86,3 +86,76 @@ console.log(merged);
 // position. As you loop through the array, for every element, compute the
 // remainder required to sum it to meet the target and check the hashmap
 // whether the key exists and retrieve the value if it does. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// javascript
+function flattenObject(obj, parentKey = '') {
+  let result = {};
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const newKey = parentKey ? `${parentKey}.${key}` : key;
+
+      if (typeof obj[key] === 'object' && obj[key] !== null) {
+        // Recursively flatten nested objects
+        const flattened = flattenObject(obj[key], newKey);
+        result = { ...result, ...flattened };
+      } else {
+        // Add non-object properties to the result
+        result[newKey] = obj[key];
+      }
+    }
+  }
+
+  return result;
+}
+
+// Example usage:
+const nestedObject = {
+  user: {
+    name: 'John',
+    address: {
+      street: '123 Main St',
+      city: 'New York',
+    },
+  },
+  age: 30,
+};
+
+const flattenedObject = flattenObject(nestedObject);
+
+console.log(flattenedObject);
+
+
+
+
+
+
+
+
+
+
+function sam() {
+
+  let a = b = 5;
+
+}
+
+sam();
+
+console.log(typeof a); 
+
+console.log(typeof b);
+
+

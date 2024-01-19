@@ -500,7 +500,6 @@ let b = a.reduce((result, current) => {
 console.log("hallo world");
 function p1(){
   return new Promise( (resolve, reject) => {
-    console.log("hallo vivek");
     resolve("hallo Wish");
   })
 }

@@ -44,7 +44,12 @@ function getMaxSumByDigit(u, n) {
 
 // Integration: RabbitMQ can easily integrate with different programming languages and platforms, making it a versatile option for various applications.
 
-// A real-world example of RabbitMQ usage is in the e-commerce industry. An online shopping site may have different applications for managing the shopping cart, payment processing, order fulfillment, and shipping. Each of these applications can communicate with each other through RabbitMQ, ensuring a seamless user experience. When an item is added to the cart, the shopping cart application can send a message to the payment processing application to initiate the payment process. Once the payment is processed, the order fulfillment application can receive a message to start the process of shipping the product. In this way, RabbitMQ acts as the communication layer between all the applications, ensuring a reliable and efficient exchange of information.
+// A real-world example of RabbitMQ usage is in the e-commerce industry.
+// An online shopping site may have different applications for managing the shopping cart, payment processing, order fulfillment, and shipping.
+// Each of these applications can communicate with each other through RabbitMQ, ensuring a seamless user experience.
+// When an item is added to the cart, the shopping cart application can send a message to the payment processing application to initiate the payment process.
+// Once the payment is processed, the order fulfillment application can receive a message to start the process of shipping the product.
+// In this way, RabbitMQ acts as the communication layer between all the applications, ensuring a reliable and efficient exchange of information.
 
 
 
@@ -357,9 +362,6 @@ console.log(fib(8));
 // constructor(){
 //  this.routerServce = Router
 // }
-
-
-// ng g m modulename
 
 
 

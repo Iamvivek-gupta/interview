@@ -1,12 +1,12 @@
 // // abbac => aac => c
 // // abbbd => abd
 
-function removeDuplicate(input){
+function removeConsequtiveDuplicate(input){
     const arr = [];
     const n = input.length;
     for(let i = 0; i < n; i++){
         if(arr.length === 0){
-            // console.log("chekcing lenght")
+            // console.log("chekcing length")
             arr.push(input[i]);
             // console.log(arr)
 
@@ -20,9 +20,9 @@ function removeDuplicate(input){
     }
     return arr.join('');
 }
-console.log(removeDuplicate("abbac"));
-console.log(removeDuplicate("abbbd"));
-console.log(removeDuplicate("abcd"))
+console.log(removeConsequtiveDuplicate("abbac"));
+console.log(removeConsequtiveDuplicate("abbbd"));
+console.log(removeConsequtiveDuplicate("abcd"))
 
 
 
