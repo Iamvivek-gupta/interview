@@ -124,3 +124,55 @@ console.log(result); // Output: 5
 // - The function returns the `count`, which represents the total number of people who can see the sun.
 
 // The provided test case, `[[5, 3], [3, 4], [6, 2]]`, correctly returns `5` as the output because the tallest tower is of height `6`, and it has `2` people on it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Q. find the max count of consecutive 1's in an given array?
+function findConsecutiveOnes(nums) {
+  let maxCount = 0;
+  let currentConseCount = 0;
+  for(let i = 0; i < nums.length; i++){
+    if(nums[i] === 1) {
+      currentConseCount += 1;
+      maxCount = Math.max(currentConseCount, maxCount);
+    } else {
+      currentConseCount = 0;
+    }
+  }
+  return maxCount;
+}
+
+findConsecutiveOnes([1,1,9,1,9,9,19,7,1,1,1,3,2,5,1])
+
+
+
+
+// Q. find longest word of a given sentence?
+
+function longestWord(sentence){
+  let wordsArray = sentence.split(' ');
+  let longestWord = wordsArray[0];
+  for(let i = 1; i < wordsArray.length; i++) {
+    if(wordsArray[i].length > longestWord.length) longestWord = wordsArray[i];
+  }
+  return longestWord;
+}
+
+
+longestWord('Hi I am Vivek and I am Backend Developer');

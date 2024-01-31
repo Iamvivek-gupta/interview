@@ -19,48 +19,41 @@
 //   result.push()
 // })
 
-setTimeout(() => {
-  console.log("first");
-}, 2000);
+// setTimeout(() => {
+//   console.log("first");
+// }, 2000);
 
-setImmediate(() => {
-  console.log("second");
-});
+// setImmediate(() => {
+//   console.log("second");
+// });
 
-process.nextTick(() => {
-  console.log("third");
-});
+// process.nextTick(() => {
+//   console.log("third");
+// });
 
-function sam() {
-  let a = (b = 5);
-}
+// function sam() {
+//   let a = (b = 5);
+// }
 
-sam();
+// sam();
 
-console.log(typeof a);
+// console.log(typeof a);
 
-console.log(typeof b);
+// console.log(typeof b);
 
 
 
 function maxSumSubarray(arr, k) {
     let maxSum = 0;
-    let windowSum = 0;
-  
-    // Calculate the initial sum of the first window
-    for (let i = 0; i < k; i++) {
-      windowSum += arr[i];
+    let n = arr.length - k + 1;
+    for(let i = 0; i < n; i++){
+      let tempSum = 0;
+      for(let j = 0; j < k; j++){
+        tempSum += arr[i+j];
+      }
+      if(tempSum > maxSum) maxSum = tempSum;
     }
 
-  
-    // Iterate through the array, maintaining a sliding window
-    for (let i = k; i < arr.length; i++) {
-      // Update the window sum by adding the current element and subtracting the first element of the window
-      windowSum = windowSum + arr[i] - arr[i - k];
-      // Update the max sum if the current window sum is greater
-      maxSum = Math.max(maxSum, windowSum);
-    }
-  
     return maxSum;
   }
   

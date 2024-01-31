@@ -1547,6 +1547,16 @@ console.log(computeAmount().lacs(15).lacs(20).lacs(7).value()); // "42,00,000"
 
 // Removing consecutive duplicate characters from a string can be achieved with a recursive function. Here's a corrected JavaScript function to accomplish this:
 
+// function removeConsecutiveDuplicates(str){
+//   let stack = [];
+//   for(let char of str){
+//     stack[stack.length -1] === char ? stack.pop() : stack.push(char)
+//   }
+//   return stack.join('');
+// }
+
+
+
 ```javascript
 function removeConsecutiveDuplicates(input) {
   let modified = false;
@@ -1959,3 +1969,30 @@ console.log(result); // Output: 3 (for "abc")
 // It maintains a map (`charIndexMap`) to store the last index where each character appeared.
 // If a repeating character is found, the `start` pointer is updated to the next index after the previous occurrence of the character.
 // The maximum length of the substring without repeating characters is continuously updated during the traversal of the string.
+
+
+
+
+
+// output for below javascript question and why?
+
+// function x(){
+//   let a = 10;
+//   function y(){
+//     console.log(a);
+//   }
+//   a = 500;
+//   return y;
+// }
+
+// var z = x();
+// z();
+
+
+
+
+
+
+// how we can incement the number each time using closure concept?
+
+

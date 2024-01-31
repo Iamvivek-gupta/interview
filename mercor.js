@@ -45,3 +45,132 @@
 
 
 // Q. since you work with the sql and nosql database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// JavaScript Promises: all, allSettled, race
+
+// Ever wondered how to efficiently handle multiple asynchronous operations in JavaScript? Here are three powerful Promise methods
+
+// Promise.all:
+// Waits for all promises to complete successfully or for any one to be rejected.
+
+// Promise.allSettled:
+// Awaits the outcome of all promises, whether they are fulfilled or rejected.
+
+// Promise.race:
+// Takes action as soon as the first promise settles, whether it succeeds or fails.
+
+// These concepts are often explored in interviews to assess your understanding of asynchronous JavaScript.
+
+
+
+
+
+
+// Promise.all
+
+const promises1 = [
+  new Promise( resolve => setTimeout(resolve, 1000, 'Promise 1 resolved')),
+  new Promise( resolve => setTimeout(resolve, 500, 'Promise 2 resolved')),
+  new Promise( resolve => setTimeout(resolve, 1500, 'Promise 3 resolved')),
+]
+
+Promise.all(promises1).then(value => console.log('all promises resolved successsfully', value)).catch(error => console.log('atleast one promise got rejecyed', error));
+
+
+
+
+
+// Promise.allSettled
+
+const promises2 = [
+  new Promise( resolve => setTimeout(resolve, 1000, 'Promise 1 resolved')),
+  new Promise( (resolve, reject) => setTimeout(reject, 500, 'Promise 2 resolved')),
+  new Promise( resolve => setTimeout(resolve, 1500, 'Promise 3 resolved')),
+]
+
+Promise.allSettled(promises2).then(value => console.log('all promises settled', value));
+
+
+
+
+
+
+// Promise.race
+
+const promises3 = [
+  new Promise( resolve => setTimeout(resolve, 1000, 'Promise 1 resolved')),
+  new Promise( (resolve, reject) => setTimeout(reject, 500, 'Promise 2 resolved')),
+  new Promise( resolve => setTimeout(resolve, 1500, 'Promise 3 resolved')),
+]
+
+Promise.race(promises3).then(value => console.log('the first promise settled', value)).catch(error => console.log('an error occured', error));
+
+
+
+
+// nodejs 100 question https://github.com/codewithgauri/100-Node-Important-Interview-questions
