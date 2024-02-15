@@ -81,10 +81,8 @@ const arr = [
     { tech: "react", value: false },
     { tech: "php", value: false },
 ];
-
 // Create an object to store the count of each technology
 const countMap = {};
-
 // Iterate through the array and count occurrences
 arr.forEach((item) => {
     const tech = item.tech;
@@ -94,13 +92,11 @@ arr.forEach((item) => {
         countMap[tech] = 1;
     }
 });
-
 // Convert the countMap object to the desired output format
 const output = Object.entries(countMap).map(([victim, count]) => ({
     victim,
     count,
 }));
-
 console.log(output);
 
 
