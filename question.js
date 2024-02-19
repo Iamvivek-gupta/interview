@@ -366,18 +366,6 @@ function secondMax(arr) {
 
 
 
-// // polyfill for forEach 
-// Array.prototype.ourForEach = function (callBack) {
-//   for (let i = 0; i < this.length; i++) {
-//     callBack(this[i]);
-//   }
-// };
-// names.ourForEach(consoleFunc);
-
-
-
-
-
 
 // Q14 form largest number from an given array
 
@@ -386,7 +374,13 @@ let formLargestArray = (array) => {
 }
 // console.log(formLargestArray([3,39,50,8]))
 
-
+// // polyfill for forEach 
+// Array.prototype.ourForEach = function (callBack) {
+//   for (let i = 0; i < this.length; i++) {
+//     callBack(this[i]);
+//   }
+// };
+// names.ourForEach(consoleFunc);
 
 
 
@@ -581,8 +575,6 @@ function longestConsecutiveSequence(arr){
 
 // Q23 Best time to buy/sell the stocks by using valley peak approach make maximum profit
 
-
-
 function maxProfit(Price){
     let profit = 0;
     for(let i = 1; i < Price.length; i++){
@@ -704,13 +696,9 @@ function reverseWord(str){
 //             mostFrequentChar = char;
 //             maxFrequency = charMap[char];
 //         }
-//     }
-    
-
-    
+//         
 //     return mostFrequentChar;
 // }
-
 
 // function findMostFrequentChar(str) {
 //     const charMap = {};
@@ -735,6 +723,88 @@ function reverseWord(str){
 //   // Example usage
 //   const str = "hello world! 123";
 //   console.log(findMostFrequentChar(str)); // Output: "l"
+
+
+
+
+
+// Q27 - To reverse only the alphabetical characters (letters) in a given string while keeping the special characters in place, you can use a combination of string manipulation techniques and regular expressions in JavaScript.
+//Here's a JavaScript function to achieve that:
+
+
+
+// In this function:
+
+// We split the input string into an array of characters.
+// We use two pointers (left and right) to traverse the array from the start and end simultaneously.
+// We skip over non-letter characters using isLetter() function.
+// We swap the positions of letters encountered on the left and right sides until the pointers meet.
+// Finally, we join the characters back into a string and return the reversed string.
+// This function reverses only the alphabetical characters while keeping the special characters in place.
+
+
+
+// The time complexity of the provided solution for reversing only the alphabetical characters in a string while keeping the special characters in place is **O(n)**, where **n** is the length of the input string.
+
+// Here's why:
+
+// - Splitting the input string into an array of characters takes **O(n)** time, where **n** is the length of the input string.
+// - The main loop traverses through the characters of the string once from left to right and once from right to left, which is linear with respect to the length of the string (**O(n)**).
+// - Within the loop, the `isLetter()` function checks whether a character is a letter, which takes constant time since it performs a regular expression match (`/[^a-zA-Z]/`) on each character.
+// - The swapping operation and moving the pointers also take constant time for each iteration of the loop.
+
+// Overall, the time complexity is dominated by the linear traversal of the input string, making the solution **O(n)**.
+
+// function reverseLetters(inputString) {
+//   // Split the string into an array of characters
+//   const characters = inputString.split('');
+
+//   // Initialize pointers for reversing
+//   let left = 0;
+//   let right = characters.length - 1;
+
+//   // Loop through the characters array and reverse only the letters
+//   while (left < right) {
+//       // Skip special characters on the left side
+//       while (!isLetter(characters[left]) && left < right) {
+//           left++;
+//       }
+//       // Skip special characters on the right side
+//       while (!isLetter(characters[right]) && left < right) {
+//           right--;
+//       }
+//       // Swap letters
+//       [characters[left], characters[right]] = [characters[right], characters[left]];
+//       // Move pointers
+//       left++;
+//       right--;
+//   }
+
+//   // Join the characters array back into a string and return
+//   return characters.join('');
+// }
+
+// // Function to check if a character is a letter
+// function isLetter(char) {
+//   return /[a-zA-Z]/.test(char);
+// }
+
+// // Test the function
+// const input = "ab,cde!fg";
+// const reversedString = reverseLetters(input);
+// console.log(reversedString); // Output: "gf,edc!ba"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1039,7 +1109,10 @@ const calc = {
 
 
 // In this approach, we first calculate the effective rotation amount by taking the modulo of k with the length of the array. 
-// Then, we initialize a new empty array result. We copy the last k elements of the original array to the beginning of result using a loop that starts at the index n - effectiveRotation and ends at the last index of the original array. We then copy the remaining elements of the original array to the end of result using another loop that starts at index 0 and ends at index n - effectiveRotation - 1. Finally, we return the result array, which contains the rotated array.
+// Then, we initialize a new empty array result.
+// We copy the last k elements of the original array to the beginning of result using a loop that starts at the index n - effectiveRotation and ends at the last index of the original array.
+// We then copy the remaining elements of the original array to the end of result using another loop that starts at index 0 and ends at index n - effectiveRotation - 1.
+// Finally, we return the result array, which contains the rotated array.
 
 
 
@@ -1453,6 +1526,7 @@ console.log(flattenedObject);
 
 // Example usage:
 // const nums = [2, 3, 4, 7, 11];
+// original array should be [1,2,3,4,5,6,7,8,9,10,11]
 // const k = 5;
 // const result = findKthMissing(nums, k);
 // console.log(`The ${k}th missing positive integer is: ${result}`);
@@ -1642,7 +1716,30 @@ for (var i = 0; i < 2; i++) {
 
 
 
+// Below is the equivalent code using closure:
 
+```javascript
+function createCounter() {
+    let count = 0;
+    return function() {
+        return ++count;
+    }
+}
+
+const counter = createCounter();
+
+console.log(counter());
+console.log(counter());
+console.log(counter());
+```
+
+// In this code:
+
+// - `createCounter` is a function that creates a closure by returning another function.
+// - Inside `createCounter`, a variable `count` is declared and initialized to `0`.
+// - The inner function returned by `createCounter` increments the `count` variable using the `++` operator and returns its new value.
+// - The `counter` constant is assigned the inner function returned by `createCounter`, creating a closure.
+// - Each time `counter` is called, it increments and returns the `count` variable, which is preserved within the closure.
 
 
 
