@@ -2092,4 +2092,152 @@ console.log(result); // Output: 3 (for "abc")
 
 // how we can incement the number each time using closure concept?
 
+//Below is the equivalent code using closure:
 
+```javascript
+function createCounter() {
+    let count = 0;
+    return function() {
+        return ++count;
+    }
+}
+
+const counter = createCounter();
+
+console.log(counter());
+console.log(counter());
+console.log(counter());
+```
+
+// In this code:
+
+// - `createCounter` is a function that creates a closure by returning another function.
+// - Inside `createCounter`, a variable `count` is declared and initialized to `0`.
+// - The inner function returned by `createCounter` increments the `count` variable using the `++` operator and returns its new value.
+// - The `counter` constant is assigned the inner function returned by `createCounter`, creating a closure.
+// - Each time `counter` is called, it increments and returns the `count` variable, which is preserved within the closure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+find duplicate from an array Solution in O(n) time complexity also is constant o(1);
+1 <= arr[i] <= n
+
+let arr = [4,3,2,7,8,2,3,3,1];
+function duplicate(arr){
+    let result = [];
+    for(let i = 0; i < arr.length; i++){
+        let index = Math.abs(arr[i])-1;
+        if(arr[index] < 0) {
+            result.push(Math.abs(arr[i]));
+        }
+        arr[index] = -arr[index];
+    } 
+    return result;
+}
+
+console.log(duplicate(arr));
+
+
+
+
+
+
+
+This code aims to find duplicates in an array `arr` containing integers ranging from 1 to `n`, where `n` is the length of the array. The solution achieves this with a time complexity of O(n) and constant space complexity O(1).
+
+Here's an explanation of how the code works:
+
+1. Initialize an empty array `result` to store the duplicate values found.
+2. Iterate over each element of the input array `arr` using a for loop.
+3. For each element `arr[i]`, calculate its corresponding index in the array (adjusted for 0-based indexing) using the formula `index = Math.abs(arr[i]) - 1`. This index represents the position where the value `arr[i]` should be stored if it were unique.
+4. Check if the value at index `arr[index]` is negative. If it is negative, it means that the element `arr[i]` has been encountered before (i.e., it is a duplicate), so we add its absolute value to the `result` array.
+5. Update the value at index `arr[index]` to its negative counterpart (`-arr[index]`). This negative value serves as a marker indicating that the corresponding element has been visited.
+6. Repeat steps 3-5 for all elements in the array.
+7. Finally, return the `result` array containing all duplicate values found during the iteration.
+
+Let's go through an example:
+
+Given `arr = [4,3,2,7,8,2,3,3,1]`, the function will identify the duplicates `[3, 2]` in the array and return them as the result.
+
+Here's how the process unfolds:
+
+- When processing the first element `arr[0] = 4`, its corresponding index is `index = 4 - 1 = 3`. We mark the value at index 3 (which is 7) as negative (`arr[3] = -7`).
+- For the second element `arr[1] = 3`, its corresponding index is `index = 3 - 1 = 2`. We check that the value at index 2 (which is 2) is already negative, indicating a duplicate. So, we add its absolute value (2) to the result.
+- The same process is repeated for the rest of the elements in the array, identifying and recording duplicates.
+
+The final result is `[3, 2]`, which are the duplicate values found in the input array.
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here's a JavaScript function to find the longest palindromic substring in a given string:
+
+```javascript
+function longestPalindromicSubstring(s) {
+    if (!s || s.length === 0) return '';
+
+    let longest = '';
+
+    for (let i = 0; i < s.length; i++) {
+        // For odd length palindromes
+        let oddPalindrome = expandFromCenter(s, i, i);
+        // For even length palindromes
+        let evenPalindrome = expandFromCenter(s, i, i + 1);
+
+        // Update longest palindrome found so far
+        let currentLongest = oddPalindrome.length > evenPalindrome.length ? oddPalindrome : evenPalindrome;
+        longest = currentLongest.length > longest.length ? currentLongest : longest;
+    }
+
+    return longest;
+}
+
+function expandFromCenter(s, left, right) {
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+        left--;
+        right++;
+    }
+    return s.slice(left + 1, right);
+}
+
+// Example usage:
+const inputString = "babad";
+console.log(longestPalindromicSubstring(inputString)); // Output: "bab" or "aba"
+```
+
+This code defines two functions:
+
+1. `longestPalindromicSubstring`: This function iterates through each character in the input string and expands around the current character to find the longest palindrome centered at that position. It then compares the longest palindrome found so far and updates it if the current palindrome is longer.
+
+2. `expandFromCenter`: This helper function expands from the center character(s) of a potential palindrome and returns the palindrome substring if found.
+
+You can test this function with different input strings to find the longest palindromic substring.
