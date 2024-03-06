@@ -103,10 +103,8 @@ function countPeopleSeeingSun(towerData) {
       count += people;
     }
   }
-
   return count;
 }
-
 // Test case
 const towerData = [[5, 3], [3, 4], [6, 2]];
 const result = countPeopleSeeingSun(towerData);

@@ -1532,7 +1532,8 @@ console.log(flattenedObject);
 // console.log(`The ${k}th missing positive integer is: ${result}`);
 
 
-// In this example, the `findKthMissing` function takes an array of integers (`nums`) and the value of `k` as input and returns the kth missing positive integer. The code uses a hashmap (`numSet`) to efficiently check for missing integers while iterating through the positive integers.
+// In this example, the `findKthMissing` function takes an array of integers (`nums`) and the value of `k` as input and returns the kth missing positive integer.
+// The code uses a hashmap (`numSet`) to efficiently check for missing integers while iterating through the positive integers.
 
 
 
@@ -2241,3 +2242,61 @@ This code defines two functions:
 2. `expandFromCenter`: This helper function expands from the center character(s) of a potential palindrome and returns the palindrome substring if found.
 
 You can test this function with different input strings to find the longest palindromic substring.
+
+
+
+
+You can find the longest common prefix of an array of strings in JavaScript using the following function:
+
+```javascript
+function longestCommonPrefix(strs) {
+    if (strs.length === 0) return "";
+    
+    let prefix = strs[0];
+    for (let i = 1; i < strs.length; i++) {
+        while (strs[i].indexOf(prefix) !== 0) {
+            prefix = prefix.substring(0, prefix.length - 1);
+            if (prefix === "") return "";
+        }
+    }
+    
+    return prefix;
+}
+```
+
+You can use this function by passing an array of strings as an argument, like this:
+
+```javascript
+let strings = ["flower", "flow", "flight"];
+console.log(longestCommonPrefix(strings)); // Output: "fl"
+```
+
+
+
+Given a binary tree and target node. 
+By giving the fire to the target node and fire starts to spread in a complete tree. 
+The task is to print the sequence of the burning nodes of a binary tree.
+
+
+Rules for burning the nodes : 
+
+Fire will spread constantly to the connected nodes only.
+Every node takes the same time to burn.
+A node burns only once.
+
+Input : 
+                       12
+                     /     \
+                   13       10
+                          /     \
+                       14       15
+                      /   \     /  \
+                     21   24   22   23
+target node = 14
+
+Output :
+14
+21, 24, 10
+15, 12
+22, 23, 13
+//
