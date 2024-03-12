@@ -2300,3 +2300,47 @@ Output :
 15, 12
 22, 23, 13
 //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To find the minimum nearest element to a given element from a given array of elements in JavaScript, you can use the following approach:
+
+```javascript
+function findMinimumNearestElement(array, target) {
+    let minDiff = Infinity;
+    let nearestElement = null;
+
+    array.forEach(element => {
+        const diff = Math.abs(element - target);
+        if (diff < minDiff) {
+            minDiff = diff;
+            nearestElement = element;
+        }
+    });
+
+    return nearestElement;
+}
+
+// Example usage:
+const array = [1, 3, 5, 7, 9];
+const target = 6;
+const nearestElement = findMinimumNearestElement(array, target);
+console.log(nearestElement); // Output: 5
+```
+
+This function iterates through each element of the array, calculates the absolute difference between the element and the target, and updates the nearest element if a closer one is found.
+// Finally, it returns the nearest element found.
