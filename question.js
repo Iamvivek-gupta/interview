@@ -2159,7 +2159,6 @@ console.log(duplicate(arr));
 This code aims to find duplicates in an array `arr` containing integers ranging from 1 to `n`, where `n` is the length of the array. The solution achieves this with a time complexity of O(n) and constant space complexity O(1).
 
 Here's an explanation of how the code works:
-
 1. Initialize an empty array `result` to store the duplicate values found.
 2. Iterate over each element of the input array `arr` using a for loop.
 3. For each element `arr[i]`, calculate its corresponding index in the array (adjusted for 0-based indexing) using the formula `index = Math.abs(arr[i]) - 1`. This index represents the position where the value `arr[i]` should be stored if it were unique.
@@ -2344,3 +2343,4 @@ console.log(nearestElement); // Output: 5
 
 This function iterates through each element of the array, calculates the absolute difference between the element and the target, and updates the nearest element if a closer one is found.
 // Finally, it returns the nearest element found.
+*/
