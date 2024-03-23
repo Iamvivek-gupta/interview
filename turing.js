@@ -187,7 +187,7 @@ console.log(rotatedImage);
 // oprimized for image rotation
 
 // var rotate = function(matrix) {
-//     const n = matrix .length;
+//     const n = matrix.length;
 //     for (let y= n-1; y>=0; y--){
 //      const target = matrix[y]
  
@@ -271,6 +271,37 @@ console.log(rotatedImage);
 
 
 
+
+// In JavaScript, mutability refers to whether an object's state can be modified after it is created, while immutability refers to the inability to change an object's state once it's been created.
+
+// Here's a simple explanation with examples:
+
+// 1. Mutability:
+//    - Objects that are mutable can be changed after they are created.
+//    - Changes to one reference of the object will affect all other references to the same object.
+//    - Arrays and objects in JavaScript are mutable.
+
+//    Example:
+//    ```javascript
+//    let mutableArray = [1, 2, 3];
+//    mutableArray.push(4); // Modifies the original array
+//    console.log(mutableArray); // Output: [1, 2, 3, 4]
+//    ```
+
+// 2. Immutability:
+//    - Objects that are immutable cannot be changed after they are created.
+//    - Any operation that appears to modify an immutable object actually creates a new object with the modified state.
+//    - Primitive data types like strings and numbers are immutable in JavaScript.
+
+//    Example:
+//    ```javascript
+//    let immutableString = "hello";
+//    let newImmutableString = immutableString.toUpperCase(); // Creates a new string
+//    console.log(immutableString); // Output: "hello" (original string remains unchanged)
+//    console.log(newImmutableString); // Output: "HELLO" (new string with modified state)
+//    ```
+
+// In summary, mutability allows for direct modification of an object's state, while immutability ensures that objects cannot be changed once they are created, promoting safer and more predictable code behavior.
 
 
 
