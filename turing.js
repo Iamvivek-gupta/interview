@@ -372,6 +372,67 @@ console.log(rotatedImage);
 
 
 
+// Memoization is a technique used to optimize functions by caching the results of expensive function calls and returning the cached result when the same inputs occur again. 
+// This can significantly improve the performance of functions, especially in scenarios where the same inputs are likely to be used repeatedly.
+
+// Here's a simple example of memoization in JavaScript:
+
+```javascript
+// Function to calculate the nth Fibonacci number
+function fibonacci(n) {
+  if (n <= 1) {
+    return n;
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Memoization wrapper for the fibonacci function
+function memoizedFibonacci() {
+  const cache = {}; // Cache to store calculated results
+
+  return function memoized(n) {
+    if (n in cache) {
+      return cache[n]; // Return cached result if available
+    } else {
+      const result = fibonacci(n); // Calculate the result
+      cache[n] = result; // Cache the result
+      return result; // Return the result
+    }
+  };
+}
+
+const fibonacciMemoized = memoizedFibonacci();
+
+console.log(fibonacciMemoized(5)); // Output: 5
+console.log(fibonacciMemoized(10)); // Output: 55
+console.log(fibonacciMemoized(5)); // Output: 5 (result fetched from cache)
+```
+
+// In this example, we have a function `fibonacci(n)` that calculates the nth Fibonacci number recursively. We then create a memoized version of this function using the `memoizedFibonacci` wrapper. Inside this wrapper, we define a cache object to store the results of previously calculated Fibonacci numbers.
+
+// When the `memoized` function is called with an input `n`, it first checks if the result for that input is already cached. If it is, the cached result is returned. Otherwise, the Fibonacci number is calculated using the original `fibonacci` function, the result is stored in the cache, and then returned.
+
+// By memoizing the Fibonacci function, subsequent calls with the same input will retrieve the result from the cache instead of recalculating it, leading to improved performance, especially for larger inputs.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
