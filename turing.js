@@ -312,7 +312,8 @@ console.log(rotatedImage);
 
 
 
-// The given code defines a constructor function `Person` that takes two parameters: `firstName` and `lastName`. When invoked with the `new` keyword, it creates a new object with properties `firstName` and `lastName`.
+// The given code defines a constructor function `Person` that takes two parameters: `firstName` and `lastName`.
+// When invoked with the `new` keyword, it creates a new object with properties `firstName` and `lastName`.
 
 // ```javascript
 // function Person(firstName, lastName) {
@@ -327,7 +328,8 @@ console.log(rotatedImage);
 // person = new Person("hallo", "world");
 // ```
 
-// After that, a new method `getFullName` is added to the `person` object. This method returns the full name by concatenating the `firstName` and `lastName` properties of the object.
+// After that, a new method `getFullName` is added to the `person` object. 
+// This method returns the full name by concatenating the `firstName` and `lastName` properties of the object.
 
 // ```javascript
 // person.getFullName = function() {
