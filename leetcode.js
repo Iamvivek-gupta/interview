@@ -793,3 +793,16 @@ console.log(merge(intervals2)); // Output: [[1, 5]]
 ```
 
 //This implementation efficiently merges overlapping intervals in linear time complexity.
+
+// Sure! The "Merge Intervals" problem is about combining overlapping intervals into a single interval. Imagine you have a list of intervals, where each interval represents a range of numbers. Some of these intervals might overlap with each other. 
+
+// For example, if you have intervals like [[1,3], [2,6], [8,10], [15,18]], the intervals [1,3] and [2,6] overlap because the second interval starts before the first one ends. Similarly, [8,10] and [15,18] don't overlap with any other interval.
+
+// To solve this problem, we use the JavaScript code provided earlier:
+
+// 1. First, we sort the intervals based on their starting points.
+// 2. Then, we initialize an array to store the merged intervals.
+// 3. We iterate through the sorted intervals. If the current interval overlaps with the previous one, we merge them by updating the end time of the previous interval. If they don't overlap, we add the previous interval to the result array and update the previous interval to the current one.
+// 4. Finally, we return the array of merged intervals.
+
+// So, for the input [[1,3], [2,6], [8,10], [15,18]], the output would be [[1,6], [8,10], [15,18]], which means the intervals [1,3] and [2,6] are merged into [1,6] because they overlap. The other intervals remain unchanged because they don't overlap with any other interval.
