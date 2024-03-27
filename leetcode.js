@@ -806,3 +806,158 @@ console.log(merge(intervals2)); // Output: [[1, 5]]
 // 4. Finally, we return the array of merged intervals.
 
 // So, for the input [[1,3], [2,6], [8,10], [15,18]], the output would be [[1,6], [8,10], [15,18]], which means the intervals [1,3] and [2,6] are merged into [1,6] because they overlap. The other intervals remain unchanged because they don't overlap with any other interval.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 11. Container With Most Water
+// Medium
+// Topics
+// Companies
+// Hint
+// You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+// Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+// Return the maximum amount of water a container can store.
+
+// Notice that you may not slant the container.
+
+ 
+
+// Example 1:
+
+
+// Input: height = [1,8,6,2,5,4,8,3,7]
+// Output: 49
+// Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+// Example 2:
+
+// Input: height = [1,1]
+// Output: 1
+ 
+
+// Constraints:
+
+// n == height.length
+// 2 <= n <= 105
+// 0 <= height[i] <= 104
+
+
+
+
+// This problem is about finding the maximum area of water that can be trapped between vertical lines represented by an array. Each element in the array represents the height of a vertical line, and the distance between any two vertical lines is one unit.
+
+// To solve this problem, we need to find two vertical lines such that the area between them and the x-axis is maximized. We can achieve this by using a two-pointer approach. We start with pointers at the beginning and end of the array and gradually move them towards each other. At each step, we calculate the area formed by the two lines and update the maximum area if necessary. 
+
+// Here's the step-by-step solution in JavaScript:
+
+```javascript
+function maxArea(height) {
+    let maxArea = 0;
+    let left = 0;
+    let right = height.length - 1;
+
+    while (left < right) {
+        const minHeight = Math.min(height[left], height[right]);
+        const area = minHeight * (right - left);
+        maxArea = Math.max(maxArea, area);
+
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+
+    return maxArea;
+}
+
+// Example usage:
+const height1 = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+console.log(maxArea(height1)); // Output: 49
+
+const height2 = [1, 1];
+console.log(maxArea(height2)); // Output: 1
+```
+
+//This solution has a time complexity of O(n), where n is the number of elements in the input array.
+// It iterates through the array only once, using two pointers to efficiently search for the maximum area.
