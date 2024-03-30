@@ -120,6 +120,31 @@ module.exports = Logger;
 
 
 
+function rotateImage(matrix){
+  for(let i = 0; matrix.length; i++){
+      for (let j = i; j < matrix[0].length; j++) {
+          // swap rows to clomumns and columns to rows 
+          [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+      }
+  }
+  // reverse the each rows by traversing matrix
+  for (let i = 0; i < matrix.length; i++){
+      matrix[i].reverse();
+  }
+  return matrix;
+
+}
+let images = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+]
+
+// first we will by traversing to matrix and by tarversing to matrix we will transppose the matrix 
+// transpose the matrix means we will convert each column to row and will change the rows by columns
+
+console.log(rotateImage(images));
+
 // technical interview questions
 
 // You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
