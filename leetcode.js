@@ -964,3 +964,122 @@ console.log(maxArea(height2)); // Output: 1
 
 //This solution has a time complexity of O(n), where n is the number of elements in the input array.
 // It iterates through the array only once, using two pointers to efficiently search for the maximum area.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// You can solve this problem using a two-pass approach to calculate the product of all numbers in the array. In the first pass, calculate the product of all numbers to the left of each element, and in the second pass, calculate the product of all numbers to the right of each element. Then, multiply the corresponding left and right products to get the final result.
+
+// Here's how you can implement this approach in JavaScript:
+
+```javascript
+function productExceptSelf(nums) {
+    const n = nums.length;
+    
+    // Initialize arrays to store the left and right products
+    const leftProducts = new Array(n).fill(1);
+    const rightProducts = new Array(n).fill(1);
+    
+    // Calculate the product of all numbers to the left of each element
+    let leftProduct = 1;
+    for (let i = 1; i < n; i++) {
+        leftProduct *= nums[i - 1];
+        leftProducts[i] = leftProduct;
+    }
+    
+    // Calculate the product of all numbers to the right of each element
+    let rightProduct = 1;
+    for (let i = n - 2; i >= 0; i--) {
+        rightProduct *= nums[i + 1];
+        rightProducts[i] = rightProduct;
+    }
+    
+    // Multiply corresponding left and right products to get the final result
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result[i] = leftProducts[i] * rightProducts[i];
+    }
+    
+    return result;
+}
+
+// Example usage:
+const nums = [1, 2, 3, 4];
+console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
+```
+
+// Explanation:
+// - We initialize two arrays, `leftProducts` and `rightProducts`, to store the product of all numbers to the left and right of each element, respectively.
+// - In the first pass, we calculate the product of all numbers to the left of each element and store it in the `leftProducts` array.
+// - In the second pass, we calculate the product of all numbers to the right of each element and store it in the `rightProducts` array.
+// - Finally, we multiply the corresponding left and right products for each element to get the final result.
