@@ -1038,6 +1038,20 @@ console.log(maxArea(height2)); // Output: 1
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // You can solve this problem using a two-pass approach to calculate the product of all numbers in the array. In the first pass, calculate the product of all numbers to the left of each element, and in the second pass, calculate the product of all numbers to the right of each element. Then, multiply the corresponding left and right products to get the final result.
 
 // Here's how you can implement this approach in JavaScript:
@@ -1083,3 +1097,192 @@ console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
 // - In the first pass, we calculate the product of all numbers to the left of each element and store it in the `leftProducts` array.
 // - In the second pass, we calculate the product of all numbers to the right of each element and store it in the `rightProducts` array.
 // - Finally, we multiply the corresponding left and right products for each element to get the final result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// You can solve this problem using a two-pass approach to calculate the product of all numbers in the array.
+// In the first pass, calculate the product of all numbers to the left of each element, and in the second pass, calculate the product of all numbers to the right of each element. Then, multiply the corresponding left and right products to get the final result.
+
+// Here's how you can implement this approach in JavaScript:
+
+```javascript
+function productExceptSelf(nums) {
+    const n = nums.length;
+    
+    // Initialize arrays to store the left and right products
+    const leftProducts = new Array(n).fill(1);
+    const rightProducts = new Array(n).fill(1);
+    
+    // Calculate the product of all numbers to the left of each element
+    let leftProduct = 1;
+    for (let i = 1; i < n; i++) {
+        leftProduct *= nums[i - 1];
+        leftProducts[i] = leftProduct;
+    }
+    
+    // Calculate the product of all numbers to the right of each element
+    let rightProduct = 1;
+    for (let i = n - 2; i >= 0; i--) {
+        rightProduct *= nums[i + 1];
+        rightProducts[i] = rightProduct;
+    }
+    
+    // Multiply corresponding left and right products to get the final result
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result[i] = leftProducts[i] * rightProducts[i];
+    }
+    
+    return result;
+}
+
+// Example usage:
+const nums = [1, 2, 3, 4];
+console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
+```
+
+// Explanation:
+// - We initialize two arrays, `leftProducts` and `rightProducts`, to store the product of all numbers to the left and right of each element, respectively.
+// - In the first pass, we calculate the product of all numbers to the left of each element and store it in the `leftProducts` array.
+// - In the second pass, we calculate the product of all numbers to the right of each element and store it in the `rightProducts` array.
+// - Finally, we multiply the corresponding left and right products for each element to get the final result.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// The brute force approach to finding the longest common prefix in an array of strings involves comparing characters at corresponding positions in each string until a mismatch is found or the end of the shortest string is reached. Here's a JavaScript implementation of this approach:
+
+```javascript
+function longestCommonPrefix(strs) {
+    if (strs.length === 0) return '';
+
+    // Get the shortest string in the array
+    let minLen = Math.min(...strs.map(str => str.length));
+    let prefix = '';
+
+    // Iterate over each character in the shortest string
+    for (let i = 0; i < minLen; i++) {
+        // Get the character at the current position in the first string
+        let char = strs[0][i];
+
+        // Check if the character at this position matches in all strings
+        if (strs.every(str => str[i] === char)) {
+            // If all characters match, add this character to the prefix
+            prefix += char;
+        } else {
+            // If there's a mismatch, break out of the loop
+            break;
+        }
+    }
+
+    return prefix;
+}
+```
+
+// Explanation:
+
+// 1. Check if the input array `strs` is empty. If it is, return an empty string since there are no strings to compare.
+
+// 2. Find the length of the shortest string in the array by using the `map()` function to get an array of string lengths and then finding the minimum using `Math.min()`.
+
+// 3. Initialize an empty string `prefix` to store the common prefix.
+
+// 4. Iterate over each character position from 0 to `minLen - 1` (the length of the shortest string).
+
+// 5. For each character position:
+//    - Get the character at the current position in the first string (`strs[0]`).
+//    - Check if this character matches the character at the same position in all other strings using the `every()` function. If they all match, append the character to the `prefix` string.
+//    - If there's a mismatch, break out of the loop since the common prefix ends here.
+
+// 6. After the loop completes, return the `prefix` string containing the longest common prefix found among all strings in the array.
+
+// This brute force approach has a time complexity of O(n * m), where n is the number of strings in the array and m is the length of the shortest string. It compares characters at each position in the strings until a mismatch is found.
