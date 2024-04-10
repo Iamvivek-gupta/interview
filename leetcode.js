@@ -34,7 +34,8 @@
 
 
 
-//You're correct; the given implementation does not handle the case where there are only two elements in the array correctly. Let's update the algorithm to address this edge case:
+//You're correct; the given implementation does not handle the case where there are only two elements in the array correctly.
+//Let's update the algorithm to address this edge case:
 
 ```javascript
 function majorityElement(nums) {
@@ -641,9 +642,12 @@ function setZeroes(matrix) {
         for (let j = 0; j < matrix[0].length; j++) {
             if (rows.has(i) || cols.has(j)) {
                 matrix[i][j] = 0;
+                matrix[j][i] = 0;
             }
         }
     }
+    
+    return matrix;
 }
 
 // Example usage:
@@ -656,7 +660,8 @@ setZeroes(matrix);
 console.log(matrix);
 ```
 
-// This solution has O(n) time complexity because it only requires two passes through the matrix, where n is the total number of elements in the matrix.
+// This solution has O(n) time complexity because it only requires two passes through the matrix, 
+//where n is the total number of elements in the matrix.
 
 
 
