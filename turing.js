@@ -121,10 +121,10 @@ module.exports = Logger;
 
 
 function rotateImage(matrix){
-  for(let i = 0; matrix.length; i++){
+  for(let i = 0; i < matrix.length; i++){
       for (let j = i; j < matrix[0].length; j++) {
           // swap rows to clomumns and columns to rows 
-          [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+          [ matrix[i][j], matrix[j][i] ] =   [ matrix[j][i], matrix[i][j] ];
       }
   }
   // reverse the each rows by traversing matrix
@@ -457,10 +457,63 @@ console.log(fibonacciMemoized(5)); // Output: 5 (result fetched from cache)
 
 
 
+// Encapsulation is like packing something into a box.
+// In programming, it means wrapping up data and the methods that operate on that data into a single unit, typically called a class.
+// This helps in hiding the internal state and implementation details of an object from the outside world. 
+// It allows us to control access to the data and ensures that the object's state remains consistent and valid. 
+// So, just like a box protects its contents and provides a way to interact with them, encapsulation protects the data and provides methods to manipulate it safely.
 
 
 
 
+// Sure! Here's a simple example of encapsulation in JavaScript using a class:
+
+// ```javascript
+// class Car {
+//   constructor(make, model) {
+//     this.make = make; // Public property
+//     this.model = model; // Public property
+//     this._isEngineOn = false; // Private property (using convention with underscore)
+//   }
+
+//   // Public method to turn the engine on
+//   startEngine() {
+//     this._isEngineOn = true;
+//     console.log("Engine started");
+//   }
+
+//   // Public method to turn the engine off
+//   stopEngine() {
+//     this._isEngineOn = false;
+//     console.log("Engine stopped");
+//   }
+
+//   // Public method to check if the engine is on
+//   isEngineOn() {
+//     return this._isEngineOn;
+//   }
+// }
+
+// // Create a new instance of Car
+// const myCar = new Car("Toyota", "Corolla");
+
+// // Access public properties and methods
+// console.log(myCar.make); // Output: Toyota
+// console.log(myCar.model); // Output: Corolla
+
+// myCar.startEngine(); // Output: Engine started
+// console.log(myCar.isEngineOn()); // Output: true
+
+// myCar.stopEngine(); // Output: Engine stopped
+// console.log(myCar.isEngineOn()); // Output: false
+// ```
+
+// In this example:
+
+// - The `Car` class encapsulates the properties (`make`, `model`, `_isEngineOn`) and methods (`startEngine`, `stopEngine`, `isEngineOn`) related to a car.
+// - The `_isEngineOn` property is private, indicated by the underscore convention. It cannot be accessed directly from outside the class.
+// - Public methods like `startEngine`, `stopEngine`, and `isEngineOn` provide controlled access to the private property `_isEngineOn`.
+// - Outside code interacts with the `Car` object through its public interface, ensuring data integrity and abstraction of implementation details.
 
 
 

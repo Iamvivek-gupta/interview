@@ -420,7 +420,8 @@ console.log("Number of distinct ways to climb to the top:", climbStairs(n));
 
 
 
-// Given a string expression of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. You may return the answer in any order.
+// Given a string expression of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. 
+// You may return the answer in any order.
 
 // The test cases are generated such that the output values fit in a 32-bit integer and the number of different results does not exceed 10^4
 
@@ -517,7 +518,8 @@ console.log(diffWaysToCompute("2*3-4*5")); // Output: [-34, -14, -10, -10, 10]
 
 
 
-// To solve the "diffWaysToCompute" problem, we can use a recursive approach combined with memoization to avoid redundant calculations. Here's the general approach:
+// To solve the "diffWaysToCompute" problem, we can use a recursive approach combined with memoization to avoid redundant calculations.
+// Here's the general approach:
 
 // 1. Define a recursive function `computeHelper` that takes an expression as input and returns an array of all possible results.
 
@@ -722,7 +724,8 @@ console.log(matrix);
 // Medium
 // Topics
 // Companies
-// Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+// Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals,
+// and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
  
 
@@ -971,10 +974,26 @@ console.log(maxArea(height2)); // Output: 1
 // It iterates through the array only once, using two pointers to efficiently search for the maximum area.
 
 
+// By Using BruteForce Apporoach
+```
+function maxArea(height) {
+    let maxArea = 0;
 
+    for (let i = 0; i < height.length; i++) {
+        for (let j = i +1; j < height.length; j++){
+            console.log(height[i], height[j], j - i)
 
+            currentArea = Math.min(height[i], height[j]) * (j -i );
+            console.log(currentArea)
+            maxArea = Math.max(maxArea, currentArea);
+            
+        }
+    }
+    return maxArea;
+}
 
-
+console.log(maxArea(height))
+```
 
 
 

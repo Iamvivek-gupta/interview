@@ -151,7 +151,7 @@ let twoSum = function (num, target) {
         return 'value not found'
     }
 }
-let result = twoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 150);
+let result = twoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 15);
 // console.log(result);
 
 
@@ -2067,7 +2067,32 @@ console.log(result); // Output: 3 (for "abc")
 // If a repeating character is found, the `start` pointer is updated to the next index after the previous occurrence of the character.
 // The maximum length of the substring without repeating characters is continuously updated during the traversal of the string.
 
+// 2nd way to find longest substring without repeating character using sliding window
 
+// function longestSubstringWithoutCharacter(str) {
+//   let uniqueChar = new Set();
+//   let start = 0;
+//   let end = 0;
+//   let maxLength = 0;
+
+//   while (end < str.length){
+//       if(!uniqueChar.has(str[end])) {
+//           uniqueChar.add(str[end]);
+//           end++;
+//           maxLength = Math.max(maxLength, uniqueChar.size);
+//       } else {
+//           uniqueChar.delete(str[start]);
+//           start++;
+//       }
+//       console.log(uniqueChar, start, end);
+//   }
+
+
+//   return maxLength;
+  
+// }
+
+// console.log(longestSubstringWithoutCharacter("abbc"))
 
 
 
