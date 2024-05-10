@@ -450,7 +450,9 @@ console.log("Number of distinct ways to climb to the top:", climbStairs(n));
 
 
 
-// To solve this problem, we can use recursion to split the expression into smaller parts at each operator. We'll recursively compute all possible results for the left and right parts of the expression and then combine them based on the operator. We'll continue this process until we have only one number left in the expression.
+// To solve this problem, we can use recursion to split the expression into smaller parts at each operator.
+// We'll recursively compute all possible results for the left and right parts of the expression and then combine them based on the operator.
+// We'll continue this process until we have only one number left in the expression.
 
 // Here's the implementation in JavaScript:
 
@@ -1310,3 +1312,97 @@ function longestCommonPrefix(strs) {
 // 6. After the loop completes, return the `prefix` string containing the longest common prefix found among all strings in the array.
 
 // This brute force approach has a time complexity of O(n * m), where n is the number of strings in the array and m is the length of the shortest string. It compares characters at each position in the strings until a mismatch is found.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 169. Majority Element
+
+// Given an array nums of size n, return the majority element.
+
+// The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+ 
+
+// Example 1:
+
+// Input: nums = [3,2,3]
+// Output: 3
+// Example 2:
+
+// Input: nums = [2,2,1,1,1,2,2]
+// Output: 2
+ 
+
+// Constraints:
+
+// n == nums.length
+// 1 <= n <= 5 * 104
+// -109 <= nums[i] <= 109
+ 
+
+// Follow-up: Could you solve the problem in linear time and in O(1) space?
+
+
+
+
+
+
+
+// Sure, you can solve this problem using a linear time and constant space algorithm called Boyer-Moore Voting Algorithm. Here's how you can implement it in JavaScript:
+
+// ```javascript
+// function majorityElement(nums) {
+//     let candidate = null;
+//     let count = 0;
+    
+//     // Find the majority candidate
+//     for (let num of nums) {
+//         if (count === 0) {
+//             candidate = num;
+//         }
+//         count += (num === candidate) ? 1 : -1;
+//     }
+    
+//     // Verify if the candidate is the majority element
+//     count = 0;
+//     for (let num of nums) {
+//         if (num === candidate) {
+//             count++;
+//         }
+//     }
+    
+//     return (count > nums.length / 2) ? candidate : null;
+// }
+
+// // Example usage:
+// const nums1 = [3, 2, 3];
+// console.log(majorityElement(nums1)); // Output: 3
+
+// const nums2 = [2, 2, 1, 1, 1, 2, 2];
+// console.log(majorityElement(nums2)); // Output: 2
+// ```
+
+// In this implementation:
+
+// - We iterate through the array to find a potential majority candidate.
+// - The algorithm assumes that the majority element always exists, so there is no need for explicit checking.
+// - We initialize a `candidate` variable to store the current majority candidate and a `count` variable to keep track of its frequency.
+// - For each element in the array, if the count is 0, we update the candidate to the current element.
+// - Otherwise, we increment or decrement the count based on whether the current element matches the candidate.
+// - After finding the potential candidate, we iterate through the array again to verify if it is indeed the majority element by counting its occurrences.
+// - If the count of the candidate is greater than half the length of the array, we return the candidate as the majority element; otherwise, we return `null`.
+// - This algorithm has a time complexity of O(n) and a space complexity of O(1), meeting the requirements of the problem.

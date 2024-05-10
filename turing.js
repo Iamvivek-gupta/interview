@@ -297,7 +297,8 @@ console.log(rotatedImage);
 
 
 
-// In JavaScript, mutability refers to whether an object's state can be modified after it is created, while immutability refers to the inability to change an object's state once it's been created.
+// In JavaScript, mutability refers to whether an object's state can be modified after it is created,
+// while immutability refers to the inability to change an object's state once it's been created.
 
 // Here's a simple explanation with examples:
 
