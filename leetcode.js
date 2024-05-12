@@ -128,6 +128,81 @@ console.log(majorityElement(nums)); // Output: [1, 2]
 
 
 
+// Yes, we can adapt the Boyer-Moore Voting Algorithm to find elements that appear more than n/3 times in an array. This variation of the algorithm can be used to find elements that appear more than ⌊n/3⌋ times, where n is the length of the array.
+
+// The algorithm involves selecting two candidates and two counters, similar to the original algorithm. However, instead of selecting one majority candidate, we select two candidates because there can be at most two elements that appear more than ⌊n/3⌋ times.
+
+// Here's how the modified algorithm works:
+
+// 1. Initialize two variables `candidate1`, `candidate2` and their corresponding counters `count1` and `count2`. Set both counters to 0.
+
+// 2. Iterate through the array:
+//    - If the current element is equal to either candidate, increment the corresponding count.
+//    - If one of the counters becomes zero, assign the current element as the new candidate and set the count to 1.
+//    - If the current element is different from both candidates and both counts are nonzero, decrement both counts.
+
+// 3. After the iteration, we have two potential candidates. We need to verify if they appear more than ⌊n/3⌋ times.
+
+// 4. Iterate through the array again and count the occurrences of the potential candidates. If any candidate appears more than ⌊n/3⌋ times, it is added to the result.
+
+// 5. Return the result containing the majority elements.
+
+// Here's a JavaScript implementation of this modified algorithm:
+
+```javascript
+function majorityElements(nums) {
+    let candidate1, candidate2;
+    let count1 = 0, count2 = 0;
+
+    // Step 1: Find potential candidates
+    for (let num of nums) {
+        if (num === candidate1) {
+            count1++;
+        } else if (num === candidate2) {
+            count2++;
+        } else if (count1 === 0) {
+            candidate1 = num;
+            count1 = 1;
+        } else if (count2 === 0) {
+            candidate2 = num;
+            count2 = 1;
+        } else {
+            count1--;
+            count2--;
+        }
+    }
+
+    // Step 2: Verify candidates
+    count1 = 0;
+    count2 = 0;
+    for (let num of nums) {
+        if (num === candidate1) {
+            count1++;
+        } else if (num === candidate2) {
+            count2++;
+        }
+    }
+
+    // Step 3: Check if candidates are majority elements
+    const result = [];
+    if (count1 > nums.length / 3) {
+        result.push(candidate1);
+    }
+    if (count2 > nums.length / 3) {
+        result.push(candidate2);
+    }
+
+    return result;
+}
+
+// Example usage
+const nums = [1, 2, 2, 3, 2, 1, 1, 3]; // Majority elements: [1, 2]
+console.log("Majority elements:", majorityElements(nums));
+```
+
+//In this example, the majority elements are 1 and 2 because both of them appear more than ⌊n/3⌋ times in the array.
+// The modified algorithm efficiently identifies these majority elements with just two passes through the array.
+
 
 
 
@@ -1265,7 +1340,8 @@ console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
 
 
 
-// The brute force approach to finding the longest common prefix in an array of strings involves comparing characters at corresponding positions in each string until a mismatch is found or the end of the shortest string is reached. Here's a JavaScript implementation of this approach:
+// The brute force approach to finding the longest common prefix in an array of strings involves comparing characters at corresponding positions in each string until a mismatch is found or the end of the shortest string is reached.
+// Here's a JavaScript implementation of this approach:
 
 ```javascript
 function longestCommonPrefix(strs) {
@@ -1406,3 +1482,79 @@ function longestCommonPrefix(strs) {
 // - After finding the potential candidate, we iterate through the array again to verify if it is indeed the majority element by counting its occurrences.
 // - If the count of the candidate is greater than half the length of the array, we return the candidate as the majority element; otherwise, we return `null`.
 // - This algorithm has a time complexity of O(n) and a space complexity of O(1), meeting the requirements of the problem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// The Boyer-Moore Voting Algorithm is used to find the majority element in an array, which is the element that appears more than n/2 times, where n is the length of the array.
+// It achieves this with a time complexity of O(n) and constant space complexity.
+
+// Here's how the algorithm works:
+
+// 1. Initialize two variables: `candidate` and `count`. Set `candidate` to any element from the array and `count` to 1.
+
+// 2. Iterate through the array starting from the second element:
+//    - If the current element is equal to the candidate, increment the count.
+//    - If the current element is different from the candidate, decrement the count.
+//    - If the count becomes zero, update the candidate to the current element and reset the count to 1.
+
+// 3. At the end of the iteration, the candidate will be the potential majority element.
+// However, we need to verify if it appears more than n/2 times in the array.
+
+// 4. Iterate through the array again and count the occurrences of the candidate element.
+// If it appears more than n/2 times, it is the majority element. Otherwise, there is no majority element.
+
+// Here's a simple example in JavaScript:
+
+```javascript
+function majorityElement(nums) {
+    let candidate;
+    let count = 0;
+    
+    // Step 1: Find potential candidate
+    for (let num of nums) {
+        if (count === 0) {
+            candidate = num;
+        }
+        count += (num === candidate) ? 1 : -1;
+    }
+    
+    // Step 2: Verify candidate
+    count = 0;
+    for (let num of nums) {
+        if (num === candidate) {
+            count++;
+        }
+    }
+    
+    // Check if candidate is the majority element
+    return (count > nums.length / 2) ? candidate : null;
+
+}
+
+// Example usage
+const nums = [3, 3, 4, 2, 4, 4, 2, 4, 4]; // Majority element: 4
+console.log("Majority element:", majorityElement(nums));
+```
+
+// In this example, the majority element is 4 because it appears 5 times, which is more than half of the array length (9/2 = 4.5).
+// The Boyer-Moore Voting Algorithm efficiently identifies this majority element with just two passes through the array.
