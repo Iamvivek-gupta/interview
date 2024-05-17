@@ -128,7 +128,8 @@ console.log(majorityElement(nums)); // Output: [1, 2]
 
 
 
-// Yes, we can adapt the Boyer-Moore Voting Algorithm to find elements that appear more than n/3 times in an array. This variation of the algorithm can be used to find elements that appear more than ⌊n/3⌋ times, where n is the length of the array.
+// Yes, we can adapt the Boyer-Moore Voting Algorithm to find elements that appear more than n/3 times in an array.
+// This variation of the algorithm can be used to find elements that appear more than ⌊n/3⌋ times, where n is the length of the array.
 
 // The algorithm involves selecting two candidates and two counters, similar to the original algorithm. However, instead of selecting one majority candidate, we select two candidates because there can be at most two elements that appear more than ⌊n/3⌋ times.
 
@@ -1340,7 +1341,8 @@ console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
 
 
 
-// The brute force approach to finding the longest common prefix in an array of strings involves comparing characters at corresponding positions in each string until a mismatch is found or the end of the shortest string is reached.
+// The brute force approach to finding the longest common prefix in an array of strings 
+// involves comparing characters at corresponding positions in each string until a mismatch is found or the end of the shortest string is reached.
 // Here's a JavaScript implementation of this approach:
 
 ```javascript
@@ -1387,7 +1389,8 @@ function longestCommonPrefix(strs) {
 
 // 6. After the loop completes, return the `prefix` string containing the longest common prefix found among all strings in the array.
 
-// This brute force approach has a time complexity of O(n * m), where n is the number of strings in the array and m is the length of the shortest string. It compares characters at each position in the strings until a mismatch is found.
+// This brute force approach has a time complexity of O(n * m), where n is the number of strings in the array and m is the length of the shortest string.
+// It compares characters at each position in the strings until a mismatch is found.
 
 
 
