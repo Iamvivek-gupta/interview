@@ -1561,3 +1561,75 @@ console.log("Majority element:", majorityElement(nums));
 
 // In this example, the majority element is 4 because it appears 5 times, which is more than half of the array length (9/2 = 4.5).
 // The Boyer-Moore Voting Algorithm efficiently identifies this majority element with just two passes through the array.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// To find the minimum element in a sorted rotated array of unique elements, we can use a modified binary search algorithm. The binary search approach ensures that the solution runs in O(log n) time complexity.
+
+// Here's the optimized code in JavaScript:
+
+```javascript
+function findMin(nums) {
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
+
+        // Compare mid element with the rightmost element
+        if (nums[mid] > nums[right]) {
+            // If mid element is greater than the rightmost element,
+            // the minimum element is in the right half
+            left = mid + 1;
+        } else {
+            // Otherwise, the minimum element is in the left half including mid
+            right = mid;
+        }
+    }
+
+    // At the end of the while loop, left == right
+    // This will be the index of the minimum element
+    return nums[left];
+}
+
+// Example usage:
+console.log(findMin([3, 4, 5, 1, 2])); // Output: 1
+console.log(findMin([4, 5, 6, 7, 0, 1, 2])); // Output: 0
+console.log(findMin([11, 13, 15, 17])); // Output: 11
+```
+
+// ### Explanation
+// 1. **Initialization**:
+//     - `left` is initialized to 0.
+//     - `right` is initialized to the last index of the array.
+
+// 2. **Binary Search Loop**:
+//     - Calculate `mid` as the floor of the average of `left` and `right`.
+//     - Compare the middle element `nums[mid]` with the rightmost element `nums[right]`.
+//         - If `nums[mid] > nums[right]`, it means the smallest element is in the right half of the array. So, set `left = mid + 1`.
+//         - If `nums[mid] <= nums[right]`, it means the smallest element could be at `mid` or in the left half. So, set `right = mid`.
+
+// 3. **Result**:
+//     - When `left` equals `right`, the loop terminates. The smallest element is at index `left`.
+
+// This binary search approach effectively narrows down the search space by half in each step, ensuring an O(log n) time complexity.

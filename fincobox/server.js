@@ -1,50 +1,50 @@
-const express = require('express');
-const app = express();
-const multer = require('multer');
-const fs = require('fs');
+// const express = require('express');
+// const app = express();
+// const multer = require('multer');
+// const fs = require('fs');
 
 
-const PORT = 3000;
-// Read the file line by line
-fs.readFile('city.txt', 'utf8', (err, data) => {
-    if (err) {
-        console.error(err);
-        return;
-    }
+// const PORT = 3000;
+// // Read the file line by line
+// fs.readFile('city.txt', 'utf8', (err, data) => {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     }
     
-    // Split the data into lines
-    const lines = data.trim().split('\n');
+//     // Split the data into lines
+//     const lines = data.trim().split('\n');
 
-    // Create an object to store min and max temperatures for each city
-    const cityTemperatures = {};
+//     // Create an object to store min and max temperatures for each city
+//     const cityTemperatures = {};
 
-    // Process each line
-    lines.forEach(line => {
-        // Split the line into city and temperature
-        const [city, tempStr] = line.split(';');
-        const temperature = parseFloat(tempStr);
-        console.log("checking city and temrature", temperature);
-
-
-        // Update min and max temperatures for the city
-        if (!cityTemperatures[city]) {
-            cityTemperatures[city] = { min: temperature, max: temperature };
-        } else {
-            cityTemperatures[city].min = Math.min(cityTemperatures[city].min, temperature);
-            cityTemperatures[city].max = Math.max(cityTemperatures[city].max, temperature);
-        }
-    });
-
-    // Print the results
-    Object.entries(cityTemperatures).forEach(([city, { min, max }]) => {
-        console.log(`${city} | min = ${min} | max = ${max}`);
-    });
-});
+//     // Process each line
+//     lines.forEach(line => {
+//         // Split the line into city and temperature
+//         const [city, tempStr] = line.split(';');
+//         const temperature = parseFloat(tempStr);
+//         console.log("checking city and temrature", temperature);
 
 
-app.get('/', (req, res) => {
-    res.send("Hello world")
-})
+//         // Update min and max temperatures for the city
+//         if (!cityTemperatures[city]) {
+//             cityTemperatures[city] = { min: temperature, max: temperature };
+//         } else {
+//             cityTemperatures[city].min = Math.min(cityTemperatures[city].min, temperature);
+//             cityTemperatures[city].max = Math.max(cityTemperatures[city].max, temperature);
+//         }
+//     });
+
+//     // Print the results
+//     Object.entries(cityTemperatures).forEach(([city, { min, max }]) => {
+//         console.log(`${city} | min = ${min} | max = ${max}`);
+//     });
+// });
+
+
+// app.get('/', (req, res) => {
+//     res.send("Hello world")
+// })
 // C:\Users\hp\Desktop\interview\fincobox\uploads
 // const storage = multer.diskStorage({
 //     destination: (req, file, cb) => {
@@ -63,9 +63,9 @@ app.get('/', (req, res) => {
 // })
 
 
-app.listen(PORT, () => {
-    console.log(`server is running ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`server is running ${PORT}`)
+// })
 
 
 // //Write a SQL query to retrieve the average salary of all employees
@@ -114,3 +114,50 @@ app.listen(PORT, () => {
 //     }
 //     return matrix;
 //  };
+
+
+
+
+
+
+const { ApolloServer, gql } = require('apollo-server');
+
+// Define schema
+const typeDefs = gql`
+  type User {
+    id: ID!
+    name: String!
+  }
+
+  type Query {
+    user(id: ID!): User
+  }
+
+  type Mutation {
+    createUser(name: String!): User
+  }
+`;
+
+// Define resolvers
+const resolvers = {
+  Query: {
+    user: (_, { id }) => {
+      // Fetch user by ID
+      return { id, name: 'John Doe' };
+    }
+  },
+  Mutation: {
+    createUser: (_, { name }) => {
+      // Create a new user
+      return { id: '1', name };
+    }
+  }
+};
+
+// Create Apollo Server
+const server = new ApolloServer({ typeDefs, resolvers });
+//console.log(server);
+
+server.listen().then(({ url }) => {
+  console.log(`Server ready at ${url}`);
+});
