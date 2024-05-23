@@ -415,9 +415,9 @@ console.log(canPlaceFlowers(flowerbed, n)); // Output: true
 // 3. 2 steps + 1 step
 
 // sovle in optimized way and explain the solution in easy words?? in javascript?
-To solve the climbing stairs problem in an optimized way, we can use dynamic programming with memoization. The idea is to store the number of ways to reach each step in an array as we calculate them, so we don't have to recalculate them multiple times.
+// To solve the climbing stairs problem in an optimized way, we can use dynamic programming with memoization. The idea is to store the number of ways to reach each step in an array as we calculate them, so we don't have to recalculate them multiple times.
 
-Here's how we can implement it in JavaScript:
+// Here's how we can implement it in JavaScript:
 
 ```javascript
 function climbStairs(n) {
