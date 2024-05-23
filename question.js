@@ -572,7 +572,7 @@ function longestConsecutiveSequence(arr){
 
 
 
-// Q23 Best time to buy/sell the stocks by using valley peak approach make maximum profit
+// Q23 Best time to buy/sell the stocks by using valley peak approach make maximum profit maximum transaction allowed.
 
 function maxProfit(Price){
     let profit = 0;
@@ -596,8 +596,8 @@ function maxProfit(Price){
 // Q24 check if given numver is HappyNumber
 
 
-// A happy number is a number that, when you repeatedly replace the number by the sum of the squares of its digits and repeat this process, eventually reaches the number 
-// 1. If it never reaches 1, it is not a happy number. Here's a JavaScript program to check if a number is a happy number:
+// A happy number is a number that, when you repeatedly replace the number by the sum of the squares of its digits and repeat this process, eventually reaches the number 1.
+// If it never reaches 1, it is not a happy number. Here's a JavaScript program to check if a number is a happy number:
 
 ```javascript
 function isHappy(n) {

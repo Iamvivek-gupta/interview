@@ -398,37 +398,57 @@ console.log(canPlaceFlowers(flowerbed, n)); // Output: true
 
 
 // You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?.
-// To solve the climbing stairs problem in JavaScript, we can use dynamic programming to efficiently compute the number of distinct ways to climb to the top. Here's a JavaScript function to solve the problem:
+// Example 1:
+
+// Input: n = 2
+// Output: 2
+// Explanation: There are two ways to climb to the top.
+// 1. 1 step + 1 step
+// 2. 2 steps
+// Example 2:
+
+// Input: n = 3
+// Output: 3
+// Explanation: There are three ways to climb to the top.
+// 1. 1 step + 1 step + 1 step
+// 2. 1 step + 2 steps
+// 3. 2 steps + 1 step
+
+// sovle in optimized way and explain the solution in easy words?? in javascript?
+To solve the climbing stairs problem in an optimized way, we can use dynamic programming with memoization. The idea is to store the number of ways to reach each step in an array as we calculate them, so we don't have to recalculate them multiple times.
+
+Here's how we can implement it in JavaScript:
 
 ```javascript
 function climbStairs(n) {
+    // Base cases: 1 way to reach 1st step, 2 ways to reach 2nd step
+    if (n === 1) return 1;
+    if (n === 2) return 2;
+
     // Initialize an array to store the number of ways to reach each step
-    const dp = new Array(n + 1).fill(0);
-    
-    // Base cases: There's 1 way to reach step 0 and 1 way to reach step 1
-    dp[0] = 1;
-    dp[1] = 1;
-    
-    // Use dynamic programming to compute the number of ways to reach each step
-    for (let i = 2; i <= n; i++) {
-        // The number of ways to reach step i is the sum of ways to reach steps i-1 and i-2
-        dp[i] = dp[i - 1] + dp[i - 2];
+    const ways = [0, 1, 2];
+
+    // Iterate from the 3rd step to the nth step
+    for (let i = 3; i <= n; i++) {
+        // Calculate the number of ways to reach the current step
+        ways[i] = ways[i - 1] + ways[i - 2];
     }
-    
-    // Return the number of ways to reach the top step
-    return dp[n];
+
+    // Return the number of ways to reach the nth step
+    return ways[n];
 }
 
-
 // Example usage:
-const n = 4;
-console.log("Number of distinct ways to climb to the top:", climbStairs(n));
+console.log(climbStairs(2)); // Output: 2
+console.log(climbStairs(3)); // Output: 3
 ```
 
-// This function `climbStairs` takes the number of steps `n` as input and returns the number of distinct ways to climb to the top. 
-// It uses dynamic programming to efficiently compute the solution by storing the number of ways to reach each step in an array `dp`.
-// The final result is the number of ways to reach the top step, which is stored in `dp[n]`.
+// In this solution:
+// - We start with base cases where there is 1 way to reach the 1st step and 2 ways to reach the 2nd step.
+// - We then iterate from the 3rd step to the nth step, calculating the number of ways to reach each step by adding the number of ways to reach the previous two steps.
+// - Finally, we return the number of ways to reach the nth step, which is stored in the `ways` array.
 
+// This approach optimizes the solution by avoiding redundant calculations, leading to a time complexity of O(n), where n is the number of steps.
 
 
 
