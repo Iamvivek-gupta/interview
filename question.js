@@ -893,8 +893,11 @@ const calc = {
 //   Loop through the input string and for each character:
 //   a. If the character is an opening parenthesis, push it onto the stack.
 //   b. If the character is a closing parenthesis, check if the stack is empty. 
-//   If it is, return false since there is no matching opening parenthesis. Otherwise, pop the top element from the stack and check if it matches the closing parenthesis. If it doesn't, return false since the parentheses are not valid.
-//   After the loop, check if the stack is empty. If it is, return true since all opening parentheses have a matching closing parenthesis. Otherwise, return false since there are unmatched opening parentheses.
+//   If it is, return false since there is no matching opening parenthesis.
+//   Otherwise, pop the top element from the stack and check if it matches the closing parenthesis.
+//   If it doesn't, return false since the parentheses are not valid.
+//   After the loop, check if the stack is empty.
+//   If it is, return true since all opening parentheses have a matching closing parenthesis. Otherwise, return false since there are unmatched opening parentheses.
 //   Here's the JavaScript code that implements the above approach:
 
 
@@ -981,7 +984,8 @@ const calc = {
 
 
 
-// To remove duplicates from an array using JavaScript in O(n) time complexity, you can use a hash table to keep track of the elements that have already been seen. Here's the approach:
+// To remove duplicates from an array using JavaScript in O(n) time complexity, you can use a hash table to keep track of the elements that have already been seen.
+// Here's the approach:
 
 // Initialize a new empty hash table.
 // Loop through the array and check if the current element exists in the hash table.

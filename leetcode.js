@@ -1633,3 +1633,97 @@ console.log(findMin([11, 13, 15, 17])); // Output: 11
 //     - When `left` equals `right`, the loop terminates. The smallest element is at index `left`.
 
 // This binary search approach effectively narrows down the search space by half in each step, ensuring an O(log n) time complexity.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// To find the k-th missing positive integer in a given array using binary search, we can utilize a combination of array manipulation and binary search techniques. Here's a step-by-step approach to solve this problem:
+
+// 1. **Understanding the Problem**: 
+//    Given a sorted array of positive integers, we need to find the k-th missing positive integer.
+
+// 2. **Approach**:
+//    - We will use binary search to efficiently find the position where the k-th missing positive integer would be.
+//    - The idea is to use the difference between the expected and actual value at each position to determine how many numbers are missing up to that position.
+
+// 3. **Steps**:
+//    - Calculate the number of missing integers up to each position using binary search.
+//    - Adjust the search range based on the number of missing integers until the k-th missing integer is found.
+
+// Here's the JavaScript code to find the k-th missing positive integer using binary search:
+
+// ```javascript
+// function findKthMissingPositive(arr, k) {
+//     let left = 0, right = arr.length;
+
+//     while (left < right) {
+//         let mid = Math.floor((left + right) / 2);
+//         // Calculate the number of missing numbers until the mid position
+//         let missingCount = arr[mid] - (mid + 1);
+
+//         if (missingCount < k) {
+//             left = mid + 1;
+//         } else {
+//             right = mid;
+//         }
+//     }
+
+//     // At the end of the binary search, left is the index where the k-th missing number should be
+//     // The k-th missing number is k + left because there are `left` numbers in the array before the k-th missing number
+//     return left + k;
+// }
+
+// Example usage:
+// let arr = [2, 3, 4, 7, 11];
+// let k = 5;
+// console.log(findKthMissingPositive(arr, k)); // Output: 9
+```
+
+// ### Explanation:
+
+// 1. **Initialization**:
+//    - `left` is set to 0 and `right` is set to the length of the array. This defines our search range.
+
+// 2. **Binary Search Loop**:
+//    - We calculate the middle index `mid`.
+//    - We calculate `missingCount` as `arr[mid] - (mid + 1)`. This gives us the number of missing integers up to index `mid`.
+//      - The formula works because in a perfectly sequential array without missing numbers, the element at index `mid` should be `mid + 1`.
+//      - By subtracting `mid + 1` from `arr[mid]`, we get the count of missing numbers up to that point.
+//    - If `missingCount` is less than `k`, it means we need more missing numbers, so we move our search to the right half by setting `left = mid + 1`.
+//    - If `missingCount` is greater than or equal to `k`, we move our search to the left half by setting `right = mid`.
+
+// 3. **Result Calculation**:
+//    - After the loop ends, `left` will point to the position where the k-th missing number should be.
+//    - The k-th missing number is calculated as `left + k`.
+
+// ### Example Walkthrough:
+// For `arr = [2, 3, 4, 7, 11]` and `k = 5`:
+// - Initially, `left = 0`, `right = 5`.
+// - Calculate `mid`, `missingCount`, and adjust `left` and `right` accordingly.
+// - The loop narrows down the range, and finally, we determine that the 5th missing positive integer is 9.
+
+// This approach ensures that we efficiently find the k-th missing positive integer using binary search.
