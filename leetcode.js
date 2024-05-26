@@ -135,6 +135,10 @@ console.log(majorityElement(nums)); // Output: [1, 2]
 
 // Here's how the modified algorithm works:
 
+// 0. **Handle Edge Case**: 
+//    - If the length of the `nums` array is less than 3, we simply return the array with unique elements using the `Set` data structure.
+
+
 // 1. Initialize two variables `candidate1`, `candidate2` and their corresponding counters `count1` and `count2`. Set both counters to 0.
 
 // 2. Iterate through the array:
@@ -152,6 +156,10 @@ console.log(majorityElement(nums)); // Output: [1, 2]
 
 ```javascript
 function majorityElements(nums) {
+
+    if (nums.length < 3) {
+        return [...new Set(nums)];
+    }
     let candidate1, candidate2;
     let count1 = 0, count2 = 0;
 
@@ -1224,79 +1232,6 @@ console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// You can solve this problem using a two-pass approach to calculate the product of all numbers in the array.
-// In the first pass, calculate the product of all numbers to the left of each element, and in the second pass, calculate the product of all numbers to the right of each element. Then, multiply the corresponding left and right products to get the final result.
-
-// Here's how you can implement this approach in JavaScript:
-
-```javascript
-function productExceptSelf(nums) {
-    const n = nums.length;
-    
-    // Initialize arrays to store the left and right products
-    const leftProducts = new Array(n).fill(1);
-    const rightProducts = new Array(n).fill(1);
-    
-    // Calculate the product of all numbers to the left of each element
-    let leftProduct = 1;
-    for (let i = 1; i < n; i++) {
-        leftProduct *= nums[i - 1];
-        leftProducts[i] = leftProduct;
-    }
-    
-    // Calculate the product of all numbers to the right of each element
-    let rightProduct = 1;
-    for (let i = n - 2; i >= 0; i--) {
-        rightProduct *= nums[i + 1];
-        rightProducts[i] = rightProduct;
-    }
-    
-    // Multiply corresponding left and right products to get the final result
-    const result = [];
-    for (let i = 0; i < n; i++) {
-        result[i] = leftProducts[i] * rightProducts[i];
-    }
-    
-    return result;
-}
-
-// Example usage:
-const nums = [1, 2, 3, 4];
-console.log(productExceptSelf(nums)); // Output: [24, 12, 8, 6]
-```
-
-// Explanation:
-// - We initialize two arrays, `leftProducts` and `rightProducts`, to store the product of all numbers to the left and right of each element, respectively.
-// - In the first pass, we calculate the product of all numbers to the left of each element and store it in the `leftProducts` array.
-// - In the second pass, we calculate the product of all numbers to the right of each element and store it in the `rightProducts` array.
-// - Finally, we multiply the corresponding left and right products for each element to get the final result.
 
 
 
