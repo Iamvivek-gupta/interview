@@ -266,7 +266,8 @@ console.log(rotatedImage);
 //    - Prototype inheritance is more dynamic and flexible compared to classical inheritance, as objects can be modified and extended at runtime.
 //    - JavaScript uses prototype inheritance as its primary mechanism for inheritance.
 
-// In summary, classical inheritance relies on class-based hierarchies and is more rigid, while prototype inheritance is based on object delegation and is more dynamic and flexible. JavaScript primarily uses prototype inheritance, although ES6 introduced the `class` syntax to provide a more familiar syntax for developers coming from class-based languages.
+// In summary, classical inheritance relies on class-based hierarchies and is more rigid, while prototype inheritance is based on object delegation and is more dynamic and flexible.
+// JavaScript primarily uses prototype inheritance, although ES6 introduced the `class` syntax to provide a more familiar syntax for developers coming from class-based languages.
 
 
 
