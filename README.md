@@ -16,3 +16,8 @@
 ## It is a technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence. until the final result is achieved.
 ## Currying helps you avoid passing the same variable again and again.
 ## It helps to create a higher order function.
+
+
+
+
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
