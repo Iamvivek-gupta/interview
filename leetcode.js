@@ -1042,7 +1042,8 @@ console.log(merge(intervals2)); // Output: [[1, 5]]
 // Each element in the array represents the height of a vertical line, and the distance between any two vertical lines is one unit.
 
 // To solve this problem, we need to find two vertical lines such that the area between them and the x-axis is maximized.
-// We can achieve this by using a two-pointer approach. We start with pointers at the beginning and end of the array and gradually move them towards each other.
+// We can achieve this by using a two-pointer approach.
+// We start with pointers at the beginning and end of the array and gradually move them towards each other.
 // At each step, we calculate the area formed by the two lines and update the maximum area if necessary. 
 
 // Here's the step-by-step solution in JavaScript:
