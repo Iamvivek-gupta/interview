@@ -1,3 +1,20 @@
+let u = [1, 2, 3, 9, 3, 5, 4, 6, 7, 8, 10];
+function getMaxSumByDigit(u, n) {
+    let max = 0;
+    u.sort((a, b) => a - b);
+    for (let i = 0; i < u.length - n + 1; i++) {
+        let tempSum = 0;
+        for (let j = 0; j < n; j++) {
+            tempSum += u[i + j];
+        }
+        if (tempSum > max) max = tempSum;
+    }
+    return max;
+}
+// console.log(getMaxSumByDigit(u,3));
+
+
+
 // Q1 frequency map normol loop and hashmap method.
 let x = [4, 1, 2, 3, 4, 1, 5, 2, 3, 1, 1];
 let countMapping = {};

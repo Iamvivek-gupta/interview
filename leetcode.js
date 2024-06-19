@@ -1183,7 +1183,9 @@ console.log(maxArea(height))
 
 
 
-// You can solve this problem using a two-pass approach to calculate the product of all numbers in the array. In the first pass, calculate the product of all numbers to the left of each element, and in the second pass, calculate the product of all numbers to the right of each element. Then, multiply the corresponding left and right products to get the final result.
+// You can solve this problem using a two-pass approach to calculate the product of all numbers in the array.
+// In the first pass, calculate the product of all numbers to the left of each element, and in the second pass, calculate the product of all numbers to the right of each element.
+// Then, multiply the corresponding left and right products to get the final result.
 
 // Here's how you can implement this approach in JavaScript:
 
@@ -1353,7 +1355,53 @@ function longestCommonPrefix(strs) {
 
 
 
+// To find the longest common prefix among an array of strings in an optimized way, you can use the following JavaScript code. This approach compares characters of the strings one by one until a mismatch is found. It effectively minimizes the number of comparisons, achieving a time complexity of O(n * m), where n is the number of strings and m is the length of the shortest string.
 
+// Here's the code for the optimized solution:
+
+```javascript
+function longestCommonPrefix(strs) {
+    if (strs.length === 0) return "";
+    
+    // Start with the first string as the initial prefix
+    let prefix = strs[0];
+    
+    // Loop through the rest of the strings
+    for (let i = 1; i < strs.length; i++) {
+        // While the current prefix is not a prefix of the string strs[i], reduce it
+        while (strs[i].indexOf(prefix) !== 0) {
+            prefix = prefix.substring(0, prefix.length - 1);
+            // If the prefix is reduced to an empty string, return ""
+            if (prefix === "") return "";
+        }
+    }
+    
+    return prefix;
+}
+
+// Example usage
+const strings = ["flower", "flow", "flight"];
+console.log(longestCommonPrefix(strings)); // Output: "fl"
+
+const strings2 = ["dog", "racecar", "car"];
+console.log(longestCommonPrefix(strings2)); // Output: ""
+```
+
+// ### Explanation:
+
+// 1. **Initial Check**: If the input array `strs` is empty, the function returns an empty string since there are no strings to find a common prefix.
+
+// 2. **Initialize Prefix**: The first string in the array is considered the initial prefix.
+
+// 3. **Iterate Through Strings**: For each string in the array starting from the second one, check if the current prefix is a prefix of the string.
+
+// 4. **Reduce Prefix**: If the current prefix is not a prefix of the string, reduce the prefix by removing the last character and repeat the check.
+
+// 5. **Check for Empty Prefix**: If the prefix becomes empty during the reduction process, return an empty string as there is no common prefix.
+
+// 6. **Return the Prefix**: After iterating through all strings, the resulting prefix is the longest common prefix shared by all strings in the array.
+
+// This solution is efficient and straightforward, leveraging the properties of common prefixes and string comparison operations to achieve an optimal result.
 
 
 
