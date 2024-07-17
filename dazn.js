@@ -141,3 +141,124 @@ console.log(cleanedArr); // Output: ["hello", "world", "how", "are", "you"]
 ```
 
 // This function iterates over each element in the array and uses the `replace` method with a regular expression (`/[^\w\s]/gi`) to remove any characters that are not alphanumeric or whitespace characters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// a leader is an element that occurs at more than 50% of positions of an array
+// write a function that will check if an arbitrary array of integers passed as a parameter has a leader
+ 
+// below is a sample of an array with and without a leader
+// you are allowed to use any additional data structures you find necessary
+// if you can, discuss the computational and memory complexity of the solution
+ 
+// const leaderlessArray = [1, 6, 5, 3, 5, 9, 18, 5, 7, 2]
+// const arrayWithLeader = [5, 1, 3, 5, 5, 5, 11, 5, 2, 5]
+ 
+// function hasLeader(arr) {}
+ 
+// console.log(hasLeader(leaderlessArray))
+// console.log(hasLeader(arrayWithLeader))
+
+
+
+
+// const input = ['5.5.1', '4.21.0', '4.22.0', '6.1.0', '5.1.0', '4.5.0'];
+// const output = ['4.5.0', '4.21.0', '4.22.0', '5.1.0', '5.5.1', '6.1.0'];
+ 
+// const customSort = (x,y) =>{
+//     if(x == y) return 0;
+//     const split_x = x.split('.');
+//     const split_y = y.split('.');
+//     for(let a =0; a< Math.max(split_x.length, split_y.length); a++){
+//         const val_x = parseInt(split_x[a]);
+//         const val_y = parseInt(split_y[a]);
+//         if(val_x < val_y) return -1;
+//         if(val_x > val_y) return 1;
+//     }
+ 
+// };
+ 
+// const output_code = input.sort(customSort);
+// console.log(output.every((elem, index)=> elem === output_code[index]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function delayedPromise() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("")
+        }, 2000)
+    })
+}
+
+
+
+const delayedPromiseInstance = delayedPromise(2000);
+ 
+delayedPromiseInstance
+  .then(() => {
+    console.log('Promise resolved after the specified delay!');
+  })
+  .catch((error) => {
+    console.error('Promise rejected:', error);
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  // what are the ways to perform caching mechnicsm
+  // when to use horizontal and vertical scaling for which tyoe of services.
+  // disadvantages of typescript
+  // why we use function components in react instead of class components
+  // design patterns singleton, factory, decorator, adapter, observer
+  // disadvantages of microservices?
+  

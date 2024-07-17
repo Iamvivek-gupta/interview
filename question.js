@@ -1224,7 +1224,47 @@ const calc = {
 
 
 
+// // 2nd approach to find multiple missing numbers using set
+// If you want to find multiple missing numbers in a given array, you can adapt the solution accordingly. Here's how you can do it using a `Set` to track numbers:
 
+// 1. Create a `Set` of numbers from 1 to `n` (where `n` is the maximum number in the array).
+// 2. Remove the numbers present in the array from the `Set`.
+// 3. The remaining numbers in the `Set` will be the missing numbers.
+
+// Here's an example function in JavaScript:
+
+```javascript
+function findMissingNumbers(arr) {
+    const n = arr.length + 1; // The range of numbers should be 1 to n
+    const set = new Set();
+
+    // Add all numbers from 1 to n to the set
+    for (let i = 1; i <= n; i++) {
+        set.add(i);
+    }
+
+    // Remove the numbers present in the array from the set
+    for (const num of arr) {
+        set.delete(num);
+    }
+
+    // The remaining numbers in the set are the missing numbers
+    return [...set];
+}
+
+// Example usage
+const arr = [1, 2, 3, 5, 7, 8]; // Missing numbers are 4, 6, 9
+const missingNumbers = findMissingNumbers(arr);
+console.log("Missing numbers:", missingNumbers); // Output: Missing numbers: [4, 6, 9]
+```
+
+// In this code:
+
+// 1. We initialize a `Set` containing all numbers from 1 to `n`.
+// 2. We iterate over the array and remove each number from the `Set`.
+// 3. The remaining elements in the `Set` are the missing numbers.
+
+// This approach efficiently finds all the missing numbers from the given array.
 
 
 
