@@ -199,3 +199,11 @@ Redux Toolkit is the official, recommended way to write Redux logic. It simplifi
 
 ### Summary:
 Using Redux Toolkit helps you manage complex state in your React applications more efficiently by reducing boilerplate code and providing a clear structure for your state management. The `createSlice` function encapsulates actions and reducers, making it easy to handle state updates. This setup not only improves code maintainability but also enhances the scalability of your application.
+
+
+
+
+
+
+# Optional Chaining
+Optional chaining is a powerful feature that simplifies the process of accessing nested properties and methods in JavaScript objects, making the code more clean consice and easier to read.

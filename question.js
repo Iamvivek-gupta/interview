@@ -2534,4 +2534,88 @@ This function iterates through each element of the array, calculates the absolut
    
    
    
-   
+// Sorting Algoritham
+
+function bubblesort(arr) {
+  let swapped;
+
+  do {
+      swapped = false;
+     for (let i = 1; i < arr.length; i++) {
+      if(arr[i-1] > arr[i]) {
+          [ arr[i], arr[i-1] ] = [ arr[i-1], arr[i] ];
+          swapped = true;
+      }
+      } 
+  } while(swapped)
+
+  
+
+  return arr;
+}
+
+
+console.log(bubblesort([-6,20,8,-2,4]))
+
+
+
+function mergeSort(arr){
+
+    if(arr.length <= 1){
+        return arr;
+    }
+    let mid = Math.floor(arr.length / 2);
+    let left = arr.slice(0, mid); 
+    let right = arr.slice(mid);
+    return merge(mergeSort(left), mergeSort(right));  
+}
+
+/**
+ * Merge two sorted arrays into a single sorted array.
+ * @param {Array} left - The first sorted array.
+ * @param {Array} right - The second sorted array.
+ * @returns {Array} - The merged sorted array.
+ */
+function merge(left, right){
+    // Initialize an empty array to store the merged result.
+    let result = [];
+
+    // Loop until one of the arrays is empty.
+    while(left.length && right.length){
+
+        // If the first element of the left array is less than the first element of the right array,
+        // push the first element of the left array to the result array and remove it from the left array.
+        if(left[0] < right[0]){
+            result.push(left.shift());
+        }
+        // Otherwise, push the first element of the right array to the result array and remove it from the right array.
+        else {
+            result.push(right.shift());
+        }
+    }
+
+    // Concatenate the remaining elements of the left and right arrays (if any) to the result array.
+    return [...result, ...left, ...right];
+}
+console.log(mergeSort([5,4,3,2,1]));
+
+
+
+// Quick Sort
+
+function quicksort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    let pivot = arr[0];
+    let left = [];
+    let right = [];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+    return [...quicksort(left), pivot, ...quicksort(right)];
+}
