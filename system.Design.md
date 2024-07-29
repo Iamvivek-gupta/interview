@@ -197,3 +197,23 @@ To impress the interviewer, emphasize your understanding of these challenges and
 - **Investing in a robust DevOps pipeline** with tools like Jenkins, CircleCI, or GitLab CI, and using Kubernetes for container orchestration to manage deployments and scaling.
 
 By highlighting these points, you demonstrate not only your awareness of the disadvantages but also your proactive approach to addressing them in a Node.js TypeScript microservices project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Kafka
+
+Kafka is primarily used to build real-time streaming data pipelines and applications that adapt to the data streams.
+
+Kafka:
+
+At-least-once Delivery: By default, Kafka guarantees at-least-once delivery, but it can also be configured for at-most-once or exactly-once semantics.
