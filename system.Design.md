@@ -217,3 +217,21 @@ Kafka is primarily used to build real-time streaming data pipelines and applicat
 Kafka:
 
 At-least-once Delivery: By default, Kafka guarantees at-least-once delivery, but it can also be configured for at-most-once or exactly-once semantics.
+
+
+# helmet
+Helmet is a collection of middleware functions for Node. js designed to secure web applications by setting crucial HTTP headers. These headers play a pivotal role in mitigating common web vulnerabilities such as Cross-Site Scripting (XSS), Clickjacking, and Cross-Site Request Forgery (CSRF).
+
+# CSRF
+CSRF (Cross-Site Request Forgery) is an attack that tricks a user into executing unwanted actions on a web application where they're authenticated, without their knowledge or consent.
+
+
+
+Content Security Policy: Helps prevent cross-site scripting attacks and other cross-site injections.
+DNS Prefetch Control: Helps disable DNS prefetching by browsers.
+Frameguard: Prevents clickjacking by setting the X-Frame-Options header.
+Hide Powered-By: Hides the X-Powered-By header to make it less obvious which framework or platform you're using.
+HSTS: Adds Strict-Transport-Security headers to enforce HTTPS connections.
+IE No Open: Sets X-Download-Options for Internet Explorer to prevent downloads from executing in your site's context.
+NoSniff: Sets X-Content-Type-Options to nosniff to prevent browsers from interpreting files as a different MIME type.
+XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
