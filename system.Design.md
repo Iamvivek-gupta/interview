@@ -235,3 +235,7 @@ HSTS: Adds Strict-Transport-Security headers to enforce HTTPS connections.
 IE No Open: Sets X-Download-Options for Internet Explorer to prevent downloads from executing in your site's context.
 NoSniff: Sets X-Content-Type-Options to nosniff to prevent browsers from interpreting files as a different MIME type.
 XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
+
+
+
+SQL injection is a security vulnerability that allows attackers to interfere with the queries an application makes to its database by injecting malicious SQL code through user inputs.
