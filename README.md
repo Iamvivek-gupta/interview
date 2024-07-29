@@ -207,3 +207,188 @@ Using Redux Toolkit helps you manage complex state in your React applications mo
 
 # Optional Chaining
 Optional chaining is a powerful feature that simplifies the process of accessing nested properties and methods in JavaScript objects, making the code more clean consice and easier to read.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here are some commonly asked JavaScript interview questions, along with explanations and examples to help you prepare:
+
+### 1. **Explain closures in JavaScript.**
+   - **Closures** are functions that have access to their own scope, the scope of the outer function, and the global scope.
+   - Example:
+     ```javascript
+     function outerFunction(outerVariable) {
+       return function innerFunction(innerVariable) {
+         console.log('Outer Variable: ' + outerVariable);
+         console.log('Inner Variable: ' + innerVariable);
+       };
+     }
+     const newFunction = outerFunction('outside');
+     newFunction('inside');
+     // Output:
+     // Outer Variable: outside
+     // Inner Variable: inside
+     ```
+
+### 2. **What is hoisting in JavaScript?**
+   - **Hoisting** is JavaScript's default behavior of moving declarations to the top of the current scope.
+   - Example:
+     ```javascript
+     console.log(x); // Output: undefined
+     var x = 5;
+     ```
+   - In the above example, the declaration `var x` is hoisted to the top, but the assignment `x = 5` is not.
+
+### 3. **Explain the concept of promises and why they are used.**
+   - **Promises** are used to handle asynchronous operations. They represent the eventual completion (or failure) of an asynchronous operation and its resulting value.
+   - Example:
+     ```javascript
+     const myPromise = new Promise((resolve, reject) => {
+       setTimeout(() => {
+         resolve('Promise resolved!');
+       }, 1000);
+     });
+
+     myPromise.then((message) => {
+       console.log(message);
+     }).catch((error) => {
+       console.error(error);
+     });
+     ```
+
+### 4. **What are the differences between `==` and `===`?**
+   - `==` is the equality operator that compares values for equality after converting both values to a common type.
+   - `===` is the strict equality operator that compares both value and type without doing type conversion.
+   - Example:
+     ```javascript
+     console.log(2 == '2');  // true
+     console.log(2 === '2'); // false
+     ```
+
+### 5. **Explain the `this` keyword in JavaScript.**
+   - `this` refers to the object that is executing the current function.
+   - In a method, `this` refers to the owner object.
+   - Alone, `this` refers to the global object (in non-strict mode).
+   - In a function, `this` refers to the global object (in non-strict mode).
+   - In an event, `this` refers to the element that received the event.
+   - Example:
+     ```javascript
+     const person = {
+       name: 'John',
+       greet: function() {
+         console.log('Hello, ' + this.name);
+       }
+     };
+     person.greet(); // Output: Hello, John
+     ```
+
+### 6. **What is the event loop in JavaScript?**
+   - The **event loop** is what allows JavaScript to perform non-blocking operations, even though it is single-threaded.
+   - It works by taking functions in the queue (callbacks) and pushing them to the call stack for execution.
+   - Example:
+     ```javascript
+     console.log('Start');
+
+     setTimeout(() => {
+       console.log('Timeout');
+     }, 0);
+
+     console.log('End');
+     // Output:
+     // Start
+     // End
+     // Timeout
+     ```
+
+### 7. **What is the difference between `let`, `var`, and `const`?**
+   - `var` is function-scoped and can be re-declared and updated.
+   - `let` is block-scoped and can be updated but not re-declared within the same block.
+   - `const` is block-scoped and cannot be updated or re-declared. It must be initialized during declaration.
+   - Example:
+     ```javascript
+     var a = 1;
+     var a = 2; // No error
+
+     let b = 1;
+     // let b = 2; // Error: Identifier 'b' has already been declared
+
+     const c = 1;
+     // c = 2; // Error: Assignment to constant variable.
+     ```
+
+### 8. **What is prototypal inheritance in JavaScript?**
+   - **Prototypal inheritance** is a feature in JavaScript used to add methods and properties to objects.
+   - It allows an object to inherit properties and methods from another object.
+   - Example:
+     ```javascript
+     function Person(name, age) {
+       this.name = name;
+       this.age = age;
+     }
+
+     Person.prototype.greet = function() {
+       console.log('Hello, my name is ' + this.name);
+     };
+
+     const john = new Person('John', 30);
+     john.greet(); // Output: Hello, my name is John
+     ```
+
+### 9. **Explain async/await in JavaScript.**
+   - **async/await** is syntactic sugar built on top of promises, making asynchronous code easier to write and read.
+   - The `async` keyword is used to declare an async function, and the `await` keyword is used to pause execution until the promise resolves.
+   - Example:
+     ```javascript
+     async function fetchData() {
+       try {
+         let response = await fetch('https://api.example.com/data');
+         let data = await response.json();
+         console.log(data);
+       } catch (error) {
+         console.error('Error:', error);
+       }
+     }
+
+     fetchData();
+     ```
+
+### 10. **What is destructuring in JavaScript?**
+   - **Destructuring** is a syntax that allows unpacking values from arrays or properties from objects into distinct variables.
+   - Example:
+     ```javascript
+     const person = { name: 'Alice', age: 25 };
+     const { name, age } = person;
+     console.log(name); // Output: Alice
+     console.log(age);  // Output: 25
+
+     const numbers = [1, 2, 3];
+     const [first, second, third] = numbers;
+     console.log(first);  // Output: 1
+     console.log(second); // Output: 2
+     console.log(third);  // Output: 3
+     ```
+
+These questions should give you a good foundation for your interview preparation. Good luck!
+
+
+
+
