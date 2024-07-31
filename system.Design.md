@@ -239,3 +239,10 @@ XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filte
 
 
 SQL injection is a security vulnerability that allows attackers to interfere with the queries an application makes to its database by injecting malicious SQL code through user inputs.
+
+
+
+
+
+# Memory Leaks
+A memory leak is a situation where memory is allocated for objects that are no longer being used by the program, but the garbage collector can't reclaim that memory because the objects are still being referenced somewhere. This can lead to performance slowdowns and crashes as the application continues to run. https://www.geeksforgeeks.org/how-to-handle-memory-leaks-in-javascript/
