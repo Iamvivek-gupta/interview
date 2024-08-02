@@ -240,9 +240,295 @@ XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filte
 
 SQL injection is a security vulnerability that allows attackers to interfere with the queries an application makes to its database by injecting malicious SQL code through user inputs.
 
-
+# testing Stubs
+Stubs in software testing are programs or routines that simulate the behavior of software components or modules. When a particular component or module is missing or still under development, stubs step in to temporarily replace these yet-to-be-developed components. They allow testing to proceed in parallel with development, ensuring that applications run smoothly and efficiently1. 
 
 
 
 # Memory Leaks
-A memory leak is a situation where memory is allocated for objects that are no longer being used by the program, but the garbage collector can't reclaim that memory because the objects are still being referenced somewhere. This can lead to performance slowdowns and crashes as the application continues to run. https://www.geeksforgeeks.org/how-to-handle-memory-leaks-in-javascript/
+A memory leak is a situation where memory is allocated for variables, events and objects that are no longer being used by the program, but the garbage collector can't reclaim that memory because the objects are still being referenced somewhere. This can lead to performance slowdowns and crashes as the application continues to run. https://www.geeksforgeeks.org/how-to-handle-memory-leaks-in-javascript/
+
+
+
+
+
+
+
+
+
+
+
+
+
+Worker Thread
+
+In Node.js, worker threads allow you to run JavaScript code in parallel using threads. These threads are useful for CPU-intensive tasks, dividing the work among multiple workers to optimize performance. Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
+
+ 
+
+Cluster Module:
+The cluster module in Node.js allows you to create multiple worker processes (child processes) that share the same server port.
+It’s useful for utilizing multi-core CPUs efficiently by distributing incoming requests across these workers.
+Each worker runs in a separate process, but they can communicate with the parent process using Inter-Process Communication (IPC).
+In summary, the cluster module helps scale your Node.js application by creating a pool of workers to handle requests concurrently1.
+Forking:
+When you use child_process.fork(), you create a new Node.js process (worker) that runs a specified module.
+This fresh instance of the V8 engine allows you to essentially create multiple workers running the same Node code base or different modules for specific tasks.
+Forking is commonly used to create a worker pool, especially when you want to take advantage of multi-core machines.
+It’s a way to parallelize tasks and improve performance by running separate instances of your application code on different cores23.
+Spawning:
+The child_process.spawn() method launches a new process with a given command.
+Unlike forking, it doesn’t create a fresh V8 engine instance. Instead, it runs system commands (e.g., shell commands) as separate processes.
+You can interact with the spawned process using listeners, but it doesn’t execute further code within your Node process.
+Use spawn() for system-level commands, and reserve forking for Node.js-specific tasks or worker pools2.
+Remember, for CPU-intensive tasks, forking is often the better choice, while spawning is suitable for running system commands. 😊🚀
+
+ 
+
+ 
+
+Certainly! Below is a simple Node.js code snippet demonstrating worker threads, the cluster module, forking, and spawning:
+
+Worker Threads:
+Worker threads allow parallel execution of JavaScript code.
+In the main thread, create a new worker and communicate with it using messages:
+o   // Main thread
+
+o   const { Worker, isMainThread, parentPort } = require('worker_threads');
+
+o   if (isMainThread) {
+
+o     const worker = new Worker(__filename);
+
+o     worker.on('message', (message) => {
+
+o       console.log('Received message from worker:', message);
+
+o     });
+
+o     worker.postMessage('Hello from main thread!');
+
+o   } else {
+
+o     // Worker thread
+
+o     parentPort.on('message', (message) => {
+
+o       console.log('Received message from main thread:', message);
+
+o       parentPort.postMessage('Hello from worker thread!');
+
+o     });
+
+o   }
+
+Cluster Module:
+The cluster module helps scale your app across CPU cores:
+o   const cluster = require('cluster');
+
+o   const http = require('http');
+
+o   const numCPUs = require('os').cpus().length;
+
+o   if (cluster.isMaster) {
+
+o     for (let i = 0; i < numCPUs; i++) {
+
+o       cluster.fork();
+
+o     }
+
+o     cluster.on('exit', (worker) => {
+
+o       console.log(`Worker ${worker.process.pid} died.`);
+
+o     });
+
+o   } else {
+
+o     http.createServer((req, res) => {
+
+o       res.writeHead(200);
+
+o       res.end('Hello from worker process!');
+
+o     }).listen(8000);
+
+o   }
+
+Forking:
+Forking creates a new Node.js process:
+o   const { fork } = require('child_process');
+
+o   const child = fork('child.js'); // Replace 'child.js' with your module
+
+o   child.on('message', (message) => {
+
+o     console.log('Received message from forked process:', message);
+
+o   });
+
+o   child.send('Hello from parent process!');
+
+Spawning:
+Spawning runs system commands as separate processes:
+o   const { spawn } = require('child_process');
+
+o   const ls = spawn('ls', ['-l']); // Example: list files in the current directory
+
+o   ls.stdout.on('data', (data) => {
+
+o     console.log(`stdout: ${data}`);
+
+o   });
+
+o   ls.stderr.on('data', (data) => {
+
+o     console.error(`stderr: ${data}`);
+
+o   });
+
+o   ls.on('close', (code) => {
+
+o     console.log(`Child process exited with code ${code}`);
+
+o   });
+
+Feel free to adapt and use these code snippets in your Node.js applications! 😊🚀
+
+ 
+
+ 
+
+ 
+
+Certainly! Let’s dive into Node.js streams:
+
+What Are Streams?
+Streams in Node.js are abstract interfaces for working with streaming data.
+They allow reading or writing data in a continuous manner, without loading everything into memory at once.
+Streams are like pipes for data flow, especially useful for large datasets or data arriving incrementally.
+Types of Streams:
+Readable Streams: Allow reading data from a source (e.g., files, HTTP responses).
+Writable Streams: Enable writing data to a destination (e.g., files, HTTP requests).
+Some streams can be both readable and writable.
+Why Use Streams?
+Memory Efficiency: Streams process data in chunks, reducing memory usage.
+Composability: Like Linux commands, you can pipe streams together for powerful transformations.
+Practical Example:
+Let’s create a big file using streams:
+o   const fs = require('fs');
+o   const file = fs.createWriteStream('./big.file');
+o   for (let i = 0; i <= 1e6; i++) {
+o     file.write('Lorem ipsum dolor sit amet, ...'); // Add your content here
+o   }
+This approach avoids loading the entire file into memory, making it memory-efficient.
+Remember, streams are your allies when dealing with large data or external sources! 🚀1234
+
+ 
+
+ 
+
+TypeScript
+
+TypeScript
+
+Explore
+
+In TypeScript, a type alias allows you to create a new name for an existing type. It doesn’t truly create a new type; instead, it gives that type a more descriptive or custom name. Here’s how it works:
+
+Simplifying Complex Types:
+Type aliases are useful for simplifying complex types. You can create a shorter, more meaningful name for a type definition.
+For example, you can define an alias for a specific shape of data, like a user object or a mathematical operation12.
+Making Code Readable:
+By using type aliases, you enhance code readability. Instead of directly using built-in types (like number, string, or object), you can create more expressive names.
+This makes your code self-descriptive and easier to understand for other developers12.
+Reusable Types:
+Type aliases allow you to create reusable types that can be used in multiple places within your codebase.
+Whether it’s a custom structure, a union type, or a function signature, type aliases help keep your code organized and maintainable12.
+For instance, consider these examples:
+
+User ID Alias:
+·       type UserID = number;
+·       function getUserByID(id: UserID): User {
+·         // Implementation to fetch user by ID
+·         return {} as User; // Dummy return for demonstration
+·       }
+Post Alias:
+·       type Post = {
+·         title: string;
+·         content: string;
+·         author: Username;
+·       };
+·       const newPost: Post = {
+·         title: "Introduction to TypeScript Type Aliases",
+·         content: "In this article, we explore TypeScript type aliases...",
+·         author: "dev_guru_123",
+·       };
+Math Operation Alias:
+·       type MathOperation = (x: number, y: number) => number;
+·       const add: MathOperation = (x, y) => x + y;
+·       const subtract: MathOperation = (x, y) => x - y;
+Feel free to use type aliases to improve your TypeScript code! 🚀12
+
+ 
+
+ 
+
+ 
+
+Certainly! 😊 Let’s dive into TypeScript enums and how they can impress your interviewer.
+
+What Are Enums?
+Enums (short for “enumerated types”) in TypeScript allow you to define a set of named constant values.
+They group related constants together, making your code more expressive and readable.
+Creating an Enum:
+To define an enum, use the enum keyword followed by the enum name and a set of values enclosed in curly braces.
+Each value is assigned a unique numeric identifier by default, starting from 0 and incrementing for subsequent values.
+Example: Months of the Year:
+4.  enum Month {
+5.    Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+6.  }
+7.   
+8.  function isItSummer(month: Month): boolean {
+9.    switch (month) {
+10.    case Month.Jun:
+11.    case Month.Jul:
+12.    case Month.Aug:
+13.      return true;
+14.    default:
+15.      return false;
+16.  }
+17.}
+18. 
+19.console.log(isItSummer(Month.Jun)); // true
+Why Use Enums?
+Enums make your code self-descriptive by using meaningful names (e.g., Month.Jun instead of 6).
+They enhance readability and maintainability.
+Remember, enums are a powerful tool to organize constants and improve code clarity! 🚀1234
+
+ 
+
+Enums in TypeScript are collection of named constants. They allow you to define a set of related values with meaningful names. Think of them as a way to group together specific options or cases. Whether it’s days of the week, directions (like “Up,” “Down,” etc.), or user responses (like “Yes” or “No”), enums make your code more expressive and self-documenting.  Plus, they’re handy for ensuring that you only use valid values in your application. 🚀🌟
+
+Here’s a simple example of defining and using an enum in TypeScript:
+
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+ 
+const selectedColor = Color.Green;
+console.log("Selected color:", selectedColor); // Outputs: 1 (index of Green)
+In this example, Color is an enum with three possible values: Red, Green, and Blue. When you use Color.Green, it corresponds to the numeric value 1. You can also explicitly assign custom values to enum members if needed.
+
+Feel free to impress your interviewer with your enum knowledge! 🚀🌟
+
+ 
+
+ 
+
+ 
+
+Memory leaks in JavaScript occur when memory that is no longer needed by an application isn’t properly released, leading to performance issues and potential crashes. Let’s explore how to handle them: 
