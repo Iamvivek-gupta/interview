@@ -532,3 +532,7 @@ Feel free to impress your interviewer with your enum knowledge! 🚀🌟
  
 
 Memory leaks in JavaScript occur when memory that is no longer needed by an application isn’t properly released, leading to performance issues and potential crashes. Let’s explore how to handle them: 
+
+
+
+play right , and automation testing, stubs and mock, solid prinicipal , ACID, never and omit keyword in typescript, roles of timer function in memory leaks.
