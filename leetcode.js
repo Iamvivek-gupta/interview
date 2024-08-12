@@ -1321,7 +1321,8 @@ console.log(longestCommonPrefix(strings2)); // Output: ""
 
 // Given an array nums of size n, return the majority element.
 
-// The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+// The majority element is the element that appears more than ⌊n / 2⌋ times.
+// You may assume that the majority element always exists in the array.
 
  
 
@@ -1350,7 +1351,8 @@ console.log(longestCommonPrefix(strings2)); // Output: ""
 
 
 
-// Sure, you can solve this problem using a linear time and constant space algorithm called Boyer-Moore Voting Algorithm. Here's how you can implement it in JavaScript:
+// Sure, you can solve this problem using a linear time and constant space algorithm called Boyer-Moore Voting Algorithm.
+// Here's how you can implement it in JavaScript:
 
 // ```javascript
 // function majorityElement(nums) {
@@ -1611,7 +1613,7 @@ console.log(findMin([11, 13, 15, 17])); // Output: 11
 // let k = 5;
 // console.log(findKthMissingPositive(arr, k)); // Output: 9
 ```
-
+```
 // ### Explanation:
 
 // 1. **Initialization**:

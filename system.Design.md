@@ -536,3 +536,309 @@ Memory leaks in JavaScript occur when memory that is no longer needed by an appl
 
 
 play right , and automation testing, stubs and mock, solid prinicipal , ACID, never and omit keyword in typescript, roles of timer function in memory leaks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The SOLID principles are five key design principles for writing clean, maintainable, and scalable code. Let's break down each principle with simple explanations and TypeScript examples:
+
+### 1. **Single Responsibility Principle (SRP)**
+**Definition**: A class should have only one reason to change, meaning it should have only one job or responsibility.
+
+**Example**:
+```typescript
+class Report {
+  generateReport(): string {
+    return "Report Content";
+  }
+}
+
+class ReportPrinter {
+  printReport(report: string): void {
+    console.log(report);
+  }
+}
+
+// Each class has a single responsibility: Report handles content, and ReportPrinter handles printing.
+```
+
+### 2. **Open/Closed Principle (OCP)**
+**Definition**: Software entities (classes, modules, functions) should be open for extension but closed for modification.
+
+**Example**:
+```typescript
+interface Shape {
+  area(): number;
+}
+
+class Circle implements Shape {
+  constructor(private radius: number) {}
+
+  area(): number {
+    return Math.PI * this.radius * this.radius;
+  }
+}
+
+class Rectangle implements Shape {
+  constructor(private width: number, private height: number) {}
+
+  area(): number {
+    return this.width * this.height;
+  }
+}
+
+function calculateTotalArea(shapes: Shape[]): number {
+  return shapes.reduce((total, shape) => total + shape.area(), 0);
+}
+
+// We can add new shapes (e.g., Triangle) without modifying existing code.
+```
+
+### 3. **Liskov Substitution Principle (LSP)**
+**Definition**: Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program.
+
+**Example**:
+```typescript
+class Bird {
+  fly(): void {
+    console.log("Flying");
+  }
+}
+
+class Penguin extends Bird {
+  fly(): void {
+    throw new Error("Penguins can't fly");
+  }
+}
+
+// This breaks LSP because a Penguin cannot be substituted for a Bird without causing errors.
+```
+
+To follow LSP, we would instead do:
+```typescript
+class FlyingBird {
+  fly(): void {
+    console.log("Flying");
+  }
+}
+
+class Sparrow extends FlyingBird {}
+
+class Penguin {
+  swim(): void {
+    console.log("Swimming");
+  }
+}
+
+// Now, only birds that can fly inherit from FlyingBird.
+```
+
+### 4. **Interface Segregation Principle (ISP)**
+**Definition**: Clients should not be forced to depend on methods they do not use. It's better to create smaller, more specific interfaces.
+
+**Example**:
+```typescript
+interface Worker {
+  work(): void;
+  eat(): void;
+}
+
+class HumanWorker implements Worker {
+  work(): void {
+    console.log("Working");
+  }
+
+  eat(): void {
+    console.log("Eating");
+  }
+}
+
+class RobotWorker implements Worker {
+  work(): void {
+    console.log("Working");
+  }
+
+  eat(): void {
+    throw new Error("Robots don't eat");
+  }
+}
+
+// Violates ISP because RobotWorker doesn't need the eat method.
+```
+
+To follow ISP:
+```typescript
+interface Workable {
+  work(): void;
+}
+
+interface Eatable {
+  eat(): void;
+}
+
+class HumanWorker implements Workable, Eatable {
+  work(): void {
+    console.log("Working");
+  }
+
+  eat(): void {
+    console.log("Eating");
+  }
+}
+
+class RobotWorker implements Workable {
+  work(): void {
+    console.log("Working");
+  }
+}
+
+// Now, RobotWorker only implements the interface it needs.
+```
+
+### 5. **Dependency Inversion Principle (DIP)**
+**Definition**: High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).
+
+**Example**:
+```typescript
+class LightBulb {
+  turnOn(): void {
+    console.log("LightBulb on");
+  }
+
+  turnOff(): void {
+    console.log("LightBulb off");
+  }
+}
+
+class Switch {
+  private bulb: LightBulb;
+
+  constructor(bulb: LightBulb) {
+    this.bulb = bulb;
+  }
+
+  operate(): void {
+    this.bulb.turnOn();
+  }
+}
+
+// Switch is tightly coupled with LightBulb, violating DIP.
+```
+
+To follow DIP:
+```typescript
+interface Switchable {
+  turnOn(): void;
+  turnOff(): void;
+}
+
+class LightBulb implements Switchable {
+  turnOn(): void {
+    console.log("LightBulb on");
+  }
+
+  turnOff(): void {
+    console.log("LightBulb off");
+  }
+}
+
+class Switch {
+  private device: Switchable;
+
+  constructor(device: Switchable) {
+    this.device = device;
+  }
+
+  operate(): void {
+    this.device.turnOn();
+  }
+}
+
+// Now, Switch depends on an abstraction (Switchable), not a specific class.
+```
+
+### Summary
+
+- **SRP**: One class, one responsibility.
+- **OCP**: Open for extension, closed for modification.
+- **LSP**: Subtypes should be replaceable for their base types.
+- **ISP**: Prefer small, specific interfaces over large, general ones.
+- **DIP**: Depend on abstractions, not concretions.
+
+By following these principles, you write cleaner, more maintainable code that's easier to scale and extend.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ACID
+ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that guarantee the reliability of transactions in a database management system (DBMS). Let's break down each component of ACID and understand its significance using MySQL as an example:
+
+1. **Atomicity**:
+   - Atomicity ensures that each transaction is treated as a single unit of work, which means that either all of the operations within the transaction are successfully completed, or none of them are.
+   - In MySQL, if a transaction encounters an error or failure during execution, it can be rolled back to its initial state, undoing any changes made by the transaction.
+   - Example: Consider a banking application where a user transfers funds from one account to another. Atomicity ensures that if the funds are deducted from one account, they are also successfully credited to the recipient's account. If any step fails, the entire transaction is rolled back, ensuring data integrity.
+
+2. **Consistency**:
+   - Consistency ensures that the database remains in a consistent state before and after the transaction. It guarantees that the integrity constraints, such as foreign key constraints or unique constraints, are not violated.
+   - In MySQL, consistency is maintained by enforcing referential integrity and other constraints defined on the database schema.
+   - Example: In a blog application, if a user attempts to publish a post, consistency ensures that the post is not published if it violates any constraints, such as a missing required field or an invalid reference to a category.
+
+3. **Isolation**:
+   - Isolation ensures that transactions are executed independently of each other, as if they were executed sequentially. It prevents interference between concurrent transactions, thereby maintaining data integrity and consistency.
+   - In MySQL, isolation levels such as READ COMMITTED, REPEATABLE READ, and SERIALIZABLE control the degree of isolation between transactions.
+   - Example: Consider a scenario where multiple users simultaneously update their profile information. Isolation ensures that each user's transaction sees a consistent snapshot of the data and is not affected by concurrent updates from other users.
+
+4. **Durability**:
+   - Durability guarantees that once a transaction is committed, its changes are permanently saved and will not be lost, even in the event of a system failure or crash.
+   - In MySQL, durability is achieved by writing transactional changes to the database's transaction log or redo log before confirming the transaction's success.
+   - Example: After a user makes a purchase in an e-commerce application, durability ensures that the transaction details are safely stored in the database and will not be lost, even if the server crashes before sending a confirmation email to the user.
+
+In summary, ACID properties ensure the reliability, integrity, and consistency of transactions in MySQL and other relational database management systems, making them suitable for applications that require robust data handling and transactional support.
