@@ -1638,3 +1638,211 @@ console.log(findMin([11, 13, 15, 17])); // Output: 11
 // - The loop narrows down the range, and finally, we determine that the 5th missing positive integer is 9.
 
 // This approach ensures that we efficiently find the k-th missing positive integer using binary search.
+
+
+
+
+
+
+
+// Given the array nums after the possible rotation and an integer
+//  target, return the index of the target if it is in nums, or -1 if it is not
+//  in nums.
+//  You must write an algorithm with O(log n) runtime complexity.
+//  Input: nums = [4,5,6,7,0,1,2], target = 0
+//  Output: 4
+//  Input: nums = [4,5,6,7,0,1,2], target = 3
+//  Output: -1
+
+
+
+
+// To solve this problem, we can use a modified version of binary search. Binary search is an efficient algorithm with a runtime complexity of O(log n) that works on sorted arrays by repeatedly dividing the search interval in half. Since the array is rotated, we need to make slight adjustments to the traditional binary search.
+
+// ### Steps to Understand the Problem:
+
+// 1. **Identify the Midpoint**:
+//    - In binary search, you always start by finding the middle element of the array.
+
+// 2. **Check if Midpoint is the Target**:
+//    - If the middle element is the target, return its index.
+
+// 3. **Determine Which Half is Sorted**:
+//    - In a rotated sorted array, one half (either left or right) will always be sorted. We need to figure out which one is sorted by comparing the start, mid, and end elements.
+
+// 4. **Decide Which Half to Search**:
+//    - If the left half is sorted, check if the target lies within that range. If it does, adjust the end pointer to search the left half. Otherwise, adjust the start pointer to search the right half.
+//    - If the right half is sorted, check if the target lies within that range. If it does, adjust the start pointer to search the right half. Otherwise, adjust the end pointer to search the left half.
+
+// 5. **Repeat**:
+//    - Continue this process until you find the target or exhaust the search space.
+
+// ### JavaScript Code Implementation:
+
+```javascript
+function search(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        
+        // If the target is found at the mid index
+        if (nums[mid] === target) {
+            return mid;
+        }
+        
+        // Determine if the left half is sorted
+        if (nums[left] <= nums[mid]) {
+            // Check if the target is in the sorted left half
+            if (nums[left] <= target && target < nums[mid]) {
+                right = mid - 1;  // Search in the left half
+            } else {
+                left = mid + 1;   // Search in the right half
+            }
+        }
+        // Otherwise, the right half must be sorted
+        else {
+            // Check if the target is in the sorted right half
+            if (nums[mid] < target && target <= nums[right]) {
+                left = mid + 1;   // Search in the right half
+            } else {
+                right = mid - 1;  // Search in the left half
+            }
+        }
+    }
+    
+    // If the target is not found, return -1
+    return -1;
+}
+
+// Example usage:
+console.log(search([4, 5, 6, 7, 0, 1, 2], 0));  // Output: 4
+console.log(search([4, 5, 6, 7, 0, 1, 2], 3));  // Output: -1
+```
+
+// ### Explanation:
+
+// - **Initialization**:
+//   - `left` and `right` are pointers that represent the current search space.
+  
+// - **Main Loop**:
+//   - We calculate the `mid` index. If `nums[mid]` is the target, we return `mid`.
+//   - We then check whether the left half (`nums[left]` to `nums[mid]`) is sorted by comparing `nums[left]` and `nums[mid]`.
+//   - Depending on whether the target is within the sorted half, we adjust our search range by moving either `left` or `right`.
+
+// - **Exit Condition**:
+//   - The loop continues until `left` exceeds `right`. If the target is not found, `-1` is returned.
+
+// This method effectively uses binary search to find the target in a rotated sorted array with a time complexity of O(log n).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Given an integer array nums, find a subarray that has the largest
+//  product, and return the product.
+//  Input: nums = [2,3,-2,4]
+//  Output: 6
+//  Explanation: [2,3] has the largest product 6.
+//  Input: nums = [-2,0,-1]
+//  Output: 0
+//  Explanation: The result cannot be 2, because [-2,-1] is not a
+//  subarray.
+
+
+
+
+
+
+
+
+
+
+
+
+// To solve the problem of finding the subarray with the largest product in an array of integers, we can use a dynamic programming approach. Here's the basic idea:
+
+// ### Explanation:
+
+// 1. **Track Two Values**:
+//    - **Maximum Product (`maxProduct`)**: The maximum product of the subarray found so far.
+//    - **Minimum Product (`minProduct`)**: The minimum product of the subarray found so far, because a negative number multiplied by another negative number can potentially become the maximum product.
+
+// 2. **Iterate Through the Array**:
+//    - As we iterate through the array, at each element, we need to consider three possibilities:
+//      - The current number itself.
+//      - The product of the current number and the previous maximum product (if the current number is positive).
+//      - The product of the current number and the previous minimum product (if the current number is negative).
+
+// 3. **Update Maximum and Minimum Products**:
+//    - For each element in the array, calculate the maximum and minimum products up to that point. Update the overall maximum product accordingly.
+
+// 4. **Return the Maximum Product**:
+//    - The maximum product found during the iteration will be the answer.
+
+// ### JavaScript Code Implementation:
+
+```javascript
+function maxProduct(nums) {
+    if (nums.length === 0) return 0;
+
+    let maxProduct = nums[0];
+    let minProduct = nums[0];
+    let result = nums[0];
+
+    for (let i = 1; i < nums.length; i++) {
+        let current = nums[i];
+        
+        // Calculate possible candidates for max and min products
+        let tempMax = Math.max(current, maxProduct * current, minProduct * current);
+        let tempMin = Math.min(current, maxProduct * current, minProduct * current);
+
+        // Update maxProduct and minProduct for the next iteration
+        maxProduct = tempMax;
+        minProduct = tempMin;
+
+        // Update the result with the maximum product found so far
+        result = Math.max(result, maxProduct);
+    }
+
+    return result;
+}
+
+// Example usage:
+console.log(maxProduct([2, 3, -2, 4]));  // Output: 6
+console.log(maxProduct([-2, 0, -1]));    // Output: 0
+```
+
+// ### Explanation of Code:
+
+// 1. **Initialization**:
+//    - `maxProduct` and `minProduct` are initialized to the first element of the array because the subarray must include at least one number.
+//    - `result` is also initialized to the first element as this will store the maximum product found.
+
+// 2. **Iteration**:
+//    - For each element in the array, we compute three values:
+//      - `current`: The current element.
+//      - `tempMax`: The maximum product so far, considering the current element.
+//      - `tempMin`: The minimum product so far, considering the current element.
+//    - These are calculated by considering whether multiplying the current element by the previous `maxProduct` or `minProduct` would yield a higher or lower value, respectively.
+
+// 3. **Update the Result**:
+//    - After calculating the temporary max and min values, update the `maxProduct` and `minProduct` for the next iteration.
+//    - Update `result` with the maximum value found so far.
+
+// 4. **Return the Result**:
+//    - Once the loop completes, `result` will hold the largest product of any subarray in `nums`.
+
+// This approach efficiently finds the subarray with the largest product in O(n) time complexity, where n is the length of the array.

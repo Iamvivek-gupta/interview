@@ -354,7 +354,7 @@ Here are some commonly asked JavaScript interview questions, along with explanat
      ```
 
 ### 9. **Explain async/await in JavaScript.**
-   - **async/await** is syntactic sugar built on top of promises, making asynchronous code easier to write and read.
+   - **async/await** is syntactic sugar which is built on top of promises, that simplifies the process of writing asynchronous code in JavaScript.It provides a more clean concise and readable syntax for handling asynchronous operations. Async/await alow engineers write asynchronous code that looks and behaves like synchronous code, making it easier to understand and maintain.
    - The `async` keyword is used to declare an async function, and the `await` keyword is used to pause execution until the promise resolves.
    - Example:
      ```javascript
