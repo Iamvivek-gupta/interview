@@ -1846,3 +1846,49 @@ console.log(maxProduct([-2, 0, -1]));    // Output: 0
 //    - Once the loop completes, `result` will hold the largest product of any subarray in `nums`.
 
 // This approach efficiently finds the subarray with the largest product in O(n) time complexity, where n is the length of the array.
+
+
+
+
+
+
+
+
+
+
+
+// Given an integer array nums, find subarray with largest sum and returns its sum?
+
+// Input [-2,1,-3,4,-1,2,1,-5,4] => 6
+// Input [5,4,-1,7,8] => 23
+
+
+let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+
+// using Kadana's Algorithm
+
+
+
+// function maxSubArray(nums) {
+//     // let maxSum = nums[0];
+//     // let currentSum = 0;
+
+//     // for (let i = 0; i < nums.length; i++) {
+//     //     currentSum = Math.max(nums[i], currentSum + nums[i]);
+//     //     maxSum = Math.max(maxSum, currentSum);  
+//     // }
+//     // return maxSum;
+
+//     if(nums.length === 0) return 0;
+//     let maxSum = nums[0];
+//     let currentSum = 0;
+
+//     for (let i = 0; i < nums.length; i++) {
+//         currentSum += nums[i];
+        
+//         maxSum = Math.max(maxSum, currentSum); 
+//         if(currentSum < 0) currentSum = 0;
+//     }
+//     return maxSum;
+// }
+// console.log(maxSubArray(nums));
