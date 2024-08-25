@@ -1863,7 +1863,7 @@ console.log(maxProduct([-2, 0, -1]));    // Output: 0
 // Input [5,4,-1,7,8] => 23
 
 
-let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+// let nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
 // using Kadana's Algorithm
 

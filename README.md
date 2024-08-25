@@ -32,7 +32,7 @@ The spread operator (`...`) in JavaScript is a powerful and versatile tool that 
 
 ### Explanation
 
-The spread operator is represented by three dots (`...`). It is used to "spread" out the elements of an array or the properties of an object. This can be particularly useful for array and object manipulation, such as copying, merging, and passing arguments to functions.
+The spread operator is represented by three dots (`...`). It allows you to expand elements of an iterable (like an array or a string) into individual elements. This can be particularly useful for array and object manipulation, such as copying, merging, and passing arguments to functions.
 
 ### Key Use Cases
 
@@ -388,6 +388,86 @@ Here are some commonly asked JavaScript interview questions, along with explanat
      ```
 
 These questions should give you a good foundation for your interview preparation. Good luck!
+
+
+
+
+
+
+
+
+
+
+# Recursion
+Recursion in JavaScript is a technique where a function calls itself to solve a problem. This approach is often used to break down complex problems into simpler, more manageable parts. 
+
+Here's a simple example to illustrate recursion:
+
+### Example: Counting Down
+
+```javascript
+function countDown(number) {
+  // Base case: stop the recursion when number reaches 0
+  if (number <= 0) {
+    console.log("Done!");
+    return;
+  }
+  
+  // Print the current number
+  console.log(number);
+  
+  // Recursive call with the next number
+  countDown(number - 1);
+}
+
+// Start the countdown from 5
+countDown(5);
+```
+
+### Explanation:
+1. **Base Case**: The function stops calling itself when the number reaches 0. This prevents infinite recursion.
+2. **Recursive Case**: The function prints the current number and then calls itself with the number decremented by 1.
+
+When you run `countDown(5)`, the output will be:
+```
+5
+4
+3
+2
+1
+Done!
+```
+
+### Example: Factorial Calculation
+
+Another common example is calculating the factorial of a number:
+
+```javascript
+function factorial(n) {
+  // Base case: factorial of 0 or 1 is 1
+  if (n <= 1) {
+    return 1;
+  }
+  
+  // Recursive case: n * factorial of (n-1)
+  return n * factorial(n - 1);
+}
+
+// Calculate the factorial of 5
+console.log(factorial(5)); // Output: 120
+```
+
+### Explanation:
+1. **Base Case**: The factorial of 0 or 1 is 1.
+2. **Recursive Case**: The function multiplies the current number by the factorial of the previous number.
+
+Recursion is a powerful tool, but it's important to ensure that there is a base case to prevent infinite loops¹². If you have any more questions or need further examples, feel free to ask!
+
+Source: Conversation with Copilot, 8/25/2024
+(1) JavaScript Recursion (with Examples) - Programiz. https://www.programiz.com/javascript/recursion.
+(2) JavaScript Recursive Function By Examples - JavaScript Tutorial. https://www.javascripttutorial.net/javascript-recursive-function/.
+(3) How Does Recursion Work? Simplified in JavaScript with Examples. https://www.freecodecamp.org/news/recursion-in-javascript-simplified/.
+(4) What is Recursion in JavaScript? - freeCodeCamp.org. https://www.freecodecamp.org/news/recursion-in-javascript/.
 
 
 

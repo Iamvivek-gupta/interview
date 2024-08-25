@@ -371,3 +371,31 @@ console.log(canFormPalindrome("abbcabbd")); // Output: false
 ```
 
 // Now, "ABa" will return false as expected because it's case-sensitive. Thank you for your patience.
+
+
+
+
+
+
+
+
+
+
+
+// function findLargestElement(arr) {
+//     let largest = Number.MIN_SAFE_INTEGER;
+  
+//     arr.forEach(element => {
+//       if (Array.isArray(element)) {
+//         largest = Math.max(largest, findLargestElement(element));
+//       } else {
+//         largest = Math.max(largest, element);
+//       }
+//     });
+  
+//     return largest;
+//   }
+  
+//   const nestedArray = [[3, 4, 58], [709, 8, 9, [10, 11]], [111, 2]];
+//   console.log(findLargestElement(nestedArray)); // Output: 709
+  
