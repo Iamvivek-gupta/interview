@@ -392,8 +392,8 @@ let formLargestArray = (array) => {
 
 // // polyfill for forEach 
 // Array.prototype.ourForEach = function (callBack) {
-//   for (let i = 0; i < this.length; i++) {
-//     callBack(this[i]);
+//   for (let item of this) {
+//     callBack(item);
 //   }
 // };
 // names.ourForEach(consoleFunc);

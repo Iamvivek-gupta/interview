@@ -285,11 +285,7 @@ Here are some commonly asked JavaScript interview questions, along with explanat
      ```
 
 ### 5. **Explain the `this` keyword in JavaScript.**
-   - `this` refers to the object that is executing the current function.
-   - In a method, `this` refers to the owner object.
-   - Alone, `this` refers to the global object (in non-strict mode).
-   - In a function, `this` refers to the global object (in non-strict mode).
-   - In an event, `this` refers to the element that received the event.
+  The "this" keyword is used to refer to the object that it belongs to. The value of "this" varies depending on the context in which it is used. For instance, when used inside a method, "this" refers to the object that the method is called on. When used alone, "this" refers to the global object. Similarly, when used inside a function, "this" also refers to the global object. On the other hand, when used inside an event, "this" refers to the element receiving the event. It is important to note that the value of "this" is determined at runtime and depends on the way in which the function or method is called.
    - Example:
      ```javascript
      const person = {
@@ -461,13 +457,111 @@ console.log(factorial(5)); // Output: 120
 1. **Base Case**: The factorial of 0 or 1 is 1.
 2. **Recursive Case**: The function multiplies the current number by the factorial of the previous number.
 
-Recursion is a powerful tool, but it's important to ensure that there is a base case to prevent infinite loops¹². If you have any more questions or need further examples, feel free to ask!
+# Normal and Arrow Function Difference
 
-Source: Conversation with Copilot, 8/25/2024
-(1) JavaScript Recursion (with Examples) - Programiz. https://www.programiz.com/javascript/recursion.
-(2) JavaScript Recursive Function By Examples - JavaScript Tutorial. https://www.javascripttutorial.net/javascript-recursive-function/.
-(3) How Does Recursion Work? Simplified in JavaScript with Examples. https://www.freecodecamp.org/news/recursion-in-javascript-simplified/.
-(4) What is Recursion in JavaScript? - freeCodeCamp.org. https://www.freecodecamp.org/news/recursion-in-javascript/.
+Great question! Arrow functions and normal (traditional) functions in JavaScript have some key differences. Here’s a breakdown:
+
+### Syntax
+- **Arrow Function**:
+  ```javascript
+  const add = (a, b) => a + b;
+  ```
+- **Normal Function**:
+  ```javascript
+  function add(a, b) {
+    return a + b;
+  }
+  ```
+
+### `this` Binding
+- **Arrow Function**: Does not have its own `this` context. It inherits `this` from the parent scope.
+  ```javascript
+  const obj = {
+    value: 10,
+    getValue: () => this.value
+  };
+  console.log(obj.getValue()); // undefined
+  ```
+- **Normal Function**: Has its own `this` context.
+  ```javascript
+  const obj = {
+    value: 10,
+    getValue: function() {
+      return this.value;
+    }
+  };
+  console.log(obj.getValue()); // 10
+  ```
+
+### Arguments Object
+- **Arrow Function**: Does not have its own `arguments` object.
+  ```javascript
+  const func = () => {
+    console.log(arguments);
+  };
+  func(1, 2); // ReferenceError: arguments is not defined
+  ```
+- **Normal Function**: Has its own `arguments` object.
+  ```javascript
+  function func() {
+    console.log(arguments);
+  }
+  func(1, 2); // [Arguments] { '0': 1, '1': 2 }
+  ```
+
+### Usage
+- **Arrow Function**: Often used for shorter functions and callbacks.
+  ```javascript
+  const numbers = [1, 2, 3];
+  const doubled = numbers.map(n => n * 2);
+  console.log(doubled); // [2, 4, 6]
+  ```
+- **Normal Function**: Used when a function needs its own `this` context or `arguments` object.
+  ```javascript
+  function Person(name) {
+    this.name = name;
+  }
+  Person.prototype.sayName = function() {
+    console.log(this.name);
+  };
+  const person = new Person('Alice');
+  person.sayName(); // Alice
+  ```
+
+### Constructor
+- **Arrow Function**: Cannot be used as constructors.
+  ```javascript
+  const Person = (name) => {
+    this.name = name;
+  };
+  const person = new Person('Alice'); // TypeError: Person is not a constructor
+  ```
+- **Normal Function**: Can be used as constructors.
+  ```javascript
+  function Person(name) {
+    this.name = name;
+  }
+  const person = new Person('Alice');
+  console.log(person.name); // Alice
+  ```
+
+### No `new.target`
+- **Arrow Function**: Does not have `new.target`.
+  ```javascript
+  const func = () => {
+    console.log(new.target);
+  };
+  func(); // undefined
+  ```
+- **Normal Function**: Has `new.target`.
+  ```javascript
+  function func() {
+    console.log(new.target);
+  }
+  new func(); // [Function: func]
+  ```
+
+These differences make arrow functions particularly useful for certain scenarios, especially when dealing with callbacks and methods that don't require their own `this` context. If you have any more questions or need further clarification, feel free to ask!
 
 
 
