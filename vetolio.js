@@ -418,3 +418,66 @@ console.log(canFormPalindrome("abbcabbd")); // Output: false
 //   const nestedArray = [[3, 4, 58], [709, 8, 9, [10, 11]], [111, 2]];
 //   console.log(findLargestElement(nestedArray)); // Output: 709
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Implement an LRU (Least Recently Used) cache. It should be able to be initialized with a cache size n, and contain the following methods:
+set(key, value): sets key to value. If there are already n items in the cache and we are adding a new item, then it should also remove the least recently used item. 
+get(key): gets the value at key. If no such key exists, return null.
+*/
+
+
+// class LRUCache {
+//     constructor(size) {
+//       this.size = size;
+//       this.cache = new Map();
+//     }
+  
+//     get(key){
+//       if(!this.cache.has(key)){
+//         return null
+//       }
+  
+//       const value = this.cache.get(key);
+//       this.cache.delete(key);
+//       this.cache.set(key, value);
+  
+//       return value;
+//     }
+  
+//     set(key, value) {
+//       if(this.cache.has(key)){
+//         this.cache.delete(key);
+//       } else if(this.cache.size === this.size){
+//         const firstKey = this.cache.keys().next().value;
+//         this.cache.delete(firstKey);
+  
+//         this.cache.set(key, value);
+//       }
+//     }
+//   }
+  
+  
+//   const lru = new LRUCache(3)
+  
+//   lru.set("a", 1);
+//   lru.set("b", 2);
+//   lru.set("c", 3);
+  
+//   console.log(lru.get("a"))

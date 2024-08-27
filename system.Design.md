@@ -842,3 +842,60 @@ ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durabi
    - Example: After a user makes a purchase in an e-commerce application, durability ensures that the transaction details are safely stored in the database and will not be lost, even if the server crashes before sending a confirmation email to the user.
 
 In summary, ACID properties ensure the reliability, integrity, and consistency of transactions in MySQL and other relational database management systems, making them suitable for applications that require robust data handling and transactional support.
+
+
+
+
+
+
+
+
+
+
+# Event Emitter
+
+In Node.js, the EventEmitter is a class that helps manage and handle events. Think of it as a way to create and listen for custom events in your application, similar to how you might handle events like clicks or key presses in a web browser.
+
+How EventEmitter Works:
+
+Creating an EventEmitter: First, you create an instance of the EventEmitter class.
+const EventEmitter = require('events');
+const myEmitter = new EventEmitter();
+Listening for Events: You can set up listeners for specific events using the on method. These listeners are functions that will run when the event is triggered.
+myEmitter.on('event', () => {
+  console.log('An event occurred!');
+});
+Emitting Events: To trigger an event, you use the emit method. This will call all the listeners attached to that event.
+myEmitter.emit('event');
+Why It’s Useful:
+
+Asynchronous Handling: EventEmitter allows you to handle asynchronous operations cleanly. For example, you can emit an event when a file is read or a network request is completed, and have different parts of your application respond to these events.
+Decoupling Code: It helps in decoupling different parts of your application. Instead of having tightly coupled functions, you can have different modules listen for and respond to events, making your code more modular and maintainable.
+Real-time Applications: It’s particularly useful in real-time applications like chat apps or live notifications, where you need to respond to events as they happen.
+Example to Impress Your Interviewer:
+
+Imagine you’re building a chat application. You can use EventEmitter to handle new messages:
+
+const EventEmitter = require('events');
+
+const chatEmitter = new EventEmitter();
+
+ 
+
+// Listener for new messages
+
+chatEmitter.on('message', (user, message) => {
+
+  console.log(`${user}: ${message}`);
+
+});
+
+ 
+
+// Emitting a new message event
+
+chatEmitter.emit('message', 'Alice', 'Hello, everyone!');
+
+In this example, whenever a new message is received, the message event is emitted, and all listeners for that event are executed. This makes your code clean and easy to manage123.
+
+Would you like more examples or details on how to use EventEmitter in specific scenarios?

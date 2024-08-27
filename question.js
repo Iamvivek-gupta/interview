@@ -1123,7 +1123,7 @@ const calc = {
 //   const arr = [1, 2, 3, 4, 5];
 //   const k = 6;
 //   const rotatedArray = rotateArray(arr, k);
-//   console.log(rotatedArray); // Output: [4, 5, 1, 2, 3]
+//   console.log(rotatedArray); // Output: [5, 1, 2, 3, 4]
 
 
 
@@ -1473,21 +1473,18 @@ console.log(fibonacciSequence); // Output: [0, 1, 1, 2, 4, 7, 13, 24, 44, 81]
 // You can achieve this using a recursive function. Here's a JavaScript function to flatten an object:
 
 // javascript
-function flattenObject(obj, parentKey = '') {
+function flattenObject(obj, parentKey = ''){
   let result = {};
+  for(let key in obj){
 
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const newKey = parentKey ? `${parentKey}.${key}` : key;
+    let newKey = parentKey ? `${parentKey}.${key}` : key;
 
-      if (typeof obj[key] === 'object' && obj[key] !== null) {
-        // Recursively flatten nested objects
-        const flattened = flattenObject(obj[key], newKey);
-        result = { ...result, ...flattened };
-      } else {
-        // Add non-object properties to the result
-        result[newKey] = obj[key];
-      }
+    if(typeof obj[key] === 'object' && obj[key] != null){
+      let flattened = flattenObject(obj[key], newKey);
+
+      result = {...result, ...flattened};
+    } else {
+      result[newKey] = obj[key]
     }
   }
 
