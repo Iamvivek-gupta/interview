@@ -437,9 +437,12 @@ console.log(fibonacciMemoized(10)); // Output: 55
 console.log(fibonacciMemoized(5)); // Output: 5 (result fetched from cache)
 ```
 
-// In this example, we have a function `fibonacci(n)` that calculates the nth Fibonacci number recursively. We then create a memoized version of this function using the `memoizedFibonacci` wrapper. Inside this wrapper, we define a cache object to store the results of previously calculated Fibonacci numbers.
+// In this example, we have a function `fibonacci(n)` that calculates the nth Fibonacci number recursively.
+// We then create a memoized version of this function using the `memoizedFibonacci` wrapper.
+// Inside this wrapper, we define a cache object to store the results of previously calculated Fibonacci numbers.
 
-// When the `memoized` function is called with an input `n`, it first checks if the result for that input is already cached. If it is, the cached result is returned. Otherwise, the Fibonacci number is calculated using the original `fibonacci` function, the result is stored in the cache, and then returned.
+// When the `memoized` function is called with an input `n`, it first checks if the result for that input is already cached. If it is, the cached result is returned.
+// Otherwise, the Fibonacci number is calculated using the original `fibonacci` function, the result is stored in the cache, and then returned.
 
 // By memoizing the Fibonacci function, subsequent calls with the same input will retrieve the result from the cache instead of recalculating it, leading to improved performance, especially for larger inputs.
 

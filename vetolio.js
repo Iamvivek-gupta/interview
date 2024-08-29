@@ -443,41 +443,166 @@ get(key): gets the value at key. If no such key exists, return null.
 */
 
 
-// class LRUCache {
-//     constructor(size) {
-//       this.size = size;
-//       this.cache = new Map();
-//     }
+class LRUCache {
+    constructor(size) {
+      this.size = size;
+      this.cache = new Map();
+    }
   
-//     get(key){
-//       if(!this.cache.has(key)){
-//         return null
-//       }
+    get(key) {
+      if (!this.cache.has(key)) {
+        return null;
+      }
   
-//       const value = this.cache.get(key);
-//       this.cache.delete(key);
-//       this.cache.set(key, value);
+      // Move the accessed key to the end to show that it was recently used
+      const value = this.cache.get(key);
+      this.cache.delete(key);
+      this.cache.set(key, value);
   
-//       return value;
-//     }
+      return value;
+    }
   
-//     set(key, value) {
-//       if(this.cache.has(key)){
-//         this.cache.delete(key);
-//       } else if(this.cache.size === this.size){
-//         const firstKey = this.cache.keys().next().value;
-//         this.cache.delete(firstKey);
+    set(key, value) {
+      if (this.cache.has(key)) {
+        // Delete the old value so we can update the position of the key
+        this.cache.delete(key);
+      } else if (this.cache.size === this.size) {
+        // Delete the least recently used (first item in the Map)
+        const firstKey = this.cache.keys().next().value;
+        this.cache.delete(firstKey);
+      }
   
-//         this.cache.set(key, value);
-//       }
-//     }
-//   }
+      // Insert the new key-value pair
+      this.cache.set(key, value);
+    }
+  }
   
+  // Example usage:
+  const lru = new LRUCache(3);
+  lru.set("a", 1);
+  lru.set("b", 2);
+  lru.set("c", 3);
+  console.log(lru.get("a")); // Output: 1
+  lru.set("d", 4);           // LRU key "b" should be removed
+  console.log(lru.get("b")); // Output: null
+  console.log(lru.get("c")); // Output: 3
+  console.log(lru.get("d")); // Output: 4
+  console.log(lru.get("a")); // Output: 1
+
   
-//   const lru = new LRUCache(3)
-  
-//   lru.set("a", 1);
-//   lru.set("b", 2);
-//   lru.set("c", 3);
-  
-//   console.log(lru.get("a"))
+
+
+
+// ### Explanation:
+
+// 1. **Cache Initialization**:
+//    - The cache is initialized with a given size `n`. We use a `Map` to store the key-value pairs.
+
+// 2. **`get(key)` Method**:
+//    - If the key exists in the cache, return its value and move it to the end of the `Map` to mark it as recently used.
+//    - If the key does not exist, return `null`.
+
+// 3. **`set(key, value)` Method**:
+//    - If the key already exists, delete it from the `Map` so we can update its position.
+//    - If the cache is full (`this.cache.size === this.size`), remove the least recently used item (the first key in the `Map`).
+//    - Add the new key-value pair to the cache.
+
+// ### Key Points:
+// - **Map**: The `Map` object in JavaScript preserves the order of insertion, which is essential for implementing LRU functionality. The least recently used item will always be the first key in the `Map`.
+// - **Time Complexity**: Both `get` and `set` operations are O(1) on average, making this implementation efficient.
+
+
+
+
+
+
+// Intellias Question
+
+// The task is to implement a caching function Memoize 
+// The cache function should allow for caching method results with an expiration time, 
+// improving performance by avoiding redundant computations.
+// For example added getUserData method to retrieve user info from cache. We want to cache some results of getting user data
+
+// 1. Ensure that cached data expires after the specified duration to maintain data freshness.
+// 2. Handle cache eviction gracefully, removing expired data from the cache.
+// 3. Be aware - the function to memoize could be async. Does it somehow affect the implementation?
+
+function memoizeFunction(asyncFunction, expirationSeconds) {
+    const cache = new Map();
+
+    retrun async function(...args) {
+        const key = JSON.stringify(args);
+
+        const now = Date.now();
+        if(cache.has(key)){
+            const cacheEntry = cache.get(key);
+
+            // if(now < expirationSeconds) {
+            //     cache.set(key, cacheEntry)
+            // }
+
+            if(now > expirationSeconds){
+                cache.delete(key)
+            }
+        }
+
+
+        
+
+        
+
+        
+    }
+
+    // if(cache.has('userData')) {
+    //     return userData
+    // }
+
+    // let result = await getUserData(id);
+
+    // cache.set('userdata', result);
+
+
+    // setTimeout(() => {
+    //     cache.delete('userData');
+    // }expirationSeconds)
+
+    
+}
+
+
+
+const memoizedFunc1 = memoizeFunction(func1, 10);
+
+const memoizedFunc2 = memoizeFunction(func2, 15);
+
+async function func1(a, b) { return a + b; 
+}
+
+async function func2(a, b) { return a - b; 
+}
+ 
+
+// Example async function to memoize
+const getUserData = async (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve({ id, data: `Data for ID ${id}` }), 1000);
+    });
+};
+
+// Memoized version of getUserData with a 10-second cache
+const memoizedGetUserData = memoizeFunction(getUserData, 10);
+
+// Usage example
+(async () => {
+    console.log(await memoizedGetUserData(1)); // Cache miss, fetches data
+    console.log(await memoizedGetUserData(2)); // Cache miss, fetches data
+    console.log(await memoizedGetUserData(1)); // Cache hit, retrieves from cache
+    console.log(await memoizedGetUserData(2)); // Cache hit, retrieves from cache
+
+    // Wait for cache to expire
+    setTimeout(async () => {
+        console.log(await memoizedGetUserData(1)); // Cache expired, fetches data again
+        console.log(await memoizedGetUserData(1)); // Cache expired, fetches data again
+    }, 12000);
+})();
