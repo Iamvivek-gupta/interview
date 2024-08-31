@@ -270,6 +270,8 @@ Do you have any specific concerns or scenarios in mind regarding JWT security?
 
 
 What is MFA?
+Multi-Factor Authentication (MFA) adds an extra layer of security by requiring users to provide two or more verification factors to gain access to a resource.
+In Node.js, MFA can be implemented using various methods, such as Time-based One-Time Passwords (TOTP), SMS-based OTPs, or email-based OTPs.
 MFA requires users to provide multiple verification factors before accessing their accounts.
 Factors include something the user knows (password), something the user has (a mobile device or hardware token), and something the user is (biometric data).
 MFA significantly reduces the risk of unauthorized access and data breaches.
@@ -314,7 +316,8 @@ Overall, MFA was a critical layer of defense, and our users appreciated the adde
 
 
 What is SSO?
-SSO stands for Single Sign-On. It allows users to log in once and be automatically authenticated across multiple systems or applications that share the same SSO system.
+SSO stands for Single Sign-On.
+It allows users to log in once and be automatically authenticated across multiple systems or applications that share the same SSO system.
 Users don’t need to remember separate login credentials for each service, which improves efficiency and reduces the risk of credential compromise.
 Authentication Process with SSO:
 When a user logs in to an SSO-enabled site, they are redirected to a central login page.
@@ -333,3 +336,15 @@ A Kerberos ticket is a form of authentication using a secret key to prove a user
 Remember, SSO streamlines user access and enhances security, but it’s essential to address security concerns effectively."
 
 
+
+
+
+Create a simple Node.js application using Express and MongoDB. 
+The application should have an API endpoint to manage a collection of tasks. 
+Each task should have a title, description, status (e.g., "Pending", "In Progress", "Completed"), and a dueDate. 
+The application should include the following functionalities:
+
+Create a new task.
+Retrieve a list of tasks with optional filtering by status and dueDate.
+Update a task's status.
+Delete a task.
