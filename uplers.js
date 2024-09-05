@@ -168,16 +168,6 @@ Monitoring microservices is crucial to ensure the health and performance of your
 
 By implementing these practices, you can maintain the reliability and performance of your microservices architecture¹²³.
 
-Do you have any specific tools or technologies in mind for your microservices setup?
-
-Source: Conversation with Copilot, 8/28/2024
-(1) Microservices Monitoring: Importance, Metrics & 5 Best Practices. https://swimm.io/learn/microservices/microservices-monitoring-importance-metrics-and-5-critical-best-practices.
-(2) Monitoring Microservices: A 5-Step Guide - Stackify. https://stackify.com/monitoring-microservices-a-5-step-guide/.
-(3) Microservices Monitoring Strategies and Best Practices. https://www.catchpoint.com/api-monitoring-tools/microservices-monitoring.
-(4) The Five Principles of Monitoring Microservices - The New Stack. https://thenewstack.io/five-principles-monitoring-microservices/.
-(5) Monitor a microservices application in AKS - Azure Architecture Center .... https://learn.microsoft.com/en-us/azure/architecture/microservices/logging-monitoring.
-
-
 
 
 

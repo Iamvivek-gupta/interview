@@ -1808,7 +1808,7 @@ console.log(counter());
 // moves all zeros to the end of array
 
 
-function moveZero(nums){
+function moveZeroEnd(nums){
   let left = 0;
   let right = 0;
   while(right < nums.length){
@@ -1821,8 +1821,44 @@ function moveZero(nums){
   return nums;
 }
 
-console.log(moveZero([0,1,0,3,12]));
-console.log(moveZero([0]))
+console.log(moveZeroEnd([0,1,0,3,12]));
+console.log(moveZeroEnd([0]))
+
+
+
+
+// 2nd version
+
+// ```javascript
+// function moveZeroAtBegginning(nums) {
+//   let start = nums.length - 1;
+//   let end = nums.length - 1;
+
+//   while (end >= 0) {
+//     if (nums[end] != 0) {
+//       [nums[start], nums[end]] = [nums[end], nums[start]];
+//       start--;
+//     }
+//     end--;
+//   }
+
+//   return nums;
+// }
+// ```
+
+// ### Explanation:
+// - **Initialization**: Start and end pointers are initialized to the last index of the array.
+// - **Loop**: The loop runs from the end of the array to the beginning.
+// - **Condition**: If the current element is not zero, it swaps the element with the element at the start pointer and then decrements the start pointer.
+// - **Result**: This ensures that all non-zero elements are moved towards the end, and zeros are moved to the beginning.
+
+// ### Example:
+// ```javascript
+// let nums = [1, 0, 2, 0, 3, 0, 4];
+// console.log(moveZeroAtBegginning(nums)); // Output: [0, 0, 0, 1, 2, 3, 4]
+// ```
+
+// This approach ensures that all zeros are moved to the beginning of the array while maintaining the order of non-zero elements. Let me know if you have any questions!
 
 
 

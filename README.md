@@ -233,7 +233,9 @@ Optional chaining is a powerful feature that simplifies the process of accessing
 Here are some commonly asked JavaScript interview questions, along with explanations and examples to help you prepare:
 
 ### 1. **Explain closures in JavaScript.**
-   - **Closures** are functions that have access to their own scope, the scope of the outer function, and the global scope.
+   - **Closures** In JavaScript, a closure is a function that has the ability to access its own scope, as well as the scopes of the functions that surround it and the global scope. This feature allows functions to remember and access variables from an outer function even after the outer function has been executed.
+
+The outer function's variables and parameters are then accessible within the inner function, even after the outer function has finished running.
    - Example:
      ```javascript
      function outerFunction(outerVariable) {
