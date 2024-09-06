@@ -237,7 +237,24 @@ NoSniff: Sets X-Content-Type-Options to nosniff to prevent browsers from interpr
 XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
 
 
+# CORS
+CORS, or Cross-Origin Resource Sharing, is a mechanism that allows web applications running on one domain to request resources from another domain. This is crucial for enabling web applications to interact with APIs hosted on different servers.
 
+
+const app = express();
+
+app.use(cors()); // This setup enables CORS for all routes and origins. You can also configure it to allow specific origins or methods.
+
+const corsOptions = {
+  origin: 'http://your-client-url.com', // Replace with your client's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers if needed
+};
+
+app.use(cors(corsOptions)); 
+
+
+# SQL Injection
 SQL injection is a security vulnerability that allows attackers to interfere with the queries an application makes to its database by injecting malicious SQL code through user inputs.
 
 # testing Stubs

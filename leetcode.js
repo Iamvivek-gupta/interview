@@ -1891,4 +1891,7 @@ console.log(maxProduct([-2, 0, -1]));    // Output: 0
 //     }
 //     return maxSum;
 // }
-// console.log(maxSubArray(nums));
+// console.log(maxSubArray(nums));// 1215 => 1200
+// 1225 => 1250
+
+

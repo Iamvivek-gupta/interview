@@ -2154,11 +2154,42 @@ function longestSubstringWithoutRepeating(s) {
 const inputString = "abcabcbb";
 const result = longestSubstringWithoutRepeating(inputString);
 console.log(result); // Output: 3 (for "abc")
-```
+``
 
-// This function uses two pointers (`start` and `end`) to create a sliding window.
-// It maintains a map (`charIndexMap`) to store the last index where each character appeared.
-// If a repeating character is found, the `start` pointer is updated to the next index after the previous occurrence of the character.
+``
+//  Longest Substring without repeating characters in javascript Using brite force
+// approach should be like i) get all possible substrings ii) whether in subtring repeating character or not iii) max length of concern subtring. */
+// 
+// let isUnique = s => {
+//     let set = new Set;
+//     for(let i = 0; i < s.length; i++){
+//         if(set.has(s[i])){
+//             return false;
+//         }
+//         set.add(s[i]);
+//     }
+//     console.log(set);
+//     return true;
+// }
+// function longestSubstring(s){
+//     let max = 0;
+//     for(let begin = 0; begin < s.length; begin++){
+//         for(let end = begin; end < s.length; end++){
+//             let substring = s.substring(begin, end + 1);
+//             if(isUnique(substring)){
+//                 max = Math.max(max, substring.length);
+//             }
+//         }
+//         return max;
+//     }
+// }
+
+// console.log(longestSubstring('ab0c0ed'));
+
+``
+// This function uses two pointers (start and end) to create a sliding window.
+// It maintains a map (charIndexMap) to store the last index where each character appeared.
+// If a repeating character is found, the start pointer is updated to the next index after the previous occurrence of the character.
 // The maximum length of the substring without repeating characters is continuously updated during the traversal of the string.
 
 // 2nd way to find longest substring without repeating character using sliding window
@@ -2652,3 +2683,48 @@ function quicksort(arr) {
     }
     return [...quicksort(left), pivot, ...quicksort(right)];
 }
+
+
+
+
+
+
+// To check if `1215` is divisible by `50`, and if not, return the nearest number divisible by `50`, here is a solution in JavaScript:
+
+```js
+function nearestDivisibleBy50(num) {
+  if (num % 50 === 0) {
+    return num;
+  } else {
+    const lower = Math.floor(num / 50) * 50;  // nearest lower number divisible by 50
+    const higher = Math.ceil(num / 50) * 50;  // nearest higher number divisible by 50
+    return (num - lower < higher - num) ? lower : higher;
+  }
+}
+
+const num = 1215;
+const result = nearestDivisibleBy50(num);
+console.log(result);  // Output: 1200
+```
+
+// ### Explanation:
+// 1. **Check divisibility**: `num % 50 === 0` checks if the number is divisible by `50`.
+// 2. If not, the script calculates:
+//    - `lower`: the nearest number less than or equal to `num` that is divisible by `50` using `Math.floor`.
+//    - `higher`: the nearest number greater than or equal to `num` that is divisible by `50` using `Math.ceil`.
+// 3. The nearest divisible number is selected based on which is closer: `lower` or `higher`.
+
+// For `1215`, the nearest number divisible by `50` is `1200`.
+
+
+
+
+
+
+
+
+// let x = [1, 2, 3];
+// let y = [4, 5, 6];
+
+// console.log(x + y);
+// 1,2,34,5,6
