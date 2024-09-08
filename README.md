@@ -464,6 +464,33 @@ console.log(factorial(5)); // Output: 120
 1. **Base Case**: The factorial of 0 or 1 is 1.
 2. **Recursive Case**: The function multiplies the current number by the factorial of the previous number.
 
+
+Absolutely, we can modify the function to avoid passing `n` by using the array's length directly within the function. Here's how you can do it:
+
+### Recursive Function Without Passing to calculate total sum of an Array `n`
+
+```javascript
+function sumArray(arr) {
+  // Base case: if the array is empty
+  if (arr.length === 0) {
+    return 0;
+  }
+  // Recursive case: sum the first element and the sum of the rest of the array
+  return arr[0] + sumArray(arr.slice(1));
+}
+
+// Example usage
+const numbers = [1, 2, 3, 4, 5];
+const totalSum = sumArray(numbers);
+console.log(totalSum); // Output: 15
+```
+
+### Explanation
+1. **Base Case**: If the array is empty (`arr.length === 0`), return 0.
+2. **Recursive Case**: Sum the first element (`arr[0]`) and the sum of the rest of the array (`sumArray(arr.slice(1))`).
+
+This approach uses `arr.slice(1)` to create a new array excluding the first element, which is then passed to the next recursive call. This way, we don't need to pass the length of the array explicitly.
+
 # Normal and Arrow Function Difference
 
 Arrow functions and normal (traditional) functions in JavaScript have some key differences. Here’s a breakdown:
