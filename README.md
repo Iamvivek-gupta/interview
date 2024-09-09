@@ -202,14 +202,11 @@ Using Redux Toolkit helps you manage complex state in your React applications mo
 
 
 
-
+  
 
 
 # Optional Chaining
 Optional chaining is a powerful feature that simplifies the process of accessing nested properties and methods in JavaScript objects, making the code more clean consice and easier to read.
-
-
-
 
 
 

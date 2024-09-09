@@ -137,3 +137,39 @@ execute(2000); // This will log "start", wait for 2 seconds, and then log "resum
 
 
 
+let obj = {
+    x : 10
+}
+
+console.log(obj.toString())  
+
+
+
+
+// let arr = [];
+
+// function test(params){
+//     params.push(1);
+
+//     console.log(params)
+// }
+
+// test(arr);
+
+// console.log(arr)
+
+
+
+
+
+// let arr = 1;
+
+// function test(params){
+//     params = 2;
+
+//     console.log(params)
+// }
+
+// test(arr);
+
+// console.log(arr)
