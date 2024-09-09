@@ -107,6 +107,56 @@ export default MyComponent;
 
 
 
+# Diffrence Between UseCallback and UseMemo.?
+
+Sure! Here's a simple explanation of the difference between `useCallback` and `useMemo` hooks in React:
+
+- **`useCallback`**: This hook is used to memoize a function. It returns a memoized version of the callback function that only changes if one of the dependencies has changed. This is useful when you pass a callback to a child component and want to prevent unnecessary re-renders.
+
+  ```jsx
+  const memoizedCallback = useCallback(() => {
+    doSomething(a, b);
+  }, [a, b]);
+  ```
+
+- **`useMemo`**: This hook is used to memoize a value. It returns a memoized value that only recalculates if one of the dependencies has changed. This is useful for optimizing expensive calculations so they don't run on every render.
+
+  ```jsx
+  const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+  ```
+
+In short:
+- **`useCallback`** memoizes functions.
+- **`useMemo`** memoizes values.
+
+Both hooks help improve performance by avoiding unnecessary recalculations or re-creations.
+
+
+
+# Diffrence Between React.memo and UseMemo.?
+
+
+Sure! Here's a simple explanation of the difference between `memo` and `useMemo` hooks in React:
+
+- **`React.memo`**: This is a higher-order component (HOC) that you use to wrap a functional component. It helps to optimize performance by memoizing the component. This means that the component will only re-render if its props change. It's useful for preventing unnecessary re-renders of child components.
+
+  ```jsx
+  const MemoizedComponent = React.memo((props) => {
+    return <div>{props.value}</div>;
+  });
+  ```
+
+- **`useMemo`**: This is a hook that you use inside a functional component to memoize a value. It recalculates the value only when one of its dependencies changes. This is useful for optimizing expensive calculations that shouldn't run on every render.
+
+  ```jsx
+  const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+  ```
+
+In short:
+- **`React.memo`** is used to memoize entire components.
+- **`useMemo`** is used to memoize values within a component.
+
+Both are tools to help improve performance by avoiding unnecessary recalculations or re-renders⁴⁵.
 
 
 
