@@ -919,6 +919,26 @@ In this example, whenever a new message is received, the message event is emitte
 
 
 
+# Libuv
+
+
+
+**Libuv** Libuv provides non-blocking I/O operations, allowing Node. js to handle multiple tasks concurrently without waiting for an operation to complete. This is achieved through a combination of callbacks, event-driven programming, and a worker thread pool.
+
+### Key Points:
+
+1. **Asynchronous I/O**: Libuv allows Node.js to perform input/output operations (like reading files, making network requests) without waiting for them to complete. This means Node.js can handle other tasks while waiting for these operations to finish.
+
+2. **Event Loop**: It uses an event loop to manage and execute these asynchronous tasks. The event loop is like a manager that keeps track of tasks and executes them when they are ready.
+
+3. **Thread Pool**: For tasks that can't be done asynchronously (like some file system operations), Libuv uses a pool of worker threads to handle them in the background, ensuring the main thread remains free to handle other tasks.
+
+4. **Cross-Platform**: Libuv is designed to work on multiple operating systems, making Node.js applications more portable.
+
+### Example:
+
+Imagine you are at a restaurant (Node.js), and you place an order (a task). Instead of waiting at the counter (blocking the main thread) until your food is ready, you go back to your table and continue chatting with friends (handling other tasks). The waiter (Libuv) will bring your food to you once it's ready, allowing you to make the most of your time.
+
 
 
 
@@ -963,3 +983,138 @@ Summarize the key points:
 - "In summary, this system efficiently handles CSV file uploads, image migrations to AWS S3, and user data storage in MongoDB. It is designed to be scalable and reliable, with considerations for horizontal scaling, asynchronous processing, and robust error handling."
 
 By structuring your explanation this way, you can clearly convey the design and scalability of your system to the interviewer. If you need more details on any specific part, feel free to ask!
+
+
+
+
+
+
+
+
+
+
+
+
+To design a system that handles multiple file uploads to AWS S3 using Node.js, JavaScript, and MongoDB, you can follow these steps:
+
+### System Design Overview
+
+1. **Frontend**: A web interface where users can select and upload files.
+2. **Backend**: A Node.js server to handle file uploads and interact with AWS S3.
+3. **Database**: MongoDB to store metadata about the uploaded files.
+4. **AWS S3**: For storing the actual files.
+
+### Steps to Implement
+
+1. **Frontend**:
+   - Create a web interface using HTML, CSS, and JavaScript.
+   - Use a library like Axios to handle file uploads.
+
+2. **Backend**:
+   - Set up a Node.js server using Express.
+   - Use the AWS SDK for JavaScript to interact with S3.
+   - Implement a multipart upload to handle large files efficiently.
+
+3. **Database**:
+   - Use Mongoose to interact with MongoDB.
+   - Store metadata such as file name, size, upload date, and S3 URL.
+
+### Detailed Implementation
+
+#### 1. Frontend
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Upload</title>
+</head>
+<body>
+  <input type="file" id="fileInput" multiple>
+  <button onclick="uploadFiles()">Upload</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function uploadFiles() {
+      const files = document.getElementById('fileInput').files;
+      const formData = new FormData();
+      for (let file of files) {
+        formData.append('files', file);
+      }
+      await axios.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+```
+
+#### 2. Backend
+```javascript
+const express = require('express');
+const multer = require('multer');
+const AWS = require('aws-sdk');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+
+const app = express();
+const upload = multer({ dest: 'uploads/' });
+
+AWS.config.update({ region: 'your-region' });
+const s3 = new AWS.S3();
+
+mongoose.connect('mongodb://localhost:27017/fileuploads', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const fileSchema = new Schema({
+  filename: String,
+  size: Number,
+  uploadDate: Date,
+  s3Url: String
+});
+
+const File = mongoose.model('File', fileSchema);
+
+app.post('/upload', upload.array('files'), async (req, res) => {
+  const files = req.files;
+  const uploadPromises = files.map(file => {
+    const params = {
+      Bucket: 'your-bucket-name',
+      Key: file.originalname,
+      Body: fs.createReadStream(file.path)
+    };
+    return s3.upload(params).promise();
+  });
+
+  const results = await Promise.all(uploadPromises);
+  const fileDocs = results.map(result => ({
+    filename: result.Key,
+    size: result.ContentLength,
+    uploadDate: new Date(),
+    s3Url: result.Location
+  }));
+
+  await File.insertMany(fileDocs);
+  res.send('Files uploaded successfully');
+});
+
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+```
+
+### How It Works Behind the Scenes
+
+1. **File Selection**: Users select files on the frontend.
+2. **File Upload**: Files are sent to the backend using a multipart/form-data request.
+3. **Multipart Upload**: The backend uses AWS S3's multipart upload feature to upload files in parts, which is efficient for large files¹.
+4. **Binary Data**: Files are uploaded in binary format to S3.
+5. **Metadata Storage**: Metadata about the files is stored in MongoDB.
+6. **Concurrency Handling**: Node.js handles concurrent requests efficiently due to its non-blocking I/O model.
+
+This system ensures efficient handling of multiple file uploads, leveraging AWS S3 for storage and MongoDB for metadata management.
+
+Would you like more details on any specific part of this system? 😊
+
+¹: [AWS Multipart Upload](https://aws.amazon.com/blogs/compute/uploading-large-objects-to-amazon-s3-using-multipart-upload-and-transfer-acceleration/)
