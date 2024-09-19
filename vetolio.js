@@ -606,3 +606,192 @@ const memoizedGetUserData = memoizeFunction(getUserData, 10);
         console.log(await memoizedGetUserData(1)); // Cache expired, fetches data again
     }, 12000);
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Apart from the Least Recently Used (LRU) caching technique, there are several other caching strategies you can implement in JavaScript. Here are a few:
+
+### 1. **First In, First Out (FIFO)**
+FIFO is a straightforward caching strategy where the oldest cached items are removed first when the cache reaches its limit.
+
+**Example:**
+```javascript
+class FIFOCache {
+  constructor(limit) {
+    this.limit = limit;
+    this.cache = new Map();
+  }
+
+  get(key) {
+    return this.cache.get(key) || -1;
+  }
+
+  put(key, value) {
+    if (this.cache.size >= this.limit) {
+      const firstKey = this.cache.keys().next().value;
+      this.cache.delete(firstKey);
+    }
+    this.cache.set(key, value);
+  }
+}
+
+const fifoCache = new FIFOCache(2);
+fifoCache.put(1, 'A');
+fifoCache.put(2, 'B');
+console.log(fifoCache.get(1)); // A
+fifoCache.put(3, 'C');
+console.log(fifoCache.get(2)); // -1 (removed)
+```
+
+### 2. **Most Recently Used (MRU)**
+MRU is the opposite of LRU. It removes the most recently used items first when the cache is full.
+
+**Example:**
+```javascript
+class MRUCache {
+  constructor(limit) {
+    this.limit = limit;
+    this.cache = new Map();
+  }
+
+  get(key) {
+    return this.cache.get(key) || -1;
+  }
+
+  put(key, value) {
+    if (this.cache.size >= this.limit) {
+      const lastKey = Array.from(this.cache.keys()).pop();
+      this.cache.delete(lastKey);
+    }
+    this.cache.set(key, value);
+  }
+}
+
+const mruCache = new MRUCache(2);
+mruCache.put(1, 'A');
+mruCache.put(2, 'B');
+console.log(mruCache.get(1)); // A
+mruCache.put(3, 'C');
+console.log(mruCache.get(1)); // -1 (removed)
+```
+
+### 3. **Write-Through Cache**
+In a write-through cache, data is written to both the cache and the backing store simultaneously. This ensures data consistency between the cache and the data store.
+
+**Example:**
+```javascript
+class WriteThroughCache {
+  constructor(limit) {
+    this.limit = limit;
+    this.cache = new Map();
+    this.store = new Map();
+  }
+
+  get(key) {
+    return this.cache.get(key) || this.store.get(key) || -1;
+  }
+
+  put(key, value) {
+    if (this.cache.size >= this.limit) {
+      const firstKey = this.cache.keys().next().value;
+      this.cache.delete(firstKey);
+    }
+    this.cache.set(key, value);
+    this.store.set(key, value);
+  }
+}
+
+const writeThroughCache = new WriteThroughCache(2);
+writeThroughCache.put(1, 'A');
+writeThroughCache.put(2, 'B');
+console.log(writeThroughCache.get(1)); // A
+writeThroughCache.put(3, 'C');
+console.log(writeThroughCache.get(2)); // B (still in store)
+```
+
+### 4. **Write-Back (Write-Behind) Cache**
+In a write-back cache, data is written to the cache first and then to the backing store asynchronously. This can improve write performance but may risk data loss if the cache fails before the data is written to the store.
+
+// **Example:**
+```javascript
+class WriteBackCache {
+  constructor(limit) {
+    this.limit = limit;
+    this.cache = new Map();
+    this.store = new Map();
+  }
+
+  get(key) {
+    return this.cache.get(key) || this.store.get(key) || -1;
+  }
+
+  put(key, value) {
+    if (this.cache.size >= this.limit) {
+      const firstKey = this.cache.keys().next().value;
+      this.store.set(firstKey, this.cache.get(firstKey));
+      this.cache.delete(firstKey);
+    }
+    this.cache.set(key, value);
+  }
+
+  flush() {
+    this.cache.forEach((value, key) => {
+      this.store.set(key, value);
+    });
+    this.cache.clear();
+  }
+}
+
+const writeBackCache = new WriteBackCache(2);
+writeBackCache.put(1, 'A');
+writeBackCache.put(2, 'B');
+console.log(writeBackCache.get(1)); // A
+writeBackCache.put(3, 'C');
+writeBackCache.flush();
+console.log(writeBackCache.get(2)); // B (now in store)
+```
+
+// These caching strategies can be tailored to fit different use cases and performance requirements¹². Do you have a specific scenario where you want to implement caching?
+
+// Source: Conversation with Copilot, 9/17/2024
+// (1) Implementing Caching Strategies: Techniques for High-Performance Web .... https://dev.to/nayanraj-adhikary/implementing-caching-strategies-techniques-for-high-performance-web-apps-3dm7.
+// (2) LRU Cache using JavaScript - GeeksforGeeks. https://www.geeksforgeeks.org/lru-cache-using-javascript/.
+// (3) LRU Cache Implementation using Javascript Linked List and Objects. https://progressivecoder.com/lru-cache-implementation-using-javascript-linked-list-and-objects/.
+// (4) CacheStorage in JavaScript: A Practical Guide (with Examples). https://www.slingacademy.com/article/cachestorage-in-javascript-a-practical-guide-with-examples/.

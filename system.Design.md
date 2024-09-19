@@ -257,6 +257,14 @@ app.use(cors(corsOptions));
 # SQL Injection
 SQL injection is a security vulnerability that allows attackers to interfere with the queries an application makes to its database by injecting malicious SQL code through user inputs.
 
+An **SQL injection attack** is a type of cyber attack where an attacker inserts malicious SQL code into a query to manipulate a database. This can allow them to access, modify, or delete data they shouldn't be able to.
+
+### How to Prevent SQL Injection Attacks:
+1. **Use Prepared Statements**: These ensure that SQL code and data are separated, preventing attackers from injecting malicious code.
+2. **Validate and Sanitize Inputs**: Always check and clean user inputs to remove any potentially harmful code.
+3. **Use Stored Procedures**: These can help control the SQL code that gets executed.
+4. **Enforce Least-Privilege Access**: Limit database permissions to only what's necessary for each user¹²³.
+
 # testing Stubs
 Stubs in software testing are programs or routines that simulate the behavior of software components or modules. When a particular component or module is missing or still under development, stubs step in to temporarily replace these yet-to-be-developed components. They allow testing to proceed in parallel with development, ensuring that applications run smoothly and efficiently1. 
 
@@ -836,7 +844,7 @@ By following these principles, you write cleaner, more maintainable code that's 
 
 
 # ACID
-ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that guarantee the reliability of transactions in a database management system (DBMS). Let's break down each component of ACID and understand its significance using MySQL as an example:
+ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that guarantee the reliability and consistency of transactions in a database management system (DBMS). Let's break down each component of ACID and understand its significance using MySQL as an example:
 
 1. **Atomicity**:
    - Atomicity ensures that each transaction is treated as a single unit of work, which means that either all of the operations within the transaction are successfully completed, or none of them are.

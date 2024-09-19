@@ -2523,7 +2523,7 @@ function closestToZero(arr) {
 
 // Example usage:
 let numbers = [7, -10, 13, 8, 4, -7.2, -12, -3.7, 3.5, -9.6, 6.5, -1.7, -6.2, 7];
-console.log(closestToZero(numbers)); // Output: 3.5
+console.log(closestToZero(numbers)); // Output: -1.7
 
 numbers = [5, 6, 7, 9, 2, -2];
 console.log(closestToZero(numbers)); // Output: 2

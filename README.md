@@ -399,7 +399,7 @@ These questions should give you a good foundation for your interview preparation
 
 
 # Recursion
-Recursion in JavaScript is a technique where a function calls itself to solve a problem. This approach is often used to break down complex problems into simpler, more manageable parts. 
+Recursion is a technique in JavaScript where a function calling itself to solve a complex problem. This approach is often used to break down complex problems into smaller simpler, more manageable parts. 
 
 Here's a simple example to illustrate recursion:
 
@@ -425,7 +425,7 @@ countDown(5);
 ```
 
 ### Explanation:
-1. **Base Case**: The function stops calling itself when the number reaches 0. This prevents infinite recursion.
+1. **Base Case**: The function stops calling itself when the number reaches 0. This prevents from infinite recursion.
 2. **Recursive Case**: The function prints the current number and then calls itself with the number decremented by 1.
 
 When you run `countDown(5)`, the output will be:
