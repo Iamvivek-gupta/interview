@@ -1204,17 +1204,44 @@ Example: Suppose you have a database table of products with columns product_id, 
 
 # store procedure 
 
-It looks like you're looking for an online JavaScript compiler. Here are a few options you can try:
+A **stored procedure** in SQL is a set of precompiled SQL statements that can be saved and reused. Here are some key points about stored procedures:
 
-1. **[myCompiler](https://www.mycompiler.io/online-javascript-editor)**: This is a simple and easy-to-use online IDE where you can write, edit, and run your JavaScript code instantly².
-2. **[Programiz](https://www.programiz.com/javascript/online-compiler/)**: Another great option that offers a user-friendly interface and additional features like code sharing and dark mode¹.
-3. **[CodeChef](https://www.codechef.com/javascript-online-compiler)**: Known for its competitive programming platform, CodeChef also provides an online JavaScript compiler³.
-4. **[PlayCode.io](https://playcode.io/javascript-compiler)**: This platform offers a live preview of your code, making it easier to see the results of your work in real-time⁴.
+### Key Features
+- **Reusability**: Once created, a stored procedure can be executed multiple times without rewriting the SQL code.
+- **Performance**: Stored procedures are precompiled, which can improve performance as the SQL server doesn't need to compile the code each time it's executed.
+- **Modularity**: They help in modularizing the database logic, making it easier to manage and maintain.
+- **Security**: Stored procedures can enhance security by restricting direct access to the data and allowing users to execute specific operations.
 
-Feel free to try any of these and see which one works best for you! If you have any specific questions or need further assistance, just let me know.
+### Syntax
+Here's a basic example of creating and executing a stored procedure:
 
+```sql
+-- Creating a stored procedure
+CREATE PROCEDURE SelectAllCustomers
+AS
+SELECT * FROM Customers;
+GO;
 
+-- Executing the stored procedure
+EXEC SelectAllCustomers;
+```
 
+### Parameters
+Stored procedures can also accept parameters, allowing for more dynamic and flexible operations. For example:
+
+```sql
+-- Creating a stored procedure with parameters
+CREATE PROCEDURE SelectCustomersByCity
+    @City NVARCHAR(30)
+AS
+SELECT * FROM Customers WHERE City = @City;
+GO;
+
+-- Executing the stored procedure with a parameter
+EXEC SelectCustomersByCity @City = 'London';
+```
+
+Stored procedures are a powerful tool in SQL for optimizing and securing database operations¹²³.
 
 
 
