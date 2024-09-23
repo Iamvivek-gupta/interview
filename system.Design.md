@@ -287,7 +287,7 @@ A memory leak is a situation where memory is allocated for variables, events and
 
 Worker Thread
 
-In Node.js, worker threads allow you to run JavaScript code in parallel using threads. These threads are useful for CPU-intensive tasks, dividing the work among multiple workers to optimize performance. Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
+In Node.js, worker threads allow you to run JavaScript code in parallel, leveraging multiple threads. These threads are useful for CPU-intensive tasks, dividing the work among multiple workers to optimize performance, as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
 
  
 
@@ -427,18 +427,18 @@ Feel free to adapt and use these code snippets in your Node.js applications! �
 
  
 
-Certainly! Let’s dive into Node.js streams:
+# Node.js streams:
 
 What Are Streams?
 Streams in Node.js are abstract interfaces for working with streaming data.
-They allow reading or writing data in a continuous manner, without loading everything into memory at once.
+In NodeJS streams allow reading or writing data in a continuous manner, without loading everything into memory at once.
 Streams are like pipes for data flow, especially useful for large datasets or data arriving incrementally.
 Types of Streams:
 Readable Streams: Allow reading data from a source (e.g., files, HTTP responses).
 Writable Streams: Enable writing data to a destination (e.g., files, HTTP requests).
 Some streams can be both readable and writable.
 Why Use Streams?
-Memory Efficiency: Streams process data in chunks, reducing memory usage.
+Streams are useful to improve Memory Efficiency by processing data in chunks, reducing memory usage.
 Composability: Like Linux commands, you can pipe streams together for powerful transformations.
 Practical Example:
 Let’s create a big file using streams:
@@ -502,61 +502,54 @@ Feel free to use type aliases to improve your TypeScript code! 🚀12
 
  
 
-Certainly! 😊 Let’s dive into TypeScript enums and how they can impress your interviewer.
+# Enums 
+Enums in TypeScript are a way to define a set of named constants, making your code more readable and maintainable. They come in two main types: numeric and string enums.
 
-What Are Enums?
-Enums (short for “enumerated types”) in TypeScript allow you to define a set of named constant values.
-They group related constants together, making your code more expressive and readable.
-Creating an Enum:
-To define an enum, use the enum keyword followed by the enum name and a set of values enclosed in curly braces.
-Each value is assigned a unique numeric identifier by default, starting from 0 and incrementing for subsequent values.
-Example: Months of the Year:
-4.  enum Month {
-5.    Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-6.  }
-7.   
-8.  function isItSummer(month: Month): boolean {
-9.    switch (month) {
-10.    case Month.Jun:
-11.    case Month.Jul:
-12.    case Month.Aug:
-13.      return true;
-14.    default:
-15.      return false;
-16.  }
-17.}
-18. 
-19.console.log(isItSummer(Month.Jun)); // true
-Why Use Enums?
-Enums make your code self-descriptive by using meaningful names (e.g., Month.Jun instead of 6).
-They enhance readability and maintainability.
-Remember, enums are a powerful tool to organize constants and improve code clarity! 🚀1234
+### Numeric Enumss
+Numeric enums are the default. They start with a value (usually 0) and increment by 1 for each subsequent member. For example:
 
- 
-
-Enums in TypeScript are collection of named constants. They allow you to define a set of related values with meaningful names. Think of them as a way to group together specific options or cases. Whether it’s days of the week, directions (like “Up,” “Down,” etc.), or user responses (like “Yes” or “No”), enums make your code more expressive and self-documenting.  Plus, they’re handy for ensuring that you only use valid values in your application. 🚀🌟
-
-Here’s a simple example of defining and using an enum in TypeScript:
-
-enum Color {
-  Red,
-  Green,
-  Blue,
+```typescript
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right
 }
- 
-const selectedColor = Color.Green;
-console.log("Selected color:", selectedColor); // Outputs: 1 (index of Green)
-In this example, Color is an enum with three possible values: Red, Green, and Blue. When you use Color.Green, it corresponds to the numeric value 1. You can also explicitly assign custom values to enum members if needed.
+```
 
-Feel free to impress your interviewer with your enum knowledge! 🚀🌟
+In this case, `Direction.Up` is 0, `Direction.Down` is 1, and so on.
 
- 
+### String Enums
+String enums allow you to assign string values to each member, which can make your code more readable:
 
- 
+```typescript
+enum Direction {
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT"
+}
+```
 
- 
+Here, `Direction.Up` is "UP", `Direction.Down` is "DOWN", etc.
 
-Memory leaks in JavaScript occur when memory that is no longer needed by an application isn’t properly released, leading to performance issues and potential crashes. Let’s explore how to handle them: 
+### Usage
+Enums can be used to define a set of distinct cases, making it easier to document intent and create more expressive code. For example:
+
+```typescript
+enum UserResponse {
+  No = 0,
+  Yes = 1
+}
+
+function respond(recipient: string, message: UserResponse): void {
+  // ...
+}
+
+respond("Alice", UserResponse.Yes);
+```
+
+Enums help in scenarios where you need a set of related constants, making your code cleaner and less error-prone¹².
 
 
 
@@ -872,32 +865,83 @@ In summary, ACID properties ensure the reliability, integrity, and consistency o
 
 
 
+# Normalisation DBMS
+Normalization in DBMS (Database Management System) is a process used to organize a database in a way that reduces redundancy and improves data integrity. Here's a simple explanation:
+
+1. **Reduces Redundancy**: It ensures that the same piece of data is not stored in multiple places. This helps save space and makes the database more efficient.
+2. **Improves Data Integrity**: By organizing data into related tables, it ensures that updates, deletions, and insertions are done consistently, preventing errors.
+
+Normalization involves breaking down a large table into smaller, related tables and defining relationships between them. This process is done in stages called "normal forms" (1NF, 2NF, 3NF, etc.), each with specific rules to follow.
 
 
+
+# CAP
+The CAP theorem is a fundamental principle in distributed databases that states a system can only guarantee two out of the following three properties at the same time:
+
+1. **Consistency**: Every read receives the most recent write. This means all nodes in the system return the same data.
+2. **Availability**: Every request gets a response, even if some nodes are down.
+3. **Partition Tolerance**: The system continues to operate despite network partitions (communication breakdowns between nodes).
+
+In simpler terms, imagine you have a distributed database spread across multiple servers. If there's a network issue causing some servers to be unable to communicate, you have to choose between:
+
+- **Consistency**: Ensuring all servers have the same data, but some requests might fail.
+- **Availability**: Ensuring all requests get a response, but some data might be outdated.
+- **Partition Tolerance**: The system can handle network issues, but you can't have both perfect consistency and availability at the same time.
+
+This trade-off is crucial for designing distributed systems¹².
 
 
 
 # Event Emitter
+In Node.js, an **EventEmitter** is a class that allows you to create, manage, and handle events. It's part of the core `events` module and is used to build event-driven applications. Here's a simple explanation:
 
-In Node.js, the EventEmitter is a class that helps manage and handle events. Think of it as a way to create and listen for custom events in your application, similar to how you might handle events like clicks or key presses in a web browser.
+### How It Works
+1. **Creating an EventEmitter**: You create an instance of the EventEmitter class.
+2. **Listening to Events**: You define event listeners using the `on` method. These listeners are functions that will be called when the event is emitted.
+3. **Emitting Events**: You trigger events using the `emit` method. When an event is emitted, all the listeners for that event are called.
 
-How EventEmitter Works:
+### Example
+Here's a basic example to illustrate:
 
-Creating an EventEmitter: First, you create an instance of the EventEmitter class.
+```javascript
 const EventEmitter = require('events');
-const myEmitter = new EventEmitter();
-Listening for Events: You can set up listeners for specific events using the on method. These listeners are functions that will run when the event is triggered.
-myEmitter.on('event', () => {
-  console.log('An event occurred!');
-});
-Emitting Events: To trigger an event, you use the emit method. This will call all the listeners attached to that event.
-myEmitter.emit('event');
-Why It’s Useful:
+const eventEmitter = new EventEmitter();
 
-Asynchronous Handling: EventEmitter allows you to handle asynchronous operations cleanly. For example, you can emit an event when a file is read or a network request is completed, and have different parts of your application respond to these events.
-Decoupling Code: It helps in decoupling different parts of your application. Instead of having tightly coupled functions, you can have different modules listen for and respond to events, making your code more modular and maintainable.
-Real-time Applications: It’s particularly useful in real-time applications like chat apps or live notifications, where you need to respond to events as they happen.
-Example to Impress Your Interviewer:
+// Define a listener for the 'start' event
+eventEmitter.on('start', () => {
+  console.log('Started!');
+});
+
+// Emit the 'start' event
+eventEmitter.emit('start');
+```
+
+In this example:
+- We create an EventEmitter instance.
+- We set up a listener for the `start` event that logs "Started!" to the console.
+- We emit the `start` event, which triggers the listener and logs the message.
+
+### Use Cases
+EventEmitters are useful in many scenarios, such as:
+- Handling asynchronous operations.
+- Building custom event systems.
+- Managing communication between different parts of an application.
+
+### Additional Methods
+EventEmitter also provides other useful methods like:
+- `once()`: Adds a one-time listener for an event.
+- `removeListener()`: Removes a specific listener.
+- `removeAllListeners()`: Removes all listeners for an event.
+
+EventEmitters help you create more modular and maintainable code by decoupling the event producers from the event consumers¹².
+
+Do you have a specific use case in mind for using EventEmitters?
+
+Source: Conversation with Copilot, 9/21/2024
+(1) The Node.js Event emitter. https://nodejs.org/en/learn/asynchronous-work/the-nodejs-event-emitter.
+(2) Using Event Emitters in Node.js - DigitalOcean. https://www.digitalocean.com/community/tutorials/using-event-emitters-in-node-js.
+(3) A Complete Guide to the Node.js Event Emitter Pattern. https://www.plusdev.net/2023/04/01/a-complete-guide-to-the-node-js-event-emitter-pattern.
+(4) Mastering Event Emitters in Node.js - DEV Community. https://dev.to/angdecoder/mastering-event-emitters-in-nodejs-4ijc.
 
 Imagine you’re building a chat application. You can use EventEmitter to handle new messages:
 
@@ -928,9 +972,6 @@ In this example, whenever a new message is received, the message event is emitte
 
 
 # Libuv
-
-
-
 **Libuv** Libuv provides non-blocking I/O operations, allowing Node. js to handle multiple tasks concurrently without waiting for an operation to complete. This is achieved through a combination of callbacks, event-driven programming, and a worker thread pool.
 
 ### Key Points:
@@ -1126,3 +1167,84 @@ This system ensures efficient handling of multiple file uploads, leveraging AWS 
 Would you like more details on any specific part of this system? 😊
 
 ¹: [AWS Multipart Upload](https://aws.amazon.com/blogs/compute/uploading-large-objects-to-amazon-s3-using-multipart-upload-and-transfer-acceleration/)
+
+
+
+
+
+
+
+
+# Sharding
+Definition: Sharding is a database partitioning technique where a large database is divided into smaller, more manageable pieces called shards. Each shard is stored on a different database server.
+
+Use Case: Sharding is used to improve performance and scalability by distributing the data across multiple servers. It helps manage large datasets and high transaction volumes.
+
+Example: Imagine you have a database of user information for a popular social media platform. Instead of having all user data in a single database, you can shard the data by region. Users from North America are stored in one shard, users from Europe in another, and so on. This way, queries are distributed and handled by different servers, reducing the load on any single server.
+
+
+
+# Replication
+Definition: Replication involves creating copies of the same data across multiple database servers. One server acts as the master, and others are replicas.
+
+Use Case:  Replication is used to improve data availability and fault tolerance. If the master server fails, the replicas can take over, ensuring that the system remains operational
+
+Example: An e-commerce site replicates its product catalog database. If the main database server crashes, the replicated servers can continue to serve user requests without interruption.
+
+
+# Indexing 
+Definition: Indexing is the process of creating a data structure (an index) that improves the speed of data retrieval operations on a database table. An index is like a book index, which allows you to quickly find information without scanning the entire book.
+
+Use Case: Indexes are used to enhance the performance of database queries, especially when dealing with large datasets.
+
+Example: Suppose you have a database table of products with columns product_id, name, and price. If you frequently search for products by their name, you can create an index on the name column. This index allows the database to find products by name much faster than scanning the entire table.
+
+
+
+
+# store procedure 
+
+It looks like you're looking for an online JavaScript compiler. Here are a few options you can try:
+
+1. **[myCompiler](https://www.mycompiler.io/online-javascript-editor)**: This is a simple and easy-to-use online IDE where you can write, edit, and run your JavaScript code instantly².
+2. **[Programiz](https://www.programiz.com/javascript/online-compiler/)**: Another great option that offers a user-friendly interface and additional features like code sharing and dark mode¹.
+3. **[CodeChef](https://www.codechef.com/javascript-online-compiler)**: Known for its competitive programming platform, CodeChef also provides an online JavaScript compiler³.
+4. **[PlayCode.io](https://playcode.io/javascript-compiler)**: This platform offers a live preview of your code, making it easier to see the results of your work in real-time⁴.
+
+Feel free to try any of these and see which one works best for you! If you have any specific questions or need further assistance, just let me know.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Difference between Table and Views
+
+Great question! In a database, **tables** and **views** serve different purposes:
+
+### Tables
+- **Storage**: Tables store data physically in rows and columns.
+- **Structure**: Each column represents an attribute, and each row represents a record.
+- **Modification**: Data in tables can be directly modified (inserted, updated, or deleted).
+- **Constraints**: Tables can have constraints like primary keys, foreign keys, and indexes to ensure data integrity.
+- **Space**: Tables occupy space in the database.
+
+### Views
+- **Virtual**: Views are virtual tables created based on a SQL query from one or more tables.
+- **No Physical Storage**: Views do not store data themselves; they display data stored in other tables.
+- **Simplification**: Views can simplify complex queries by presenting data in a specific format.
+- **Security**: Views can enhance security by limiting access to specific data.
+- **Consistency**: Views provide a consistent interface to the underlying tables, even if the source tables are modified¹²³.
+
+In summary, tables are used for storing data, while views are used for presenting data in a specific way without storing it physically. Do you have any specific use cases in mind where you want to use tables or views?

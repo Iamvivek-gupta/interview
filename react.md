@@ -15,7 +15,7 @@ Components are the building blocks of a React application. They can be either cl
 State is a local data storage that is local to the component only and cannot be passed to other components. Props (short for properties) are used to pass data from one component to another.
 
 # What are hooks in React?
-Hooks are functions that let you use state and other React features in functional components. Examples include useState, useEffect, and useContext.
+Hooks are simple functions in React Application that allow us to use state variables and other React features in functional components. Examples include useState, useEffect, and useContext.
 
 # What is the Virtual DOM?
 The Virtual DOM is a lightweight copy of the actual DOM. React uses it to optimize updates and rendering, making the application faster.

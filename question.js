@@ -1253,9 +1253,9 @@ function findMissingNumbers(arr) {
 }
 
 // Example usage
-const arr = [1, 2, 3, 5, 7, 8]; // Missing numbers are 4, 6, 9
+const arr = [1, 2, 3, 5, 7, 8]; // Missing numbers are 4, 6
 const missingNumbers = findMissingNumbers(arr);
-console.log("Missing numbers:", missingNumbers); // Output: Missing numbers: [4, 6, 9]
+console.log("Missing numbers:", missingNumbers); // Output: Missing numbers: [4, 6]
 ```
 
 // In this code:
@@ -1310,7 +1310,7 @@ console.log("Missing numbers:", missingNumbers); // Output: Missing numbers: [4,
 
 
 // const arrz = [9, 3, 7, 1, 8, 2, 4,1,0,0];
-// console.log("output from here",findSecondMinimum(arrz)); // Output: 2
+// console.log("output from here",findSecondMinimum(arrz)); // Output: 1
 // Note that the time complexity of this algorithm is O(n) since we only iterate over the array once.
 
 
@@ -2103,7 +2103,7 @@ function maxSumSubarray(arr, k) {
 const array = [2, 1, 3, 4, 1, 2, 6, 1, 2];
 const k = 3;
 const result = maxSumSubarray(array, k);
-console.log(result); // Output: 12 (sum of subarray [4, 1, 2])
+console.log(result); // Output: 9 (sum of subarray [6, 1, 2])
 ```
 
 // Explanation:
@@ -2192,7 +2192,7 @@ console.log(result); // Output: 3 (for "abc")
 // If a repeating character is found, the start pointer is updated to the next index after the previous occurrence of the character.
 // The maximum length of the substring without repeating characters is continuously updated during the traversal of the string.
 
-// 2nd way to find longest substring without repeating character using sliding window
+// 2nd way to find longest substring length without repeating character using sliding window
 
 // function longestSubstringWithoutCharacter(str) {
 //   let uniqueChar = new Set();
