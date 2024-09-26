@@ -22,8 +22,8 @@ This ensures that we can accommodate changes without compromising on quality or 
 
 ### 4. What strategies do you use to ensure effective communication with your team and stakeholders?
 **Answer:**
-"Effective communication is key to successful project delivery. 
-I use a combination of regular stand-up meetings, sprint reviews, and retrospectives to keep everyone aligned. 
+"Effective communication is most important key to successful project delivery. 
+I use a combination of regular stand-up meetings, sprint reviews, and retrospectives to keep everyone informed and aligned. 
 I also make use of collaboration tools like Slack, Jira, and Confluence to ensure transparency and keep all stakeholders informed. 
 Clear documentation and regular updates help in managing expectations and addressing any concerns promptly."
 
@@ -95,50 +95,6 @@ Prioritize tasks and focus on resolving the issue efficiently
 
 
 
-Explaining how to develop a product following the Software Development Life Cycle (SDLC) in an interview can be structured by breaking down each phase of the SDLC and discussing your approach and experience with each. Here's a step-by-step guide:
-
-### 1. **Requirement Analysis**
-   - **Explain:** Start by gathering and analyzing the requirements from stakeholders. This involves understanding what the client needs and documenting these requirements.
-   - **Example:** "In my previous project, I conducted several meetings with stakeholders to gather detailed requirements, which were then documented in a comprehensive requirement specification document."
-
-### 2. **System Design**
-   - **Explain:** Translate the requirements into a system design. This includes creating architectural designs, data models, and interface designs.
-   - **Example:** "I worked closely with the design team to create detailed system architecture and data flow diagrams, ensuring all requirements were addressed."
-
-### 3. **Implementation (Coding)**
-   - **Explain:** This phase involves actual coding based on the design documents. It's crucial to follow coding standards and guidelines.
-   - **Example:** "I led a team of developers to implement the design using Agile methodology, ensuring regular code reviews and adherence to coding standards."
-
-### 4. **Testing**
-   - **Explain:** Testing is done to identify and fix bugs. This includes unit testing, integration testing, system testing, and user acceptance testing.
-   - **Example:** "We implemented a rigorous testing process, including automated unit tests and manual system tests, to ensure the product met all quality standards."
-
-### 5. **Deployment**
-   - **Explain:** Once testing is complete, the product is deployed to the production environment. This phase may also include user training and documentation.
-   - **Example:** "I coordinated with the operations team to deploy the product, ensuring minimal downtime and providing training sessions for end-users."
-
-### 6. **Maintenance**
-   - **Explain:** After deployment, the product enters the maintenance phase where it is monitored for any issues, and updates or enhancements are made as needed.
-   - **Example:** "Post-deployment, I managed the maintenance phase, addressing any issues that arose and implementing updates based on user feedback."
-
-### Tips for the Interview:
-- **Be Specific:** Use specific examples from your past experience to illustrate each phase.
-- **Highlight Methodologies:** Mention any methodologies you used, such as Agile, Waterfall, or Scrum.
-- **Showcase Problem-Solving:** Discuss any challenges you faced and how you overcame them.
-- **Emphasize Collaboration:** Highlight your ability to work with cross-functional teams.
-
-Would you like more detailed examples or tips on any specific phase?
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -179,3 +135,14 @@ Sure! Here's a simple and easy script you can use to explain how you would devel
 ---
 
 Feel free to adjust the script based on your personal experiences and the specific details of the projects you've worked on. Good luck with your interview! If you need any more help, just let me know.
+
+
+
+
+
+
+
+# Grabpay Payment GAteway integration
+
+In my Previous company called Docubay I get chance to work on OTT product 
+also integrated the GrabPay payment gateway into our OTT platform to facilitate seamless and secure transactions.
