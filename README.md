@@ -297,7 +297,7 @@ The outer function's variables and parameters are then accessible within the inn
      ```
 
 ### 6. **What is the event loop in JavaScript?**
-   - In JavaScript, an event loop is a mechanism used for managing asynchronous operations and executing callbacks non-blocking. It is a single-threaded loop that continuously monitors the call stack and the callback queue.
+   - In JavaScript, an event loop is a mechanism used for managing asynchronous operations and executing callbacks non-blocking. It is a synchronous single-threaded loop that continuously monitors the call stack and the callback queue.
 
    - The call stack is a data structure that tracks the execution of functions in JavaScript. Whenever a function is invoked, it is pushed onto the call stack. When the function completes its execution, it is popped off the stack.
    
@@ -387,7 +387,6 @@ The outer function's variables and parameters are then accessible within the inn
      console.log(third);  // Output: 3
      ```
 
-These questions should give you a good foundation for your interview preparation. Good luck!
 
 
 
@@ -734,6 +733,11 @@ Here's a simple example to illustrate these methods:
 const promise1 = new Promise((resolve) => setTimeout(() => resolve("Promise 1 resolved"), 1000));
 const promise2 = new Promise((resolve) => setTimeout(() => resolve("Promise 2 resolved"), 500));
 const promise3 = new Promise((_, reject) => setTimeout(() => reject("Promise 3 rejected"), 800));
+
+
+p1 = new Promise((resolve, reject) => setTimeout(reject, 50, 'vivek'));
+p2 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'love'));
+p3 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'mehak'));
 
 const promisesArray = [promise1, promise2, promise3];
 
