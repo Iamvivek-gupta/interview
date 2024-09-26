@@ -23,8 +23,8 @@ This ensures that we can accommodate changes without compromising on quality or 
 ### 4. What strategies do you use to ensure effective communication with your team and stakeholders?
 **Answer:**
 "Effective communication is most important key to successful project delivery. 
-I use a combination of regular stand-up meetings, sprint reviews, and retrospectives to keep everyone informed and aligned. 
-I also make use of collaboration tools like Slack, Jira, and Confluence to ensure transparency and keep all stakeholders informed. 
+we use a combination of regular stand-up meetings, sprint reviews, and retrospectives to keep everyone informed and aligned. 
+also we use of collaboration tools like Slack, Jira, and Confluence to ensure transparency and keep all stakeholders informed. 
 Clear documentation and regular updates help in managing expectations and addressing any concerns promptly."
 
 ### 5. How do you prioritize tasks when working on multiple projects simultaneously?
@@ -89,18 +89,6 @@ Prioritize tasks and focus on resolving the issue efficiently
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Sure! Here's a simple and easy script you can use to explain how you would develop a product following the Software Development Life Cycle (SDLC) during an interview:
 
 ---
 
