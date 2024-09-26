@@ -2,7 +2,7 @@ Absolutely, I'd be happy to help you prepare some impressive answers! Here are a
 
 ### 1. How do you ensure that your code is maintainable and scalable?
 **Answer:**
-"I ensure my code is maintainable and scalable by following best practices such as writing clean, modular code, adhering to SOLID principles, and using design patterns where appropriate. 
+"In my previous project I ensure my code is maintainable and scalable by following best practices such as writing clean, modular and reusable code, adhering to SOLID principles, and using best design patterns where appropriate. 
 I also make use of TypeScript to enforce type safety, which helps in catching errors early. 
 Regular code reviews and pair programming sessions are also part of my routine to ensure code quality and knowledge sharing within the team."
 
