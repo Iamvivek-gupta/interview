@@ -143,7 +143,7 @@ previously one of my project, I also  worked in an OTT domain company called Doc
 
 To interact with users, I also integrated third-party services to manage notifications. For SMS notifications, I used Twilio, and for email notifications, I used SendGrid.
 
-Use Cases of Notification Service:
+we regularly sent Notification to user for:
 
 Subscription Reminders: Notifying users about upcoming subscription renewals or expirations.
 Payment Confirmations: Sending confirmation messages after successful transactions.
@@ -161,7 +161,7 @@ In my previous project at Docubay, an OTT domain company, I was responsible for 
 There is two type Payment Gateway :
 
 One-time Payment Gateway: For example, if a monthly subscription plan costs ₹500, the user can pay ₹500 at once.
-Subscription-based Payment Gateway: For instance, if a yearly plan costs ₹5000, users might prefer to pay in installments (EMI).
+Subscription-based Payment Gateway: if a yearly subscription plan costs ₹5000, users might prefer to pay in installments (EMI).
 My Role: I integrated the Grabpay one-time payment gateway to manage user transactions and create subscriptions.
 
 Technical Implementation:

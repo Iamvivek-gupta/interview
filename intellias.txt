@@ -1,6 +1,6 @@
 ### 1. How do you ensure that your code is maintainable and scalable?
 **Answer:**
-"In my previous project I ensure my code is maintainable and scalable by following best practices such as writing clean, modular and reusable code, adhering to SOLID principles, and using best design patterns where appropriate. 
+"In my previous project I ensure my code is maintainable and scalable by following best practices such as writing clean consise, efficient optimised modular and reusable code, adhering to SOLID principles, and using best design patterns where appropriate. 
 I also use of TypeScript to enforce type safety maintainability, which helps in catching errors early. 
 Regular code reviews and pair programming sessions are also part of my routine to ensure code quality and knowledge sharing within the team."
 
@@ -11,12 +11,6 @@ We faced issues with scalability and performance under high load. To address thi
 I also set up a robust monitoring system to track performance metrics.
 By prioritizing tasks and collaborating closely with the team, we managed to deliver the project on time and within budget."
 
-### 3. How do you handle changes in project requirements or scope?
-**Answer:**
-"I handle changes in project requirements by maintaining flexibility in my development approach.
-I use Agile methodologies, which allow for iterative development and regular feedback. 
-When a change request comes in, I assess its impact on the timeline and resources, communicate with stakeholders to set realistic expectations, and adjust the project plan accordingly. 
-This ensures that we can accommodate changes without compromising on quality or deadlines."
 
 ### 4. What strategies do you use to ensure effective communication with your team and stakeholders?
 **Answer:**
@@ -32,13 +26,6 @@ I use tools like the JIRA to categorize tasks and focus on what’s most importa
 I also break down larger tasks into smaller, manageable chunks and set clear deadlines. 
 Regularly reviewing and adjusting priorities based on feedback and project progress helps in staying on track and ensuring timely delivery."
 
-### 6. Can you give an example of a time when you had to troubleshoot a critical issue in production? How did you handle it?
-**Answer:**
-"Once, we encountered a critical performance issue in production where the application was slowing down significantly. 
-I quickly gathered the team and we performed a root cause analysis. We identified a memory leak in one of the services. 
-I implemented a fix and deployed it after thorough testing. 
-To prevent future occurrences, we added more comprehensive monitoring and alerting systems. 
-This experience reinforced the importance of proactive monitoring and quick response to issues."
 
 ### 7. What project management methodologies are you familiar with, and how have you applied them in your work?
 **Answer:**
@@ -51,14 +38,8 @@ I also have experience with Kanban for managing workflows and visualizing progre
 **Answer:**
 "I stay updated by following industry blogs, participating in online forums, and attending webinars and conferences. 
 I am an active member of several developer communities where I engage in discussions and share knowledge. 
-Additionally, I regularly explore new libraries and frameworks, and contribute to open-source projects to keep my skills sharp and stay abreast of the latest trends and best practices."
+Additionally, I regularly explore new libraries and frameworks, and contribute to open-source projects to keep my skills sharp and updated with industry trends."
 
-### 9. Describe a situation where you had to collaborate with other teams (e.g., QA, DevOps) to deliver a project.
-**Answer:**
-"In a recent project, we had to collaborate closely with the QA and DevOps teams to ensure a smooth deployment pipeline. 
-I worked with the QA team to define test cases and automate testing using tools like Jest and Cypress. 
-With the DevOps team, we set up CI/CD pipelines using Jenkins and Docker to automate builds and deployments. 
-This collaboration ensured that we could deliver high-quality code quickly and efficiently, with minimal downtime."
 
 ### 10. How do you ensure that your projects meet the quality standards and deadlines set by the company?
 **Answer:**
@@ -70,6 +51,28 @@ By maintaining open communication with the team and stakeholders, I ensure that 
 ### 11. where do you see yourelf in next 5 years?
 **Answer:**
 "In 5 Years, I want to see myself in a leadership role within the company possibly in a senior project management position."
+
+### 3. How do you handle changes in project requirements or scope?
+**Answer:**
+"I handle changes in project requirements by maintaining flexibility in my development approach.
+I use Agile methodologies, which allow for iterative development and regular feedback. 
+When a change request comes in, I assess its impact on the timeline and resources, communicate with stakeholders to set realistic expectations, and adjust the project plan accordingly. 
+This ensures that we can accommodate changes without compromising on quality or deadlines."
+
+### 9. Describe a situation where you had to collaborate with other teams (e.g., QA, DevOps) to deliver a project.
+**Answer:**
+"In a recent project, we had to collaborate closely with the QA and DevOps teams to ensure a smooth deployment pipeline. 
+I worked with the QA team to define test cases and automate testing using tools like Jest and Cypress. 
+With the DevOps team, we set up CI/CD pipelines using Jenkins and Docker to automate builds and deployments. 
+This collaboration ensured that we could deliver high-quality code quickly and efficiently, with minimal downtime."
+
+### 6. Can you give an example of a time when you had to troubleshoot a critical issue in production? How did you handle it?
+**Answer:**
+"Once, we encountered a critical performance issue in production where the application was slowing down significantly. 
+I quickly gathered the team and we performed a root cause analysis. We identified a memory leak in one of the services. 
+I implemented a fix and deployed it after thorough testing. 
+To prevent future occurrences, we added more comprehensive monitoring and alerting systems. 
+This experience reinforced the importance of proactive monitoring and quick response to issues."
 
 Feel free to tailor these answers to your personal experiences and style. Good luck with your interview! If you need any more help, just let me know. 😊
 
@@ -91,8 +94,6 @@ Prioritize tasks and focus on resolving the issue efficiently
 
 
 
-
----
 
 **Interviewer:** Can you explain how you would develop a product following the SDLC?
 
