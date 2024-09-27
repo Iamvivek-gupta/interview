@@ -1,7 +1,3 @@
-Here's a script you can use to introduce yourself to an interviewer, highlighting your skills, roles, and responsibilities:
-
----
-
 **Introduction:**
 
 "Hello, I'm [Your Name], and I specialize in full-stack development with a strong focus on backend technologies. Over the years, I've honed my skills in NodeJS, NestJS, JavaScript, TypeScript, ExpressJS, and AWS, along with frontend development using ReactJS. My experience spans various domains, where I've consistently delivered robust, scalable, and efficient applications."
@@ -28,16 +24,6 @@ I thrive in environments where I can contribute to both the frontend and backend
 
 "I’m passionate about solving complex problems and continuously improving my skill set. I’m excited about the opportunity to bring my expertise to your team and contribute to the success of your projects."
 
----
-
-This script gives you a comprehensive introduction that covers your technical expertise and highlights your role in full-stack development, making you a well-rounded candidate for the position.   
-
-
-
-
-Here's a simpler and more straightforward introduction:
-
----
 
 "Hi, I'm [Your Name]. I'm a full-stack developer with strong expertise in backend technologies like NodeJS, NestJS, and ExpressJS. I also work with JavaScript and TypeScript to build reliable and efficient applications. On the frontend, I use ReactJS to create dynamic and user-friendly interfaces.
 
@@ -45,41 +31,25 @@ I have experience working with AWS for deploying and managing applications in th
 
 I enjoy working on both the frontend and backend, ensuring that everything runs smoothly and efficiently. I'm excited to bring my skills to your team and help build great products together."
 
----
 
 This version is more straightforward and easy to understand while still conveying your expertise and enthusiasm.
 
 
+# Servify Project Explanation
 
-
-
-
-
-
-
-
-
-
-
-# Project Explanation
-
-Here's a script to explain your last project in a way that would impress an interviewer:
-
----
 
 "In my last project, I worked in the insurance domain, focusing on developing device protection solutions for well-known B2B and B2C brands like Apple, RealMe, Xiaomi, and Samsung. The core of the project was to offer extended warranty plans for devices such as mobile phones and laptops.
 
-Typically, when a user purchases a device, they receive a standard 1-year warranty. However, we created a system where users could purchase additional plans to extend their device warranties by 2-3 years or even 3-4 years, depending on the plan they chose. This involved integrating with various OEMs and streamlining the entire process, from selecting and purchasing a plan to managing claims when a user needed to file one.
+Typically, when a user purchases a device, they will get a 1-year standard warranty. However, we created a system where users could purchase additional plans to extend their device warranties by 2-3 years or even 3-4 years, depending on the plan they chose.
+
+If the user's device brand and model are present in our system, we create additional plans for the user. Once these additional plans are created and the user is active, they can raise a claim for physical or liquid damage to their device.
+
+ 
+This involved integrating with various OEMs and streamlining the entire process, from selecting and purchasing a plan to managing claims when a user needed to file one.
 
 The project was challenging yet rewarding as it required a deep understanding of both the technical and business aspects. I was responsible for designing and developing the backend systems that handled plan offerings, user management, and the claims process. We also ensured the system was scalable and could handle the needs of various brands, each with their own set of products and customer base.
 
 This project not only allowed me to work with cutting-edge technology but also gave me the opportunity to directly impact the customer experience by making device protection more accessible and efficient. It was exciting to see how our solution helped users protect their valuable devices beyond the standard warranty period."
-
----
-
-This explanation is clear, concise, and showcases your role and the impact of the project, which should resonate well with the interviewer.
-
-
 
 
 
@@ -97,13 +67,9 @@ for example everyday users purchase mobile phone , laptop from different differe
 # JWT Explanations
 
 
-Certainly! Here’s a script that you can use to explain your experience with implementing authentication using JWT and authorization middleware in a Node.js and Express.js environment. This script aims to demonstrate your understanding and practical experience while making a strong impression on the interviewer.
-
----
 
 **Interviewer:** Can you tell me about your experience with authentication and authorization in Node.js, specifically using JWT?
 
----
 
 **You:**
 
@@ -166,3 +132,55 @@ To solve this, I implemented a refresh token mechanism. The refresh token has a 
 ---
 
 This script should help you clearly communicate your experience and impress the interviewer by demonstrating your practical knowledge and problem-solving skills.
+
+
+
+
+
+# Docubay Project explanation
+
+previously one of my project, I also  worked in an OTT domain company called Docubay, which is a product-based company. Users can watch popular documentaries in their own country if they have a valid subscription. They can purchase monthly, quarterly, and half-yearly subscriptions. I was responsible for developing user modules to handle user sign-in, sign-up, forgot password, and reset password functionalities efficiently. Additionally, I was responsible for integrating Grabpay, a Singapore-based payment gateway, to handle one-time payments for user transactions and create user subscriptions.
+
+To interact with users, I also integrated third-party services to manage notifications. For SMS notifications, I used Twilio, and for email notifications, I used SendGrid.
+
+Use Cases of Notification Service:
+
+Subscription Reminders: Notifying users about upcoming subscription renewals or expirations.
+Payment Confirmations: Sending confirmation messages after successful transactions.
+Promotional Offers: Informing users about special offers or discounts.
+Account Alerts: Notifying users about changes to their account, such as password resets or suspicious activity.
+Content Updates: Informing users about new documentaries or content added to the platform.
+
+
+
+
+
+
+In my previous project at Docubay, an OTT domain company, I was responsible for integrating Grabpay, a Singapore-based payment gateway, to handle one-time payments for user transactions and create user subscriptions.
+
+There is two type Payment Gateway :
+
+One-time Payment Gateway: For example, if a monthly subscription plan costs ₹500, the user can pay ₹500 at once.
+Subscription-based Payment Gateway: For instance, if a yearly plan costs ₹5000, users might prefer to pay in installments (EMI).
+My Role: I integrated the Grabpay one-time payment gateway to manage user transactions and create subscriptions.
+
+Technical Implementation:
+
+API Communication: I used the Axios library in Node.js to communicate with the Grabpay transaction API.
+Process Flow:
+User Object: We pass the user object to the transaction API.
+Validation: Once the details are validated, we receive a redirect URL in the response.
+Redirect: The user clicks on the redirect URL and is taken to the Grabpay transaction page.
+Payment Options: Users can choose from UPI, credit/debit card, and internet banking to purchase subscriptions.
+Webhook Confirmation: After the payment is deducted from the user’s account, we receive a confirmation from the webhook API.
+Subscription Creation: If the payment is successful, we create the user subscription in our database, allowing users to watch documentaries seamlessly.
+Notification Integration:
+
+SMS Notifications: Using Twilio.
+Email Notifications: Using SendGrid.
+Use Cases of Notification Service:
+
+Subscription Reminders: Notifying users about upcoming renewals or expirations.
+Payment Confirmations: Sending confirmation messages after successful transactions.
+Promotional Offers: Informing users about special offers or discounts.
+Account Alerts: Notifying users about changes to their account.
