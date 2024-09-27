@@ -1,9 +1,7 @@
-Absolutely, I'd be happy to help you prepare some impressive answers! Here are a few sample responses to the questions you might face:
-
 ### 1. How do you ensure that your code is maintainable and scalable?
 **Answer:**
 "In my previous project I ensure my code is maintainable and scalable by following best practices such as writing clean, modular and reusable code, adhering to SOLID principles, and using best design patterns where appropriate. 
-I also make use of TypeScript to enforce type safety, which helps in catching errors early. 
+I also use of TypeScript to enforce type safety maintainability, which helps in catching errors early. 
 Regular code reviews and pair programming sessions are also part of my routine to ensure code quality and knowledge sharing within the team."
 
 ### 2. Can you describe a challenging project you worked on and how you managed to deliver it on time?
@@ -24,7 +22,7 @@ This ensures that we can accommodate changes without compromising on quality or 
 **Answer:**
 "Effective communication is most important key to successful project delivery. 
 we use a combination of regular stand-up meetings, sprint reviews, and retrospectives to keep everyone informed and aligned. 
-also we use of collaboration tools like Slack, Jira, and Confluence to ensure transparency and keep all stakeholders informed. 
+also we also use collaboration tools like Slack, Jira, and Confluence to ensure transparency and keep all stakeholders informed. 
 Clear documentation and regular updates help in managing expectations and addressing any concerns promptly."
 
 ### 5. How do you prioritize tasks when working on multiple projects simultaneously?
@@ -45,8 +43,8 @@ This experience reinforced the importance of proactive monitoring and quick resp
 ### 7. What project management methodologies are you familiar with, and how have you applied them in your work?
 **Answer:**
 "I am familiar with Agile and Scrum methodologies. 
-In my previous projects, I have used Scrum to manage sprints, conduct daily stand-ups, and hold sprint reviews and retrospectives.
-this approach has helped in maintaining a clear focus on deliverables, fostering collaboration, and ensuring continuous improvement. 
+In my previous projects, we were using Scrum to manage sprints, conduct daily stand-ups, and hold sprint reviews and retrospectives.
+this approach also helped in maintaining a clear focus on deliverables, fostering collaboration, and ensuring continuous improvement. 
 I also have experience with Kanban for managing workflows and visualizing progress, which has been particularly useful in projects with a continuous delivery model."
 
 ### 8. How do you stay updated with the latest developments in NodeJS, JavaScript, and TypeScript?
@@ -68,6 +66,10 @@ This collaboration ensured that we could deliver high-quality code quickly and e
 I use a combination of automated testing, code reviews, and continuous integration to maintain code quality. 
 Regular check-ins and progress reviews help in identifying any potential roadblocks early and addressing them promptly. 
 By maintaining open communication with the team and stakeholders, I ensure that everyone is aligned and working towards the same objectives."
+
+### 11. where do you see yourelf in next 5 years?
+**Answer:**
+"In 5 Years, I want to see myself in a leadership role within the company possibly in a senior project management position."
 
 Feel free to tailor these answers to your personal experiences and style. Good luck with your interview! If you need any more help, just let me know. 😊
 

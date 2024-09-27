@@ -73,7 +73,7 @@ for example everyday users purchase mobile phone , laptop from different differe
 
 **You:**
 
-Certainly! In my recent project, I was responsible for implementing both authentication and authorization in a Node.js and Express.js application. We chose JWT (JSON Web Token) for authentication due to its stateless nature, which aligns well with our requirement for a scalable, microservices-based architecture.
+In my recent project, I was responsible for implementing both authentication and authorization in a Node.js and Express.js application. We chose JWT (JSON Web Token) for authentication due to its stateless nature, which aligns well with our requirement for a scalable, microservices-based architecture.
 
 **1. JWT Authentication:**
 
