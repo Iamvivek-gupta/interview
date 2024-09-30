@@ -282,15 +282,12 @@ A memory leak is a situation where memory is allocated for variables, events and
 
 
 
+# Worker Thread
 
-
-Worker Thread
-
-In Node.js, worker threads allow you to run JavaScript code in parallel, leveraging multiple threads. These threads are useful for CPU-intensive tasks, dividing the work among multiple workers to optimize performance, as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
-
+In Node.js, worker threads allow you to run JavaScript code in parallel by leveraging multiple threads. These threads are useful for CPU-intensive tasks, dividing the work among multiple workers threads to optimize performance, as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
  
 
-Cluster Module:
+# Cluster Module:
 The cluster module in Node.js allows you to create multiple worker processes (child processes) that share the same server port.
 It’s useful for utilizing multi-core CPUs efficiently by distributing incoming requests across these workers.
 Each worker runs in a separate process, but they can communicate with the parent process using Inter-Process Communication (IPC).
@@ -497,58 +494,7 @@ Feel free to use type aliases to improve your TypeScript code! 🚀12
 
  
 
- 
 
- 
-
-# Enums 
-Enums in TypeScript are a way to define a set of named constants, making your code more readable and maintainable. They come in two main types: numeric and string enums.
-
-### Numeric Enumss
-Numeric enums are the default. They start with a value (usually 0) and increment by 1 for each subsequent member. For example:
-
-```typescript
-enum Direction {
-  Up,
-  Down,
-  Left,
-  Right
-}
-```
-
-In this case, `Direction.Up` is 0, `Direction.Down` is 1, and so on.
-
-### String Enums
-String enums allow you to assign string values to each member, which can make your code more readable:
-
-```typescript
-enum Direction {
-  Up = "UP",
-  Down = "DOWN",
-  Left = "LEFT",
-  Right = "RIGHT"
-}
-```
-
-Here, `Direction.Up` is "UP", `Direction.Down` is "DOWN", etc.
-
-### Usage
-Enums can be used to define a set of distinct cases, making it easier to document intent and create more expressive code. For example:
-
-```typescript
-enum UserResponse {
-  No = 0,
-  Yes = 1
-}
-
-function respond(recipient: string, message: UserResponse): void {
-  // ...
-}
-
-respond("Alice", UserResponse.Yes);
-```
-
-Enums help in scenarios where you need a set of related constants, making your code cleaner and less error-prone¹².
 
 
 
@@ -1179,7 +1125,7 @@ Example: Imagine you have a database of user information for a popular social me
 # Replication
 Definition: Replication involves creating copies of the same data across multiple database servers. One server acts as the master, and others are replicas.
 
-Use Case:  Replication is used to improve data availability and fault tolerance. If the master server fails, the replicas can take over, ensuring that the system remains operational
+Use Case: Replication is used to improve data availability and fault tolerance. If the master server fails, the replicas can take over, ensuring that the system remains operational
 
 Example: An e-commerce site replicates its product catalog database. If the main database server crashes, the replicated servers can continue to serve user requests without interruption.
 

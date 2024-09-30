@@ -205,7 +205,7 @@ Both are tools to help improve performance by avoiding unnecessary recalculation
 
 ### AWS API Gateway
 1. **What is AWS API Gateway?**
-   - **Answer**: AWS API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale².
+   - **Answer**: AWS API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. simplifying the process of building and managing APIs.
 
 2. **How does API Gateway integrate with AWS Lambda?**
    - **Answer**: API Gateway can trigger AWS Lambda functions in response to HTTP requests. This allows you to build serverless APIs that scale automatically.
@@ -215,7 +215,7 @@ Both are tools to help improve performance by avoiding unnecessary recalculation
 
 ### AWS Lambda
 1. **What is AWS Lambda?**
-   - **Answer**: AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers. You pay only for the compute time you consume¹.
+   - **Answer**: AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers, making it perfect for scalable and cost-effective solutions. You pay only for the compute time you consume¹.
 
 2. **What are the use cases for AWS Lambda?**
    - **Answer**: Common use cases include data processing, real-time file processing, backends for mobile and web applications, and event-driven applications¹.
@@ -245,7 +245,7 @@ Both are tools to help improve performance by avoiding unnecessary recalculation
 
 ### AWS DynamoDB
 1. **What is Amazon DynamoDB?**
-   - **Answer**: Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.
+   - **Answer**: Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability, ideal for applications requiring consistent, single-digit millisecond latency.
 
 2. **What are DynamoDB Streams?**
    - **Answer**: DynamoDB Streams capture a time-ordered sequence of item-level changes in a DynamoDB table and can be used to trigger AWS Lambda functions.
