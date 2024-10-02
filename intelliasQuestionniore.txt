@@ -1,0 +1,102 @@
+Questionnaire - Senior Backend Engineer 
+ 
+Name	Vivek Gupta
+
+Languages, Frameworks and Platforms 
+1. Describe your experience with TypeScript and/or Golang?  
+ Answer:
+I have good experience with TypeScript, using it to build backend systems in Node.js for insurance and OTT platforms.
+
+
+2. Why do you prefer TypeScript over JavaScript? Or vice versa. Why? 
+ Answer:
+I prefer TypeScript because it adds type safety, making the code more predictable and easier to debug. It also improves code quality and maintainability, especially in large projects.
+
+
+3. Which is your framework of choice while creating APIs in Node.js? What do you like the most about this framework?  
+ Answer:
+I prefer using ExpressJS for creating APIs in Node.js. I like it because it’s lightweight, flexible, and has a large ecosystem of middleware, making it easy to build and maintain APIs.
+
+
+4. Have you created or used a GraphQL?  What are your views on GraphQL vs.  RESTful  API  vs GRPC? 
+ Answer:
+I have mainly created RESTful APIs but also have experience with GraphQL.
+Views on APIs:
+•	GraphQL: Flexible and efficient, allows clients to request exactly what they need.
+•	RESTful API: Simple and widely used, great for standard CRUD operations.
+•	gRPC: High performance, ideal for microservices and real-time communication.
+
+
+5. Do you have any development experience with any of the Cloud Service Providers (AWS, GCP, Azure)? 
+ Answer:
+I have foundational experience with AWS. If given the opportunity, I am confident I can quickly prepare and effectively implement AWS solutions in real projects.
+
+6. Can you name 3 of your favourite services from your choice of Cloud Service Providers that you have experience with? Why these 3 services? 
+ Answer:
+Here are my three favorite AWS services:
+1.	AWS Lambda: It allows you to run code without provisioning or managing servers, making it perfect for scalable and cost-effective solutions.
+2.	API Gateway: It helps create, publish, maintain, monitor, and secure APIs at any scale, simplifying the process of building and managing APIs.
+3.	DynamoDB: A fully managed NoSQL database service that provides fast and predictable performance with seamless scalability, ideal for applications requiring consistent, single-digit millisecond latency.
+
+
+7. How do you ensure your code works as expected? What levels of testing do you perform to get this level of confidence? 
+ Answer:
+To ensure my code works as expected, I perform multiple levels of testing:
+1.	Unit Testing: Using Jest to test individual components and functions.
+2.	Integration Testing: Ensuring different modules and services work together correctly.
+3.	End-to-End Testing: Simulating real user scenarios to verify the entire application flow.
+These testing levels help me catch issues early and maintain high code quality.
+
+8. What kinds of databases have you used?  When would you prefer a NoSQL over a traditional RDBMS and why? 
+ Answer:
+I have used MongoDB as my database. I prefer NoSQL databases like MongoDB over traditional RDBMS when dealing with large volumes of unstructured data, as they offer flexibility in data models and horizontal scalability. NoSQL is ideal for applications that require quick iterations and scalability. On the other hand, RDBMS is better suited for structured data with complex relationships and applications that need ACID transactions and well-defined schemas.
+
+9. How do you ensure your code/service continues to run as expected in production? And when issues arise what is your strategy to identify these early and fix them? 
+Answer:
+To ensure my code and services continue to run smoothly in production, I use monitoring tools like Grafana and Datadog to keep an eye on performance and health metrics. Regular health checks are performed to detect any issues early. When problems arise, I conduct root cause analysis to understand why the service went down. I also set up alert mechanisms to notify our team immediately if a service fails. Additionally, I use orchestration tools like Kubernetes to automatically restart failed services and ensure our system can scale to handle increased load. This comprehensive approach helps maintain service reliability and quickly address any issues that occur.
+
+Architecture and System Design 
+10.  Have you used Microservices in past?  What are the challenges one should be aware about while using Microservices? 
+Answer:
+Yes, I have used microservices before. They are great for scalability and flexibility, but they come with challenges. Managing many services can be complex, and ensuring they communicate reliably is crucial. Data consistency across services can be tricky, and coordinating deployments is another challenge. Monitoring and debugging require tools like Grafana and Datadog. It’s important to ensure services can scale independently, often using Kubernetes. 
+
+11.  What do you feel is a good way to share a piece of business logic in a Microservices architecture? 
+ Answer:
+A good way to share a piece of business logic in a microservices architecture is to create a dedicated service for that logic. This service can then be accessed by other microservices through APIs. This approach ensures that the logic is centralized, making it easier to maintain and update. Additionally, it promotes reusability and consistency across the system. Using API gateways can help manage and secure these interactions efficiently.
+
+
+12.  What are your views on Event-Driven Development? What challenges does it pose? 
+Answer:
+Event-Driven Development is a great way to make systems more flexible and scalable by having services communicate through events. It allows for real-time processing and can improve responsiveness. However, it comes with challenges like managing the complexity of event flows, debugging issues across services, ensuring data consistency, dealing with latency, and handling errors properly. Despite these challenges, with the right tools and practices, it can significantly enhance the robustness of applications.
+
+People and Processes 
+13.  What do you feel makes you a better developer than others in your team? What are your strengths? 
+ Answer:
+What makes me stand out as a developer is my strong problem-solving ability and quick adaptability to new technologies. I excel at writing clean, maintainable code and have a keen eye for detail, which helps me identify and fix issues early. My strengths include a solid understanding of TypeScript and Node.js, experience with microservices, and a proactive approach to learning and implementing new tools and practices. Additionally, my collaborative nature and effective communication skills enable me to work well within a team, ensuring smooth project execution and continuous improvement.
+
+14.  May you share details about one of the projects/piece of work you have enjoyed working on the most? What is the reason of this being your favourite piece of work?
+Answer:
+One of my favorite projects was developing the backend for an OTT platform. I enjoyed it because it involved working with a variety of technologies, including Node.js, TypeScript, and MongoDB. The challenge of ensuring smooth streaming and handling large volumes of data in real-time was both exciting and rewarding. Additionally, seeing the positive impact on users who could enjoy their favorite shows seamlessly made it a very fulfilling experience.
+
+15. What do you feel should be provided, along with the code, while raising a Pull Request/Merge Request? What do you feel constitutes a good review of a PR/MR? 
+Answer:
+When raising a PR/MR, include a clear description, relevant documentation, tests, and any necessary screenshots or logs. A good review should check code quality, verify functionality, review tests, assess system impact, and provide constructive feedback. This ensures high code quality and smooth collaboration.
+
+Technology 
+16.  Name a couple of the most exciting technologies you have encountered but may not have worked with yet in recent times. What excites you about them? 
+ Answer:
+Two exciting technologies I’ve encountered recently are NestJS and GraphQL.
+NestJS is a progressive Node.js framework that builds on top of ExpressJS, offering a modular architecture and strong TypeScript support. It excites me because it brings a lot of structure and scalability to backend development, making it easier to manage large projects.
+GraphQL is another technology that intrigues me. It allows clients to request exactly the data they need, reducing over-fetching and under-fetching of data. Its flexibility and efficiency in handling complex queries make it a powerful alternative to traditional RESTful APIs.
+Both technologies promise to enhance the development experience and improve the performance and scalability of applications.
+
+17.  If it happens,  which company do you want to work in the most?  What about that company makes you feel to join them? 
+ Answer:
+One company I would love to work for is Google. What excites me about Google is its culture of innovation and continuous learning. They work on cutting-edge technologies and have a strong focus on research and development. Additionally, Google’s emphasis on employee growth, collaboration, and a supportive work environment makes it an ideal place for personal and professional development. The opportunity to work on impactful projects that reach millions of users worldwide is incredibly motivating.
+
+18.  Describe a problem/bug you had that was very hard to troubleshoot, including all the steps you took to identify the root cause (optional: and how you fixed it) [Any language, any stack, to understand how you can track complex problems]
+Answer:
+In an OTT platform project, users faced intermittent streaming issues and unexpected logouts due to short access token expiration times. I analyzed server logs, used Grafana for monitoring, reviewed the code, and conducted network analysis. Consulting with team members and incremental testing helped identify a misconfigured load balancer as the root cause. Additionally, to address the logout issue, we implemented a refresh token mechanism to improve user experience. Reconfiguring the load balancer and adding the refresh token mechanism resolved the issues, highlighting the importance of systematic troubleshooting and collaboration.
+
+
+I have used SQL and NoSQL. I would prefer NoSQL over SQL when we need faster query, less relational data and when dealing with large volumes of unstructured data.

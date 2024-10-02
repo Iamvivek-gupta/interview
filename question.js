@@ -2799,3 +2799,31 @@ const aggregatedData = arr.reduce((acc, item) => {
 }, []);
 
 console.log(aggregatedData);
+
+
+
+function correctText(input) {
+  return input.replace(/(\w)\1+/g, '$1');
+}
+
+let text = 'WWe worrk on RReeaact, Pyythhon and NoodeJs. We catcch the baall alsso.';
+let correctedText = correctText(text);
+console.log(correctedText); // Output: We work on React, Python and NodeJs. We catch the ball also.
+
+// This function uses a regular expression to find repeated characters and replaces them with a single instance of that character.
+
+
+
+// function correctText(input) {
+//   let result = '';
+//   for (let i = 0; i < input.length; i++) {
+//       if (input[i] !== input[i - 1]) {
+//           result += input[i];
+//       }
+//   }
+//   return result;
+// }
+
+// let text = 'WWe worrk on RReeaact, Pyythhon and NoodeJs. We catcch the baall alsso.';
+// let correctedText = correctText(text);
+// console.log(correctedText); // Output: We work on React, Python and NodeJs. We catch the ball also.

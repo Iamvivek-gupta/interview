@@ -4,7 +4,7 @@ GraphQL is a query language for APIs and It provides single endpoint to fetch an
 
 
 # MicroService
-Microservice architecture is a design pattern in which a large application is composed of small, loosely coupled, and independently deployable services. Each service is responsible for specific business logic and communicates with other services through well-defined APIs.
+Microservice architecture is a design approach where a large application is broken down into small, loosely coupled, and independently deployable services. Each service handles a specific piece of business logic and interacts with other services through well-defined APIs.
 
 ### Key Concepts and Components of Microservice Architecture
 
@@ -262,7 +262,7 @@ An **SQL injection attack** is a type of cyber attack where an attacker inserts 
 1. **Use Prepared Statements**: These ensure that SQL code and data are separated, preventing attackers from injecting malicious code.
 2. **Validate and Sanitize Inputs**: Always check and clean user inputs to remove any potentially harmful code.
 3. **Use Stored Procedures**: These can help control the SQL code that gets executed.
-4. **Enforce Least-Privilege Access**: Limit database permissions to only what's necessary for each user¹²³.
+4. **Enforce Least-Privilege Access**: Limit database permissions to only what's necessary for each user.
 
 # testing Stubs
 Stubs in software testing are programs or routines that simulate the behavior of software components or modules. When a particular component or module is missing or still under development, stubs step in to temporarily replace these yet-to-be-developed components. They allow testing to proceed in parallel with development, ensuring that applications run smoothly and efficiently1. 
