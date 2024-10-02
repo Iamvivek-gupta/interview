@@ -81,8 +81,8 @@ One of my favorite projects was developing the backend for an OTT platform. I en
 15. What do you feel should be provided, along with the code, while raising a Pull Request/Merge Request? What do you feel constitutes a good review of a PR/MR? 
 Answer:
 When raising a PR/MR, include a clear description, relevant documentation, tests, and any necessary screenshots or logs. A good review should check code quality, verify functionality, review tests, assess system impact, and provide constructive feedback. This ensures high code quality and smooth collaboration.
+When raising a Pull Request (PR) or Merge Request (MR), it's important to include a clear title and description that explains what the changes are and why they are necessary. Providing context by linking to relevant issues or discussions helps reviewers understand the background. Describing how you've tested the changes ensures that they work as intended, and including screenshots can be very helpful if there are visual changes. A good review should focus on clarity, ensuring the code is easy to understand, verifying that it functions correctly, checking for adherence to coding standards, and providing constructive feedback. This approach keeps the process smooth and efficient for everyone involved. 😊
 
-Technology 
 16.  Name a couple of the most exciting technologies you have encountered but may not have worked with yet in recent times. What excites you about them? 
  Answer:
 Two exciting technologies I’ve encountered recently are NestJS and GraphQL.
