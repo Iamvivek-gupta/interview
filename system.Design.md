@@ -1,6 +1,6 @@
 # GraphQL
 
-GraphQL is a query language for APIs and It provides single endpoint to fetch and manupulate the data. It allows clients to request exactly the data they need, making APIs more efficient and flexible. This reduces over-fetching and under-fetching of data, improves performance, and provides a more intuitive and powerful way to work with APIs compared to traditional REST.
+GraphQL is a query language for APIs and It provides single endpoint to fetch and manupulate the data. It allows clients to request exactly the data they need, making APIs more flexible and efficient. This reduces over-fetching and under-fetching of data, improves performance, and provides a more intuitive and powerful way to work with APIs compared to traditional REST.
 
 
 # MicroService
@@ -142,7 +142,7 @@ Using microservices in a Node.js TypeScript project offers many benefits, such a
 
 ### 1. Increased Complexity
 
-**Explanation**: Microservices introduce additional complexity in terms of architecture, deployment, and management. Each service must be independently deployed, managed, and monitored.
+**Explanation**: Managing many Microservices introduce complexity in terms of architecture, deployment, and management. Each service must be independently deployed, managed, and monitored.
 
 **Example**: Imagine you have an e-commerce application. Instead of a single codebase, you now have separate services for user management, inventory, orders, and payments. Coordinating updates and deployments across all these services can be challenging.
 
