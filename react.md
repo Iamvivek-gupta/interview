@@ -2,13 +2,16 @@
 Basic Questions
 
 # What is React?
-React is a JavaScript library for building user interfaces, particularly single-page applications. It allows developers to create reusable UI components.
+React is a JavaScript library for building user interfaces, particularly single-page applications. 
+It allows developers to create reusable UI components.
 
 # What is JSX?
-JSX stands for JavaScript XML. It allows you to write HTML elements in JavaScript and place them in the DOM without using functions like createElement() or appendChild().
+JSX stands for JavaScript XML. 
+It allows you to write HTML elements in JavaScript and place them in the DOM without using functions like createElement() or appendChild().
 
 # What are components in React?
-Components are the building blocks of a React application. They can be either class-based or functional and are used to create reusable pieces of UI.
+Components are the building blocks of a React application. 
+They can be either class-based or functional and are used to create reusable pieces of UI.
 
 
 # What is the difference between state and props?
@@ -25,17 +28,20 @@ The Virtual DOM is a lightweight copy of the actual DOM. React uses it to optimi
 HOCs are functions that take a component and return a new component. They are used for reusing component logic.
 
 # What is Redux, and how does it work with React?
-Redux is a state management library for JavaScript applications, often used with React. It provides a centralized store for managing the state of your application, making it easier to share data between components and manage complex state logic.
+Redux is a state management library for JavaScript applications, often used with React. 
+It provides a centralized store for managing the state of your application, making it easier to share data between components and manage complex state logic.
 
 # What are React lifecycle methods?
 Lifecycle methods are hooks that allow you to run code at specific points in a component’s   life. Examples include componentDidMount, componentDidUpdate, and componentWillUnmount.
 
 
 # Lazy Loading: 
-Lazy loading in React means loading components only when they are needed, which helps reduce the initial load time of the app. This makes the react application faster and more efficient.
+Lazy loading in React means loading components only when they are needed, which helps reduce the initial load time of the app. 
+This makes the react application faster and more efficient.
 
 # Code Splitting: 
-Code splitting in React means breaking down the app’s code into smaller chunks, These chunks are loaded on demand, rather than loading the entire app at once.. This ensures that only the necessary parts of the app are loaded, improving performance.
+Code splitting in React means breaking down the ;arge app’s code into smaller chunks, These chunks are loaded on demand, rather than loading the entire app at once. 
+This ensures that only the necessary parts of the app are loaded, improving performance.
 
 
 
@@ -111,7 +117,9 @@ export default MyComponent;
 
 Sure! Here's a simple explanation of the difference between `useCallback` and `useMemo` hooks in React:
 
-- **`useCallback`**: This hook is used to memoize a function. It returns a memoized version of the callback function that only changes if one of the dependencies has changed. This is useful when you pass a callback to a child component and want to prevent unnecessary re-renders.
+- **`useCallback`**: This hook is used to memoize a function. 
+It returns a memoized version of the callback function that only changes if one of the dependencies has changed. 
+This is useful when you pass a callback to a child component and want to prevent unnecessary re-renders.
 
   ```jsx
   const memoizedCallback = useCallback(() => {
@@ -119,7 +127,9 @@ Sure! Here's a simple explanation of the difference between `useCallback` and `u
   }, [a, b]);
   ```
 
-- **`useMemo`**: This hook is used to memoize a value. It returns a memoized value that only recalculates if one of the dependencies has changed. This is useful for optimizing expensive calculations so they don't run on every render.
+- **`useMemo`**: This hook is used to memoize a value. 
+It returns a memoized value that only recalculates if one of the dependencies has changed. 
+This is useful for optimizing expensive calculations so they don't run on every render.
 
   ```jsx
   const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
@@ -138,7 +148,9 @@ Both hooks help improve performance by avoiding unnecessary recalculations or re
 
 Sure! Here's a simple explanation of the difference between `memo` and `useMemo` hooks in React:
 
-- **`React.memo`**: This is a higher-order component (HOC) that you use to wrap a functional component. It helps to optimize performance by memoizing the component. This means that the component will only re-render if its props change. It's useful for preventing unnecessary re-renders of child components.
+- **`React.memo`**: This is a higher-order component (HOC) is used to memoize entire functional component. 
+It helps to optimize performance by memoizing the component. This means that the component will only re-render if its props change. 
+It's useful for preventing unnecessary re-renders of child components.
 
   ```jsx
   const MemoizedComponent = React.memo((props) => {
@@ -146,7 +158,9 @@ Sure! Here's a simple explanation of the difference between `memo` and `useMemo`
   });
   ```
 
-- **`useMemo`**: This is a hook that you use inside a functional component to memoize a value. It recalculates the value only when one of its dependencies changes. This is useful for optimizing expensive calculations that shouldn't run on every render.
+- **`useMemo`**: This is a hook that you use inside a functional component to memoize a value. 
+It recalculates the value only when one of its dependencies changes. 
+This is useful for optimizing expensive calculations that shouldn't run on every render.
 
   ```jsx
   const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
