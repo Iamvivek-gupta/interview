@@ -442,8 +442,54 @@ In summary, Redux Toolkit is a powerful and efficient way to work with Redux, es
 
 
 
+# Example for Lazy Loading and Code splitting
+
+Sure, here’s a simple example using React to demonstrate lazy loading and code splitting:
+
+First, install the necessary dependencies:
+
+npm install react react-dom
+
+Then, create your components:
+
+MyComponent.js
 
 
+import React from 'react';
+
+const MyComponent = () => {
+  return <div>Hello, I’m lazily loaded!</div>;
+};
+
+export default MyComponent;
+
+
+App.js
+
+import React, { Suspense, lazy } from 'react';
+
+const MyComponent = lazy(() => import('./MyComponent'));
+
+const App = () => {
+  return (
+    <div>
+      <h1>Welcome to my app!</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+};
+
+export default App;
+
+
+
+
+
+In this example, MyComponent is lazy-loaded using React.lazy and React.Suspense. The fallback prop in Suspense is shown while the component is being loaded. When the component is fully loaded, it replaces the fallback.
+
+This setup ensures that MyComponent is only loaded when needed, reducing the initial load time of your application.
 
 
 
