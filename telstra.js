@@ -36,3 +36,34 @@ const useCount = (initialCount = 0) => {
 }
 
 export default useCount;
+
+
+
+
+import React from 'react';
+import useCount from './useCount';
+
+const CounterComponent = () => {
+  const { count, increment, decrement } = useCount(0);
+
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+};
+
+export default CounterComponent;
+
+
+
+
+// In this example:
+
+// useCount is imported and used to initialize the counter state.
+
+// count, increment, and decrement are destructured from the useCount hook.
+
+// The count state is displayed, and the increment and decrement functions are tied to their respective buttons.

@@ -40,7 +40,7 @@ Lazy loading in React means loading components only when they are needed, which 
 This makes the react application faster and more efficient.
 
 # Code Splitting: 
-Code splitting in React means breaking down the large applications code into smaller chunks, These chunks are loaded on demand, rather than loading the entire app at once.
+Code splitting in React means breaking down the large application's code into smaller chunks, These chunks are loaded on demand, rather than loading the entire app at once.
 This ensures that only the necessary parts of the app are loaded, improving performance.
 
 
