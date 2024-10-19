@@ -284,7 +284,10 @@ A memory leak is a situation where memory is allocated to a variables, events an
 
 # Worker Thread
 
-In Node.js, worker threads allow you to run JavaScript code in parallel by leveraging multiple threads. These threads are useful for CPU-intensive tasks, dividing the work among multiple workers threads to optimize performance, as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
+In Node.js, worker threads allow you to run JavaScript code in parallel by leveraging multiple threads.
+These threads are useful for CPU-intensive tasks, dividing the work among multiple workers threads to optimize performance, as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. 
+Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. 
+They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
  
 
 # Cluster Module:

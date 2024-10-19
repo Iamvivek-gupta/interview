@@ -1237,3 +1237,174 @@ for (var i = 0; i < 1000000; i += 1){
 // 3. Execute any macrotasks in the macrotask queue (e.g., `setTimeout` callbacks).
 
 // Therefore, promises (microtasks) generally have higher priority than `setTimeout` (macrotasks). If there are both promises and `setTimeout` callbacks scheduled, the promises will be executed first.
+
+
+
+// var x = 21;
+// var test = function () {
+//     var x = undefined;
+//     console.log(x);
+//     x = 20;
+// };
+// test();
+
+
+
+
+
+
+
+// let test = {
+//     a: 22
+// };
+// let one = test;
+// let two = JSON.parse(JSON.stringify(test));
+// test.a = 90;
+// console.log('one ==== ', one); // {a: 22}
+// console.log('two ==== ', two); // {a: 90}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const obj = { a: 4 };
+// const str = 'test';
+// console.log(delete obj.a);
+// console.log(delete str); 
+
+
+
+// let test = 0
+// console.log(test++ + ++test);
+
+
+
+
+
+// console.log('test');
+
+// setImmediate(() => console.log('setImmediate'));
+
+// setTimeout(() => console.log('setTimeout'));
+
+// process.nextTick(() => console.log('nextTick'))
+
+// console.log('log 2'); // test, log 2, nextTick, setTimeout, setImmediate
+
+
+
+// new Promise((resolve, reject) => {
+//    console.log('first');
+//    resolve(23);
+// }).then(data => {
+//    console.log('1 ans = ', data); // 23
+//    return data++;
+// }).then(data => {
+//    console.log('2 ans = ', data); // 24
+//    return ++data;
+// }).then(data => {
+//    console.log('3 ans = ', data); // 25
+// });
+
+
+
+
+// main()
+// async function main() {
+//     console.log('start');
+//     console.log(await display());
+//     console.log('end');
+// }
+
+// async function display() {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve('timeout');
+//         }, 600)
+//         console.log('display')
+//     })
+// }
+
+// start end display timeout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class Chameleon {
+//   static colorChange(newColor) {
+//     this.newColor = newColor;
+//     return this.newColor;
+//   }
+
+//   constructor({ newColor = 'green' } = {}) {
+//     this.newColor = newColor;
+//   }
+// }
+
+// const freddie = new Chameleon({ newColor: 'purple' });
+// console.log(freddie.colorChange('orange'));
+
+
+
+// ## Write a program to count number of vowels and consonants in a given string
+
+// dsfkefjweijoifj@#$%^&*99082098{}[];''dadas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
