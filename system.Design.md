@@ -220,10 +220,12 @@ At-least-once Delivery: By default, Kafka guarantees at-least-once delivery, but
 
 
 # helmet
-Helmet is a collection of middleware functions for Node. js designed to secure web applications by setting crucial HTTP headers. These headers play a pivotal role in mitigating common web vulnerabilities such as Cross-Site Scripting (XSS), Clickjacking, and Cross-Site Request Forgery (CSRF).
+Helmet is a collection of middleware functions for Node. js designed to secure web applications by setting crucial HTTP headers. 
+These headers play a important role in mitigating common web vulnerabilities such as Cross-Site Scripting (XSS), Clickjacking, and Cross-Site Request Forgery (CSRF).
 
 # CSRF
-CSRF (Cross-Site Request Forgery) is an attack that tricks a user into executing unwanted actions on a web application where they're authenticated, without their knowledge or consent.
+CSRF (Cross-Site Request Forgery) is an attack that tricks a user into executing unwanted actions on a web application 
+where they're authenticated, without their knowledge or consent.
 
 
 
