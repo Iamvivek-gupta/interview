@@ -240,7 +240,8 @@ XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filte
 
 
 # CORS
-CORS, or Cross-Origin Resource Sharing, is a mechanism that allows web applications running on one domain to request resources from another domain. This is crucial for enabling web applications to interact with APIs hosted on different servers.
+CORS, or Cross-Origin Resource Sharing, is a mechanism that allows web applications running on one domain to request resources from another domain. 
+This is crucial for enabling web applications to interact with APIs hosted on different servers.
 
 
 const app = express();
@@ -258,7 +259,8 @@ app.use(cors(corsOptions));
 
 # SQL Injection
 
-An **SQL injection attack** is a type of cyber attack where an attacker inserts malicious SQL code into a query to manipulate a database. This can allow them to access, modify, or delete data they shouldn't be able to.
+An **SQL injection attack** is a type of cyber attack where an attacker inserts malicious SQL code into a query to manipulate a database. 
+This can allow them to access, modify, or delete data they shouldn't be able to.
 
 ### How to Prevent SQL Injection Attacks:
 1. **Use Prepared Statements**: These ensure that SQL code and data are separated, preventing attackers from injecting malicious code.
@@ -272,7 +274,9 @@ Stubs in software testing are programs or routines that simulate the behavior of
 
 
 # Memory Leaks
-A memory leak is a situation where memory is allocated to a variables, events and objects that are no longer being used by the program, but the garbage collector can't reclaim that memory because the objects are still being referenced somewhere. This can lead to performance slowdowns and crashes as the application continues to run. https://www.geeksforgeeks.org/how-to-handle-memory-leaks-in-javascript/
+A memory leak is a situation where memory is allocated to a variables, events and objects that are no longer being used by the program, 
+but the garbage collector can't reclaim that memory because the objects are still being referenced somewhere. 
+This can lead to performance slowdowns and crashes as the application continues to run. https://www.geeksforgeeks.org/how-to-handle-memory-leaks-in-javascript/
 
 
 
@@ -287,7 +291,8 @@ A memory leak is a situation where memory is allocated to a variables, events an
 # Worker Thread
 
 In Node.js, worker threads allow you to run JavaScript code in parallel by leveraging multiple threads.
-These threads are useful for CPU-intensive tasks, dividing the work among multiple workers threads to optimize performance, as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. 
+These threads are useful for CPU-intensive tasks, dividing the work among multiple workers threads to optimize performance,
+as Node.js is single-threaded by default and heavy computation can block the event loop, leading to poor performance. 
 Unlike the main thread, which handles I/O operations, worker threads can share memory and execute tasks concurrently. 
 They’re particularly helpful for tasks like parsing large files or performing complex computations without blocking the main application12. 🚀
  
