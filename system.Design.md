@@ -792,12 +792,15 @@ By following these principles, you write cleaner, more maintainable code that's 
 
 
 # ACID
-ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. It is a set of properties that guarantee the reliability and consistency of transactions in a database management system (DBMS). Let's break down each component of ACID and understand its significance using MySQL as an example:
+ACID is an acronym that stands for Atomicity, Consistency, Isolation, and Durability. 
+It is a set of properties that guarantee the reliability and consistency of transactions in a database management system (DBMS). 
+Let's break down each component of ACID and understand its significance using MySQL as an example:
 
 1. **Atomicity**:
    - Atomicity ensures that each transaction is treated as a single unit of work, which means that either all of the operations within the transaction are successfully completed, or none of them are.
    - In MySQL, if a transaction encounters an error or failure during execution, it can be rolled back to its initial state, undoing any changes made by the transaction.
-   - Example: Consider a banking application where a user transfers funds from one account to another. Atomicity ensures that if the funds are deducted from one account, they are also successfully credited to the recipient's account. If any step fails, the entire transaction is rolled back, ensuring data integrity.
+   - Example: Consider a banking application where a user transfers funds from one account to another. 
+   - Atomicity ensures that if the funds are deducted from one account, they are also successfully credited to the recipient's account. If any step fails, the entire transaction is rolled back, ensuring data integrity.
 
 2. **Consistency**:
    - Consistency ensures that the database remains in a consistent state before and after the transaction. It guarantees that the integrity constraints, such as foreign key constraints or unique constraints, are not violated.
