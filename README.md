@@ -232,7 +232,7 @@ Here are some commonly asked JavaScript interview questions, along with explanat
 ### 1. **Explain closures in JavaScript.**
    - **Closures** In JavaScript, a closure is a function that has the ability to access its own scope, as well as the scopes of the functions that surround it and the global scope. This feature allows functions to remember and access variables from an outer function even after the outer function has been executed.
 
-The outer function's variables and parameters are then accessible within the inner function, even after the outer function has finished running.
+The outer function's variables and parameters are accessible within the inner function, even after the outer function has finished running.
    - Example:
      ```javascript
      function outerFunction(outerVariable) {

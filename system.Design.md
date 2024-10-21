@@ -926,7 +926,7 @@ In this example, whenever a new message is received, the message event is emitte
 
 
 # Libuv
-**Libuv** Libuv provides non-blocking I/O operations, allowing Node. js to handle multiple tasks concurrently without waiting for an operation to complete. This is achieved through a combination of callbacks, event-driven programming, and a worker thread pool.
+**Libuv** Libuv provides non-blocking I/O operations, allowing Node.js to handle multiple tasks concurrently without waiting for an operation to complete. This is achieved through a combination of callbacks, event-driven programming, and a worker thread pool.
 
 ### Key Points:
 
@@ -1147,11 +1147,14 @@ Example: An e-commerce site replicates its product catalog database. If the main
 
 
 # Indexing 
-Definition: Indexing is the process of creating a data structure (an index B-tree and Hash Table) that improves the speed of data retrieval operations on a database table. An index is like a book index, which allows you to quickly find information without scanning the entire book.
+Definition: Indexing is the process of creating a data structure (an index B-tree and Hash Table) that improves the speed of data retrieval operations on a database table. 
+An index is like a book index, which allows you to quickly find information without scanning the entire book.
 
 Use Case: Indexes are used to enhance the performance of database queries, especially when dealing with large datasets.
 
-Example: Suppose you have a database table of products with columns product_id, name, and price. If you frequently search for products by their name, you can create an index on the name column. This index allows the database to find products by name much faster than scanning the entire table.
+Example: Suppose you have a database table of products with columns product_id, name, and price. 
+If you frequently search for products by their name, you can create an index on the name column. 
+This index allows the database to find products by name much faster than scanning the entire table.
 
 
 
