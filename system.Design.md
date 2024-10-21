@@ -803,14 +803,17 @@ Let's break down each component of ACID and understand its significance using My
    - Atomicity ensures that if the funds are deducted from one account, they are also successfully credited to the recipient's account. If any step fails, the entire transaction is rolled back, ensuring data integrity.
 
 2. **Consistency**:
-   - Consistency ensures that the database remains in a consistent state before and after the transaction. It guarantees that the integrity constraints, such as foreign key constraints or unique constraints, are not violated.
+   - Consistency ensures that the database remains in a consistent state before and after the transaction. 
+   - It guarantees that the integrity constraints, such as foreign key constraints or unique constraints, are not violated.
    - In MySQL, consistency is maintained by enforcing referential integrity and other constraints defined on the database schema.
    - Example: In a blog application, if a user attempts to publish a post, consistency ensures that the post is not published if it violates any constraints, such as a missing required field or an invalid reference to a category.
 
 3. **Isolation**:
-   - Isolation ensures that transactions are executed independently of each other, as if multiple trasactions are executing sequentially. It prevents interference between concurrent transactions, thereby maintaining data integrity and consistency.
+   - Isolation ensures that transactions are executed independently of each other, as if multiple trasactions are executing sequentially. 
+   - It prevents interference between concurrent transactions to maintain data integrity and consistency.
    - In MySQL, isolation levels such as READ COMMITTED, REPEATABLE READ, and SERIALIZABLE control the degree of isolation between transactions.
-   - Example: Consider a scenario where multiple users simultaneously update their profile information. Isolation ensures that each user's transaction sees a consistent snapshot of the data and is not affected by concurrent updates from other users.
+   - Example: Consider a scenario where multiple users simultaneously update their profile information. 
+   - Isolation ensures that each user's transaction sees a consistent snapshot of the data and is not affected by concurrent updates from other users.
 
 4. **Durability**:
    - Durability guarantees that once a transaction is committed, its changes are permanently saved and will not be lost, even in the event of a system failure or crash.
