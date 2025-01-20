@@ -157,19 +157,19 @@ let r = getMissingNo([1, 2, 4, 3, 7, 8], 8)
 // Q4 two sum Problem.
 
 let twoSum = function (num, target) {
-    let map = new Map();
-    for (let i = 0; i < num.length; i++) {
-        let num1 = num[i];
-        let num2 = target - num1;
-        if (map.has(num2)) {
-            return [i, map.get(num2)];
-        }
-        map.set(num1, i);
-        return 'value not found'
-    }
+  let map = new Map();
+  for (let i = 0; i < num.length; i++) {
+      let num1 = num[i];
+      let num2 = target - num1;
+      if (map.has(num2)) {
+          return [map.get(num2), i];
+      }
+      map.set(num1, i);
+  }
+  return null;
 }
-let result = twoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 15);
-// console.log(result);
+let result = twoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 100);
+console.log(result);
 
 
 

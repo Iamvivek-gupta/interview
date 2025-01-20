@@ -704,7 +704,6 @@ Would you like more examples or details on any of these methods?
 
 
 
-
 Sure! Here's a brief overview of the different Promise methods in JavaScript:
 
 1. **`Promise.all()`**:

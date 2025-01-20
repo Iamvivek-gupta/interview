@@ -112,7 +112,6 @@ export default MyComponent;
 
 
 
-
 # Diffrence Between UseCallback and UseMemo.?
 
 Sure! Here's a simple explanation of the difference between `useCallback` and `useMemo` hooks in React:
