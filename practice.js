@@ -1377,8 +1377,73 @@ for (var i = 0; i < 1000000; i += 1){
 
 
 // ## Write a program to count number of vowels and consonants in a given string
-
 // dsfkefjweijoifj@#$%^&*99082098{}[];''dadas
+```
+let string = 'dsfkefjweijoifj@#$%^&*99082098{}[]aeeA';
+
+function countString(str) {
+  str = str.toLowerCase();
+  let vowelCount = 0;
+  let consonantCount = 0;
+  for (let char of str) {
+    if (['a', 'e', 'i', 'o', 'u'].includes(char)) {
+      vowelCount++;
+    } else if (/[a-z]/.test(char)) {
+      consonantCount++;
+    }
+  }
+
+  return {
+    vowels: vowelCount,
+    consonants: consonantCount
+  };
+}
+
+console.log(countString(string));
+
+```
+
+
+// Your concern is valid! The `includes` method does have O(n) time complexity, but in this specific case, it won't make the overall time complexity of your function O(n^2). Here's why:
+
+// - When used in an array with a fixed and small number of elements (like `['a', 'e', 'i', 'o', 'u']`), the `includes` method can be considered O(1) in practical terms, as the size of the array is constant (5 elements).
+
+// However, if we analyze it strictly:
+// - The `for` loop iterates over each character in the string, which gives us O(n).
+// - Inside the loop, the `includes` method is called on a fixed-size array, making each call O(1) (since it's a small, constant array).
+// - So, in this particular case, the overall time complexity of your function remains O(n) because the constant time operation of `includes` does not increase with the size of the string.
+
+// To further ensure efficiency, you could use a `Set` for the vowels check, which provides O(1) time complexity for lookups:
+
+// Here's an example:
+
+```javascript
+let string = 'dsfkefjweijoifj@#$%^&*99082098{}[]aeeA';
+
+function countString(str) {
+  const vowels = new Set(['a', 'e', 'i', 'o', 'u']);
+  let vowelCount = 0;
+  let consonantCount = 0;
+  
+  for (let char of str.toLowerCase()) {
+    if (vowels.has(char)) {
+      vowelCount++;
+    } else if (/[a-z]/.test(char)) {
+      consonantCount++;
+    }
+  }
+
+  return {
+    vowels: vowelCount,
+    consonants: consonantCount
+  };
+}
+
+console.log(countString(string));
+```
+
+// This version uses a `Set` for faster vowel checks and maintains the overall time complexity at O(n). Try it out and see how it works for you! 😊
+
 
 
 
