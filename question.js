@@ -2091,7 +2091,7 @@ function maxSumSubarray(arr, k) {
   // Iterate through the array, maintaining a sliding window
   for (let i = k; i < arr.length; i++) {
     // Update the window sum by adding the current element and subtracting the first element of the window
-    windowSum = windowSum + arr[i] - arr[i - k];
+    windowSum += arr[i] - arr[i - k];
     // Update the max sum if the current window sum is greater
     maxSum = Math.max(maxSum, windowSum);
   }
@@ -2244,7 +2244,7 @@ console.log(result); // Output: 3 (for "abc")
 
 //Below is the equivalent code using closure:
 
-```javascript
+```
 function createCounter() {
     let count = 0;
     return function() {
@@ -2266,18 +2266,6 @@ console.log(counter());
 // - The inner function returned by `createCounter` increments the `count` variable using the `++` operator and returns its new value.
 // - The `counter` constant is assigned the inner function returned by `createCounter`, creating a closure.
 // - Each time `counter` is called, it increments and returns the `count` variable, which is preserved within the closure.
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 
@@ -2350,7 +2338,7 @@ The final result is `[3, 2]`, which are the duplicate values found in the input 
 
 Here's a JavaScript function to find the longest palindromic substring in a given string:
 
-```javascript
+```
 function longestPalindromicSubstring(s) {
     if (!s || s.length === 0) return '';
 
@@ -2396,7 +2384,7 @@ You can test this function with different input strings to find the longest pali
 
 You can find the longest common prefix of an array of strings in JavaScript using the following function:
 
-```javascript
+```
 function longestCommonPrefix(strs) {
     if (strs.length === 0) return "";
     
