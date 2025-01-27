@@ -398,7 +398,8 @@ The outer function's variables and parameters are accessible within the inner fu
 
 
 # Recursion
-Recursion is a technique in JavaScript where a function calling itself to solve a complex problem. This approach is often used to break down complex problems into smaller simpler, more manageable parts. 
+Recursion is a technique in JavaScript where a function calling itself to solve a complex problem.
+This approach is often used to break down complex problems into smaller simpler, more manageable parts. 
 
 Here's a simple example to illustrate recursion:
 
