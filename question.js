@@ -2815,3 +2815,18 @@ console.log(correctedText); // Output: We work on React, Python and NodeJs. We c
 // let text = 'WWe worrk on RReeaact, Pyythhon and NoodeJs. We catcch the baall alsso.';
 // let correctedText = correctText(text);
 // console.log(correctedText); // Output: We work on React, Python and NodeJs. We catch the ball also.
+
+
+
+
+
+// Solve a prefix expression
+
+// Input : '-+8/632' {8+(6/3)-2}
+// //8+2-2
+// //10-2
+// //8
+// Output : 8
+
+// Input : -+7*45+20 {7+(4*5)-2+0}
+// Output : 25
