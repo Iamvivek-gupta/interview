@@ -34,6 +34,45 @@ It provides a centralized store for managing the state of your application, maki
 # What are React lifecycle methods?
 Lifecycle methods are hooks that allow you to run code at specific points in a component’s   life. Examples include componentDidMount, componentDidUpdate, and componentWillUnmount.
 
+Absolutely, here are some simple definitions for you:
+
+1. **`componentDidMount`**: This lifecycle method is called once, immediately after a component is added to the DOM. It's a great place to initiate data fetching or set up any subscriptions.
+
+2. **`componentDidUpdate`**: This lifecycle method is called right after the component updates, meaning whenever there's a change in the state or props. It's useful for performing operations based on the component's updated state or props.
+
+3. **`componentWillUnmount`**: This lifecycle method is called just before the component is removed from the DOM. It's the right place to clean up any subscriptions, timers, or other resources created during the component's lifecycle.
+
+Here’s a quick example to illustrate these:
+
+```javascript
+import React, { Component } from 'react';
+
+class MyComponent extends Component {
+  componentDidMount() {
+    console.log('Component mounted!');
+    // Initiate data fetching or subscriptions here
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Component updated!');
+    // Operations based on updated state or props here
+  }
+
+  componentWillUnmount() {
+    console.log('Component will unmount!');
+    // Clean up resources here
+  }
+
+  render() {
+    return <div>My Component</div>;
+  }
+}
+
+export default MyComponent;
+```
+
+Each method logs a message to the console when it’s called, helping you see when each part of the component lifecycle occurs. Let me know if you need more details or have other questions!
+
 
 # Lazy Loading: 
 Lazy loading in React means loading components only when they are needed, which helps reduce the initial load time of the app. 
@@ -42,6 +81,114 @@ This makes the react application faster and more efficient.
 # Code Splitting: 
 Code splitting in React means breaking down the large application's code into smaller chunks, These chunks are loaded on demand, rather than loading the entire app at once.
 This ensures that only the necessary parts of the app are loaded, improving performance.
+
+
+
+
+Sure, here's a simple example of lazy loading and code splitting using React and Webpack:
+
+### Step 1: Setup Webpack
+
+First, you'll need to set up Webpack in your project. Create a `webpack.config.js` file and add the following configuration:
+
+```javascript
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
+      }
+    ]
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  }
+};
+```
+
+### Step 2: Create React Components
+
+Next, create some React components. Let's create two components: `Home.js` and `About.js`.
+
+`src/components/Home.js`:
+```javascript
+import React from 'react';
+
+const Home = () => <div>Home Component</div>;
+
+export default Home;
+```
+
+`src/components/About.js`:
+```javascript
+import React from 'react';
+
+const About = () => <div>About Component</div>;
+
+export default About;
+```
+
+### Step 3: Lazy Load Components
+
+Now, let's lazy load these components in your main `App.js` file using React's `lazy` and `Suspense`.
+
+`src/App.js`:
+```javascript
+import React, { lazy, Suspense } from 'react';
+
+const Home = lazy(() => import('./components/Home'));
+const About = lazy(() => import('./components/About'));
+
+const App = () => (
+  <div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home />
+      <About />
+    </Suspense>
+  </div>
+);
+
+export default App;
+```
+
+### Step 4: Entry Point
+
+Finally, make sure you have an entry point for your application.
+
+`src/index.js`:
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+### Step 5: Run Webpack
+
+Now you can run Webpack to bundle your code. If you have everything set up correctly, this should create a bundle that lazy loads the `Home` and `About` components.
+
+```bash
+webpack --mode production
+```
+
+And that's it! You now have a simple example of lazy loading and code splitting using React and Webpack. Let me know if you need any further assistance!
 
 
 
