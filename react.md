@@ -736,5 +736,4 @@ This setup ensures that MyComponent is only loaded when needed, reducing the ini
 
 
 
-   Heelo World
 
