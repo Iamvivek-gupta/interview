@@ -734,3 +734,7 @@ This setup ensures that MyComponent is only loaded when needed, reducing the ini
 3. **How do you secure an EC2 instance?**
    - **Answer**: EC2 instances can be secured using security groups, network ACLs, IAM roles, and encryption for data at rest and in transit.
 
+
+
+   Heelo World
+
