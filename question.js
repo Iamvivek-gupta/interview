@@ -2830,3 +2830,69 @@ console.log(correctedText); // Output: We work on React, Python and NodeJs. We c
 
 // Input : -+7*45+20 {7+(4*5)-2+0}
 // Output : 25
+
+
+
+
+
+
+
+
+
+
+
+function toRoman(num) {
+  const romanMap = {
+    1: 'I',
+    4: 'IV',
+    5: 'V',
+    9: 'IX',
+    10: 'X',
+    40: 'XL',
+    50: 'L',
+    90: 'XC',
+    100: 'C',
+    400: 'XD', // Or CD, using standard form
+    500: 'D',
+    900: 'CM',
+    1000: 'M',
+  };
+  const numbers = Object.keys(romanMap).map(Number).sort((a, b) => b - a);
+  let result = '';
+
+  for (const number of numbers) {
+    while (num >= number) {
+      result += romanMap[number];
+      num -= number;
+    }
+  }
+  return result;
+}
+
+function numbersToRoman(arr) {
+  return arr.map(num => toRoman(num));
+}
+
+// Example usage:
+const numbersArray = [1, 4, 9, 58, 1994];
+const romanArray = numbersToRoman(numbersArray);
+console.log(romanArray); // Output: [ 'I', 'IV', 'IX', 'LVIII', 'MCMXCIV' ]
+
+// Explanation:
+
+// 1. `toRoman(num)` function:
+//    - `romanMap`: This object stores the mapping between decimal numbers and their Roman numeral representations. It includes the special subtractive cases (like 4, 9, 40, 90, etc.) which are crucial for the standard Roman numeral form.
+//    - `numbers`: We extract the decimal numbers from `romanMap` as keys, convert them to actual numbers using `map(Number)`, and then sort them in descending order. This sorting is important so we can process the largest values first.
+//    - `result`: An empty string that will accumulate the Roman numeral.
+//    - We iterate through the sorted `numbers`. For each `number`:
+//      - The `while (num >= number)` loop checks if the current decimal number (`num`) is greater than or equal to the current value from our sorted list (`number`).
+//      - If it is, we append the corresponding Roman numeral from `romanMap[number]` to the `result` string and subtract the `number` from `num`. This process continues until `num` is less than the current `number` in our sorted list.
+//    - Finally, the function returns the constructed `result` (the Roman numeral string).
+
+// 2. `numbersToRoman(arr)` function:
+//    - This function takes an array of numbers (`arr`) as input.
+//    - It uses the `map()` method to iterate over each number in the input array.
+//    - For each `num` in the array, it calls the `toRoman(num)` function to get its Roman numeral equivalent.
+//    - It returns a new array containing the Roman numeral representations of the original numbers.
+
+// In essence, the code works by iterating through the decimal values in descending order and greedily subtracting the largest possible Roman numeral value from the input number until the number becomes zero. The corresponding Roman numeral symbols are appended to the result string at each subtraction.
