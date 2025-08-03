@@ -355,37 +355,25 @@ o   }
 
 Cluster Module:
 The cluster module helps scale your app across CPU cores:
-o   const cluster = require('cluster');
+```
+const cluster = require('cluster');
+const http = require('http');
+const numCPUs = require('os').cpus().length;
 
-o   const http = require('http');
-
-o   const numCPUs = require('os').cpus().length;
-
-o   if (cluster.isMaster) {
-
-o     for (let i = 0; i < numCPUs; i++) {
-
-o       cluster.fork();
-
-o     }
-
-o     cluster.on('exit', (worker) => {
-
-o       console.log(`Worker ${worker.process.pid} died.`);
-
-o     });
-
-o   } else {
-
-o     http.createServer((req, res) => {
-
-o       res.writeHead(200);
-
-o       res.end('Hello from worker process!');
-
-o     }).listen(8000);
-
-o   }
+if (cluster.isMaster) {
+     for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+     }
+     cluster.on('exit', (worker) => {
+        console.log(`Worker ${worker.process.pid} died.`);
+     });
+ } else {
+     http.createServer((req, res) => {
+     res.writeHead(200);
+     res.end('Hello from worker process!');
+     }).listen(8000);
+ }
+```
 
 Forking:
 Forking creates a new Node.js process:
@@ -998,6 +986,8 @@ In this example, whenever a new message is received, the message event is emitte
 
 # Libuv
 **Libuv** Libuv provides non-blocking I/O operations, allowing Node.js to handle multiple tasks concurrently without waiting for an operation to complete. This is achieved through a combination of callbacks, event-driven programming, and a worker thread pool.
+
+**Libuv** libuv is a cross-platform, open-source C library that provides asynchronous I/O and event loop capabilities, forming the foundation of Node.js's non-blocking, event-driven architecture.
 
 ### Key Points:
 
