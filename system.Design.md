@@ -422,14 +422,12 @@ Feel free to adapt and use these code snippets in your Node.js applications! ðŸ˜
  
 
 # Node.js streams:
-
-What Are Streams?
-Streams in Node.js are abstract interfaces for working with streaming data.
-In NodeJS streams allow reading or writing data in a continuous manner, without loading everything into memory at once.
-Streams are like pipes for data flow, especially useful for large datasets or data arriving incrementally.
-Types of Streams:
-Readable Streams: Allow reading data from a source (e.g., files, HTTP responses).
-Writable Streams: Enable writing data to a destination (e.g., files, HTTP requests).
+- Streams in Node.js are abstract interfaces for working with streaming data.
+- In NodeJS streams allow reading or writing data in a continuous manner, without loading everything into memory at once.
+- Streams are like pipes for data flow, especially useful for large datasets or data arriving incrementally.
+### Types of Streams:
+**Readable Streams:** Allow reading data from a source (e.g., files, HTTP responses).
+**Writable Streams:** Enable writing data to a destination (e.g., files, HTTP requests).
 Some streams can be both readable and writable.
 Why Use Streams?
 Streams are useful to improve Memory Efficiency by processing data in chunks, reducing memory usage.
@@ -859,16 +857,16 @@ Let's break down each component of ACID and understand its significance using My
    - Atomicity ensures that each transaction is treated as a single unit of work, which means that either all of the operations within the transaction are successfully completed, or none of them are.
    - In MySQL, if a transaction encounters an error or failure during execution, it can be rolled back to its initial state, undoing any changes made by the transaction.
    - Example: Consider a banking application where a user transfers funds from one account to another. 
-   - Atomicity ensures that if the funds are deducted from one account, they are also successfully credited to the recipient's account. If any step fails, the entire transaction is rolled back, ensuring data integrity.
+   - Atomicity ensures that if the funds are deducted from one bank account, It must be successfully credited into the recipient's account. If any step fails, the entire transaction is rolled back, ensuring data integrity.
 
 2. **Consistency**:
    - Consistency ensures that the database remains in a consistent state before and after the transaction. 
    - It guarantees that the integrity constraints, such as foreign key constraints or unique constraints, are not violated.
-   - In MySQL, consistency is maintained by enforcing referential integrity and other constraints defined on the database schema.
+   - In MySQL, consistency is maintained by enforcing referential integrity and other constraints such as foreign key constraints or unique key constraints defined on the database schema.
    - Example: In a blog application, if a user attempts to publish a post, consistency ensures that the post is not published if it violates any constraints, such as a missing required field or an invalid reference to a category.
 
 3. **Isolation**:
-   - Isolation ensures that transactions are executed independently of each other, as if multiple trasactions are executing sequentially. 
+   - Isolation ensures that transactions are executed independently of each other, as if there are multiple trasactions are executing sequentially. 
    - It prevents interference between concurrent transactions to maintain data integrity and consistency.
    - In MySQL, isolation levels such as READ COMMITTED, REPEATABLE READ, and SERIALIZABLE control the degree of isolation between transactions.
    - Example: Consider a scenario where multiple users simultaneously update their profile information. 
@@ -886,7 +884,7 @@ In summary, ACID properties ensure the reliability, integrity, and consistency o
 
 
 # Normalisation DBMS
-Normalization in DBMS (Database Management System) is a process used to organize a database in a way that reduces redundancy and improves data integrity. Here's a simple explanation:
+Normalization in DBMS (Database Management System) is a process used to organize a data in database in a way that reduces redundancy and improves data integrity. Here's a simple explanation:
 
 1. **Reduces Redundancy**: It ensures that the same piece of data is not stored in multiple places. This helps save space and makes the database more efficient.
 2. **Improves Data Integrity**: By organizing data into related tables, it ensures that updates, deletions, and insertions are done consistently, preventing errors.
