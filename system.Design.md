@@ -428,19 +428,33 @@ Feel free to adapt and use these code snippets in your Node.js applications! �
 ### Types of Streams:
 **Readable Streams:** Allow reading data from a source (e.g., files, HTTP responses).
 **Writable Streams:** Enable writing data to a destination (e.g., files, HTTP requests).
+**Duplex Streams*:** Streams that are both Readable and Writable. Examples: net.Socket (a network connection can both receive and send data).
+**Transform Streams:** A type of Duplex stream that can modify or transform the data as it's being read and written. Examples: zlib.createGzip() (compresses data), crypto.createCipher() (encrypts data).
 Some streams can be both readable and writable.
-Why Use Streams?
-Streams are useful to improve Memory Efficiency by processing data in chunks, reducing memory usage.
-Composability: Like Linux commands, you can pipe streams together for powerful transformations.
+### Why Use Streams?
+- Streams are useful to improve Memory Efficiency by processing data in chunks, reducing memory usage.
+- Composability: Like Linux commands, you can pipe streams together for powerful transformations.
 Practical Example:
 Let’s create a big file using streams:
-o   const fs = require('fs');
-o   const file = fs.createWriteStream('./big.file');
-o   for (let i = 0; i <= 1e6; i++) {
-o     file.write('Lorem ipsum dolor sit amet, ...'); // Add your content here
-o   }
+```
+const fs = require('fs');
+const largeFilePath = 'large-file.txt'; // Assume this file is huge
+
+// Create a Readable Stream
+const readStream = fs.createReadStream(largeFilePath, { encoding: 'utf8' });
+
+// Listen for data chunks as they arrive
+readStream.on('data', (chunk) => {
+  console.log(`Received ${chunk.length} bytes of data.`);
+  // Here you can process the 'chunk' without needing the full file
+});
+
+// Listen for the end of the stream
+readStream.on('end', () => {
+  console.log('Finished reading the file.');
+});
+```
 This approach avoids loading the entire file into memory, making it memory-efficient.
-Remember, streams are your allies when dealing with large data or external sources! 🚀1234
 
 
 
