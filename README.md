@@ -349,9 +349,61 @@ The outer function's variables and parameters are accessible within the inner fu
        console.log('Hello, my name is ' + this.name);
      };
 
+     Person.prototype.love = 'mehak';
+
      const john = new Person('John', 30);
      john.greet(); // Output: Hello, my name is John
      ```
+  In JavaScript, you can have one object directly inherit from another using the `Object.create()` method. This creates a new object and sets its prototype to an existing object, allowing it to "inherit" properties and methods.
+
+Think of it like an `animal` object and a `dog` object. A `dog` is a specific type of `animal`, so it inherits its basic animal characteristics.
+
+### The Animal Object (Parent)
+
+First, let's create a simple parent object that has a property and a method.
+
+```javascript
+const animal = {
+  isAlive: true,
+  eat: function() {
+    console.log('The animal is eating.');
+  }
+};
+```
+
+### The Dog Object (Child)
+
+Now, we'll create a `dog` object that inherits directly from the `animal` object using `Object.create()`.
+
+```javascript
+// Create a new object 'dog' whose prototype is the 'animal' object
+const dog = Object.create(animal);
+
+// Add a new property specific to the dog
+dog.name = 'Rex';
+dog.bark = function() {
+    console.log('Woof! Woof!');
+};
+```
+
+### How Inheritance Works
+
+The `dog` object can now access properties and methods from the `animal` object, even though we never explicitly added them to the `dog` object itself.
+
+```javascript
+// The dog object inherits the 'isAlive' property from the animal object
+console.log(dog.isAlive); // Output: true
+
+// The dog object inherits the 'eat' method from the animal object
+dog.eat(); // Output: The animal is eating.
+
+// The dog also has its own properties and methods
+console.log(dog.name); // Output: Rex
+dog.bark(); // Output: Woof! Woof!
+```
+
+This is the essence of prototypal inheritance: `dog` doesn't have its own `isAlive` property or `eat()` method. When you try to access them, the JavaScript engine looks up the prototype chain, finds the `animal` object, and uses its properties and methods.
+
 
 ### 9. **Explain async/await in JavaScript.**
    - **async/await** is syntactic sugar which is built on top of promises, that simplifies the process of writing asynchronous code in JavaScript.It provides a more clean concise and readable syntax for handling asynchronous operations. Async/await allow engineers write asynchronous code that looks and behaves like synchronous code, making it easier to understand and maintain.

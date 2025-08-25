@@ -1331,3 +1331,25 @@ Test-Driven Development (TDD) and Behavior-Driven Development (BDD) are both sof
 - **Language**: TDD tests are written in the programming language of the application, while BDD uses a DSL(Domain-specific-language) to write tests in a way that is understandable to all stakeholders⁴.
 
 Both methodologies aim to improve the quality and reliability of software, but they do so from different angles and with different tools.
+
+
+# Vertical vs. Horizontal Scaling
+•	Vertical Scaling (Scaling Up) : This approach involves adding more resources—like CPU, RAM, and disk space—to a single server that hosts your Node.js application. While it's a straightforward method, it has limitations, as a single server can only be upgraded to a certain extent. Vertical scaling is a good initial strategy for moderate growth but becomes less viable as your application's demand increases.
+•	
+•	Horizontal Scaling (Scaling Out) : This is the more flexible and preferred method for large-scale applications. It involves adding more servers or instances of your application to distribute the incoming load. If one server fails, others can still handle the requests, which improves fault tolerance and reliability. Node.js applications are well-suited for horizontal scaling due to their single-threaded, non-blocking nature.
+
+By combining these strategies—especially horizontal scaling with load balancing and a microservices architecture—you can build a highly scalable and resilient Node.js application that can handle millions of concurrent users.
+
+
+
+
+
+
+
+
+
+# PM2 Production Process Manager 2
+ - PM2 is a production process manager for Node.js/Bun applications with a built-in load balancer. 
+ - It allows you to keep applications alive forever, to reload them without downtime.
+
+

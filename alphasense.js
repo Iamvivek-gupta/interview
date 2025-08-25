@@ -28,6 +28,20 @@
 
 
 
+// let aggregate = {}
+
+// arr.forEach(arrBundle => {
+//     for(obj in arrBundle){
+//         if(aggregate[obj]){
+//             aggregate[obj] += arrBundle[obj];
+//         }
+//         else{
+//             aggregate[obj] = arrBundle[obj];
+//         }
+//     }
+// })
+
+// console.log(aggregate);
 
 
 //b1, b2, b3, b4
