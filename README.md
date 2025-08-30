@@ -943,3 +943,49 @@ console.log("After clearing:", userMap); // Map(0) {}
 | **When to Use** | When you need to store a list of unique items and quickly check for their presence. | When you need to associate data, where one piece of data (the key) uniquely identifies another (the value). |
 
 Both `Set` and `Map` provide efficient operations for adding, deleting, and checking for the existence of elements, making them valuable additions to JavaScript's data structures, especially when dealing with dynamic or non-string keys.
+
+
+
+
+
+# Generator Function
+- Generator is a special type of function in javascrpt that you  can pause and resume during execution.
+
+example: 
+function* myGenerator(){
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+
+
+
+# Reduce 
+- The reduce() method in JavaScript is a powerful array method that executes a provided "reducer" callback function on each element of the array, resulting in a single - ---output value.
+
+ex- const arr = [
+  { id: 1, name: "Alice", dept: "HR" },
+  { id: 2, name: "Bob", dept: "IT" },
+  { id: 3, name: "Charlie", dept: "HR" }
+]
+// expected output
+// {
+//   HR: ["Alice", "Charlie"],
+//   IT: ["Bob"]
+// }
+
+
+
+const result = arr.reduce((acc, current) => {
+    
+    let department = current.dept;
+    if(!acc[department]) {
+        acc[department] = [];
+    }
+    
+    acc[department].push(current.name);
+    return acc;
+}, {});
+
+console.log(result)

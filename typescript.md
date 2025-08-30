@@ -41,25 +41,25 @@ In TypeScript, utility types are built-in generic types that help transform or c
 1. Partial<Type>
 
 Makes all properties optional.
-
+```
 type User = {
   id: number;
   name: string;
 };
 
-const updateUser = (user: Partial<User>) => {
+const updateUser: Partial<User>= {
   // user can have id, name, both, or neither
 };
 
 updateUser({ name: "Alice" });
-
+```
 
 ---
 
 2. Required<Type>
 
 Makes all properties required.
-
+```
 type User = {
   id?: number;
   name?: string;
@@ -69,14 +69,14 @@ const user: Required<User> = {
   id: 1,
   name: "Alice", // now both required
 };
-
+```
 
 ---
 
 3. Readonly<Type>
 
 Makes all properties readonly.
-
+```
 type User = {
   id: number;
   name: string;
@@ -88,14 +88,14 @@ const user: Readonly<User> = {
 };
 
 // user.id = 2; ❌ Error: Cannot assign to 'id' because it is a read-only property.
-
+```
 
 ---
 
 4. Pick<Type, Keys>
 
 Creates a type by picking specific keys from another type.
-
+```
 type User = {
   id: number;
   name: string;
@@ -108,14 +108,14 @@ const preview: UserPreview = {
   id: 1,
   name: "Alice"
 };
-
+```
 
 ---
 
 5. Omit<Type, Keys>
 
 Creates a type by omitting specific keys.
-
+```
 type User = {
   id: number;
   name: string;
@@ -129,7 +129,7 @@ const user: UserWithoutEmail = {
   name: "Bob"
 };
 
-
+```
 ---
 
 🧠 Why use Utility Types?
