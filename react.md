@@ -752,7 +752,70 @@ ________________________________________
 •	Leads to better performance and responsiveness
 
 
+# Props Drilling
+**Props drilling** in React means passing data through many layers of components, even when only the deepest child needs it, which makes code harder to maintain.[1][2][3]
 
+## Problem Example
+
+Suppose `Parent` needs to send `data` to `Grandchild`, but it must go through `Child`:
+
+```jsx
+function Parent() {
+  const data = "Hello";
+  return <Child data={data} />;
+}
+
+function Child(props) {
+  return <Grandchild data={props.data} />;
+}
+
+function Grandchild(props) {
+  return <div>{props.data}</div>;
+}
+```
+Here, `Child` doesn't use `data`—it just passes it down, which is props drilling.[3][5]
+
+## How to Overcome
+
+Use **React Context** to avoid props drilling:
+
+```jsx
+import React, { createContext, useContext } from 'react';
+
+const DataContext = createContext();
+
+function Parent() {
+  const data = "Hello";
+  return (
+    <DataContext.Provider value={data}>
+      <Child />
+    </DataContext.Provider>
+  );
+}
+
+function Child() {
+  return <Grandchild />;
+}
+
+function Grandchild() {
+  const data = useContext(DataContext);
+  return <div>{data}</div>;
+}
+```
+Now, `Grandchild` can access `data` directly from context, no matter how deeply nested it is.[7][1]
+
+**Summary:**  
+- **Props drilling** is passing props through many layers unnecessarily.  
+- Use **React Context** to share data directly with deeply nested components and avoid this issue.[1][3]
+
+[1](https://www.angularminds.com/blog/what-is-prop-drilling-in-react)
+[2](https://www.geeksforgeeks.org/reactjs/what-is-prop-drilling-and-how-to-avoid-it/)
+[3](https://www.freecodecamp.org/news/prop-drilling-in-react-explained-with-examples/)
+[4](https://dev.to/codeofrelevancy/what-is-prop-drilling-in-react-3kol)
+[5](https://www.freecodecamp.org/news/avoid-prop-drilling-in-react/)
+[6](https://ferreira.io/posts/prop-drilling)
+[7](https://react.dev/learn/passing-data-deeply-with-context)
+[8](https://www.linkedin.com/posts/free-code-camp_prop-drilling-in-react-explained-with-examples-activity-7179840156038782976-VtfO)
 
 
 
@@ -821,7 +884,6 @@ ________________________________________
 
 3. **How do you secure an EC2 instance?**
    - **Answer**: EC2 instances can be secured using security groups, network ACLs, IAM roles, and encryption for data at rest and in transit.
-
 
 
 
