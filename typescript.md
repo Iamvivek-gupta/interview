@@ -1716,3 +1716,249 @@ graph TD
 ---
 
 **Remember:** The TypeScript team generally recommends using `interface` until you need the specific features that only `type` provides.
+
+
+
+# Design Patterns in Typescrit
+**Design patterns** in TypeScript are proven solutions to common coding problems. They make code reusable and easier to maintain. Here are some popular patterns with simple examples so anyone can explain them easily in interviews.[1][2]
+
+## Singleton Pattern
+
+Ensures a class has only one instance and provides a global point to access it.
+
+```typescript
+class Singleton {
+  private static instance: Singleton;
+  private constructor() {}
+  static getInstance() {
+    if (!Singleton.instance) {
+      Singleton.instance = new Singleton();
+    }
+    return Singleton.instance;
+  }
+}
+const obj1 = Singleton.getInstance(); // always same instance
+```
+
+
+## Factory Pattern
+
+Creates objects without specifying the exact class.
+
+```typescript
+abstract class Vehicle {
+  abstract getType(): string;
+}
+class Car extends Vehicle { getType() { return "car"; } }
+class Truck extends Vehicle { getType() { return "truck"; } }
+
+class VehicleFactory {
+  createVehicle(type: string): Vehicle {
+    switch (type) {
+      case "car": return new Car();
+      case "truck": return new Truck();
+      default: throw new Error("Unknown type");
+    }
+  }
+}
+const factory = new VehicleFactory();
+const myCar = factory.createVehicle("car");
+```
+
+
+## Observer Pattern
+
+Defines a way to notify multiple objects about changes.
+
+```typescript
+interface Observer { update(data: any): void; }
+class Subject {
+  private observers: Observer[] = [];
+  subscribe(observer: Observer) { this.observers.push(observer); }
+  notify(data: any) { this.observers.forEach(o => o.update(data)); }
+}
+class Logger implements Observer {
+  update(data: any) { console.log(data); }
+}
+const subject = new Subject();
+const logger = new Logger();
+subject.subscribe(logger);
+subject.notify("Hello Observer!");
+```
+
+
+## Strategy Pattern
+
+Selects an algorithm's behavior at runtime.
+
+```typescript
+interface Strategy { execute(data: any[]): any; }
+class MaxStrategy implements Strategy {
+  execute(data: number[]) { return Math.max(...data); }
+}
+class MinStrategy implements Strategy {
+  execute(data: number[]) { return Math.min(...data); }
+}
+class Context {
+  constructor(private strategy: Strategy) {}
+  setStrategy(strategy: Strategy) { this.strategy = strategy; }
+  executeStrategy(data: number[]) { return this.strategy.execute(data); }
+}
+const context = new Context(new MaxStrategy());
+console.log(context.executeStrategy([1, 2, 3])); // 3
+```
+
+
+***
+
+**Remember:**  
+- Singleton: single instance  
+- Factory: object creation  
+- Observer: event/notification  
+- Strategy: algorithm swap  
+Practicing these patterns in TypeScript will help clearly explain and use them in interviews.[1][2]
+
+[1](https://refactoring.guru/design-patterns/typescript)
+[2](https://dev.to/triyanox/design-patterns-in-typescript-e68)
+[3](https://fireship.io/lessons/typescript-design-patterns/)
+[4](https://www.reddit.com/r/javascript/comments/10w4c36/design_patterns_in_typescript/)
+[5](https://blog.bitsrc.io/decorator-design-pattern-in-typescript-701dfbf24420)
+[6](https://www.netguru.com/blog/top-5-most-used-patterns-in-oop-with-typescript)
+[7](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+[8](https://blog.logrocket.com/understanding-design-patterns-typescript-node-js/)
+
+
+
+
+
+
+
+# Real time of example of design pattern
+Here are real-time, easy-to-understand TypeScript examples for Singleton, Factory, and Observer design patterns:
+
+## Singleton: Logger (Global Logging Utility)
+
+**Use case:** Centralized logging for an app—ensuring only one logger instance exists.
+
+```typescript
+class Logger {
+  private static instance: Logger;
+  private constructor() {}
+  static getInstance(): Logger {
+    if (!Logger.instance) {
+      Logger.instance = new Logger();
+    }
+    return Logger.instance;
+  }
+  log(message: string) {
+    console.log(`[LOG]: ${message}`);
+  }
+}
+
+const logger1 = Logger.getInstance();
+const logger2 = Logger.getInstance();
+console.log(logger1 === logger2);  // true
+logger1.log("App started.");       // [LOG]: App started.
+```
+This ensures all log messages go through a single, global logger instance.[1][2]
+
+***
+
+## Factory: Notification System (Email, SMS, Push)
+
+**Use case:** Dynamically creating various types of notifications based on user preference.
+
+```typescript
+interface Notification {
+  send(message: string): void;
+}
+class EmailNotification implements Notification {
+  send(message: string) { console.log(`Email: ${message}`); }
+}
+class SMSNotification implements Notification {
+  send(message: string) { console.log(`SMS: ${message}`); }
+}
+class PushNotification implements Notification {
+  send(message: string) { console.log(`Push: ${message}`); }
+}
+
+class NotificationFactory {
+  static create(type: string): Notification {
+    switch (type) {
+      case 'email': return new EmailNotification();
+      case 'sms': return new SMSNotification();
+      case 'push': return new PushNotification();
+      default: throw new Error("Invalid notification type");
+    }
+  }
+}
+
+// Usage
+const notifier = NotificationFactory.create('email');
+notifier.send('Welcome!');
+```
+This lets the system easily add or use new notification channels.[3][4]
+
+***
+
+## Observer: Chat Room (Multiple Listeners Notified on New Message)
+
+**Use case:** Chat room where users (listeners) get notified when a new message arrives.
+
+```typescript
+interface Listener {
+  notify(message: string): void;
+}
+
+class ChatRoom {
+  private listeners: Listener[] = [];
+  subscribe(listener: Listener) { this.listeners.push(listener); }
+  sendMessage(message: string) {
+    for (const l of this.listeners) {
+      l.notify(message);
+    }
+  }
+}
+
+class User implements Listener {
+  constructor(private name: string) {}
+  notify(message: string) {
+    console.log(`${this.name} received: ${message}`);
+  }
+}
+
+// Usage
+const room = new ChatRoom();
+const alice = new User('Alice');
+const bob = new User('Bob');
+room.subscribe(alice);
+room.subscribe(bob);
+
+room.sendMessage("Hello, everyone!");
+```
+When a message is sent, all users are notified instantly.[5][6][7]
+
+***
+
+Each pattern solves a practical scenario you may see in real apps, and the code above is designed to be clear for interviews.
+
+[1](https://dev.to/artem/singleton-design-pattern-typescript-example-443e)
+[2](https://dev.to/bilelsalemdev/understanding-the-singleton-pattern-in-typescript-4kep)
+[3](https://blog.bitsrc.io/factory-design-pattern-in-typescript-55a91d74f3a4)
+[4](https://justcode.me/design-patterns/factory-pattern-in-typescript/)
+[5](https://refactoring.guru/design-patterns/observer/typescript/example)
+[6](https://refactoring.guru/design-patterns/observer)
+[7](https://javascript.plainenglish.io/design-patterns-in-typescript-observer-pattern-cf0adb5e17be)
+[8](https://refactoring.guru/design-patterns/singleton/typescript/example)
+[9](https://refactoring.guru/design-patterns/singleton)
+[10](https://algomaster.io/learn/lld/singleton)
+[11](https://www.freecodecamp.org/news/singleton-design-pattern-with-javascript/)
+[12](https://stackoverflow.com/questions/3192095/where-exactly-the-singleton-pattern-is-used-in-real-application)
+[13](https://refactoring.guru/design-patterns/factory-method/typescript/example)
+[14](https://blog.bitsrc.io/the-singleton-pattern-in-typescript-b906303fda93)
+[15](https://dev.to/luizcalaca/typescript-factory-design-pattern-in-practice-uml-6g9)
+[16](https://cloudaffle.com/series/behavioral-design-patterns/observer-pattern-application/)
+[17](https://algomaster.io/learn/lld/factory-method)
+[18](https://sbcode.net/typescript/observer/)
+[19](https://sbcode.net/typescript/factory/)
+[20](https://www.youtube.com/watch?v=2xqfbr2WOBI)

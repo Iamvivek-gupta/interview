@@ -949,7 +949,7 @@ Both `Set` and `Map` provide efficient operations for adding, deleting, and chec
 
 
 # Generator Function
-- Generator is a special type of function in javascrpt that you  can pause and resume during execution.
+- Generator is a special type of function in javascrpt that you  can pause and resume during execution [](https://javascript.info/generators).
 
 example: 
 function* myGenerator(){
@@ -958,6 +958,26 @@ function* myGenerator(){
   yield 3;
 }
 
+
+```
+function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+let generator = generateSequence();
+
+let one = generator.next();
+let two = generator.next();
+let three = generator.next();
+let four = generator.next();
+
+console.log(one)
+console.log(two)
+console.log(three)
+console.log(four)
+```
 
 
 
