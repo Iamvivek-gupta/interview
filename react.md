@@ -820,7 +820,52 @@ Now, `Grandchild` can access `data` directly from context, no matter how deeply 
 
 
 
+# useState & useEffect
+**useState** is for managing state (data) inside a component, while **useEffect** is for handling side effects like fetching data, updating the DOM, or setting timers after rendering.[3][5][7]
 
+## Key Differences
+- **useState:** Stores and updates local state.
+- **useEffect:** Runs code in response to state/prop changes or after component mounts.
+
+## Simple Example
+
+```jsx
+import React, { useState, useEffect } from "react";
+
+function Example() {
+  // useState for counter value
+  const [count, setCount] = useState(0);
+
+  // useEffect to update document title after each render
+  useEffect(() => {
+    document.title = `Count is ${count}`;
+  }, [count]);
+
+  return (
+    <div>
+      <p>Counter: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+- Here, **useState** creates and updates `count`.
+- **useEffect** updates the browser tab title whenever `count` changes.[1][5]
+
+**Summary:**  
+- **useState = track state.**  
+- **useEffect = run side effects after render.**[5][6]
+
+[1](https://www.freecodecamp.org/news/react-hooks-useeffect-usestate-and-usecontext/)
+[2](https://codedamn.com/news/reactjs/usestate-and-useeffect-hooks)
+[3](https://www.shecodes.io/athena/125174-difference-between-usestate-and-useeffect-in-react)
+[4](https://hygraph.com/blog/react-useeffect-a-complete-guide)
+[5](https://blog.stackademic.com/understanding-the-differences-between-usestate-and-useeffect-in-react-b61cad91df3c?gi=45a6d5b765c3)
+[6](https://dev.to/wdp/best-practices-for-usestate-and-useeffect-in-react-4aea)
+[7](https://stackoverflow.com/questions/53219164/what-s-the-difference-between-usestate-and-useeffect)
+[8](https://www.syncfusion.com/blogs/post/react-useeffect-usestate-hooks)
+[9](https://react.dev/reference/react/useEffect)
+[10](https://www.youtube.com/watch?v=0Kp2ymPGxiw)
 
 
 
