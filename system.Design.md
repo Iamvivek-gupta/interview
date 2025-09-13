@@ -220,23 +220,20 @@ At-least-once Delivery: By default, Kafka guarantees at-least-once delivery, but
 
 
 # helmet
-Helmet is a collection of middleware functions for Node. js designed to secure web applications by setting crucial HTTP headers. 
-These headers play a important role in mitigating common web vulnerabilities such as Cross-Site Scripting (XSS), Clickjacking, and Cross-Site Request Forgery (CSRF).
+- Helmet is a collection of middleware functions for Node. js designed to secure web applications by setting crucial HTTP headers. 
+- These headers play a important role in mitigating common web vulnerabilities such as Cross-Site Scripting (XSS), Clickjacking, and Cross-Site Request Forgery (CSRF).
 
 # CSRF
-CSRF (Cross-Site Request Forgery) is an attack that tricks a user into executing unwanted actions on a web application 
-where they're authenticated, without their knowledge or consent.
-
-
-
-Content Security Policy: Helps prevent cross-site scripting attacks and other cross-site injections.
-DNS Prefetch Control: Helps disable DNS prefetching by browsers.
-Frameguard: Prevents clickjacking by setting the X-Frame-Options header.
-Hide Powered-By: Hides the X-Powered-By header to make it less obvious which framework or platform you're using.
-HSTS: Adds Strict-Transport-Security headers to enforce HTTPS connections.
-IE No Open: Sets X-Download-Options for Internet Explorer to prevent downloads from executing in your site's context.
-NoSniff: Sets X-Content-Type-Options to nosniff to prevent browsers from interpreting files as a different MIME type.
-XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
+- CSRF (Cross-Site Request Forgery) is an attack that tricks a user into executing unwanted actions on a web application 
+- where they're authenticated, without their knowledge or consent.
+- Content Security Policy: Helps prevent cross-site scripting attacks and other cross-site injections.
+- DNS Prefetch Control: Helps disable DNS prefetching by browsers.
+- Frameguard: Prevents clickjacking by setting the X-Frame-Options header.
+- Hide Powered-By: Hides the X-Powered-By header to make it less obvious which framework or platform you're using.
+- HSTS: Adds Strict-Transport-Security headers to enforce HTTPS connections.
+- IE No Open: Sets X-Download-Options for Internet Explorer to prevent downloads from executing in your site's context.
+- NoSniff: Sets X-Content-Type-Options to nosniff to prevent browsers from interpreting files as a different MIME type.
+- XSS Filter: Sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers.
 
 
 # CORS
@@ -1353,3 +1350,73 @@ By combining these strategies—especially horizontal scaling with load balancin
  - It allows you to keep applications alive forever, to reload them without downtime.
 
 
+
+
+
+
+
+
+# Difference between Truncate vs Drop
+
+
+Use TRUNCATE when you just want to empty a table but keep its structure.
+
+Use DROP when you want to completely remove the table from the database.
+Good question 👍 Let’s break it down clearly:
+
+### **1. `DROP`**
+
+* **Definition**: Deletes the **entire table** (including its structure/schema and data).
+* After `DROP`, the table no longer exists in the database.
+* You cannot query the table unless you **recreate** it.
+* **Usage**:
+
+  ```sql
+  DROP TABLE employees;
+  ```
+* **Effect**:
+
+  * Removes table structure, indexes, constraints, triggers, and data.
+  * DDL command (Data Definition Language).
+  * Auto-committed → cannot be rolled back in most cases.
+  * Much faster than `DELETE`.
+
+---
+
+### **2. `TRUNCATE`**
+
+* **Definition**: Deletes **all rows** in a table, but keeps the **table structure** intact.
+* After `TRUNCATE`, the table is empty, but you can still insert new rows into it.
+* **Usage**:
+
+  ```sql
+  TRUNCATE TABLE employees;
+  ```
+* **Effect**:
+
+  * Removes all rows but keeps table schema, indexes, constraints.
+  * DDL command (not DML).
+  * Auto-committed → cannot be rolled back in MySQL.
+  * Faster than `DELETE` (because it doesn’t log each row deletion).
+
+---
+
+### ✅ **Quick Comparison Table**
+
+| Feature              | `DROP`             | `TRUNCATE`                       |
+| -------------------- | ------------------ | -------------------------------- |
+| Removes Data         | ✔ (with structure) | ✔ (only data, structure remains) |
+| Removes Table Schema | ✔                  | ✘                                |
+| Can Rollback (MySQL) | ✘ (auto-commit)    | ✘ (auto-commit)                  |
+| Speed                | Very fast          | Very fast (faster than DELETE)   |
+| Table Exists After?  | ❌ No               | ✔ Yes (empty)                    |
+| Reusable Table?      | ❌ Need to recreate | ✔ Can insert new rows            |
+
+---
+
+👉 In short:
+
+* Use **`TRUNCATE`** when you just want to empty a table but keep its structure.
+* Use **`DROP`** when you want to completely remove the table from the database.
+
+Do you want me to also explain **`DELETE` vs TRUNCATE vs DROP** together (since many interviewers ask this as a 3-way comparison)?

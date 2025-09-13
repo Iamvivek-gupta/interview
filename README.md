@@ -18,6 +18,29 @@
 ## It helps to create a higher order function.
 
 
+```
+// function sum(a){
+//     return function (b){
+//         return a + b;
+//     }
+// }
+
+// console.log(sum(4)(3));
+
+function sum(a){
+    let total = a;
+    function inner(b){
+        if(typeof b === 'undefined') return total;
+        total += b;
+        return inner;
+    }
+    return inner;
+}
+
+console.log(sum(4)(3)(6)(7)(10)());
+```
+
+
 
 
 # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
