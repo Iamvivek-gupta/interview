@@ -270,3 +270,115 @@ function maxSubArray(nums) {
 // Space Complexity - O(1)
 
 console.log(maxSubArray([5, 4, -1, 7, 8]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Solve a prefix expression
+
+// Input : '-+8/632' {8+(6/3)-2}
+// //8+2-2
+// //10-2
+// //8
+// Output : 8
+
+// Input : -+7*45+20 {7+(4*5)-2+0}
+// Output : 25
+
+
+
+// To solve a **prefix expression** (also called Polish notation), you process the expression **from right to left** using a stack. Each time you find an operand (number), push it to the stack. When you find an operator (`+`, `-`, `*`, `/`), pop two values off the stack, apply the operation, and push the result back.
+
+// ### Why this approach?
+
+// - Prefix means **operator comes before operands** (e.g., `- + 8 / 6 3 2`)
+// - Evaluate **from right to left** so that operands for each operator are processed in the right order.
+// - A **stack** helps keep track of numbers and partial results as you move through the problem.
+
+// ***
+
+// ## Step-by-step Example
+
+// For input: `-+8/632`
+// 1. Start at the end (`2`): push to stack → ``[1]
+// 2. Next `3`: push to stack → `[2, 3]`
+// 3. Next `6`: push to stack → `[2, 3, 6]`
+// 4. Next `/`: it's an operator  
+//    Pop 6 and 3 → do `6 / 3 = 2` → push result → `[2, 2]`
+// 5. Next `8`: push → `[2, 2, 8]`
+// 6. Next `+`: operator  
+//    Pop 8 and 2 → `8 + 2 = 10` → push → `[2, 10]`
+// 7. Next `-`: operator  
+//    Pop 10 and 2 → `10 - 2 = 8` → push → ``
+// 8. Stack has single answer: `8`
+
+// ***
+
+// ## Optimized JavaScript Solution
+
+// ```javascript
+// function evaluatePrefix(expression) {
+//   const stack = [];
+//   // Go from right to left
+//   for (let i = expression.length - 1; i >= 0; i--) {
+//     const char = expression[i];
+
+//     if (!isNaN(char)) {
+//       // Operand: push number
+//       stack.push(Number(char));
+//     } else {
+//       // Operator: pop two numbers, apply op, push result
+//       const a = stack.pop();
+//       const b = stack.pop();
+//       let res;
+//       switch (char) {
+//         case '+': res = a + b; break;
+//         case '-': res = a - b; break;
+//         case '*': res = a * b; break;
+//         case '/': res = a / b; break;
+//         default: throw new Error('Invalid operator');
+//       }
+//       stack.push(res);
+//     }
+//   }
+//   return stack.pop();
+// }
+
+// // Examples:
+// console.log(evaluatePrefix("-+8/632")); // Output: 8
+// console.log(evaluatePrefix("-+7*45+20")); // Output: 25
+// ```
+// - This code works for **single-digit operands** and standard operators.[2][3]
+
+// ***
+
+// ## Interview Summary
+
+// - Use a stack, work **right to left**.
+// - Push operands, on operator: pop 2 items, compute, push result.
+// - The final stack value is the answer.
+
+// Let me know if you want to handle multi-digit numbers or clarify anything else!
+
+// [1](https://www.dsavisualizer.in/visualizer/stack/polish/prefix)
+// [2](https://www.geeksforgeeks.org/dsa/evaluation-prefix-expressions/)
+// [3](https://notation-visualizer.ajayliu.com/stack)
+// [4](https://stackoverflow.com/questions/56200343/evaluate-value-of-prefix-expression-js)
+// [5](https://www.youtube.com/watch?v=EsbumKFdRYg)
+// [6](https://tutorialhorizon.com/algorithms/evaluation-of-prefix-expressions-polish-notation-set-1/)

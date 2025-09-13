@@ -869,6 +869,64 @@ function Example() {
 
 
 
+# React Counter example
+```
+import React, { useState } from 'react';
+import './style.css';
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  function increment() {
+    if (count < 10) setCount(count + 1);
+  }
+  function decrement() {
+    if (count < 10) setCount(count - 1);
+  }
+  return (
+    <div className="">
+      <h1>Counter App {count}</h1>
+      <button onClick={increment}>Increment Counter</button>
+      <div>
+        <button onClick={decrement}>Decrement Counter</button>
+      </div>
+    </div>
+  );
+}
+```
+
+
+- only with one function
+```
+import React, { useState } from 'react';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const Handlecounter = (type) => {
+    setCount((prev) => {
+      if (type === 'inc' && count < 10) {
+        return prev + 1;
+      } else if (type === 'dec' && count > 0) {
+        return prev - 1;
+      }
+      return prev;
+    });
+  };
+
+  return (
+    <>
+      <p>Count : {count}</p>
+      <button onClick={() => Handlecounter('inc')}>increment</button>
+      <button onClick={() => Handlecounter('dec')}>Drecrement</button>
+    </>
+  );
+};
+
+export default App;
+```
+
+
+
 
 ### AWS API Gateway
 1. **What is AWS API Gateway?**

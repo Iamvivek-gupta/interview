@@ -1204,7 +1204,7 @@ Would you like more details on any specific part of this system? 😊
 # Sharding
 Definition: Sharding is a database partitioning technique where a large database is divided into smaller, more manageable pieces called shards. Each shard is stored on a different database server.
 
-Use Case: Sharding is used to improve performance and scalability by distributing the data across multiple servers. It helps manage large datasets and high transaction volumes.
+Use Case: Sharding is used to improve performance and scalability by distributing the data across multiple database servers. It helps manage large datasets and high transaction volumes.
 
 Example: Imagine you have a database of user information for a popular social media platform. Instead of having all user data in a single database, you can shard the data by region. Users from North America are stored in one shard, users from Europe in another, and so on. This way, queries are distributed and handled by different servers, reducing the load on any single server.
 

@@ -2482,19 +2482,18 @@ Output :
 To find the minimum nearest element to a given element from a given array of elements in JavaScript, you can use the following approach:
 
 ```javascript
-function findMinimumNearestElement(array, target) {
-    let minDiff = Infinity;
-    let nearestElement = null;
-
-    array.forEach(element => {
-        const diff = Math.abs(element - target);
-        if (diff < minDiff) {
-            minDiff = diff;
-            nearestElement = element;
-        }
-    });
-
-    return nearestElement;
+function findMinimumNearestElement(nums, target){
+  let minimumNearestNumber = null;
+  let minDiff = Infinity;
+  
+  for(let num of nums) {
+      let currentDiff = Math.abs(num - target);
+      if(currentDiff < minDiff ) {
+          minDiff = currentDiff;
+          minimumNearestNumber = num;
+      }
+  }
+  return minimumNearestNumber;
 }
 
 // Example usage:
@@ -2790,6 +2789,14 @@ console.log(result);  // Output: 1200
 // 1,2,34,5,6
 
 
+// When you run `console.log(x + y)` with `x = [1, 2, 3]` and `y = [4, 5, 6]`, JavaScript **converts both arrays to strings** and then concatenates them.  
+// - `[1, 2, 3]` becomes `"1,2,3"`
+// - `[4, 5, 6]` becomes `"4,5,6"`
+
+// So the result is the string:  
+// **"1,2,34,5,6"** (not an array, but a single string).
+
+// To actually concatenate arrays, use `x.concat(y)` or `[...x, ...y]` to get `[1,2,3,4,5,6]` instead.[12][13]
 
 
 // You can use the reduce method to aggregate the data in the array. Here’s an example that combines the quantities of the same fruits:
@@ -2859,6 +2866,87 @@ console.log(correctedText); // Output: We work on React, Python and NodeJs. We c
 
 
 
+// To solve a **prefix expression** (also called Polish notation), you process the expression **from right to left** using a stack. Each time you find an operand (number), push it to the stack. When you find an operator (`+`, `-`, `*`, `/`), pop two values off the stack, apply the operation, and push the result back.
+
+// ### Why this approach?
+
+// - Prefix means **operator comes before operands** (e.g., `- + 8 / 6 3 2`)
+// - Evaluate **from right to left** so that operands for each operator are processed in the right order.
+// - A **stack** helps keep track of numbers and partial results as you move through the problem.
+
+// ***
+
+// ## Step-by-step Example
+
+// For input: `-+8/632`
+// 1. Start at the end (`2`): push to stack → ``[1]
+// 2. Next `3`: push to stack → `[2, 3]`
+// 3. Next `6`: push to stack → `[2, 3, 6]`
+// 4. Next `/`: it's an operator  
+//    Pop 6 and 3 → do `6 / 3 = 2` → push result → `[2, 2]`
+// 5. Next `8`: push → `[2, 2, 8]`
+// 6. Next `+`: operator  
+//    Pop 8 and 2 → `8 + 2 = 10` → push → `[2, 10]`
+// 7. Next `-`: operator  
+//    Pop 10 and 2 → `10 - 2 = 8` → push → ``
+// 8. Stack has single answer: `8`
+
+// ***
+
+// ## Optimized JavaScript Solution
+
+// ```javascript
+// function evaluatePrefix(expression) {
+//   const stack = [];
+//   // Go from right to left
+//   for (let i = expression.length - 1; i >= 0; i--) {
+//     const char = expression[i];
+
+//     if (!isNaN(char)) {
+//       // Operand: push number
+//       stack.push(Number(char));
+//     } else {
+//       // Operator: pop two numbers, apply op, push result
+//       const a = stack.pop();
+//       const b = stack.pop();
+//       let res;
+//       switch (char) {
+//         case '+': res = a + b; break;
+//         case '-': res = a - b; break;
+//         case '*': res = a * b; break;
+//         case '/': res = a / b; break;
+//         default: throw new Error('Invalid operator');
+//       }
+//       stack.push(res);
+//     }
+//   }
+//   return stack.pop();
+// }
+
+// // Examples:
+// console.log(evaluatePrefix("-+8/632")); // Output: 8
+// console.log(evaluatePrefix("-+7*45+20")); // Output: 25
+// ```
+// - This code works for **single-digit operands** and standard operators.[2][3]
+
+// ***
+
+// ## Interview Summary
+
+// - Use a stack, work **right to left**.
+// - Push operands, on operator: pop 2 items, compute, push result.
+// - The final stack value is the answer.
+
+// Let me know if you want to handle multi-digit numbers or clarify anything else!
+
+// [1](https://www.dsavisualizer.in/visualizer/stack/polish/prefix)
+// [2](https://www.geeksforgeeks.org/dsa/evaluation-prefix-expressions/)
+// [3](https://notation-visualizer.ajayliu.com/stack)
+// [4](https://stackoverflow.com/questions/56200343/evaluate-value-of-prefix-expression-js)
+// [5](https://www.youtube.com/watch?v=EsbumKFdRYg)
+// [6](https://tutorialhorizon.com/algorithms/evaluation-of-prefix-expressions-polish-notation-set-1/)
+
+
 
 
 
@@ -2922,3 +3010,95 @@ console.log(romanArray); // Output: [ 'I', 'IV', 'IX', 'LVIII', 'MCMXCIV' ]
 //    - It returns a new array containing the Roman numeral representations of the original numbers.
 
 // In essence, the code works by iterating through the decimal values in descending order and greedily subtracting the largest possible Roman numeral value from the input number until the number becomes zero. The corresponding Roman numeral symbols are appended to the result string at each subtraction.
+
+
+
+
+
+
+
+
+
+// console.log(a);
+
+// console.log(b);
+
+// fn1();
+
+// fn2();
+
+// var a = 10;
+
+// let b = 20;
+
+// function fn1() {
+
+//   console.log("Fuction 1 Print")
+
+// }
+
+// let fn2 = () => {
+
+//   console.log("Function 2 Print");
+
+// }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+//  function outest() {
+//     var c = 20;
+//     function outer(b) {
+//         function inner() {
+//             console.log(a, b, c);
+//         }
+//         let a = 10;
+//         return inner;
+//     }
+//     return outer;
+// }
+// let a = 100;
+// outest()("Hello CG")();
+
+
+
+
+
+// setTimeout(() => {
+//      console.log("a");
+//   });
+// console.log("b");
+// const promise1 = new Promise((resolve, reject) => {
+//     resolve('foo');
+// });
+// promise1.then((value) => {
+//   console.log("C");
+// });
+
+
+
+
+
+
+// for (var i=1; i<= 5;i++) {
+//   setTimeout(function () {
+//     console.log(i);
+//   }, i * 1000)
+// }
+
+
+
+
+// Input: x = 121Output: trueExplanation: 121 reads as 121 from left to right and from right to left.
+// Input: x = -121Output: falseExplanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+// Input: x = 10Output: falseExplanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
+
+function isPalindrome(x){
+  return x === x.split('').reverse().join('');
+}
+
+cons
