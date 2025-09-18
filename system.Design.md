@@ -414,7 +414,23 @@ Feel free to adapt and use these code snippets in your Node.js applications! �
 
  
 
- 
+
+ # Buffer in NodeJS:
+  - A Buffer is a built-in object in Node.js used to handle binary data directly — especially useful when dealing with files, streams, or network protocols.
+  - ✅ Easy Example:
+    ```
+    const buffer = Buffer.from("Hello");
+    console.log(buffer);         // &lt;Buffer 48 65 6c 6c 6f&gt;
+    console.log(buffer.toString()); // "Hello"
+    ```
+  - 🔍 What’s happening?
+  Buffer.from("Hello") creates a buffer containing the binary representation of the string "Hello".
+  You can convert it back to a string using .toString().
+  - 💡 When is Buffer useful?
+  Reading files (fs.readFile)
+  Working with TCP streams (net module)
+  Handling image/audio/video data
+  Communicating with hardware or low-level APIs
 
  
 
