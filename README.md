@@ -27,17 +27,23 @@
 
 // console.log(sum(4)(3));
 
-function sum(a){
-    let total = a;
-    function inner(b){
-        if(typeof b === 'undefined') return total;
-        total += b;
-        return inner;
-    }
+// Infinite Currying Example
+
+function sum(a) {
+  let total = a;
+
+  function inner(b) {
+    if (b === undefined) return total;
+    total += b;
     return inner;
+  }
+
+  return inner;
 }
 
-console.log(sum(4)(3)(6)(7)(10)());
+console.log(sum(1)(2)(3)()); // Output: 6
+console.log(sum(10)(-2)(5)(7)()); // Output: 20
+console.log(sum(10)(-2)(5)(7)()); // Output: 20
 ```
 
 

@@ -3102,3 +3102,14 @@ function isPalindrome(x){
 }
 
 cons
+
+
+
+// # print 1,2,3,4 with 1 second delay using setInterval in javascript?
+// let x = 1;
+// const timer = setInterval(() => {
+//   console.log(x++);
+//   if (x > 4) {
+//     clearInterval(timer); // stops the interval
+//   }
+// }, 1000);
