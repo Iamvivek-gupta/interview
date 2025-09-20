@@ -1013,18 +1013,18 @@ In this example, whenever a new message is received, the message event is emitte
  - Event-Driven Architecture is a software design pattern where components communicate by emitting and responding to events, rather than calling each other directly.
  - Producer: Emits an event (e.g., user.created)
  - Consumer: Listens and reacts to that event (e.g., sends welcome email)
-**✅ Benefits of EDA:**
+### ✅ Benefits of EDA:**
 - Loose Coupling: Components don’t depend on each other directly.
 - Scalability: Easy to add new consumers without changing producers.
 - Flexibility: Multiple services can react to the same event.
 - Resilience: Failures in one part don’t crash the whole system.
 - Asynchronous Processing: Improves performance for background tasks.
-**❌ Disadvantages of EDA:**
+### ❌ Disadvantages of EDA:**
 - Complex Debugging: Hard to trace event flow.
 - Event Management Overhead: Requires good monitoring and logging.
 - Data Consistency: Harder to maintain in distributed systems.
 - Latency: Event processing may not be instant.
-**📌 When to Use EDA:**
+### 📌 When to Use EDA:**
 - Choose Event-Driven Architecture when:
 - You have microservices or distributed systems
 - You need real-time updates (e.g., notifications, analytics)
