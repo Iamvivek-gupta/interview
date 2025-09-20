@@ -3113,3 +3113,41 @@ cons
 //     clearInterval(timer); // stops the interval
 //   }
 // }, 1000);
+
+
+
+
+
+The most optimized way is to use a single pass to **count character frequencies**, then another to find the first unique one.  
+This makes it O(n) time, O(1) space (since English letters are limited), and is industry standard for this problem.[1][2]
+
+***
+
+## Optimal JavaScript Solution
+
+```javascript
+function firstUniqueChar(s) {
+    const count = {};
+    // Count the frequency of each character
+    for (let char of s) {
+        count[char] = (count[char] || 0) + 1;
+    }
+    // Find the first character with frequency 1
+    for (let i = 0; i < s.length; i++) {
+        if (count[s[i]] === 1) return i;
+    }
+    return -1;
+}
+
+// Usage:
+console.log(firstUniqueChar("leetcode"));      // Output: 0
+console.log(firstUniqueChar("loveleetcode"));  // Output: 2
+console.log(firstUniqueChar("aabb"));          // Output: -1
+```
+
+***
+
+- **Explanation:**  
+  1. First loop: prepares a hash to store count of each character.
+  2. Second loop: returns the index of the first char that occurs just once.
+- Works in **O(n)** time, no nested loops, and minimal extra space.
