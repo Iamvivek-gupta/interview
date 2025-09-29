@@ -3151,3 +3151,99 @@ console.log(firstUniqueChar("aabb"));          // Output: -1
   1. First loop: prepares a hash to store count of each character.
   2. Second loop: returns the index of the first char that occurs just once.
 - Works in **O(n)** time, no nested loops, and minimal extra space.
+
+
+
+
+
+
+
+
+
+
+
+
+Here's what the question is asking:  
+**Given a possibly deeply nested object, find the sum of all values in it that are even numbers.**
+
+***
+
+## Easy Explanation
+
+- The numbers could be anywhere—at any depth of nesting.
+- Some values are numbers, some are strings/objects.
+- You need a function that visits every value in the object, and if it finds an even number, adds it to a running sum.
+
+## Approach
+
+Use a **recursive function**:
+- If a value is a number and even, add it to the sum.
+- If a value is an object, recursively check its keys.
+- Ignore other types (strings, booleans, etc).
+
+***
+
+## Optimized Solution (JavaScript)
+
+```javascript
+function sumEven(obj) {
+    let sum = 0;
+    for (let key in obj) {
+        let val = obj[key];
+        if (typeof val === 'number' && val % 2 === 0) {
+            sum += val;
+        } else if (typeof val === 'object' && val !== null) {
+            sum += sumEven(val);
+        }
+    }
+    return sum;
+}
+
+// Example usage:
+const obj = { a: 2, b: { b1: 3, b2: { b21: 4, b22: { b221: 10 } } }, c: { c1: 6, c2: "string" } };
+console.log(sumEven(obj)); // Output: 2 + 4 + 10 + 6 = 22
+```
+
+***
+
+- The function visits *every* value, no matter how nested, and adds up all even numbers.[1][2]
+- For your `obj`, it finds: 2, 4, 10, and 6 → total **22**.
+
+Let me know if you want an explanation for each step of the recursion!This question asks for the **sum of all even numbers** inside a deeply nested object (including values in all nested objects).
+
+**To solve it:**  
+- Use recursion to traverse every property.
+- If the value is a number and even, add to the sum.
+- If the value is an object, call the function again for that object.
+- If it's a string or something else, ignore it.
+
+***
+
+## Optimized Recursive Solution
+
+```javascript
+function sumEven(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    const value = obj[key];
+    if (typeof value === 'number' && value % 2 === 0) {
+      sum += value;
+    } else if (typeof value === 'object' && value !== null) {
+      sum += sumEven(value);
+    }
+  }
+  return sum;
+}
+
+// Example:
+const obj = { a: 2, b: { b1: 3, b2: { b21: 4, b22: { b221: 10 } } }, c: { c1: 6, c2: "string" } };
+console.log(sumEven(obj)); // Output: 22 (2 + 4 + 10 + 6)
+```
+
+***
+
+**How it works:**  
+- It goes through all entries, adding up only the even numbers, no matter the nesting depth.[2][1]
+- For your example, it finds the values 2, 4, 10, 6 → total is **22**.
+
+This is the most efficient and easy-to-understand approach for this kind of question!

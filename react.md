@@ -925,6 +925,108 @@ const App = () => {
 export default App;
 ```
 
+# React Fiber 
+- React Fiber is the core engine that makes React’s rendering more flexible and efficient.
+- Instead of updating the whole UI in one go, Fiber breaks work into small “units of work” (fibers). 
+- This lets React pause, prioritize, and resume rendering updates—making animations, large lists, and high-interaction UIs much smoother.
+
+
+### React Fiber Example
+- If an app needs to update a huge list and handle a button click at the same time, Fiber allows React to pause the list update, process the click (higher priority), then 
+  resume the list. This prevents the UI from freezing.
+
+### Summary:
+- Fiber enables fine-grained scheduling and prioritization of updates.
+- It improves user experience during heavy or concurrent UI changes.
+- Makes features like Suspense and concurrent rendering possible.
+
+
+
+
+# Difference in useLayout and useEffect in react
+The `useLayoutEffect` and `useEffect` Hooks in React are used for side effects in function components, but differ in **when they run**:
+
+***
+
+### useEffect
+- Runs **after** the browser paints the UI (asynchronously).
+- Does **not block** rendering—best for API calls, subscriptions, timers, logging, or side effects that don’t affect immediate visuals.
+- Example:
+  ```js
+  useEffect(() => {
+    fetchData();
+  }, []);
+  ```
+
+### useLayoutEffect
+- Runs **synchronously after React updates the DOM but before the browser paints** (blocks paint).
+- Used for **measuring/layout manipulation** and DOM changes that need to happen before the user sees them (prevents flicker).
+- Example:
+  ```js
+  useLayoutEffect(() => {
+    const width = ref.current.offsetWidth;
+    setWidth(width); // Set state before paint
+  }, []);
+  ```
+
+***
+
+### Table of Differences
+
+| Feature         | useEffect                   | useLayoutEffect              |
+|-----------------|----------------------------|------------------------------|
+| Timing          | After paint (async)         | Before paint (sync)          |
+| Performance     | Non-blocking, preferred     | Can block UI, use sparingly  |
+| Use cases       | Data-fetch, logging         | Layout, DOM measurement      |
+| Example         | API requests                | Animation, tooltip position  |
+
+***
+
+**Summary:**  
+- Use `useEffect` for async side effects that don’t affect layout.
+- Use `useLayoutEffect` for DOM reads or changes that must be applied before rendering, such as animations or position fixes.[1][3][4][5][7][9]
+
+
+
+# what is propsType in react?
+
+**Interview-ready answer (short & clean):**
+
+> **Prop types** in React are a way to **define and validate the expected data types for props a component should receive**. This helps catch bugs early and documents your component’s API.  
+> Example (using PropTypes):
+> ```js
+> import PropTypes from 'prop-types';
+> 
+> function User({ name, age }) {
+>   return <div>{name} is {age} years old</div>;
+> }
+> 
+> User.propTypes = {
+>   name: PropTypes.string.isRequired,
+>   age: PropTypes.number.isRequired,
+> };
+> ```
+>  
+> In TypeScript, you’d use interfaces or types for compile-time checking instead.
+
+
+# how you will implement componentwillunmount in functional component?
+- In a React functional component, **componentWillUnmount** is implemented using the `useEffect` Hook with a cleanup function.
+
+> **Interview answer:**  
+> In functional components, cleanup logic for unmounting is placed inside the return statement of `useEffect`. The return function runs when the component unmounts.
+
+**Example:**
+```js
+useEffect(() => {
+  // setup code (runs on mount)
+  return () => {
+    // cleanup code (runs on unmount, e.g., remove event listeners)
+  };
+}, []);
+```
+
+This is the direct equivalent of `componentWillUnmount` from class components, keeping resource management clean and efficient.
 
 
 
@@ -990,3 +1092,10 @@ export default App;
 
 
 
+
+
+// what is useLayout hook?
+// what is react fiber 
+// what is props types
+// shall we use useSelector in class component
+// how you will implement component unmount in fuctional component?

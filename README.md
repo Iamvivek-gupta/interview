@@ -27,18 +27,13 @@
 
 // console.log(sum(4)(3));
 
-// Infinite Currying Example
+// Infinite Currying Addition Example
 
 function sum(a) {
-  let total = a;
-
-  function inner(b) {
-    if (b === undefined) return total;
-    total += b;
-    return inner;
+  return function(b) {
+    if (b === undefined) return a;
+    return sum(a+b);
   }
-
-  return inner;
 }
 
 console.log(sum(1)(2)(3)()); // Output: 6
@@ -46,6 +41,19 @@ console.log(sum(10)(-2)(5)(7)()); // Output: 20
 console.log(sum(10)(-2)(5)(7)()); // Output: 20
 ```
 
+
+// Infinite Currying Multiply Example
+```
+function multiply(a){
+    return function(b){
+        if(b === undefined) return  a;
+        
+        return multiply(a + b)
+    }
+}
+
+console.log(multiply(1)(2)(3)(4)());
+```
 
 
 
