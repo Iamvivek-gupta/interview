@@ -173,6 +173,44 @@ console.log(result);
 
 
 
+// Two pointer approach
+
+
+// Here's how to solve the Two Sum problem using the two-pointer approach in JavaScript. This method works when the input array is **sorted**.
+
+// ```javascript
+// function twoSumSorted(arr, target) {
+//   let left = 0;
+//   let right = arr.length - 1;
+
+//   while (left < right) {
+//     const sum = arr[left] + arr[right];
+//     if (sum === target) {
+//       return [left, right]; // Return indices (or values: [arr[left], arr[right]])
+//     } else if (sum < target) {
+//       left++;
+//     } else {
+//       right--;
+//     }
+//   }
+//   return null; // No solution found
+// }
+
+// // Example usage (must be sorted)
+// let arr = [1, 2, 3, 4, 6, 8];
+// console.log(twoSumSorted(arr, 10)); // Output: [1, 5] (2 + 8)
+// ```
+
+// **Details:**
+// - Start with two pointers at the ends of a sorted array.
+// - Move `left` forward if the sum is too small.
+// - Move `right` backward if the sum is too large.
+// - Stops when the desired sum is found.
+
+// For **unsorted arrays**, first sort them or use a hashmap for optimal solution.
+
+
+
 
 
 
