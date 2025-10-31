@@ -10,7 +10,7 @@
 
 On the cloud side, I have leveraged AWS services such as Lambda, S3, RDS, and EC2 to deploy and scale applications. I'm also familiar with using AWS for continuous integration and continuous deployment (CI/CD) pipelines to streamline the development process.
 
-In terms of frontend development, I work with ReactJS to build interactive and user-friendly interfaces. I utilize React Hooks and context to manage state efficiently and ensure seamless integration with backend APIs.
+for the frontend development, I work with ReactJS to build interactive and user-friendly interfaces. I utilize React Hooks and redux-tooolkit to manage complex state efficiently and ensure seamless integration with backend APIs.
 
 Additionally, I’ve been involved in database design and management, working with both SQL and NoSQL databases like MySQL, PostgreSQL, and MongoDB, to store and retrieve data effectively.
 
