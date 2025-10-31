@@ -139,7 +139,7 @@ This script should help you clearly communicate your experience and impress the 
 
 # Docubay Project explanation
 
-previously one of my project, I also  worked in an OTT domain company called Docubay, which is a product-based company. Users can watch popular documentaries in their own country if they have a valid subscription. They can purchase monthly, quarterly, and half-yearly subscriptions. I was responsible for developing user modules to handle user sign-in, sign-up, forgot password, and reset password functionalities efficiently. Additionally, I was responsible for integrating Grabpay, a Singapore-based payment gateway, to handle one-time payments for user transactions and create user subscriptions.
+previously one of my project, I also  worked in an OTT domain company called Docubay, which is a product-based company. Users can watch popular documentaries in their own country if they have a valid subscription. They can purchase monthly, quarterly, and half-yearly subscriptions. I was responsible for developing user modules to handle user sign-in, sign-up, forgot password, and reset password functionalities efficiently. Additionally, I was responsible for integrating payment gateways such as Grabpay. Grabpay was a Singapore-based payment gateway, which accept one-time, subscription based and EMI based payments for user transactions and create user subscriptions.
 
 To interact with users, I also integrated third-party services to manage notifications. For SMS notifications, I used Twilio, and for email notifications, I used SendGrid.
 
