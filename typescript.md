@@ -2020,23 +2020,23 @@ When a message is sent, all users are notified instantly.[5][6][7]
 
 Each pattern solves a practical scenario you may see in real apps, and the code above is designed to be clear for interviews.
 
-[1](https://dev.to/artem/singleton-design-pattern-typescript-example-443e)
-[2](https://dev.to/bilelsalemdev/understanding-the-singleton-pattern-in-typescript-4kep)
-[3](https://blog.bitsrc.io/factory-design-pattern-in-typescript-55a91d74f3a4)
-[4](https://justcode.me/design-patterns/factory-pattern-in-typescript/)
-[5](https://refactoring.guru/design-patterns/observer/typescript/example)
-[6](https://refactoring.guru/design-patterns/observer)
-[7](https://javascript.plainenglish.io/design-patterns-in-typescript-observer-pattern-cf0adb5e17be)
-[8](https://refactoring.guru/design-patterns/singleton/typescript/example)
-[9](https://refactoring.guru/design-patterns/singleton)
-[10](https://algomaster.io/learn/lld/singleton)
-[11](https://www.freecodecamp.org/news/singleton-design-pattern-with-javascript/)
-[12](https://stackoverflow.com/questions/3192095/where-exactly-the-singleton-pattern-is-used-in-real-application)
-[13](https://refactoring.guru/design-patterns/factory-method/typescript/example)
-[14](https://blog.bitsrc.io/the-singleton-pattern-in-typescript-b906303fda93)
-[15](https://dev.to/luizcalaca/typescript-factory-design-pattern-in-practice-uml-6g9)
-[16](https://cloudaffle.com/series/behavioral-design-patterns/observer-pattern-application/)
-[17](https://algomaster.io/learn/lld/factory-method)
-[18](https://sbcode.net/typescript/observer/)
-[19](https://sbcode.net/typescript/factory/)
-[20](https://www.youtube.com/watch?v=2xqfbr2WOBI)
+
+# Disadvantages of using TypeScript:
+
+- Adds a compilation step before running code.[1][2]
+- Increases build and setup complexity.[3][4]
+- Has a learning curve, especially for JS developers.[6][7]
+- Requires maintaining type definitions, especially for third-party libraries.[2][1]
+- Can slow down development with longer build times and verbose annotations.[10][3]
+- Occasionally, type system limitations and extra tooling needs can lead to frustration.[9][6]
+
+
+# To reduce TypeScript compilation slowdowns:
+
+- Enable `"incremental": true` in `tsconfig.json` for faster rebuilds.[1][2]
+- Use `skipLibCheck` to skip type checking for dependencies.[1]
+- Split large projects with project references for parallel builds.[3][2]
+- Limit files included in compilation using `include` and `exclude`.[3]
+- Prefer simpler types and avoid excessive type complexity.[1]
+- Use Babel or SWC for faster transpilation if you don’t need full type checking at build time.[4]
+- Upgrade TypeScript and dependencies regularly for performance improvements.[3]

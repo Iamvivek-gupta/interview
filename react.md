@@ -753,7 +753,7 @@ ________________________________________
 
 
 # Props Drilling
-**Props drilling** in React means passing data through many layers of components, even when only the deepest child needs it, which makes code harder to maintain.[1][2][3]
+**Props drilling** in React means passing data through many layers of components, even when only the deepest child needs it, which makes code harder to maintain.
 
 ## Problem Example
 
@@ -808,14 +808,6 @@ Now, `Grandchild` can access `data` directly from context, no matter how deeply 
 - **Props drilling** is passing props through many layers unnecessarily.  
 - Use **React Context** to share data directly with deeply nested components and avoid this issue.[1][3]
 
-[1](https://www.angularminds.com/blog/what-is-prop-drilling-in-react)
-[2](https://www.geeksforgeeks.org/reactjs/what-is-prop-drilling-and-how-to-avoid-it/)
-[3](https://www.freecodecamp.org/news/prop-drilling-in-react-explained-with-examples/)
-[4](https://dev.to/codeofrelevancy/what-is-prop-drilling-in-react-3kol)
-[5](https://www.freecodecamp.org/news/avoid-prop-drilling-in-react/)
-[6](https://ferreira.io/posts/prop-drilling)
-[7](https://react.dev/learn/passing-data-deeply-with-context)
-[8](https://www.linkedin.com/posts/free-code-camp_prop-drilling-in-react-explained-with-examples-activity-7179840156038782976-VtfO)
 
 
 
@@ -855,17 +847,6 @@ function Example() {
 **Summary:**  
 - **useState = track state.**  
 - **useEffect = run side effects after render.**[5][6]
-
-[1](https://www.freecodecamp.org/news/react-hooks-useeffect-usestate-and-usecontext/)
-[2](https://codedamn.com/news/reactjs/usestate-and-useeffect-hooks)
-[3](https://www.shecodes.io/athena/125174-difference-between-usestate-and-useeffect-in-react)
-[4](https://hygraph.com/blog/react-useeffect-a-complete-guide)
-[5](https://blog.stackademic.com/understanding-the-differences-between-usestate-and-useeffect-in-react-b61cad91df3c?gi=45a6d5b765c3)
-[6](https://dev.to/wdp/best-practices-for-usestate-and-useeffect-in-react-4aea)
-[7](https://stackoverflow.com/questions/53219164/what-s-the-difference-between-usestate-and-useeffect)
-[8](https://www.syncfusion.com/blogs/post/react-useeffect-usestate-hooks)
-[9](https://react.dev/reference/react/useEffect)
-[10](https://www.youtube.com/watch?v=0Kp2ymPGxiw)
 
 
 
@@ -1010,7 +991,7 @@ The `useLayoutEffect` and `useEffect` Hooks in React are used for side effects i
 > In TypeScript, you’d use interfaces or types for compile-time checking instead.
 
 
-# how you will implement componentwillunmount in functional component?
+# how you will implement component will unmount in functional component?
 - In a React functional component, **componentWillUnmount** is implemented using the `useEffect` Hook with a cleanup function.
 
 > **Interview answer:**  
