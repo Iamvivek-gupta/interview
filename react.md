@@ -1023,7 +1023,9 @@ This is the direct equivalent of `componentWillUnmount` from class components, k
 
 ### AWS Lambda
 1. **What is AWS Lambda?**
-   - **Answer**: AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers, making it perfect for scalable and cost-effective solutions. You pay only for the compute time you consume¹.
+   - **Answer**: An AWS Lambda function is a serverless compute service offered by Amazon.It lets you run code in response to events (like changes in S3, DynamoDB, or via HTTP requests) without provisioning or managing servers. Making it perfect for scalable and cost-effective solutions. You pay only for the compute time you consume¹. 
+  - You simply upload your code (in languages like Node.js, Python, Java, etc.), set up triggers, and AWS handles execution, scaling, and infrastructure behind the scenes. 
+  - By default, the timeout setting for an AWS Lambda function is 3 seconds. You can configure it up to a maximum of 15 minutes per invocation.
 
 2. **What are the use cases for AWS Lambda?**
    - **Answer**: Common use cases include data processing, real-time file processing, backends for mobile and web applications, and event-driven applications¹.
