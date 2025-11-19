@@ -1011,68 +1011,6 @@ This is the direct equivalent of `componentWillUnmount` from class components, k
 
 
 
-### AWS API Gateway
-1. **What is AWS API Gateway?**
-   - **Answer**: AWS API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. simplifying the process of building and managing APIs.
-
-2. **How does API Gateway integrate with AWS Lambda?**
-   - **Answer**: API Gateway can trigger AWS Lambda functions in response to HTTP requests. This allows you to build serverless APIs that scale automatically.
-
-3. **What are the benefits of using API Gateway?**
-   - **Answer**: Benefits include automatic scaling, built-in monitoring, security features like throttling and API keys, and seamless integration with other AWS services².
-
-### AWS Lambda
-1. **What is AWS Lambda?**
-   - **Answer**: An AWS Lambda function is a serverless compute service offered by Amazon.It lets you run code in response to events (like changes in S3, DynamoDB, or via HTTP requests) without provisioning or managing servers. Making it perfect for scalable and cost-effective solutions. You pay only for the compute time you consume¹. 
-  - You simply upload your code (in languages like Node.js, Python, Java, etc.), set up triggers, and AWS handles execution, scaling, and infrastructure behind the scenes. 
-  - By default, the timeout setting for an AWS Lambda function is 3 seconds. You can configure it up to a maximum of 15 minutes per invocation.
-
-2. **What are the use cases for AWS Lambda?**
-   - **Answer**: Common use cases include data processing, real-time file processing, backends for mobile and web applications, and event-driven applications¹.
-
-3. **How do you deploy a Lambda function?**
-   - **Answer**: You can deploy a Lambda function using the AWS Management Console, AWS CLI, or infrastructure as code tools like AWS CloudFormation and Terraform.
-
-### AWS S3
-1. **What is Amazon S3?**
-   - **Answer**: Amazon S3 (Simple Storage Service) is an object storage service that offers industry-leading scalability, data availability, security, and performance.
-
-2. **How do you secure data in S3?**
-   - **Answer**: Data in S3 can be secured using bucket policies, IAM policies, and encryption (both server-side and client-side).
-
-3. **What is an S3 bucket?**
-   - **Answer**: An S3 bucket is a container for storing objects (files). Each bucket has a unique name and can store an unlimited number of objects.
-
-### AWS RDS
-1. **What is Amazon RDS?**
-   - **Answer**: Amazon RDS (Relational Database Service) is a managed relational database service that supports several database engines, including MySQL, PostgreSQL, and Oracle.
-
-2. **How do you ensure high availability in RDS?**
-   - **Answer**: High availability in RDS can be ensured using Multi-AZ deployments, which replicate data across multiple Availability Zones.
-
-3. **What are RDS Read Replicas?**
-   - **Answer**: RDS Read Replicas allow you to create read-only copies of your database to offload read traffic and improve performance.
-
-### AWS DynamoDB
-1. **What is Amazon DynamoDB?**
-   - **Answer**: Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability, ideal for applications requiring consistent, single-digit millisecond latency.
-
-2. **What are DynamoDB Streams?**
-   - **Answer**: DynamoDB Streams capture a time-ordered sequence of item-level changes in a DynamoDB table and can be used to trigger AWS Lambda functions.
-
-3. **How do you optimize DynamoDB performance?**
-   - **Answer**: Performance can be optimized by choosing the right partition key, using indexes, and enabling DynamoDB Accelerator (DAX) for caching.
-
-### AWS EC2
-1. **What is Amazon EC2?**
-   - **Answer**: Amazon EC2 (Elastic Compute Cloud) provides scalable computing capacity in the AWS cloud. It allows you to launch virtual servers on demand.
-
-2. **What are EC2 instance types?**
-   - **Answer**: EC2 instance types are categorized based on different use cases, such as general-purpose, compute-optimized, memory-optimized, and storage-optimized instances.
-
-3. **How do you secure an EC2 instance?**
-   - **Answer**: EC2 instances can be secured using security groups, network ACLs, IAM roles, and encryption for data at rest and in transit.
-
 
 
 
