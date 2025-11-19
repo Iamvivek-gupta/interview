@@ -147,3 +147,29 @@ fetch(presignedUrl, {
 - Call `fetch` with method `PUT`, set `body` to the `file`, and set the appropriate `Content-Type`.[1][2]
 
 This uploads the file straight to S3—no intermediate backend needed. The URL is valid for a limited time, and the file goes directly to your specified S3 bucket.
+
+
+
+
+
+
+# RDS PostgreSQL vs Aurora PostgreSQL — Key Differences
+
+## Amazon RDS for PostgreSQL
+- Fully managed PostgreSQL service
+- Suitable for standard workloads
+- Supports manual and automated backups
+- Follows community PostgreSQL versions closely
+- Performance depends on instance type and storage
+
+## Amazon Aurora PostgreSQL-Compatible
+- Up to 3x faster than standard PostgreSQL (due to distributed, SSD-backed storage)
+- Fault-tolerant with auto-healing & multi-Availability Zone (AZ) deployment by default
+- Built-in replication with low-latency reads
+- Ideal for high-traffic, scalable applications
+- Slightly lags behind community PostgreSQL versions
+
+## Summary
+- Use Aurora for scaling and performance-sensitive applications
+- Use RDS PostgreSQL for workloads requiring close compatibility with native PostgreSQL
+- Choose based on use case, latency requirements, and budget
