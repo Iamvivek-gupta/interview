@@ -42,12 +42,18 @@ This version is more straightforward and easy to understand while still conveyin
 
 Typically, when a user purchases a device, they will get a 1-year standard warranty. However, we created a system where users could purchase additional plans to extend their device warranties by 2-3 years or even 3-4 years, depending on the plan they chose.
 
-If the user's device brand and model are present in our system, we create additional plans for the user. Once these additional plans are created and the user is active, they can raise a claim for physical or liquid damage to their device.
+If the user's device brand and model are present in our system, we create additional plans for the user. Once these additional plans are created and the user is active, they can raise a claim for physical or liquid damage to their device. 
 
  
 This involved integrating with various OEMs and streamlining the entire process, from selecting and purchasing a plan to managing claims when a user needed to file one.
 
-The project was challenging yet rewarding as it required a deep understanding of both the technical and business aspects. I was responsible for designing and developing the backend systems that handled plan offerings, user management, and the claims process. We also ensured the system was scalable and could handle the needs of various brands, each with their own set of products and customer base.
+The overall product was implemented into microservice architecture with separate module like user management, product catalog, payments, and notifications so that each module could scale and be deployed independently. I was part of user management module and was responsible to handle user sign-in, sign-up, forgot password, and reset password authentication and authorisation functionalities efficiently.
+
+from the product delivery perspective team follow agile process. Requirements came in as epics and user stories, during backlog grooming and sprint planning with the team, QA, and product owner clarified acceptance criteria and did story‑point estimation using complexity and risk rather than just time. Work was tracked in a tool like JIRA, with two‑week sprints, and then code moved through multiple environments—dev, test, UAT, pre‑prod, and prod—so that each stage had its own round of functional testing and regression before release.
+
+for the deployment process I had seprate devOps team we were using jenkins/gihub actions to configure CI/CD pipelines to auto build, test, and deploy in each env.
+work closely with devOps team to configure dockers, secrets, kubernates, and deploy application on EC2 instance.
+co-ordinating with QA team to create test cases, provide support for UAT testing.
 
 This project not only allowed me to work with cutting-edge technology but also gave me the opportunity to directly impact the customer experience by making device protection more accessible and efficient. It was exciting to see how our solution helped users protect their valuable devices beyond the standard warranty period."
 
