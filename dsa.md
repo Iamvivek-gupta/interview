@@ -376,9 +376,343 @@ console.log(maxSubArray([5, 4, -1, 7, 8]));
 
 // Let me know if you want to handle multi-digit numbers or clarify anything else!
 
-// [1](https://www.dsavisualizer.in/visualizer/stack/polish/prefix)
-// [2](https://www.geeksforgeeks.org/dsa/evaluation-prefix-expressions/)
-// [3](https://notation-visualizer.ajayliu.com/stack)
-// [4](https://stackoverflow.com/questions/56200343/evaluate-value-of-prefix-expression-js)
-// [5](https://www.youtube.com/watch?v=EsbumKFdRYg)
-// [6](https://tutorialhorizon.com/algorithms/evaluation-of-prefix-expressions-polish-notation-set-1/)
+
+
+
+
+
+Below is the **3-Sum problem** explained in the simplest possible way, along with:
+
+✔ **Brute force solution (O(n³))**
+✔ **Optimized solution using sorting + two pointers (O(n²))**
+✔ **Step-by-step explanation for both**
+✔ **Clean JavaScript code for both approaches**
+
+---
+
+# ✅ **Problem: 3-Sum**
+
+Given an array `nums`, find **all unique triplets** `(a, b, c)` such that:
+
+```
+a + b + c = 0
+```
+
+Example:
+Input → `[-1, 0, 1, 2, -1, -4]`
+Output → `[[-1, -1, 2], [-1, 0, 1]]`
+
+---
+
+# 🚫 **1. Brute Force Approach (O(n³))**
+
+### 🧠 Idea
+
+Try **every possible combination of 3 numbers** and check if they add to zero.
+
+### Steps:
+
+1. Use 3 loops: `i`, `j`, `k`
+2. Pick numbers: `nums[i], nums[j], nums[k]`
+3. Check if they sum to **0**
+4. To avoid duplicates, store sorted triplets inside a `Set`
+
+---
+
+## ✅ **Brute Force Code**
+
+```javascript
+function threeSumBruteForce(nums) {
+  const n = nums.length;
+  const result = new Set(); // to avoid duplicates
+
+  for (let i = 0; i < n; i++) {
+    for (let j = i + 1; j < n; j++) {
+      for (let k = j + 1; k < n; k++) {
+        if (nums[i] + nums[j] + nums[k] === 0) {
+          const triplet = [nums[i], nums[j], nums[k]].sort((a, b) => a - b);
+          result.add(JSON.stringify(triplet)); // store as string to avoid duplicates
+        }
+      }
+    }
+  }
+
+  return Array.from(result).map(JSON.parse);
+}
+```
+
+---
+
+# 🚀 **2. Optimized Approach — Sorting + Two Pointers (O(n²))**
+
+### 🧠 Idea
+
+Instead of checking all combinations:
+
+1. **Sort the array**
+2. Fix one number (loop `i`)
+3. Use **two pointers** (`left` and `right`) to find pairs that sum to `-nums[i]`
+4. Skip duplicates to avoid repeated triplets
+
+---
+
+### Steps (Very Easy Explanation)
+
+1. **Sort** array → easier to avoid duplicates
+2. Loop `i` from 0 to n-3
+3. For each `i`, set:
+
+   * `left = i + 1`
+   * `right = n - 1`
+4. Compute:
+
+   ```
+   sum = nums[i] + nums[left] + nums[right]
+   ```
+5. If `sum == 0` → we found a triplet
+6. If `sum < 0` → move left pointer right
+7. If `sum > 0` → move right pointer left
+8. Skip duplicates at every step
+
+---
+
+## ✅ **Optimized JavaScript Code**
+
+```javascript
+function threeSum(nums) {
+  nums.sort((a, b) => a - b);
+  const result = [];
+
+  for (let i = 0; i < nums.length - 2; i++) {
+    // skip duplicates for i
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+    let left = i + 1;
+    let right = nums.length - 1;
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right];
+
+      if (sum === 0) {
+        result.push([nums[i], nums[left], nums[right]]);
+
+        left++;
+        right--;
+
+        // skip duplicates for left and right
+        while (left < right && nums[left] === nums[left - 1]) left++;
+        while (left < right && nums[right] === nums[right + 1]) right--;
+      } 
+      else if (sum < 0) {
+        left++; // need a bigger sum
+      } 
+      else {
+        right--; // need a smaller sum
+      }
+    }
+  }
+
+  return result;
+}
+```
+
+---
+
+# 🎯 Summary
+
+| Approach                  | Time  | Space | Idea                 |
+| ------------------------- | ----- | ----- | -------------------- |
+| **Brute Force**           | O(n³) | O(n)  | Try all combinations |
+| **Optimized Two-Pointer** | O(n²) | O(1)  | Sort + two pointers  |
+
+---
+
+
+
+
+Sure! Here is a **very easy, visual, step-by-step explanation** of the **3-Sum (Two-Pointer Approach)** so you understand *exactly* how the algorithm moves.
+
+---
+
+# 🎨 **Visual Explanation of the Two-Pointer Method**
+
+Let’s take an example array:
+
+```
+[-1, 0, 1, 2, -1, -4]
+```
+
+---
+
+## **STEP 1 — Sort the array**
+
+Sorting makes it easier to skip duplicates and use pointers.
+
+```
+[-4, -1, -1, 0, 1, 2]
+```
+
+Indexes:
+
+```
+ 0   1   2  3  4  5
+[-4, -1, -1, 0, 1, 2]
+```
+
+---
+
+# ✏️ **We will fix one number at a time and find the other two using left + right pointers**
+
+---
+
+# 🔵 **Iteration 1: Fix i = 0 → nums[i] = -4**
+
+```
+ i   L               R
+[-4, -1, -1, 0, 1, 2]
+     ↑           ↑
+```
+
+We want pairs that sum to **+4** (because -4 + ? + ? = 0)
+
+Check:
+
+```
+-4 + (-1) + 2 = -3  → too small → move L right
+```
+
+Move L → 2
+Move L → 3
+Move L → 4
+Move L → 5
+Left crosses Right → STOP
+
+No triplet found for i = 0.
+
+---
+
+# 🔵 **Iteration 2: Fix i = 1 → nums[i] = -1**
+
+```
+     i   L         R
+[-4, -1, -1, 0, 1, 2]
+         ↑       ↑
+```
+
+We want pairs that sum to **+1** (because -1 + ? + ? = 0)
+
+---
+
+### ✔️ Check:
+
+```
+-1 + (-1) + 2 = 0  → FOUND TRIPLET!
+```
+
+### 🎉 Save:
+
+```
+[-1, -1, 2]
+```
+
+Move both pointers:
+
+```
+     i     L   R
+[-4, -1, -1, 0, 1, 2]
+           ↑   ↑
+```
+
+---
+
+### Check next:
+
+```
+-1 + 0 + 1 = 0 → FOUND TRIPLET!
+```
+
+### 🎉 Save:
+
+```
+[-1, 0, 1]
+```
+
+Move L → 4
+Move R → 3
+(L > R) → stop this i.
+
+---
+
+# 🔵 **Iteration 3: i = 2 → nums[i] = -1 (duplicate!)**
+
+Since nums[i] == nums[i−1], we skip this to avoid duplicates.
+
+---
+
+# 🔵 **Iteration 4: i = 3 → nums[i] = 0**
+
+```
+          i  L    R
+[-4, -1, -1, 0, 1, 2]
+              ↑    ↑
+```
+
+We want pairs that sum to **0**
+
+Check:
+
+```
+0 + 1 + 2 = 3 → too big → move R left
+```
+
+Then:
+
+```
+0 + 1 + (-1?) → but R moved further left? NO, R moves, L does not.
+```
+
+Eventually, no more pairs.
+
+---
+
+# 🎉 Final Result Found
+
+The two unique triplets are:
+
+```
+[-1, -1, 2]
+[-1, 0, 1]
+```
+
+---
+
+# 🧠 Summary of Visual Pointer Movement
+
+```
+Sorted: [-4, -1, -1, 0, 1, 2]
+
+Fix -4 → no triplet
+Fix -1 → two triplets found
+Fix next -1 → skip (duplicate)
+Fix 0 → no triplet
+Fix 1, 2 → cannot form triplets
+```
+
+---
+
+# 📌 Why Two Pointers Are Fast
+
+Instead of checking all 3-number combinations (n³), sorting + two pointers reduces inner work to (n²):
+
+* Fix one number
+* Use left and right pointers to find matching pairs in linear time
+
+---
+
+If you'd like, I can also prepare:
+
+✅ A **diagram image**
+✅ A **trace table**
+✅ A **dry-run on your custom array**
+
+Just tell me what you want!
