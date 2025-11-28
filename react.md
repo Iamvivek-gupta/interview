@@ -753,7 +753,7 @@ ________________________________________
 
 
 # Props Drilling
-**Props drilling** in React means passing data through many layers of components, even when only the deepest child needs it, which makes code harder to maintain.
+**Props drilling** in React means passing data through many layers of components, even when only the deepest child component needs it, which makes code harder to maintain.
 
 ## Problem Example
 
@@ -930,7 +930,7 @@ The `useLayoutEffect` and `useEffect` Hooks in React are used for side effects i
 ***
 
 ### useEffect
-- Runs **after** the browser paints the UI (asynchronously).
+- useEffect hooks execute asynchronously **after** the browser paints the UI (asynchronously).
 - Does **not block** rendering—best for API calls, subscriptions, timers, logging, or side effects that don’t affect immediate visuals.
 - Example:
   ```js
@@ -940,7 +940,7 @@ The `useLayoutEffect` and `useEffect` Hooks in React are used for side effects i
   ```
 
 ### useLayoutEffect
-- Runs **synchronously after React updates the DOM but before the browser paints** (blocks paint).
+- useLayoutEffect hooks execute synchronously **after React updates the DOM but before the browser paints** (blocks paint).
 - Used for **measuring/layout manipulation** and DOM changes that need to happen before the user sees them (prevents flicker).
 - Example:
   ```js
@@ -1020,3 +1020,100 @@ This is the direct equivalent of `componentWillUnmount` from class components, k
 // what is props types
 // shall we use useSelector in class component
 // how you will implement component unmount in fuctional component?
+
+
+
+
+
+# **What is Webpack?**
+
+**Webpack** is a **module bundler**.
+It takes all your project files (JS, CSS, images, React components, etc.) and **bundles them into optimized files** that browsers can load efficiently.
+
+---
+
+# **Why use Webpack in React?**
+
+### ✅ 1. Bundle all React files into one optimized file
+
+React apps contain many `.js` and `.jsx/.tsx` files.
+Webpack combines them into something like:
+
+```
+/dist/main.js
+```
+
+So the browser loads your app faster.
+
+---
+
+### ✅ 2. Support modern JS (Babel)
+
+Browsers don’t understand JSX or advanced ESNext features.
+Webpack works with **Babel** to convert React code into plain JavaScript.
+
+---
+
+### ✅ 3. Hot Reloading (via dev server)
+
+Webpack Dev Server allows instant browser refresh when you save React files.
+
+---
+
+### ✅ 4. Asset handling
+
+You can import images, fonts, CSS directly inside React components:
+
+```js
+import logo from "./logo.png";
+import "./styles.css";
+```
+
+Webpack packs them automatically.
+
+---
+
+### **Simple Example**
+
+### Without Webpack
+
+You must manually include multiple scripts:
+
+```html
+<script src="react.js"></script>
+<script src="component1.js"></script>
+<script src="component2.js"></script>
+<script src="utils.js"></script>
+```
+
+Messy, slow, hard to manage.
+
+---
+
+### With Webpack
+
+All files are bundled into **one** file:
+
+```
+dist/bundle.js
+```
+
+Then your HTML is simple:
+
+```html
+<script src="/dist/bundle.js"></script>
+```
+
+---
+
+# **One-line Summary**
+
+**Webpack bundles and optimizes your React code so it runs fast in the browser and supports modern JavaScript + JSX.**
+
+---
+
+If you want, I can also explain:
+✔ Webpack vs Vite
+✔ Webpack config for React
+✔ How Webpack+Babel convert JSX to JS
+Just tell me!
