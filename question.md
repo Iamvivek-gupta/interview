@@ -418,6 +418,22 @@ function secondMax(arr) {
 // console.log(secondMax(numbers));
 
 
+// Optimised Solution without sorting
+
+function findSecondMax(nums){
+  let firstMax = -Infinity;
+  let secondMax = -Infinity;
+  
+  for(num of nums){
+      if(num > firstMax){
+          secondMax = firstMax;
+          firstMax = num;
+      } else if(num > secondMax && num !== firstMax){
+          secondMax = num;
+      }
+  }
+  return secondMax;
+}
 
 
 
@@ -603,21 +619,19 @@ const subarrays = findAllSubarrays(ar, 3);
 // Q22 longest consecutive sequence problem
 
 
-function longestConsecutiveSequence(arr){
-    let temp = 1;
-    let max = 1;
-    let sorted = arr.sort( (a,b) => a - b);
-    for(let i = 0; i < sorted.length; i++){
-        if ( sorted[i+1] - sorted[i] === 1 ) {
-            // console.log("checking values")
-            temp++;
-            console.log(temp, "temp checking")
-        } else if ( sorted[i+1] - sorted[i] > 1 ){
-            max = Math.max(temp, max);
-            temp = 1;
-        }
-    }
-    return Math.max(temp, max);
+function longestConsecutiveSequence(nums){
+  let temp = 1;
+  let max = 1;
+  nums.sort((a, b) => a-b );
+  for(let i = 0; i < nums.length; i++){
+      if(nums[i+1] - nums[i] === 1){
+          temp++;
+       
+      } else if(nums[i+1] - nums[i] > 1){
+          temp = 1;
+      }
+  }
+  return max = Math.max(temp, max);
 }
 
 
@@ -641,9 +655,198 @@ function maxProfit(Price){
 
 // console.log(maxProfit([7,1,5,3,6,4]));
 
+Here is the **simple and easiest explanation** of the question AND your solution 👇
+
+---
+
+# 🟦 **QUESTION (Explained Simply)**
+
+**“Best Time to Buy and Sell Stock – Multiple Transactions Allowed”**
+
+You are given an array of prices:
+
+```
+[7, 1, 5, 3, 6, 4]
+```
+
+Each number = stock price on that day.
+
+You are allowed to do:
+
+* **Buy → Sell → Buy → Sell → ...** (any number of times)
+* But you **cannot hold more than 1 stock at a time**.
+
+Your goal:
+👉 **Make maximum profit** by buying at low prices and selling at high prices.
+
+This is called the **Valley–Peak** approach.
+
+* **Valley** = low price (buy)
+* **Peak** = high price (sell)
+
+---
+
+# 🟩 **SIMPLE EXPLANATION OF THE STRATEGY**
+
+→ If **tomorrow’s price is higher than today’s**, you can make profit.
+
+So:
+
+📌 **Profit = sum of all positive differences**
+Meaning → **Add every time the price increases from one day to the next**.
+
+Let’s calculate manually:
+
+| Day | Price | Next Day Price | Action                                |
+| --- | ----- | -------------- | ------------------------------------- |
+| 0   | 7     | 1              | No profit (drop)                      |
+| 1   | 1     | 5              | **Buy at 1 → Sell at 5 → Profit = 4** |
+| 2   | 5     | 3              | No profit                             |
+| 3   | 3     | 6              | **Buy at 3 → Sell at 6 → Profit = 3** |
+| 4   | 6     | 4              | No profit                             |
+
+👉 Total profit = **4 + 3 = 7**
+
+---
+
+# 🟦 Now your code:
+
+```js
+function maxProfit(Price){
+    let profit = 0;
+    for(let i = 1; i < Price.length; i++){
+        if(Price[i] > Price[i-1]){
+            profit += Price[i] - Price[i-1];
+        }
+    }
+    return profit;
+}
+
+console.log(maxProfit([7,1,5,3,6,4])); // Output: 7
+```
+
+---
+
+# 🟩 **HOW THE CODE WORKS (Super Easy Explanation)**
+
+The loop checks everyday:
+
+➤ If **today’s price > yesterday’s price**,
+👉 it adds the profit to `profit`.
+
+For example:
+`Price[2] = 5`, `Price[1] = 1` → price increased → `profit += 4`
+
+This is repeated for all days.
+
+This automatically simulates:
+
+* Buy before price goes up
+* Sell after price goes up
+* Repeat again and again, maximizing profit
+
+👉 This is exactly the valley-peak method.
+
+---
+
+# 🟢 **Final Easy Summary**
+
+* Look at prices day by day.
+* Whenever the price **goes up**, you make profit.
+* Add all such increases.
+* That total is the **maximum profit you can make** with unlimited transactions.
+
+Your answer for `[7,1,5,3,6,4]` = **7**
 
 
 
+
+
+Here is the **clean, short, easy explanation** of how the logic changes when **ONLY 1 transaction** is allowed (1 buy + 1 sell).
+
+---
+
+# 🟦 **Original Problem (Multiple Transactions Allowed)**
+
+You can buy/sell as many times as you want ⇒
+We add **every positive price difference**.
+
+Example:
+`[7,1,5,3,6,4]` → Profit = **7**
+
+Because:
+
+* Buy 1 → Sell 5 = +4
+* Buy 3 → Sell 6 = +3
+  Total = 7
+
+---
+
+# 🟥 **But what if ONLY 1 transaction is allowed?**
+
+1 transaction = **Buy once + Sell once**
+No unlimited buy-sell cycles.
+
+Goal:
+👉 **Find the biggest profit between one buy-sell pair**
+Buy BEFORE you sell.
+
+---
+
+# 🟩 **Simple Logic**
+
+Track the **lowest price so far** and compute potential profit at each day.
+
+### Example
+
+```
+[7,1,5,3,6,4]
+```
+
+Step-by-step:
+
+* Lowest so far = 7
+* See 1 → new lowest
+* From 1 → look at future:
+
+  * Sell at 5 → profit = 4
+  * Sell at 6 → profit = 5 (maximum)
+
+👉 Best profit = **5**
+
+Not 7 anymore because you get **only 1 buy + 1 sell**.
+
+---
+
+# 🟩 Code (1 Transaction Allowed)
+
+```js
+function maxProfit(prices) {
+    let minPrice = prices[0];
+    let maxProfit = 0;
+
+    for(let i = 1; i < prices.length; i++){
+        maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+        minPrice = Math.min(minPrice, prices[i]);
+    }
+
+    return maxProfit;
+}
+
+console.log(maxProfit([7,1,5,3,6,4])); // Output: 5
+```
+
+---
+
+# 🧠 **Explanation**
+
+At every step:
+
+* `minPrice` tells you the best day to BUY
+* `prices[i] - minPrice` gives profit if you SELL today
+* Update `maxProfit` whenever you find a bigger profit
+
+---
 
 
 
