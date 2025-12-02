@@ -1721,9 +1721,7 @@ function flattenObject(obj, parentKey = ''){
     let newKey = parentKey ? `${parentKey}.${key}` : key;
 
     if(typeof obj[key] === 'object' && obj[key] != null){
-      let flattened = flattenObject(obj[key], newKey);
-
-      result = {...result, ...flattened};
+      result = {...result,...flattenObject(obj[key], newKey)}
     } else {
       result[newKey] = obj[key]
     }
@@ -2046,7 +2044,7 @@ console.log(counter());
 
 
 
-// moves all zeros to the end of array
+// moves all zeros to the end of array in place
 
 
 function moveZeroEnd(nums){
@@ -2102,6 +2100,19 @@ console.log(moveZeroEnd([0]))
 // This approach ensures that all zeros are moved to the beginning of the array while maintaining the order of non-zero elements. Let me know if you have any questions!
 
 
+```javascript
+console.log(moveZeroEnd([0,1,0,3,12]));
+
+function moveZeroEnd(nums){
+    let nonZeros = [];
+    let zeros = [];
+    
+    for(let num of nums){
+        num === 0 ? zeros.push(num) : nonZeros.push(num);
+    }
+    return [...zeros, ...nonZeros, ]
+}
+```
 
 
 

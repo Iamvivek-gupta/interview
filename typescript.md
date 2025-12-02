@@ -284,6 +284,15 @@ In this example:
 - When calling `logArrayLength`, TypeScript infers the type of `T` based on the type of the array passed as an argument.
 - We can use the same `logArrayLength` function with arrays of different types, such as numbers or strings, without sacrificing type safety.
 
+
+```typescript
+function identity<T>(value: T): T {
+  return value;
+}
+
+console.log(identity('vivek'));
+console.log(identity('123'));
+```
 Generics allow us to write flexible and reusable code that can operate on different data types while still providing compile-time type checking. They are commonly used in TypeScript libraries and frameworks to create generic data structures, functions, and classes.
 
 
