@@ -660,6 +660,7 @@ This setup ensures that MyComponent is only loaded when needed, reducing the ini
 Okay, imagine filling out a form:
 
 **Uncontrolled Component:** Think of a regular HTML `<input>`. When you type something, the input element itself internally keeps track of the value. React doesn't directly control it. To get the value, you usually use a `ref` to access the DOM element.
+- In an uncontrolled component, form  is handled by the DOM itself.
 
 **Example (Uncontrolled):**
 
@@ -686,6 +687,7 @@ function UncontrolledInput() {
 Here, the `<input>` manages its own state. We use `useRef` to get a reference to the DOM node and access its `value` when the form is submitted. React isn't actively involved in every change.
 
 **Controlled Component:** Now, imagine the form where React is the "boss" of the input's value. The input's value is tied to a piece of state in your React component. Every time the input's value changes, React is notified, and it re-renders the component if needed. To change the input's value, you update the React state.
+- In a controlled component, form data is handled by the React component state.
 
 **Example (Controlled):**
 
