@@ -193,3 +193,7 @@ This ensures low operational overhead and smooth growth as traffic increases.
 
 
 In a device warranty platform project, I used AWS Lambda for serverless user authentication, API Gateway to manage endpoints, S3 for storing warranty documents, RDS for user data, and EC2 for heavier batch processing. I also set up CodePipeline for automated CI/CD deployments across dev, test, and prod environments.
+
+
+
+When raising a Pull Request (PR) or Merge Request (MR), it's important to include a clear title, description, relevant documentation,  any necessary screenshots and logs. that explains what the changes are and why they are necessary. A good review should check code quality, verify functionality, review tests and provide constructive feedback. This ensures high code quality and smooth collaboration.
