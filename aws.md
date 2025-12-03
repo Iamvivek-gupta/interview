@@ -186,3 +186,10 @@ To scale a Node.js application on AWS as demand grows:
 - Monitor CloudWatch metrics and adjust scaling rules as usage rises.
 
 This ensures low operational overhead and smooth growth as traffic increases.
+
+
+
+
+
+
+In a device warranty platform project, I used AWS Lambda for serverless user authentication, API Gateway to manage endpoints, S3 for storing warranty documents, RDS for user data, and EC2 for heavier batch processing. I also set up CodePipeline for automated CI/CD deployments across dev, test, and prod environments.

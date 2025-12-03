@@ -63,3 +63,37 @@ function maxSumSubarray(arr, k) {
   const result = maxSumSubarray(array, k);
   console.log(result); // Output: 12 (sum of subarray [4, 1, 2])
   
+
+
+
+
+  // how to fix this code so it should print 22?
+
+
+
+  let obj = {
+    a: 10,
+    fn: function(b){
+      let res = this.a + b
+      console.log(res)
+    }
+  }
+  
+  
+  const fn = obj.fn;
+  fn(12)
+
+
+  // To fix it so it prints 22, bind the function to `obj` so `this` refers to the object:
+
+```js
+const fn = obj.fn.bind(obj);
+fn(12);  // prints 22
+```
+
+Alternatively, call it with `call` or `apply`:
+
+```js
+const fn = obj.fn;
+fn.call(obj, 12);  // prints 22
+```
