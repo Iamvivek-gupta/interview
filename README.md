@@ -1046,3 +1046,50 @@ const result = arr.reduce((acc, current) => {
 }, {});
 
 console.log(result)
+
+
+
+
+
+
+
+# Shadowing
+
+
+In JavaScript, **shadowing** means an inner variable or parameter has the same name as an outer variable, so inside that inner scope the outer one is “hidden” (shadowed).[1][2]
+
+### Basic example
+
+```js
+let name = "Outer";
+
+function greet() {
+  let name = "Inner";   // shadows outer `name`
+  console.log(name);    // "Inner"
+}
+
+greet();
+console.log(name);      // "Outer"
+```
+
+- Inside `greet`, the local `name` is used, so `"Inner"` prints.  
+- Outside the function, the global `name` is still `"Outer"` and unaffected.[3][1]
+
+### Parameter shadowing example
+
+```js
+let count = 0;
+
+function increment(count) { // parameter shadows outer `count`
+  count = count + 1;
+  console.log(count);  // 1
+}
+
+increment(count);
+console.log(count);    // 0 (outer not changed)
+```
+
+The parameter `count` is a new variable that shadows the outer `count`, so changes inside the function don’t affect the outer one.[4][5]
+
+**Key point:** Shadowing is about **same name, different scopes**; the inner variable takes priority only within its own scope.[6][1]
+[1](https://www.linkedin.com/posts/mani-rattan-91695970_javascript-shadowing-conceptsofjavascript-activity-7407058190481227776-xwZz/?utm_medium=ios_app&rcm=ACoAAC0VHicBy4AAYRaquPj8WQx13cPl1_ygz5Q&utm_source=social_share_send&utm_campaign=share_via)

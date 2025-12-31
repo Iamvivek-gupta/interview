@@ -2179,7 +2179,18 @@ function moveZeroEnd(nums){
 
 
 
+const obj = {
 
+	text : "Hi Mr",
+
+	arr: ['1','2','3'],
+
+	log(){
+		this.arr.forEach(function(item){console.log(this.text + item)}.bind(this))
+	}
+}
+
+obj.log();
 
 
 
@@ -2344,7 +2355,23 @@ Timeout callback
 
 
 
+In Node.js, their priority/order is:
 
+1. **`process.nextTick` → microtask (highest)**  
+   - Runs right after current synchronous code, before any other microtasks or macrotasks.[1][2]
+
+2. **`Promise` callbacks (`then/catch/finally`) → microtask**  
+   - Run after `process.nextTick` queue is emptied, before any timers or I/O macrotasks.[3][1]
+
+3. **`setImmediate` → macrotask (check phase)**  
+   - Runs in the check phase, after microtasks are done and after the poll phase of the event loop.[2][1]
+
+4. **`setTimeout` / `setInterval` → macrotask (timers phase)**  
+   - Runs in the timers phase once the delay has elapsed, after microtasks and typically after `setImmediate` scheduled in the same tick.[3][2]
+
+So typical execution order for a single tick is:
+
+**sync code → `process.nextTick` → Promise microtasks → `setImmediate` → `setTimeout`**.
 
 
 

@@ -1720,3 +1720,80 @@ Do you want me to also explain **`DELETE` vs TRUNCATE vs DROP** together (since 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here’s a **short, interview-ready explanation** 👇
+
+---
+
+## 📦 `package.json` vs `package-lock.json` (Node.js)
+
+### **package.json**
+
+* Defines **what your project needs**
+* Contains:
+
+  * Project metadata (name, version, scripts)
+  * **Dependency ranges** (e.g. `"express": "^4.18.2"`)
+* Used by developers to **declare dependencies**
+
+👉 Think of it as **“what I want”**
+
+---
+
+### **package-lock.json**
+
+* Records **exact versions** of installed dependencies
+* Includes:
+
+  * Exact versions
+  * Dependency tree
+  * Integrity hashes
+* Ensures **same install across all machines**
+
+👉 Think of it as **“what I actually got”**
+
+---
+
+## 🔑 Key Differences (Quick Table)
+
+| Aspect              | package.json          | package-lock.json    |
+| ------------------- | --------------------- | -------------------- |
+| Purpose             | Declares dependencies | Locks exact versions |
+| Version control     | Version ranges        | Exact versions       |
+| Edited by           | Developer             | npm (auto-generated) |
+| Ensures consistency | ❌ No                  | ✅ Yes                |
+| Required in prod    | Optional              | **Recommended**      |
+
+---
+
+## 💡 Interview One-liner
+
+> **`package.json` defines dependencies, while `package-lock.json` locks them to ensure consistent installs across environments.**
+
+If you want, I can also give:
+
+* Common **interview follow-up questions**
+* **Real-world scenarios**
+* Difference vs **yarn.lock**
+
+Just tell me 👍

@@ -97,7 +97,190 @@
 
 
 
+// second and third highest salary using mongodb, aggregation pipeline, how to design schema for reference and join two collenction.
 
+
+An aggregation pipeline in MongoDB is a way to process documents step‑by‑step. Each step (called a *stage*) transforms the data, and the output of one stage becomes the input of the next. It’s used for things like filtering, grouping, counting, averaging, and joining data—similar to doing multiple SQL operations in one query.[1][2][3][4]
+
+### Simple example: total likes per category
+
+Collection `posts`:
+
+```json
+[
+  { "title": "A", "category": "tech",  "likes": 3 },
+  { "title": "B", "category": "tech",  "likes": 1 },
+  { "title": "C", "category": "music", "likes": 5 }
+]
+```
+
+Aggregation:
+
+```js
+db.posts.aggregate([
+  { $match: { likes: { $gt: 1 } } },          // keep docs with likes > 1
+  { $group: { _id: "$category",              // group by category
+              totalLikes: { $sum: "$likes" } } } // sum likes per group
+]);
+```
+
+Result:
+
+```json
+[
+  { "_id": "tech",  "totalLikes": 3 },
+  { "_id": "music", "totalLikes": 5 }
+]
+```
+
+Here:
+- `$match` filters documents (like WHERE).[2][4]
+- `$group` groups them and calculates totals.[4][2]
+
+### Another quick example: average age by city
+
+```js
+db.users.aggregate([
+  { $match: { active: true } },
+  { $group: { _id: "$city", avgAge: { $avg: "$age" } } },
+  { $sort: { avgAge: -1 } }
+]);
+```
+
+This:
+- Filters active users,
+- Groups by `city`,
+- Computes `avgAge`,
+- Sorts cities by average age.[3][5]
+
+So, **aggregation pipeline = array of stages like `$match`, `$group`, `$sort`, `$project` that you chain to get powerful analytics in MongoDB**.
 
 
         
+
+
+
+
+Assume a collection `employees` with a `salary` field.
+
+### Using `find` (simple)
+
+```js
+// second highest salary
+db.employees.find({})
+  .sort({ salary: -1 })
+  .skip(1)
+  .limit(1);
+
+// third highest salary
+db.employees.find({})
+  .sort({ salary: -1 })
+  .skip(2)
+  .limit(1);
+```
+
+`sort({ salary: -1 })` orders salaries descending, `skip(n)` skips the top `n` docs, and `limit(1)` returns just that one.[1][2]
+
+### Using aggregation
+
+```js
+// second highest
+db.employees.aggregate([
+  { $sort: { salary: -1 } },
+  { $skip: 1 },
+  { $limit: 1 }
+]);
+
+// third highest
+db.employees.aggregate([
+  { $sort: { salary: -1 } },
+  { $skip: 2 },
+  { $limit: 1 }
+]);
+```
+
+
+
+
+
+
+
+In MongoDB there are **two main ways** to model relations and “join” data:
+
+1. **Embedding** (store related data inside one document)  
+2. **Referencing + `$lookup`** (store only IDs and join via aggregation)
+
+### 1) Embedding (no separate collection)
+
+Example: `users` with embedded `addresses`.
+
+```js
+// users document
+{
+  _id: ObjectId("u1"),
+  name: "Vivek",
+  addresses: [
+    { type: "home", city: "Delhi" },
+    { type: "office", city: "Gurgaon" }
+  ]
+}
+```
+
+- All data in one document; no join needed.  
+- Good when:
+  - One‑to‑few, data is small and usually read together.[1][2]
+  - Fewer collections, faster reads.
+
+### 2) Referencing + `$lookup` (two collections)
+
+Example: `users` and `orders` collections.
+
+```js
+// users
+{ _id: ObjectId("u1"), name: "Vivek" }
+
+// orders
+{ _id: ObjectId("o1"), userId: ObjectId("u1"), amount: 1000 }
+```
+
+**Schema idea**
+
+- `orders.userId` stores a reference to `users._id` (ObjectId).[3][4]
+
+**Join using aggregation**
+
+```js
+db.users.aggregate([
+  {
+    $lookup: {
+      from: "orders",          // collection to join
+      localField: "_id",       // users._id
+      foreignField: "userId",  // orders.userId
+      as: "orders"             // joined array field
+    }
+  }
+]);
+```
+
+Result:
+
+```js
+[
+  {
+    _id: ObjectId("u1"),
+    name: "Vivek",
+    orders: [
+      { _id: ObjectId("o1"), userId: ObjectId("u1"), amount: 1000 }
+    ]
+  }
+]
+```
+
+- This is similar to SQL JOIN using `$lookup`.[5][6]
+- Good when:
+  - Many orders per user (one‑to‑many, large data).
+  - Different lifecycles or access patterns.
+
+### Short interview line
+
+“In MongoDB you either **embed** related documents in the same collection or **reference** them using IDs and join with `$lookup` in an aggregation pipeline. Embedding is best for small, read‑heavy one‑to‑few data; referencing is better for large, frequently changing or many‑to‑many relations.”
