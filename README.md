@@ -1093,3 +1093,38 @@ The parameter `count` is a new variable that shadows the outer `count`, so chang
 
 **Key point:** Shadowing is about **same name, different scopes**; the inner variable takes priority only within its own scope.[6][1]
 [1](https://www.linkedin.com/posts/mani-rattan-91695970_javascript-shadowing-conceptsofjavascript-activity-7407058190481227776-xwZz/?utm_medium=ios_app&rcm=ACoAAC0VHicBy4AAYRaquPj8WQx13cPl1_ygz5Q&utm_source=social_share_send&utm_campaign=share_via)
+
+
+
+**Prototype = Shared blueprint for objects.** Every object/function has a `prototype` object containing methods/properties that **all instances inherit**.
+
+## Easy Examples
+
+**1. Basic Inheritance:**
+```js
+function Person() {}
+Person.prototype.greet = function() { console.log("Hi!") }
+
+const p1 = new Person();
+const p2 = new Person();
+p1.greet(); // Hi!
+p2.greet(); // Hi! (same function, memory efficient)
+```
+
+**2. Classic Loop Trap:**
+```js
+function F() {
+  for(var i=0; i<3; i++) arr[i] = () => console.log(i);
+}
+// F()[1]() → 3 (all share same i from prototype scope)
+```
+
+**3. Adding to Built-ins:**
+```js
+Array.prototype.first = function() { return this[0] };
+[1,2,3].first(); // 1 (works on ALL arrays)
+```
+
+**Chain:** `obj → obj.__proto__ → Object.prototype → null`
+
+**Key:** `p1.greet === p2.greet` (true - same ref), `delete p1.greet` still works (inherits). **Memory + inheritance hack!** 🎯

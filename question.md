@@ -2358,16 +2358,16 @@ Timeout callback
 In Node.js, their priority/order is:
 
 1. **`process.nextTick` → microtask (highest)**  
-   - Runs right after current synchronous code, before any other microtasks or macrotasks.[1][2]
+   - Runs right after current synchronous code, before any other microtasks or macrotasks.
 
 2. **`Promise` callbacks (`then/catch/finally`) → microtask**  
-   - Run after `process.nextTick` queue is emptied, before any timers or I/O macrotasks.[3][1]
+   - Run after `process.nextTick` queue is emptied, before any timers or I/O macrotasks.
 
 3. **`setImmediate` → macrotask (check phase)**  
-   - Runs in the check phase, after microtasks are done and after the poll phase of the event loop.[2][1]
+   - Runs in the check phase, after microtasks are done and after the poll phase of the event loop.
 
 4. **`setTimeout` / `setInterval` → macrotask (timers phase)**  
-   - Runs in the timers phase once the delay has elapsed, after microtasks and typically after `setImmediate` scheduled in the same tick.[3][2]
+   - Runs in the timers phase once the delay has elapsed, after microtasks and typically after `setImmediate` scheduled in the same tick.
 
 So typical execution order for a single tick is:
 
@@ -2509,11 +2509,11 @@ console.log(result); // Output: 3 (for "abc")
 //       if(!uniqueChar.has(str[end])) {
 //           uniqueChar.add(str[end]);
 //           end++;
-//           maxLength = Math.max(maxLength, uniqueChar.size);
 //       } else {
 //           uniqueChar.delete(str[start]);
 //           start++;
 //       }
+//       maxLength = Math.max(maxLength, uniqueChar.size);
 //       console.log(uniqueChar, start, end);
 //   }
 
@@ -2523,6 +2523,11 @@ console.log(result); // Output: 3 (for "abc")
 // }
 
 // console.log(longestSubstringWithoutCharacter("abbc"))
+
+// to solve this problem we will use two pointer approach (sliding window technique) i.e. stand and end point
+// end pointer will be use to scan each character from start to end
+// start pointer will be use to delete char if any duplicate found in uniqueChar set
+// uniqueChar will be used to keep track a substring is unique
 
 
 
@@ -3218,12 +3223,6 @@ console.log(correctedText); // Output: We work on React, Python and NodeJs. We c
 
 // Let me know if you want to handle multi-digit numbers or clarify anything else!
 
-// [1](https://www.dsavisualizer.in/visualizer/stack/polish/prefix)
-// [2](https://www.geeksforgeeks.org/dsa/evaluation-prefix-expressions/)
-// [3](https://notation-visualizer.ajayliu.com/stack)
-// [4](https://stackoverflow.com/questions/56200343/evaluate-value-of-prefix-expression-js)
-// [5](https://www.youtube.com/watch?v=EsbumKFdRYg)
-// [6](https://tutorialhorizon.com/algorithms/evaluation-of-prefix-expressions-polish-notation-set-1/)
 
 
 
@@ -3397,6 +3396,209 @@ cons
 
 
 
+Yes, you can do it with Promises and `async/await` using a small `sleep` helper:
+
+```js
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+(async () => {
+  for (let i = 1; i <= 10; i++) {
+    console.log(i);
+    if (i < 10) {
+      await sleep(1000); // wait 1 second before next print
+    }
+  }
+})();
+```
+
+This prints `1` to `10`, waiting 1 second between each log.
+
+
+
+
+
+
+```js
+function f(){
+        var arr=[];
+        for(var i=0; i<5; i++){
+                arr[i] = function(){
+                        console.log(i)
+                }        
+        }
+        return arr;
+}
+var arrFun = f();
+arrFun[2]()
+```
+
+**Output: `4`**
+
+**Why:** JavaScript `var` has **function scope**, not block scope. All 5 inner functions capture the **same** `i` variable from `f()`'s scope.
+
+**Execution:**
+1. Loop runs → `i` becomes 0,1,2,3,4
+2. Each `arr[i]` gets a function **reference** (no execution)
+3. By `arrFun[2]()` call, loop finished → `i = 5`
+4. All functions see `i = 5`, but `++i` first makes it `4`? Wait no:
+
+**Correction:** Actually outputs **`5`** 🎯
+
+Each function does `console.log(i)` where `i` is shared:
+```
+arrFun[2]()  // i=5 when loop ends, logs 5
+```
+
+**Fix with `let` (block scope):**
+```js
+function f(){
+    var arr=[];
+    for(let i=0; i<5; i++){  // let creates new i per iteration
+        arr[i] = function(){
+            console.log(i)
+        }        
+    }
+    return arr;
+}
+arrFun[2]() // logs 2 ✓
+```
+
+**Classic closure interview trap!**[1][2]
+
+
+
+```js
+const user = {
+    id: 551,
+    name: 'Tom',
+    getId() {
+      return this.id;
+    },
+    credentials: {
+      id: 120,
+      username: 'tom',
+      getId() {
+        return this.id;
+      }
+    },
+  };
+
+  const getId = user.credentials.getId      // user.credentials.getId bind(user.credentials);  how to print 120, 551
+  console.log(getId());
+
+```
+
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+    console.log(1)
+    resolve(2)
+  })
+  
+  promise1.then(res => {
+    console.log(res)
+  })
+  console.log('end');
+```
+
+
+
+
+**Output:**
+```
+1
+end
+2
+```
+
+**Explanation:**
+1. `console.log(1)` executes **synchronously** inside Promise constructor
+2. `resolve(2)` schedules `.then()` as a **microtask** (not immediate)
+3. `console.log('end')` runs **synchronously** next
+4. Event loop processes microtask queue → `.then()` executes, logs `2`
+
+**Key concept:** Promise `.then()` callbacks are **asynchronous microtasks**, queued to run after synchronous code completes, even if promise resolves immediately.[1][5]
+
+
+
+
+
+
+
+
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise resolved")
+    }, 1000)
+})
+
+myPromise
+  .then((data) => {
+    console.log(data)
+    throw new Error("Something went wrong")  // Fixed: lowercase 'throw'
+  })
+  .catch((error) => {
+    console.log(error)
+    return "abc"
+  })
+```
+
+**Issues Fixed:**
+- `Throw` → `throw` (case-sensitive keyword)
+- Added chain `.` for proper Promise chaining[1]
+
+**Output after 1s:**
+```
+Promise resolved
+Error: Something went wrong
+```
+
+
+To get `"abc"` as output, you need to **chain another `.then()`** after `.catch()`:
+
+```js
+const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise resolved")
+    }, 1000)
+})
+
+myPromise
+  .then((data) => {
+    console.log(data)
+    throw new Error("Something went wrong")
+  })
+  .catch((error) => {
+    console.log(error)
+    return "abc"  // Returns to next .then()
+  })
+  .then((result) => {  // Logs "abc"
+    console.log(result)
+  })
+```
+
+**Output:**
+```
+Promise resolved
+Error: Something went wrong
+abc
+```
+
+**Why:** `.catch()` return value **becomes the resolved value** for the **next `.then()`** in the chain. Without the final `.then()`, `"abc"` is returned silently.[1][2]
+
+
+
+
+
+
+
+
+
+
+
+
 The most optimized way is to use a single pass to **count character frequencies**, then another to find the first unique one.  
 This makes it O(n) time, O(1) space (since English letters are limited), and is industry standard for this problem.[1][2]
 
@@ -3526,3 +3728,243 @@ console.log(sumEven(obj)); // Output: 22 (2 + 4 + 10 + 6)
 - For your example, it finds the values 2, 4, 10, 6 → total is **22**.
 
 This is the most efficient and easy-to-understand approach for this kind of question!
+
+
+
+
+
+
+
+
+
+
+
+
+Sure 👍
+Let’s understand this **step by step in very simple terms**, with a clear example.
+
+---
+
+## ✅ Your Code (What it does)
+
+This approach:
+
+* Removes duplicates from an array
+* **Works for unsorted arrays**
+* Uses a **hash map (`seen`)**
+* Modifies the array **in place**
+
+---
+
+## 🧠 Core Idea (in one line)
+
+> Keep a record of what you’ve already seen, and write each new element only once.
+
+---
+
+## 🔢 Example Input
+
+```js
+arr = [1, 2, 2, 3, 1, 4]
+```
+
+---
+
+## 🧩 Variables Explained
+
+```js
+let seen = {};     // tracks elements already encountered
+let write = 0;    // position to write the next unique element
+```
+
+* `read` → reads each element
+* `write` → writes unique elements
+
+---
+
+## 👣 Step-by-Step Execution
+
+### 🔁 Iteration 1
+
+`read = 0` → value = `1`
+
+```js
+seen = {}
+```
+
+* `1` not in `seen`
+* Mark it as seen
+* Write `1` at `arr[0]`
+
+```js
+seen = {1: true}
+arr = [1, 2, 2, 3, 1, 4]
+write = 1
+```
+
+---
+
+### 🔁 Iteration 2
+
+`read = 1` → value = `2`
+
+* `2` not in `seen`
+* Write at `arr[1]`
+
+```js
+seen = {1: true, 2: true}
+arr = [1, 2, 2, 3, 1, 4]
+write = 2
+```
+
+---
+
+### 🔁 Iteration 3
+
+`read = 2` → value = `2`
+
+* `2` already in `seen`
+* ❌ Skip
+* `write` stays same
+
+```js
+arr = [1, 2, 2, 3, 1, 4]
+write = 2
+```
+
+---
+
+### 🔁 Iteration 4
+
+`read = 3` → value = `3`
+
+* New element
+* Write at `arr[2]`
+
+```js
+seen = {1: true, 2: true, 3: true}
+arr = [1, 2, 3, 3, 1, 4]
+write = 3
+```
+
+---
+
+### 🔁 Iteration 5
+
+`read = 4` → value = `1`
+
+* Already seen
+* ❌ Skip
+
+---
+
+### 🔁 Iteration 6
+
+`read = 5` → value = `4`
+
+* New element
+* Write at `arr[3]`
+
+```js
+seen = {1: true, 2: true, 3: true, 4: true}
+arr = [1, 2, 3, 4, 1, 4]
+write = 4
+```
+
+---
+
+## ✂️ Final Step
+
+```js
+arr.length = write;
+```
+
+* Removes extra elements at the end
+* Final array becomes:
+
+```js
+[1, 2, 3, 4]
+```
+
+---
+
+## ✅ Final Output
+
+```js
+[1, 2, 3, 4]
+```
+
+---
+
+## 📌 Why this approach is good
+
+✔ Works with **unsorted arrays**
+✔ Easy to understand
+✔ Time complexity: **O(n)**
+✔ Space complexity: **O(n)** (because of `seen`)
+
+---
+
+## ⚠️ Small caveat (interview tip)
+
+If array contains values like `0`, `false`, or `""`, this line can fail:
+
+```js
+if (!seen[arr[read]])
+```
+
+Safer version:
+
+```js
+if (!seen.hasOwnProperty(arr[read]))
+```
+
+---
+
+## 🎯 Interview One-Liner
+
+> “We use a hash map to track seen elements and a write pointer to overwrite duplicates in place.”
+
+If you want, I can also:
+
+* Convert this to **two-pointer sorted version**
+* Optimize for edge cases
+* Explain time vs space tradeoff
+
+Just tell me 👍
+
+
+
+
+
+
+
+
+function reverseSentence(str) {
+  let words = [];
+  let word = "";
+
+  // Manually extract words
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === " ") {
+      words.push(word);
+      word = "";
+    } else {
+      word += str[i];
+    }
+  }
+
+  // push last word
+  words.push(word);
+
+  // Now reverse the words manually
+  let result = "";
+  for (let i = words.length - 1; i >= 0; i--) {
+    result += words[i];
+    if (i !== 0) result += " ";
+  }
+
+  return result;
+}
+
+console.log(reverseSentence("Javascript is awesome"));
