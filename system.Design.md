@@ -1934,3 +1934,358 @@ app.use((req, res, next) => {
 ```
 
 **Bonus:** Deploy behind **Cloudflare Free** → **99% attacks auto-blocked** 🚀
+
+
+
+
+
+### DDos Attack in Node.js – Very Simple Explanation
+
+**Full form:**  
+**DDoS = Distributed Denial of Service** [csrc.nist](https://csrc.nist.gov/glossary/term/distributed_denial_of_service)
+
+**What it is (simple):**  
+- A DDoS attack happens when thousands of compromised devices (a "botnet" or "zombie computers") send huge amounts of fake traffic to your server at the same time. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+- Goal: Overload your app so it becomes very slow or completely unavailable for real users. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+- Imagine thousands of people trying to enter through a single small door at the same time — the door gets blocked. That’s how your Node.js app feels during a DDoS attack. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+**How it works:**  
+- Attacker uses a single controlling system to command thousands of zombie devices.  
+- Each device sends requests to your website, and since each device has a different IP address, it looks like many different users.  
+- Your server gets overwhelmed and can't handle real users' requests. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+***
+
+### Will `express-rate-limiter` Work?
+
+You're partially right:  
+- If each zombie device has a **unique IP address**, then per-IP rate limiting (like `express-rate-limiter`) may **not stop the attack completely**, because each IP is still allowed some requests. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+- However, rate limiting still helps reduce the impact by limiting how many requests **any single IP** can make, which can slow down the attack. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+But for large DDoS attacks with thousands of IPs, **rate limiting alone is not enough**.
+
+***
+
+### How to Prevent DDoS Attacks on Your Node.js App (Short Bullet Points)
+
+**1. Use a DDoS Protection Service (Most Important)**  
+- Put **Cloudflare**, **AWS Shield**, or a similar service in front of your Node.js server.  
+- They filter out malicious traffic, block botnets, and absorb huge traffic spikes before it reaches your server. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+**2. Use a Reverse Proxy / Load Balancer**  
+- Place **Nginx**, **Apache**, or **Cloudflare** in front of your Node.js app.  
+- They can:  
+  - Filter suspicious traffic  
+  - Block bad IPs  
+  - Distribute traffic to multiple servers. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+**3. Rate Limiting (Still Useful)**  
+- Use `express-rate-limit` to limit requests per IP.  
+- Even with many IPs, this reduces total traffic per IP and helps your server stay responsive. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+```js
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100,                // limit each IP to 100 requests
+  message: "Too many requests, please try again later."
+});
+app.use(limiter);
+```
+
+**4. Firewall Rules & IP Blocking**  
+- Block malicious IPs at the firewall level using:  
+  - `iptables`, `ufw` (Ubuntu firewall)  
+  - **AWS Security Groups**  
+- Block IPs that show repeated suspicious patterns. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+**5. Set Timeouts & Protect Against Slowloris/ZoloRIS**  
+- Configure HTTP server timeouts to close slow or hanging connections.  
+- In Node.js 18+, built-in socket checks help; for older versions, set:  
+  - `HTTP.server.timeout`  
+  - `HTTP.server.requestTimeout`. [gitnation](https://gitnation.com/contents/the-tale-of-avoiding-a-time-based-ddos-attack-in-nodejs)
+
+**6. Monitoring & Alerts**  
+- Use tools like **Datadog**, **New Relic**, **Prometheus + Grafana**, or **CloudWatch**.  
+- Set alerts for:  
+  - Sudden spike in requests  
+  - Abnormal CPU/memory usage  
+  - Requests from same IP ranges or without valid headers. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+**7. Basic Security Headers (Helmet)**  
+- Use `helmet` to set secure HTTP headers:
+```js
+const helmet = require("helmet");
+app.use(helmet());
+```
+
+**8. Keep Everything Updated**  
+- Regularly update Node.js and all dependencies.  
+- Use security scanning tools to find vulnerabilities. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+***
+
+### Summary
+
+- **DDoS = Distributed Denial of Service**. [csrc.nist](https://csrc.nist.gov/glossary/term/distributed_denial_of_service)
+- Attacker uses thousands of zombie devices to flood fake traffic, each with a unique IP. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+- `express-rate-limiter` alone won't stop large DDoS, but it still helps reduce impact.  
+- **Best protection:** Use **Cloudflare / AWS Shield** + reverse proxy + rate limiting + firewall + monitoring. [medium](https://medium.com/@dishachauhan.mscit22/detecting-and-preventing-ddos-attacks-on-node-js-apps-e7d331538dc5)
+
+If you tell me your hosting (AWS, Vercel, plain server, etc.), I can suggest a minimal setup tailored to it.
+
+
+
+
+
+
+
+Absolutely 👍 Let's use a **banking example** and keep it very simple.
+
+---
+
+# 🏦 What is Event-Driven Architecture (EDA)?
+
+Instead of one service calling another directly,
+
+👉 A service **publishes an event** and other services **listen to it**.
+
+### Example: Money Transfer
+
+Customer sends ₹10,000
+
+```text
+Payment Service
+       |
+       |  "Payment Success"
+       v
+    Event Bus
+     /   |   \
+    /    |    \
+ SMS   Email  Fraud
+```
+
+Payment Service doesn't know who will use the event.
+
+---
+
+# ✅ Advantages
+
+## 1. Loose Coupling
+
+### Without EDA
+
+```text
+Payment Service
+   |
+   +--> SMS Service
+   +--> Email Service
+   +--> Fraud Service
+```
+
+If Email Service changes → Payment Service changes.
+
+### With EDA
+
+```text
+Payment Service
+      |
+      v
+ PaymentSuccess Event
+```
+
+Everyone listens independently.
+
+✔ Easier maintenance
+
+---
+
+## 2. Easy to Add New Features
+
+Tomorrow business says:
+
+> Send WhatsApp notification after payment.
+
+No change in Payment Service.
+
+Just add:
+
+```text
+PaymentSuccess Event
+        |
+    WhatsApp Service
+```
+
+✔ Easy scaling
+
+---
+
+## 3. Better Performance
+
+Payment doesn't wait for:
+
+* SMS
+* Email
+* Analytics
+
+Customer gets response quickly.
+
+✔ Faster APIs
+
+---
+
+## 4. Independent Scaling
+
+During Diwali:
+
+```text
+1 Million Payments
+```
+
+Need more SMS servers?
+
+Scale only SMS service.
+
+✔ Cost efficient
+
+---
+
+# ❌ Disadvantages
+
+## 1. Difficult Debugging
+
+Normal flow:
+
+```text
+API -> Service -> DB
+```
+
+Easy.
+
+EDA flow:
+
+```text
+Payment
+   |
+ Event
+   |
+ Fraud
+   |
+ Analytics
+   |
+ Notification
+```
+
+If something fails:
+
+😵 Hard to find where.
+
+---
+
+## 2. Event May Be Processed Twice
+
+Example:
+
+```text
+PaymentSuccess Event
+```
+
+Consumer receives it twice.
+
+Result:
+
+```text
+SMS Sent Twice
+```
+
+Customer receives:
+
+```text
+₹10,000 debited
+₹10,000 debited
+```
+
+✔ Need Idempotency
+
+---
+
+## 3. Eventual Consistency
+
+Customer pays.
+
+Payment Service updates immediately.
+
+But Analytics updates 5 seconds later.
+
+For a few seconds:
+
+```text
+Payment = Success
+Analytics = Not Updated
+```
+
+Data is temporarily inconsistent.
+
+---
+
+## 4. More Infrastructure
+
+Need:
+
+* Kafka
+* SNS
+* SQS
+* EventBridge
+
+More complexity than simple REST APIs.
+
+---
+
+# 🏦 Banking Example
+
+### Payment Success Event
+
+```text
+Customer Pays ₹5000
+        |
+        v
+ Payment Service
+        |
+        v
+ PaymentSuccess Event
+```
+
+Consumers:
+
+```text
+SMS Service
+Email Service
+Fraud Service
+Ledger Service
+Analytics Service
+```
+
+Everyone works independently.
+
+---
+
+# 🎯 Interview Answer
+
+> Event Driven Architecture is a design pattern where services communicate through events instead of direct API calls. In banking systems, when a payment is successful, a PaymentSuccess event can trigger SMS, email, fraud detection, and analytics services independently. The advantages are loose coupling, scalability, and faster processing. The disadvantages are increased complexity, debugging challenges, duplicate event handling, and eventual consistency.
+
+---
+
+# 🧠 One-Line Memory Trick
+
+### REST
+
+```text
+Call me directly
+```
+
+### Event Driven
+
+```text
+I'll announce what happened,
+whoever cares can listen
+```
+
+That's the easiest way to remember Event-Driven Architecture. 🚀
