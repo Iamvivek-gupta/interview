@@ -727,3 +727,100 @@ Tasks:
 ***
 
 If you want, I can condense this further into a “top 5 daily prompts” version you can paste into your AI chat sidebar.
+
+
+
+
+
+
+Below are short daily prompts tailored to your **Node.js + TypeScript + AWS** work. For better Copilot results, attach the relevant files, state the goal and constraints, and ask for a specific output such as a patch or test plan. [github](https://github.blog/ai-and-ml/github-copilot/a-developers-guide-to-writing-debugging-reviewing-and-shipping-code-faster-with-github-copilot/)
+
+## Debugging
+
+```text
+Debug this issue. Identify the root cause, explain it simply, propose the smallest safe fix, and add a regression test. Do not change public API behavior.
+```
+
+```text
+Analyze this error and stack trace: [paste]. Check async flow, null values, types, retries, and external dependencies. List likely causes in priority order and show the fix.
+```
+
+```text
+Review the selected code for bugs, race conditions, memory leaks, unhandled promises, and incorrect error handling. Show only actionable findings with fixes.
+```
+
+## Production issues
+
+```text
+Act as a senior Node.js/AWS engineer. Investigate this production issue using the logs and metrics below: [paste]. Give probable root causes, immediate mitigation, safe code fix, and CloudWatch metrics to monitor.
+```
+
+```text
+This Lambda/ECS API is timing out: [details]. Check timeout, memory, concurrency, database calls, connection reuse, retries, and AWS permissions. Recommend the smallest safe change first.
+```
+
+```text
+Create a production-safe patch for this issue: [issue]. Keep backward compatibility, avoid schema changes, add a regression test, and provide rollout and rollback steps.
+```
+
+## Refactoring
+
+```text
+Refactor the selected TypeScript code for readability, maintainability, and strict type safety. Keep the same behavior and public API. Avoid any and unnecessary dependencies.
+```
+
+```text
+Review this module for duplication, deep nesting, poor naming, tight coupling, and performance issues. Propose a small refactor plan first; then implement only the approved changes.
+```
+
+```text
+Convert this code into clean layers: controller/handler, service, repository, and types. Preserve current behavior and add tests for the extracted business logic.
+```
+
+## Tests
+
+```text
+Write Jest/Vitest unit tests for the selected TypeScript function. Cover happy path, validation failures, exceptions, boundary cases, and mocked AWS/HTTP dependencies. Keep tests deterministic.
+```
+
+```text
+Write an integration test for this API endpoint: [METHOD + PATH]. Cover success, invalid input, authentication/authorization, not found, and dependency failure cases.
+```
+
+```text
+Create a regression test for this bug: [describe bug]. The test must fail with the old behavior and pass after the fix.
+```
+
+## Documentation and AWS diagrams
+
+```text
+Document this module for another developer: purpose, request flow, inputs, outputs, errors, dependencies, environment variables, and one usage example.
+```
+
+```text
+Create concise README documentation for this feature: setup, API contract, configuration, local run steps, tests, and deployment notes.
+```
+
+```text
+Create a Mermaid AWS architecture diagram for this system: [describe system]. Include users, API Gateway/ALB, Lambda or ECS, SQS/SNS/EventBridge, database, S3, Secrets Manager, IAM, CloudWatch, and data flow. Return only valid Mermaid code.
+```
+
+## Best daily format
+
+Use this structure with any prompt:
+
+```text
+Context: [service/file/feature]
+Problem: [error or required behavior]
+Constraints: [no breaking change, Node version, AWS service, deadline]
+Output: [code patch / root cause / tests / Mermaid diagram]
+```
+
+For example:
+
+```text
+Context: NestJS Lambda using DynamoDB.
+Problem: Duplicate orders are created when SQS retries a message.
+Constraints: No schema change; preserve existing API.
+Output: Root cause, minimal idempotency fix, Jest tests, and CloudWatch metrics to alert on.
+```
