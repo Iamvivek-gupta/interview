@@ -2289,3 +2289,112 @@ whoever cares can listen
 ```
 
 That's the easiest way to remember Event-Driven Architecture. 🚀
+
+
+
+
+
+
+
+
+# Difference between ^ and ~ ?
+
+
+In Node.js projects, `~` and `^` are usually used in `package.json` to control which dependency versions npm is allowed to install.
+
+- `~` allows **patch updates only**.
+- `^` allows **minor and patch updates**, but not a major-version update. [docs.npmjs](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/)
+
+## Simple example
+
+```json
+{
+  "dependencies": {
+    "express": "~4.18.2",
+    "lodash": "^4.17.21"
+  }
+}
+```
+
+### Tilde: `~`
+
+```json
+"express": "~4.18.2"
+```
+
+npm can install:
+
+```text
+4.18.2 ✅
+4.18.3 ✅
+4.18.10 ✅
+4.19.0 ❌
+5.0.0 ❌
+```
+
+Meaning:
+
+\[
+\texttt{\textasciitilde4.18.2} = \texttt{>=4.18.2 <4.19.0}
+\]
+
+It keeps the same **major and minor** version and permits only bug-fix/patch releases. [nodesource](https://nodesource.com/blog/semver-tilde-and-caret)
+
+## Caret: `^`
+
+```json
+"lodash": "^4.17.21"
+```
+
+npm can install:
+
+```text
+4.17.21 ✅
+4.18.0 ✅
+4.19.5 ✅
+5.0.0 ❌
+```
+
+Meaning:
+
+\[
+\texttt{\textasciicircum4.17.21} = \texttt{>=4.17.21 <5.0.0}
+\]
+
+It keeps the same **major** version but permits new minor features and patch fixes. [blog.npmjs](https://blog.npmjs.org/post/115305091285/introducing-the-npm-semantic-version-calculator.html)
+
+## Quick table
+
+| Symbol | Example | Allows | Does not allow |
+|---|---|---|---|
+| `~` | `~4.18.2` | `4.18.x` patch updates | `4.19.0`, `5.0.0` |
+| `^` | `^4.18.2` | `4.x.x` minor + patch updates | `5.0.0` |
+| No symbol | `4.18.2` | Only exactly `4.18.2` | Any other version |
+
+## Interview answer
+
+> In `package.json`, tilde `~` allows patch-level updates only, while caret `^` allows both minor and patch-level updates but prevents a major-version update. For example, `~1.2.3` accepts up to `1.2.x`, while `^1.2.3` accepts up to, but not including, `2.0.0`.
+
+## Important exception: version `0.x`
+
+For packages below version `1.0.0`, npm treats `^` more carefully because breaking changes may happen in minor releases:
+
+```json
+"some-package": "^0.2.3"
+```
+
+This allows:
+
+```text
+0.2.3 ✅
+0.2.8 ✅
+0.3.0 ❌
+```
+
+So:
+
+\[
+\texttt{\textasciicircum0.2.3} = \texttt{>=0.2.3 <0.3.0}
+\]
+
+For `^0.0.3`, only patch-level updates are allowed. [npmjs](https://www.npmjs.com/package/semver)

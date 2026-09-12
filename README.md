@@ -61,6 +61,191 @@ console.log(multiply(1)(2)(3)(4)());
 
 
 
+# Difference between Nullish Coalishing and OR Operator
+
+
+The main difference is:
+
+- `||` uses the default value when the left value is **falsy**.
+- `??` uses the default value only when the left value is `null` or `undefined`. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+
+## Simple example
+
+```ts
+const value = 0;
+
+console.log(value || 10); // 10
+console.log(value ?? 10); // 0
+```
+
+Why?
+
+- `0` is a valid value, but it is **falsy** in JavaScript.
+- Therefore, `||` treats `0` as missing and returns `10`.
+- `??` preserves `0` because it is not `null` or `undefined`. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+
+## More examples
+
+| Value | `value \|\| "Default"` | `value ?? "Default"` |
+|---|---|---|
+| `null` | `"Default"` | `"Default"` |
+| `undefined` | `"Default"` | `"Default"` |
+| `0` | `"Default"` | `0` |
+| `""` | `"Default"` | `""` |
+| `false` | `"Default"` | `false` |
+| `"Hello"` | `"Hello"` | `"Hello"` |
+
+## When to use which
+
+Use `??` when `0`, `false`, or an empty string are valid values and should not be replaced.
+
+```ts
+const retryCount = config.retryCount ?? 3;
+```
+
+If `retryCount` is `0`, it remains `0`.
+
+Use `||` when every falsy value should use the fallback.
+
+```ts
+const displayName = userInput || "Guest";
+```
+
+If the input is `""`, it shows `"Guest"`.
+
+For API and backend work, `??` is generally safer for default values because fields such as `0`, `false`, and `""` can be valid values. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing)
+
+
+
+# Difference between spread operator and rest parameter 
+
+
+Both use the same `...` syntax, but they do opposite things:
+
+- **Rest parameter** collects multiple values into one array.
+- **Spread operator** expands an array or object into separate values. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax.)
+
+## Easy interview answer
+
+> Rest parameter is used to collect remaining function arguments into an array, while the spread operator is used to unpack an array or object into individual values. Rest gathers; spread expands.
+
+## Rest parameter example
+
+Use rest inside a **function definition** when you do not know how many arguments will be passed.
+
+```ts
+function addNumbers(...numbers: number[]) {
+  return numbers.reduce((total, number) => total + number, 0);
+}
+
+console.log(addNumbers(10, 20, 30)); // 60
+```
+
+Here:
+
+```ts
+...numbers
+```
+
+collects `10`, `20`, and `30` into an array:
+
+```ts
+numbers = [10, 20, 30];
+```
+
+A rest parameter must be the **last parameter** in a function definition. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters...)
+
+```ts
+function greet(name: string, ...messages: string[]) {
+  console.log(name, messages);
+}
+
+greet("Vivek", "Good morning", "Welcome");
+
+// Vivek ["Good morning", "Welcome"]
+```
+
+## Spread operator example
+
+Use spread when calling a function or creating a new array/object.
+
+```ts
+const numbers = [10, 20, 30];
+
+console.log(Math.max(...numbers)); // 30
+```
+
+Here:
+
+```ts
+...numbers
+```
+
+expands the array:
+
+```ts
+Math.max(10, 20, 30);
+```
+
+## Array example
+
+```ts
+const backendSkills = ["Node.js", "TypeScript"];
+const cloudSkills = ["AWS", "Docker"];
+
+const skills = [...backendSkills, ...cloudSkills];
+
+console.log(skills);
+// ["Node.js", "TypeScript", "AWS", "Docker"]
+```
+
+## Object example
+
+This is very common in Node.js and TypeScript projects:
+
+```ts
+const user = {
+  name: "Vivek",
+  role: "Developer"
+};
+
+const updatedUser = {
+  ...user,
+  role: "Senior Software Engineer"
+};
+
+console.log(updatedUser);
+// { name: "Vivek", role: "Senior Software Engineer" }
+```
+
+The spread operator copies the existing object properties and lets you override or add properties.
+
+## Quick difference table
+
+| Point | Rest parameter | Spread operator |
+|---|---|---|
+| Purpose | Collects values | Expands values |
+| Direction | Many values → one array/object | One array/object → many values |
+| Common place | Function parameters, destructuring | Function calls, arrays, objects |
+| Example | `function sum(...nums) {}` | `sum(...nums)` |
+
+## One-line memory trick
+
+> **Rest collects; Spread expands.**
+
+For example:
+
+```ts
+function sum(...numbers: number[]) { // Rest: collects
+  return numbers.reduce((a, b) => a + b, 0);
+}
+
+const values = [10, 20, 30];
+
+console.log(sum(...values)); // Spread: expands
+```
+
+This exact pattern is common in TypeScript backend applications when passing dynamic arguments, copying immutable objects, merging configuration, or handling variable API inputs. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax.)
 
 
 # Spread Operators
@@ -240,6 +425,120 @@ Using Redux Toolkit helps you manage complex state in your React applications mo
 
 
   
+
+The **ternary operator** is used to choose between two values based on a condition.  
+**Optional chaining** is used to safely access a property or call a method when an object might be `null` or `undefined`. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+## Easy interview answer
+
+> The ternary operator works like a short `if...else` expression. Optional chaining prevents an error when accessing a property from an object that may not exist. Ternary makes a decision; optional chaining safely reads a value.
+
+## Ternary operator: `condition ? valueIfTrue : valueIfFalse`
+
+```ts
+const age = 20;
+
+const message = age >= 18 ? "Adult" : "Minor";
+
+console.log(message); // Adult
+```
+
+It means:
+
+```ts
+let message;
+
+if (age >= 18) {
+  message = "Adult";
+} else {
+  message = "Minor";
+}
+```
+
+Use ternary when you want to select one of two values based on a true/false condition. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator)
+
+## Optional chaining: `?.`
+
+```ts
+const user = {
+  name: "Vivek",
+  address: {
+    city: "Varanasi"
+  }
+};
+
+console.log(user.address?.city); // Varanasi
+console.log(user.profile?.phone); // undefined
+```
+
+Without optional chaining:
+
+```ts
+console.log(user.profile.phone);
+// Error: Cannot read properties of undefined
+```
+
+With optional chaining:
+
+```ts
+console.log(user.profile?.phone);
+// undefined — no error
+```
+
+Optional chaining stops safely and returns `undefined` if the value before `?.` is `null` or `undefined`. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+## Quick comparison
+
+| Point | Ternary operator | Optional chaining |
+|---|---|---|
+| Syntax | `condition ? A : B` | `object?.property` |
+| Main purpose | Choose between two values | Safely access a possibly missing value |
+| Checks | Any truthy/falsy condition | Only `null` or `undefined` |
+| Output | Either the true or false result | Property value or `undefined` |
+| Example | `isAdmin ? "Admin" : "User"` | `user?.profile?.email` |
+
+## Backend example
+
+### Ternary: decide the HTTP status
+
+```ts
+const statusCode = user ? 200 : 404;
+```
+
+### Optional chaining: safely read an optional request field
+
+```ts
+const city = request.body?.address?.city;
+
+console.log(city);
+// Returns the city if it exists; otherwise undefined.
+```
+
+## Using both together
+
+```ts
+const user = {
+  profile: {
+    name: "Vivek"
+  }
+};
+
+const displayName = user.profile?.name
+  ? user.profile.name
+  : "Guest";
+
+console.log(displayName); // Vivek
+```
+
+A cleaner version using optional chaining with nullish coalescing is:
+
+```ts
+const displayName = user.profile?.name ?? "Guest";
+```
+
+Use the ternary operator when you need a decision with two outcomes. Use optional chaining when you need safe access to nested API responses, request bodies, database objects, or optional configuration fields. [developer.mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+
 
 
 # Optional Chaining
