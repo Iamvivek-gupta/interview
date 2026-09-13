@@ -824,3 +824,121 @@ Problem: Duplicate orders are created when SQS retries a message.
 Constraints: No schema change; preserve existing API.
 Output: Root cause, minimal idempotency fix, Jest tests, and CloudWatch metrics to alert on.
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Simple meaning
+
+Think of an AI system as a student:
+
+- **LLM** = the student’s brain.
+- **RAG** = giving the student a book or company documents before answering.
+- **Agentic AI** = giving the student a goal and tools so they can plan and complete the work independently.
+
+An LLM generates text from what it learned during training. RAG retrieves relevant external information and gives it to the LLM before it responds. Agentic AI can plan, use tools, take actions, and adjust its approach while completing a task. [ibm](https://www.ibm.com/think/topics/agentic-rag)
+
+## 1. LLM
+
+**LLM** means **Large Language Model**.
+
+Example:
+
+> You: “Write a birthday message for my brother.”  
+> LLM: “Happy birthday, bhai! Wishing you lots of happiness…”
+
+It mainly understands your prompt and generates a response. It does not automatically search your private documents or perform actions such as sending an email.
+
+Examples include:
+- ChatGPT.
+- Claude.
+- Gemini.
+- Llama.
+
+## 2. RAG
+
+**RAG** means **Retrieval-Augmented Generation**.
+
+Example:
+
+> You: “What is our company’s leave policy?”
+
+A normal LLM may not know your company policy. A RAG system:
+
+1. Searches the company’s HR documents.
+2. Finds the relevant leave-policy section.
+3. Gives that information to the LLM.
+4. Generates an answer based on the document.
+
+So, RAG is useful when the answer must come from private, specific, or updated information. [fractal](https://fractal.ai/article/rag-vs-agentic-ai/)
+
+### Simple analogy
+
+- LLM: answers from memory.
+- RAG: opens the correct book before answering.
+
+## 3. Agentic AI
+
+**Agentic AI** is an AI system that can decide the steps required to complete a goal and use tools to perform those steps. [ibm](https://www.ibm.com/think/topics/agentic-rag)
+
+Example:
+
+> You: “Find three suitable flights to Delhi, compare the prices, and prepare a travel plan.”
+
+An agentic AI may:
+
+1. Search flight websites or APIs.
+2. Compare prices and timings.
+3. Check your travel preferences.
+4. Create a comparison.
+5. Prepare the final itinerary.
+
+Unlike a simple chatbot, it can perform a multi-step workflow instead of only giving text. [domo](https://www.domo.com/learn/article/agentic-rag-vs-rag)
+
+## Main difference
+
+| Technology | Main purpose | Basic example |
+|---|---|---|
+| LLM | Understand and generate text | Write an email |
+| RAG | Answer using external documents or data | Answer from a company handbook |
+| Agentic AI | Plan and perform multi-step tasks | Search, compare, decide, and prepare a report |
+
+## How they work together
+
+A real AI application may use all three:
+
+> “Review our project documents, identify delayed tasks, check the project-management system, and prepare an update email.”
+
+- **LLM** understands the request and writes the email.
+- **RAG** searches the project documents.
+- **Agentic AI** decides the steps and uses tools such as document search and project-management APIs.
+
+### Easy formula
+
+\[
+\text{LLM} = \text{Brain}
+\]
+
+\[
+\text{RAG} = \text{Brain + External Knowledge}
+\]
+
+\[
+\text{Agentic AI} = \text{Brain + Knowledge + Tools + Planning + Actions}
+\]
+
+One important point: **RAG and Agentic AI are not replacements for LLMs**. They usually use an LLM as their central reasoning and language component.
