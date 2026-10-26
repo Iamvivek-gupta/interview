@@ -197,3 +197,20 @@ In a device warranty platform project, I used AWS Lambda for serverless user aut
 
 
 When raising a Pull Request (PR) or Merge Request (MR), it's important to include a clear title, description, relevant documentation,  any necessary screenshots and logs. that explains what the changes are and why they are necessary. A good review should check code quality, verify functionality, review tests and provide constructive feedback. This ensures high code quality and smooth collaboration.
+
+
+
+
+**AWS Experience (4 Years):**
+
+- **AWS Lambda:** Designed and developed serverless functions using Node.js/TypeScript for event-driven workloads, API integrations, and background processing. Configured triggers, environment variables, IAM roles, and monitoring.
+
+- **Amazon RDS:** Worked with RDS (MySQL/PostgreSQL/Aurora) for relational database management, including instance setup, connection management, query optimization, backups, and integration with backend services.
+
+- **Amazon S3:** Used S3 for object storage, file uploads/downloads, static asset hosting, and integration with applications through presigned URLs and SDKs.
+
+- **AWS IAM:** Created and managed IAM roles, policies, and users to enforce least-privilege access for Lambda functions, EC2, RDS, and S3 resources, ensuring secure access control.
+
+- **Amazon CloudWatch:** Used CloudWatch for monitoring application logs, setting alarms, tracking metrics (CPU, memory, latency, error rates), and troubleshooting issues in real time.
+
+Overall, I have hands-on experience designing, deploying, and maintaining secure, scalable AWS-based solutions for the past 4 years.

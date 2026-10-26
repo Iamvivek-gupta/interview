@@ -1,6 +1,6 @@
 **Introduction:**
 
-"Hello, I'm [Your Name], and I specialize in full-stack development with a strong focus on backend technologies. Over the years, I've honed my skills in NodeJS, NestJS, JavaScript, TypeScript, ExpressJS, and AWS, along with frontend development using ReactJS. My experience spans various domains, where I've consistently delivered robust, scalable, and efficient applications."
+"Hi, I'm Vivek Gupta, and I am a heavy Backend full-stack developer with a strong in backend technologies. Over the years, I've honed my skills in NodeJS, NestJS, JavaScript, TypeScript, ExpressJS, and AWS, along with frontend development using ReactJS. My experience spans various domains, where I've consistently delivered robust, scalable, and efficient applications."
 
 ---
 
